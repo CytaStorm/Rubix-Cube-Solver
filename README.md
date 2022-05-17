@@ -1,2 +1,2 @@
-# MKS22X-Final-Project
+# Gujixers Solver
 Rubiks cube solver
