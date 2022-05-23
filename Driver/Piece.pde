@@ -28,16 +28,40 @@ public class Piece {
   //  }
   //  return result;
   //}
-  public void rotateX(){
+  public void rotateXCW(){
+    int[] tempPos = new int[] {pos[0],pos[2]};
+    tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
+    pos[0] = tempPos[0];
+    pos[2] = tempPos[1];
   }
-  public void rotateXP(){
+  public void rotateXCCW(){
+    int[] tempPos = new int[] {pos[0],pos[2]};
+    tempPos = matrixMultiply(tempPos, CCW_ROT_MATRIX);
+    pos[0] = tempPos[0];
+    pos[2] = tempPos[1];
   }
-  public void rotateY(){
+  public void rotateYCW(){
+    int[] tempPos = new int[] {pos[1],pos[2]};
+    tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
+    pos[1] = tempPos[0];
+    pos[2] = tempPos[1];
   }
-  public void rotateYP(){
+  public void rotateYCCW(){
+    int[] tempPos = new int[] {pos[1],pos[2]};
+    tempPos = matrixMultiply(tempPos, CCW_ROT_MATRIX);
+    pos[1] = tempPos[0];
+    pos[2] = tempPos[1];
   }
-  public void rotateZ(){
+  public void rotateZCW(){
+    int[] tempPos = new int[] {pos[0],pos[1]};
+    tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
+    pos[0] = tempPos[0];
+    pos[1] = tempPos[1];
   }
-  public void rotateZP(){
+  public void rotateZCCW(){
+    int[] tempPos = new int[] {pos[0],pos[1]};
+    tempPos = matrixMultiply(tempPos, CCW_ROT_MATRIX);
+    pos[0] = tempPos[0];
+    pos[1] = tempPos[1];
   }
 }
