@@ -1,4 +1,6 @@
 public class Piece {
+  private final int[][] CCW_ROT_MATRIX = new int[][]{{0, -1},{1,0}};
+  private final int[][] CW_ROT_MATRIX = new int[][]{{0, 1},{-1,0}};
   private int[] pos = new int[3];
   private int[] col = new int[3];
   public Piece(int pX, int pY, int pZ, int cX, int cY, int cZ){
