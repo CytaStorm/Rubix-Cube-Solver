@@ -11,6 +11,16 @@ public class Piece {
     col[1] = cY;
     col[2] = cZ;
   }
+  public int getPos(String axis){
+    switch axis{
+      case x: return pos[0];
+      case y: return pos[1];
+      case z: return pos[2];
+      default: return -100;
+               print("invalid input! Please use x/y/z axis!");
+               break;
+    }
+  }
   private int[] matrixMultiply(int[]matrix, int[][]matrixMultiplier){
     int[]result = new int[3];
     for(int i = 0; i < matrix.length; i++){
