@@ -56,12 +56,32 @@ public class Cube {
       }
     }
   }
-  void F() { 
+  void F() {
+    for (int i = 0; i < pieces.length; i++) {
+      if (pieces.getPos("y") == 1) {
+        pieces.rotateYCW();
+      }
+    }
   }
   void FPrime() {
+    for (int i = 0; i < pieces.length; i++) {
+      if (pieces.getPos("y") == 1) {
+        pieces.rotateYCC();
+      }
+    }
   }
   void B() {
+    for (int i = 0; i < pieces.length; i++) {
+      if (pieces.getPos("y") == -1) {
+        pieces.rotateYCW();
+      }
+    }
   }
   void BPrime() {
-  }
+    for (int i = 0; i < pieces.length; i++) {
+      if (pieces.getPos("y") == -1) {
+        pieces.rotateYCC();
+      }
+    }
+  } 
 }
