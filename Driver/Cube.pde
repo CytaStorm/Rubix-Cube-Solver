@@ -15,8 +15,18 @@ public class Cube {
     }
   }
   void R() {
+    for(int i = 0; i < pieces.length; i+=3){
+      if(pieces[i] == 1){
+        rotateXCW(); 
+      }
+    }
   } 
   void RPrime() {
+    for(int i = 0; i < pieces.length; i+=3){
+      if(pieces[i] == 1){
+        rotateXCC(); 
+      }
+    }
   } 
   void U() {
   } 
