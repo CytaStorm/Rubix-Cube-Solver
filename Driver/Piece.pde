@@ -2,7 +2,7 @@ public class Piece {
   private final int[][] CCW_ROT_MATRIX = new int[][]{{0, -1}, {1, 0}};
   private final int[][] CW_ROT_MATRIX = new int[][]{{0, 1}, {-1, 0}};
   private int[] pos = new int[3]; //x,y,z
-  private Integer[] col = new Integer[3]; //x,y,z
+  private String[] col = new Integer[3]; //x,y,z
   public Piece(int pX, int pY, int pZ, int cX, int cY, int cZ) {
     pos[0] = pX;
     pos[1] = pY;
