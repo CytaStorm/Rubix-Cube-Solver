@@ -1,9 +1,13 @@
 public class Cube {
-  private int[]pieces = new int[27];
+  
+  private int[]Pieces = new int[27];
+  public Cube(){
+    Piece[0] = new Piece(-1,-1,-1,)
+  }
   void L() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces.getPos("x") == -1) {
-        pieces.rotateXCW();
+      if (Piece.getPos("x") == -1) {
+        Piece.rotateXCW();
       }
     }
   } 
