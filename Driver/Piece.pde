@@ -2,8 +2,8 @@ public class Piece {
   private final int[][] CCW_ROT_MATRIX = new int[][]{{0, -1}, {1, 0}};
   private final int[][] CW_ROT_MATRIX = new int[][]{{0, 1}, {-1, 0}};
   private int[] pos = new int[3]; //x,y,z
-  private String[] col = new Integer[3]; //x,y,z
-  public Piece(int pX, int pY, int pZ, int cX, int cY, int cZ) {
+  private String[] col = new String[3]; //white, red, blue, orange, yellow, green
+  public Piece(int pX, int pY, int pZ, String cX, String cY, String cZ) {
     pos[0] = pX;
     pos[1] = pY;
     pos[2] = pZ;
@@ -13,11 +13,11 @@ public class Piece {
   }
   public int getPos(String axis) {
     switch (axis) {
-    case x: 
+    case "x": 
       return pos[0];
-    case y: 
+    case "y": 
       return pos[1];
-    case z: 
+    case "z": 
       return pos[2];
     default: 
       return -100;
@@ -50,8 +50,7 @@ public class Piece {
 
     //corner piece
     if (col[1] != null && col[2] != null) {
-      Integer storage = 0;
-      storage = col[1]; 
+      String storage = col[1];
       col[1] = col[2];
       col[2] = storage;
     } else if (col[1] == null) { //edge piece
@@ -70,8 +69,7 @@ public class Piece {
 
     //corner piece
     if (col[1] != null && col[2] != null) {
-      Integer storage = 0;
-      storage = col[1]; 
+      String storage = col[1]; 
       col[1] = col[2];
       col[2] = storage;
     } else if (col[1] == null) { //edge piece
@@ -90,8 +88,7 @@ public class Piece {
 
     //corner piece
     if (col[0] != null && col[2] != null) {
-      Integer storage = 0;
-      storage = col[0]; 
+      String storage = col[0];
       col[0] = col[2];
       col[2] = storage;
     } else if (col[0] == null) { //edge piece
@@ -110,8 +107,7 @@ public class Piece {
 
     //corner piece
     if (col[0] != null && col[2] != null) {
-      Integer storage = 0;
-      storage = col[0]; 
+      String storage = col[0];
       col[0] = col[2];
       col[2] = storage;
     } else if (col[0] == null) { //edge piece
@@ -130,8 +126,7 @@ public class Piece {
 
     //corner piece
     if (col[0] != null && col[1] != null) {
-      Integer storage = 0;
-      storage = col[0]; 
+      String storage = col[0];
       col[0] = col[1];
       col[1] = storage;
     } else if (col[0] == null) { //edge piece
@@ -150,8 +145,7 @@ public class Piece {
 
     //corner piece
     if (col[0] != null && col[1] != null) {
-      Integer storage = 0;
-      storage = col[0]; 
+      String storage = col[0];
       col[0] = col[1];
       col[1] = storage;
     } else if (col[0] == null) { //edge piece
