@@ -1,8 +1,18 @@
 public class Cube {
-  int[]pieces = new int[piece];
+  private int[]pieces = new int[27];
   void L() {
+    for (int i = 0; i < pieces.length; i+=3) {
+      if (pieces[i] == -1) {
+        rotateXCW();
+      }
+    }
   } 
   void LPrime() {
+    for (int i = 0; i < pieces.length; i+=3) {
+      if (pieces[i] == -1) {
+        rotateXCC();
+      }
+    }
   }
   void R() {
   } 
