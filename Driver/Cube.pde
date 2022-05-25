@@ -43,28 +43,28 @@ public class Cube {
   }
   void L() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("x") == -1) {
+      if (pieces[i].getPos("x") == 1) {
         pieces[i].rotateXCW();
       }
     }
   } 
   void LPrime() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("x") == -1) {
+      if (pieces[i].getPos("x") == 1) {
         pieces[i].rotateXCCW();
       }
     }
   }
   void R() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("x") == 1) {
+      if (pieces[i].getPos("x") == -1) {
         pieces[i].rotateXCW();
       }
     }
   } 
   void RPrime() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("x") == 1) {
+      if (pieces[i].getPos("x") == -1) {
         pieces[i].rotateXCCW();
       }
     }
@@ -99,28 +99,28 @@ public class Cube {
   }
   void F() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("y") == 1) {
+      if (pieces[i].getPos("y") == -1) {
         pieces[i].rotateYCW();
       }
     }
   }
   void FPrime() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("y") == 1) {
+      if (pieces[i].getPos("y") == -1) {
         pieces[i].rotateYCCW();
       }
     }
   }
   void B() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("y") == -1) {
+      if (pieces[i].getPos("y") == 1) {
         pieces[i].rotateYCW();
       }
     }
   }
   void BPrime() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("y") == -1) {
+      if (pieces[i].getPos("y") == 1) {
         pieces[i].rotateYCCW();
       }
     }
