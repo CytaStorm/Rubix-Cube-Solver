@@ -41,60 +41,60 @@ public class Cube {
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
   }
-  public Piece getPiece(String pieceNum) {
+  public Piece getPiece(int pieceNum) {
     //accessor method to get each piece 0-25
     switch(pieceNum) {
-    case "0": 
+    case 0: 
       return pieces[0];
-    case "1": 
+    case 1: 
       return pieces[1];
-    case "2": 
+    case 2: 
       return pieces[2];
-    case "3": 
+    case 3: 
       return pieces[3];
-    case "4": 
+    case 4: 
       return pieces[4];
-    case "5": 
+    case 5: 
       return pieces[5];
-    case "6": 
+    case 6: 
       return pieces[6];
-    case "7": 
+    case 7: 
       return pieces[7];
-    case "8": 
+    case 8: 
       return pieces[8];
-    case "9": 
+    case 9: 
       return pieces[9];
-    case "10": 
+    case 10: 
       return pieces[10];
-    case "11": 
+    case 11: 
       return pieces[11];
-    case "12": 
+    case 12: 
       return pieces[12];
-    case "13": 
+    case 13: 
       return pieces[13];
-    case "14": 
+    case 14: 
       return pieces[14];
-    case "15": 
+    case 15: 
       return pieces[15];
-    case "16": 
+    case 16: 
       return pieces[16];
-    case "17": 
+    case 17: 
       return pieces[17];
-    case "18": 
+    case 18: 
       return pieces[18];
-    case "19": 
+    case 19: 
       return pieces[19];
-    case "20": 
+    case 20: 
       return pieces[20];
-    case "21": 
+    case 21: 
       return pieces[21];
-    case "22": 
+    case 22: 
       return pieces[22];
-    case "23": 
+    case 23: 
       return pieces[23]; 
-    case "24": 
+    case 24: 
       return pieces[24];
-    case "25": 
+    case 25: 
       return pieces[25];
     default: 
       print("please enter a valid piece from 0-25");
