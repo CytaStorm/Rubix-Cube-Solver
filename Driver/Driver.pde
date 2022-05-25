@@ -17,17 +17,7 @@ void setup() {
     }
   }
 }
-public Piece findPiece(int x, int y, int z) {
-  int ans = 0;
-  for (int i = 0; i < 27; i++) {
-    if (solveCube.getPiece(i).getPos("x") == x &&
-      solveCube.getPiece(i).getPos("y") == y && 
-      solveCube.getPiece(i).getPos("z") == z) {
-      ans = i;
-    }
-  }
-  return solveCube.getPiece(ans);
-}
+
 void update() {
 }  
 
