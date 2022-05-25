@@ -11,6 +11,13 @@ public class Piece {
     col[1] = cY;
     col[2] = cZ;
   }
+
+  //returns XYZ position of piece inside an array
+  public int[] getPos() {
+    return new int[] {pos[0], pos[1], pos[2]};
+  }
+
+  //returns X/Y/Z position of Piece given which one the user wants
   public int getPos(String axis) {
     switch (axis) {
     case "x": 

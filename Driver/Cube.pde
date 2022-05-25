@@ -1,5 +1,12 @@
 public class Cube {
 
+  private final String CU = "orange";
+  private final String CF = "white";
+  private final String CR = "blue";
+  private final String CL = "green";
+  private final String CB = "yellow";
+  private final String CD = "red";
+
   private Piece[] pieces = new Piece[27];
   public Cube() {
     //layer 1
@@ -40,6 +47,27 @@ public class Cube {
     pieces[23] = new Piece(-1, 1, 1, "blue", "yellow", "orange");
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
+  }
+
+  //accessor method: returns color of face given a face, each face will always be 1 color
+  public String getCol(String face) {
+    switch(face) {
+    case "U" : 
+      return CU;
+    case "F" : 
+      return CF;
+    case "R" : 
+      return CR;
+    case "L" : 
+      return CL;
+    case "B" : 
+      return CB;
+    case "D" : 
+      return CD;
+    default : 
+      print("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
+      return null;
+    }
   }
   void L() {
     for (int i = 0; i < pieces.length; i++) {
