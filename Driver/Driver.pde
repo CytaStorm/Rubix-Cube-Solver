@@ -19,6 +19,17 @@ void setup() {
 }
 
 void solve() {
+}  
+
+void keyPressed() {
+  if (key == 'q'){
+    //left 
+    solveCube.L();
+  }
+  if (key == 'a'){
+    //left prime
+    solveCube.LPrime();
+  }
 }
 void display() { 
   for (int i = 0; i < upSide.length; i++) {
