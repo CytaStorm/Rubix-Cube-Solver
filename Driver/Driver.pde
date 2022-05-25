@@ -8,6 +8,11 @@ String[][] frontSide = new String[3][3];
 String[][] rightSide = new String[3][3];
 String[][] backSide = new String[3][3];
 String[][] downSide = new String[3][3];
+for(int i = 0; i < upSide.length; i++){
+  for(int j = 0; j < upSide[0].length; j++){
+    print("wip for assigning colors");
+  }
+}
 void setup() {
 }
 void solve() {
