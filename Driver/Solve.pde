@@ -10,10 +10,10 @@ public class Solve {
   }
   public void cross(Cube cube) {
     println("cross WIP!");
-    Piece fl_piece = cube.find(cube.getPiece(0, 0, 1).getColor("z"), cube.getPiece(1, 0, 0).getColor("x"));
-    Piece fr_piece = cube.find(cube.getPiece(0, 0, 1).getColor("z"), cube.getPiece(-1, 0, 0).getColor("x"));
-    Piece fu_piece = cube.find(cube.getPiece(0, 0, 1).getColor("z"), cube.getPiece(1, 0, 0).getColor("x"));
-    Piece fd_piece = cube.find(cube.getPiece(0, 0, 1).getColor("z"), cube.getPiece(1, 0, 0).getColor("x"));
+    Piece fl_piece = cube.find(cube.getCol("U"), cube.getPiece(1, 0, 0).getColor("x"));
+    Piece fr_piece = cube.find(cube.getCol("U"), cube.getPiece(-1, 0, 0).getColor("x"));
+    Piece fu_piece = cube.find(cube.getCol("U"), cube.getPiece(1, 0, 0).getColor("x"));
+    Piece fd_piece = cube.find(cube.getCol("U"), cube.getPiece(1, 0, 0).getColor("x"));
   }
   public void crossCorners(Cube cube) {
     println("crossCorners WIP!");

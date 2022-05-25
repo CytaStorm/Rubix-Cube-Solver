@@ -27,9 +27,8 @@ public class Piece {
     case "z": 
       return pos[2];
     default: 
-      return -100;
       print("invalid input! Please use x/y/z axis!");
-      break;
+      return -100;
     }
   }
   private int[] matrixMultiply(int[]matrix, int[][]matrixMultiplier) {
