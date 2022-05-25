@@ -1,6 +1,6 @@
 public class Cube {
 
-  private int[] pieces = new Piece[27];
+  private Piece[] pieces = new Piece[27];
   public Cube() {
     //layer 1
     pieces[0] = new Piece(-1, -1, -1, "blue", "white", "red");
