@@ -1,12 +1,12 @@
 public class Solve {
   public void solve(Cube cube) {
     cross(cube);
-    crossCorners(cube);
-    secondLayer(cube);
-    secondCross(cube);
-    edges(cube);
-    corners(cube);
-    print("solved!");
+    //crossCorners(cube);
+    //secondLayer(cube);
+    //secondCross(cube);
+    //edges(cube);
+    //corners(cube);
+    //print("solved!");
   }
   public void cross(Cube cube) {
     println("cross WIP!");
