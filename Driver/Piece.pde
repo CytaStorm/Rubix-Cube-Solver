@@ -11,6 +11,21 @@ public class Piece {
     col[1] = cY;
     col[2] = cZ;
   }
+  
+  //returns color based on X/Y/Z input
+  public String getCol(String axis) {
+    switch (axis) {
+    case "x": 
+      return col[0];
+    case "y": 
+      return col[1];
+    case "z": 
+      return col[2];
+    default: 
+      print("invalid input! Please use x/y/z axis!");
+      return null;
+    }
+  }
 
   //returns XYZ position of piece inside an array
   public int[] getPos() {
