@@ -17,14 +17,20 @@ void setup() {
     }
   }
 }
-
-void solve() {
+void findPiece(int x, int y, int z){
+  for(int i = 0; i < solveCube.length; i++){
+    
+  }
+}
+void update() {
+  
 }  
 
 void keyPressed() {
   if (key == 'q') {
     //left 
-    solveCube.L();
+    solveCube.L(); 
+    
   }
   if (key == 'a') {
     //left prime
