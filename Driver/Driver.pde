@@ -22,13 +22,53 @@ void solve() {
 }  
 
 void keyPressed() {
-  if (key == 'q'){
+  if (key == 'q') {
     //left 
     solveCube.L();
   }
-  if (key == 'a'){
+  if (key == 'a') {
     //left prime
     solveCube.LPrime();
+  }
+  if (key == 'w') {
+    //right 
+    solveCube.R();
+  }
+  if (key == 's') {
+    //right prime
+    solveCube.RPrime();
+  } 
+  if (key == 'e') {
+    //up
+    solveCube.U();
+  }
+  if (key == 'd') {
+    //up prime 
+    solveCube.UPrime();
+  }  
+  if (key == 'r') {
+    //down
+    solveCube.D();
+  }
+  if (key == 'f') {
+    //down prime 
+    solveCube.DPrime();
+  } 
+  if (key == 't') {
+    //front 
+    solveCube.F();
+  }
+  if (key == 'g') {
+    //front prime
+    solveCube.FPrime();
+  } 
+  if (key == 'y') {
+    //back
+    solveCube.B();
+  }
+  if (key == 'h') {
+    //back prime 
+    solveCube.BPrime();
   }
 }
 void display() { 
