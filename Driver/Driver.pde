@@ -29,6 +29,17 @@ public Piece findPiece(int x, int y, int z) {
   return solveCube.getPiece(ans);
 }
 void update() {
+  //update the top side 
+  upSide[0][0] = solveCube.findPiece(1,1,1).getCol("z"); 
+  upSide[0][1] = solveCube.findPiece(1,1,1).getCol("z"); 
+  upSide[0][2] = solveCube.findPiece(1,1,1).getCol("z"); 
+  upSide[1][0] = solveCube.findPiece(1,1,1).getCol("z"); 
+  upSide[1][1] = solveCube.findPiece(1,1,1).getCol("z"); 
+  upSide[1][2] = solveCube.findPiece(1,1,1).getCol("z"); 
+  upSide[2][0] = solveCube.findPiece(1,1,1).getCol("z"); 
+  upSide[2][1] = solveCube.findPiece(1,1,1).getCol("z"); 
+  upSide[2][2] = solveCube.findPiece(1,1,1).getCol("z"); 
+  
 }  
 
 void keyPressed() {
