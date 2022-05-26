@@ -84,50 +84,62 @@ void keyPressed() {
   if (key == 'q') {
     //left 
     solveCube.L();
+    update();
   }
   if (key == 'a') {
     //left prime
     solveCube.LPrime();
+    update();
   }
   if (key == 'w') {
     //right 
     solveCube.R();
+    update();
   }
   if (key == 's') {
     //right prime
     solveCube.RPrime();
+    update();
   } 
   if (key == 'e') {
     //up
     solveCube.U();
+    update();
   }
   if (key == 'd') {
     //up prime 
     solveCube.UPrime();
+    update();
   }  
   if (key == 'r') {
     //down
     solveCube.D();
+    update();
   }
   if (key == 'f') {
     //down prime 
     solveCube.DPrime();
+    update();
   } 
   if (key == 't') {
     //front 
     solveCube.F();
+    update();
   }
   if (key == 'g') {
     //front prime
     solveCube.FPrime();
+    update();
   } 
   if (key == 'y') {
     //back
     solveCube.B();
+    update();
   }
   if (key == 'h') {
     //back prime 
     solveCube.BPrime();
+    update();
   }
 }
 void display() { 
