@@ -48,7 +48,16 @@ void update() {
   frontSide[2][0] = solveCube.findPiece(1, -1, -1).getCol("F"); 
   frontSide[2][1] = solveCube.findPiece(0, -1, -1).getCol("F"); 
   frontSide[2][2] = solveCube.findPiece(-1, -1, -1).getCol("F"); 
-  
+  //update the back side
+  backSide[0][0] = solveCube.findPiece(-1, 1, 1).getCol("B"); 
+  backSide[0][1] = solveCube.findPiece(0, 1, 1).getCol("B"); 
+  backSide[0][2] = solveCube.findPiece(1, 1, 1).getCol("B"); 
+  backSide[1][0] = solveCube.findPiece(-1, 1, 0).getCol("B"); 
+  backSide[1][1] = solveCube.findPiece(0, 1, 0).getCol("B"); 
+  backSide[1][2] = solveCube.findPiece(1, 1, 0).getCol("B"); 
+  backSide[2][0] = solveCube.findPiece(-1, 1, -1).getCol("B"); 
+  backSide[2][1] = solveCube.findPiece(0, 1, -1).getCol("B"); 
+  backSide[2][2] = solveCube.findPiece(1, 1, -1).getCol("B"); 
   //update the left side 
   leftSide[0][0] = solveCube.findPiece(1, 1, 1).getCol("L"); 
   leftSide[0][1] = solveCube.findPiece(1, 0, 1).getCol("L"); 
