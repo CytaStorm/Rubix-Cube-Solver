@@ -90,7 +90,14 @@ public class Cube {
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
   }
-
+  //scrambles cube using 20 moves
+  public void scramble(){
+   int i = 0;
+   while(i<20){
+     int picker = (int)Math.random()*13;
+     
+   }
+  }
   //accessor method: returns color of face given a face, each face will always be 1 color
   public String getCol(String face) {
     switch(face) {

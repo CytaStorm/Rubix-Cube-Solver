@@ -33,65 +33,45 @@ public color stringToColor(String col) {
 
 
 void keyPressed() {
-  if (key == 'q') {
-    //left 
+  switch(key) {
+  case 'q': 
     solveCube.L();
-    //update();
-  }
-  if (key == 'a') {
-    //left prime
+    break;
+  case 'a': 
     solveCube.LPrime();
-    //update();
-  }
-  if (key == 'w') {
-    //right 
+    break;
+  case 'w': 
     solveCube.R();
-    //update();
-  }
-  if (key == 's') {
-    //right prime
+    break;
+  case 's': 
     solveCube.RPrime();
-    //update();
-  } 
-  if (key == 'e') {
-    //up
+    break;
+  case 'e': 
     solveCube.U();
-    //update();
-  }
-  if (key == 'd') {
-    //up prime 
+    break;
+  case 'd': 
     solveCube.UPrime();
-    //update();
-  }  
-  if (key == 'r') {
-    //down
+    break;
+  case 'r': 
     solveCube.D();
-    //update();
-  }
-  if (key == 'f') {
-    //down prime 
-    solveCube.DPrime();
-    //update();
-  } 
-  if (key == 't') {
-    //front 
+    break;
+  case 'f': 
+    solveCube.D();
+    break;
+  case 't': 
     solveCube.F();
-    //update();
-  }
-  if (key == 'g') {
-    //front prime
+    break;
+  case 'g': 
     solveCube.FPrime();
-    //update();
-  } 
-  if (key == 'y') {
-    //back
+    break;
+  case 'y': 
     solveCube.B();
-    //update();
-  }
-  if (key == 'h') {
-    //back prime 
+    break;
+  case 'h': 
     solveCube.BPrime();
-    //update();
+    break;
+  default: 
+    break;
   }
 }
 
