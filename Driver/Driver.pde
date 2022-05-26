@@ -10,81 +10,144 @@ String[][] backSide = new String[3][3];
 String[][] downSide = new String[3][3];
 
 void setup() {
-  size(1920, 1080);
+  size(1000, 1000);
+  //display upSide
   for (int i = 0; i < upSide.length; i++) {
     for (int j = 0; j < upSide[0].length; j++) {
-      print("wip for assigning colors");
+      fill(upSide[i][j]);
+      rect(1
     }
   }
-}
-public Piece findPiece(int x, int y, int z) {
-  int ans = 0;
-  for (int i = 0; i < 27; i++) {
-    if (solveCube.getPiece(i).getPos("x") == x &&
-      solveCube.getPiece(i).getPos("y") == y && 
-      solveCube.getPiece(i).getPos("z") == z) {
-      ans = i;
-    }
-  }
-  return solveCube.getPiece(ans);
 }
 void update() {
+  //update the top side 
+  upSide[0][0] = solveCube.findPiece(1, 1, 1).getCol("U"); 
+  upSide[0][1] = solveCube.findPiece(0, 1, 1).getCol("U"); 
+  upSide[0][2] = solveCube.findPiece(-1, 1, 1).getCol("U"); 
+  upSide[1][0] = solveCube.findPiece(1, 0, 1).getCol("U"); 
+  upSide[1][1] = solveCube.findPiece(0, 0, 1).getCol("U"); 
+  upSide[1][2] = solveCube.findPiece(-1, 0, 1).getCol("U"); 
+  upSide[2][0] = solveCube.findPiece(1, -1, 1).getCol("U"); 
+  upSide[2][1] = solveCube.findPiece(0, -1, 1).getCol("U"); 
+  upSide[2][2] = solveCube.findPiece(-1, -1, 1).getCol("U");  
+  //update the down side 
+  downSide[0][0] = solveCube.findPiece(1, -1, -1).getCol("D"); 
+  downSide[0][1] = solveCube.findPiece(0, -1, -1).getCol("D"); 
+  downSide[0][2] = solveCube.findPiece(-1, -1, -1).getCol("D"); 
+  downSide[1][0] = solveCube.findPiece(1, 0, -1).getCol("D"); 
+  downSide[1][1] = solveCube.findPiece(0, 0, -1).getCol("D"); 
+  downSide[1][2] = solveCube.findPiece(-1, 0, -1).getCol("D"); 
+  downSide[2][0] = solveCube.findPiece(1, 1, -1).getCol("D"); 
+  downSide[2][1] = solveCube.findPiece(0, 1, -1).getCol("D"); 
+  downSide[2][2] = solveCube.findPiece(-1, 1, -1).getCol("D"); 
+  //update the front side 
+  frontSide[0][0] = solveCube.findPiece(1, -1, 1).getCol("F"); 
+  frontSide[0][1] = solveCube.findPiece(0, -1, 1).getCol("F"); 
+  frontSide[0][2] = solveCube.findPiece(-1, -1, 1).getCol("F"); 
+  frontSide[1][0] = solveCube.findPiece(1, -1, 0).getCol("F"); 
+  frontSide[1][1] = solveCube.findPiece(0, -1, 0).getCol("F"); 
+  frontSide[1][2] = solveCube.findPiece(-1, -1, 0).getCol("F"); 
+  frontSide[2][0] = solveCube.findPiece(1, -1, -1).getCol("F"); 
+  frontSide[2][1] = solveCube.findPiece(0, -1, -1).getCol("F"); 
+  frontSide[2][2] = solveCube.findPiece(-1, -1, -1).getCol("F"); 
+  //update the back side
+  backSide[0][0] = solveCube.findPiece(-1, 1, 1).getCol("B"); 
+  backSide[0][1] = solveCube.findPiece(0, 1, 1).getCol("B"); 
+  backSide[0][2] = solveCube.findPiece(1, 1, 1).getCol("B"); 
+  backSide[1][0] = solveCube.findPiece(-1, 1, 0).getCol("B"); 
+  backSide[1][1] = solveCube.findPiece(0, 1, 0).getCol("B"); 
+  backSide[1][2] = solveCube.findPiece(1, 1, 0).getCol("B"); 
+  backSide[2][0] = solveCube.findPiece(-1, 1, -1).getCol("B"); 
+  backSide[2][1] = solveCube.findPiece(0, 1, -1).getCol("B"); 
+  backSide[2][2] = solveCube.findPiece(1, 1, -1).getCol("B"); 
+  //update the left side 
+  leftSide[0][0] = solveCube.findPiece(1, 1, 1).getCol("L"); 
+  leftSide[0][1] = solveCube.findPiece(1, 0, 1).getCol("L"); 
+  leftSide[0][2] = solveCube.findPiece(1, -1, 1).getCol("L"); 
+  leftSide[1][0] = solveCube.findPiece(1, 1, 0).getCol("L"); 
+  leftSide[1][1] = solveCube.findPiece(1, 0, 0).getCol("L"); 
+  leftSide[1][2] = solveCube.findPiece(1, -1, 0).getCol("L"); 
+  leftSide[2][0] = solveCube.findPiece(1, 1, -1).getCol("L"); 
+  leftSide[2][1] = solveCube.findPiece(1, 0, -1).getCol("L"); 
+  leftSide[2][2] = solveCube.findPiece(1, -1, -1).getCol("L"); 
+  //update right side
+  rightSide[0][0] = solveCube.findPiece(-1, -1, 1).getCol("R"); 
+  rightSide[0][1] = solveCube.findPiece(-1, 0, 1).getCol("R"); 
+  rightSide[0][2] = solveCube.findPiece(-1, 1, 1).getCol("R"); 
+  rightSide[1][0] = solveCube.findPiece(-1, -1, 0).getCol("R"); 
+  rightSide[1][1] = solveCube.findPiece(-1, 0, 0).getCol("R"); 
+  rightSide[1][2] = solveCube.findPiece(-1, 1, 0).getCol("R"); 
+  rightSide[2][0] = solveCube.findPiece(-1, -1, -1).getCol("R"); 
+  rightSide[2][1] = solveCube.findPiece(-1, 0, -1).getCol("R"); 
+  rightSide[2][2] = solveCube.findPiece(-1, 1, -1).getCol("R");
 }  
 
 void keyPressed() {
   if (key == 'q') {
     //left 
     solveCube.L();
+    update();
   }
   if (key == 'a') {
     //left prime
     solveCube.LPrime();
+    update();
   }
   if (key == 'w') {
     //right 
     solveCube.R();
+    update();
   }
   if (key == 's') {
     //right prime
     solveCube.RPrime();
+    update();
   } 
   if (key == 'e') {
     //up
     solveCube.U();
+    update();
   }
   if (key == 'd') {
     //up prime 
     solveCube.UPrime();
+    update();
   }  
   if (key == 'r') {
     //down
     solveCube.D();
+    update();
   }
   if (key == 'f') {
     //down prime 
     solveCube.DPrime();
+    update();
   } 
   if (key == 't') {
     //front 
     solveCube.F();
+    update();
   }
   if (key == 'g') {
     //front prime
     solveCube.FPrime();
+    update();
   } 
   if (key == 'y') {
     //back
     solveCube.B();
+    update();
   }
   if (key == 'h') {
     //back prime 
     solveCube.BPrime();
+    update();
   }
 }
 void display() { 
   for (int i = 0; i < upSide.length; i++) {
     for (int j = 0; j < upSide[0].length; j++) {
-      System.out.println(upSide[i][j]);
+      System.out.println(upSide[i][j]); 
     }
   } 
   for (int i = 0; i < leftSide.length; i++) {

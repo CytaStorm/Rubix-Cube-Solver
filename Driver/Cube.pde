@@ -69,7 +69,18 @@ public class Cube {
       return null;
     }
   }
-  
+  public Piece findPiece(int x, int y, int z) {
+    int ans = 0;
+    for (int i = 0; i < 27; i++) {
+      if (solveCube.getPiece(i).getPos("x") == x &&
+        solveCube.getPiece(i).getPos("y") == y && 
+        solveCube.getPiece(i).getPos("z") == z) {
+        ans = i;
+      }
+    }
+    return solveCube.getPiece(ans);
+  }
+
   public Piece getPiece(int pieceNum) {
     //accessor method to get each piece 0-25
     switch(pieceNum) {
@@ -127,7 +138,7 @@ public class Cube {
       return pieces[25];
     default: 
       print("please enter a valid piece from 0-25");
-      return null; 
+      return null;
     }
   }
   public void L() {
