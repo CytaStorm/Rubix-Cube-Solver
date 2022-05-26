@@ -48,7 +48,18 @@ public class Cube {
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
   }
-
+  
+  //finds pos of edge piece based on color
+  
+  //***WIP***
+ public int[] findEdge(String c1, String c2){
+   int ans = 0;
+   for (int i = 0; i < 27; i++){
+     if (getPiece(i).get("x") == c1 &&
+         getPiece(i).getPos("y") == c2 {
+          ans = i;
+        }
+   }
   //accessor method: returns color of face given a face, each face will always be 1 color
   public String getCol(String face) {
     switch(face) {
@@ -73,17 +84,17 @@ public class Cube {
   public Piece findPiece(int x, int y, int z) {
     int ans = 0;
     for (int i = 0; i < 27; i++) {
-      if (solveCube.getPiece(i).getPos("x") == x &&
-        solveCube.getPiece(i).getPos("y") == y && 
-        solveCube.getPiece(i).getPos("z") == z) {
+      if (getPiece(i).getPos()[0] == x &&
+        getPiece(i).getPos()[1] == y && 
+        getPiece(i).getPos()[2] == z) {
         ans = i;
       }
     }
     return solveCube.getPiece(ans);
   }
   
-  //accessor method to the pieceNum-th piece in the Cube
-  public Piece getPiece(int pieceNum) {
+  //helper method to the pieceNum-th piece in the Cube
+  private Piece getPiece(int pieceNum) {
     
     switch(pieceNum) {
     case 0: 
@@ -145,84 +156,84 @@ public class Cube {
   }
   public void L() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("x") == 1) {
+      if (pieces[i].getPos()[0] == 1) {
         pieces[i].rotateXCW();
       }
     }
   } 
   public void LPrime() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("x") == 1) {
+      if (pieces[i].getPos()[0] == 1) {
         pieces[i].rotateXCCW();
       }
     }
   }
   public void R() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("x") == -1) {
+      if (pieces[i].getPos()[0] == -1) {
         pieces[i].rotateXCW();
       }
     }
   } 
   public void RPrime() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("x") == -1) {
+      if (pieces[i].getPos()[0] == -1) {
         pieces[i].rotateXCCW();
       }
     }
   } 
   public void U() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("z") == 1) {
+      if (pieces[i].getPos()[2] == 1) {
         pieces[i].rotateZCW();
       }
     }
   } 
   public void UPrime() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("z") == 1) {
+      if (pieces[i].getPos()[2] == 1) {
         pieces[i].rotateZCCW();
       }
     }
   }
   public void D() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("z") == -1) {
+      if (pieces[i].getPos()[2] == -1) {
         pieces[i].rotateZCCW();
       }
     }
   }
   public void DPrime() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("z") == -1) {
+      if (pieces[i].getPos()[2] == -1) {
         pieces[i].rotateZCCW();
       }
     }
   }
   public void F() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("y") == -1) {
+      if (pieces[i].getPos()[1] == -1) {
         pieces[i].rotateYCW();
       }
     }
   }
   public void FPrime() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("y") == -1) {
+      if (pieces[i].getPos()[1] == -1) {
         pieces[i].rotateYCCW();
       }
     }
   }
   public void B() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("y") == 1) {
+      if (pieces[i].getPos()[1] == 1) {
         pieces[i].rotateYCW();
       }
     }
   }
   public void BPrime() {
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos("y") == 1) {
+      if (pieces[i].getPos()[1] == 1) {
         pieces[i].rotateYCCW();
       }
     }

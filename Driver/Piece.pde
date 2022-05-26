@@ -26,13 +26,17 @@ public class Piece {
       return null;
     }
   }
-
-  //returns XYZ position of piece inside an array
+  //Accessor, returns all colors of piece in an array
+  public String[] getAllCol(){
+    return col;
+  }
+  //Accessor returns pos of array
   public int[] getPos() {
-    return new int[] {pos[0], pos[1], pos[2]};
+    return pos[];
   }
 
   //returns X/Y/Z position of Piece given which one the user wants
+  //***may be useless***
   public int getPos(String axis) {
     switch (axis) {
     case "x": 
