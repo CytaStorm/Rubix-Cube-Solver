@@ -31,68 +31,6 @@ public color stringToColor(String col) {
   }
 }
 
-void update() {
-  //update the top side 
-  upSide[0][0] = solveCube.findPiece(1, 1, 1).getCol()[2]; 
-  upSide[0][1] = solveCube.findPiece(0, 1, 1).getCol()[2]; 
-  upSide[0][2] = solveCube.findPiece(-1, 1, 1).getCol()[2]; 
-  upSide[1][0] = solveCube.findPiece(1, 0, 1).getCol()[2]; 
-  upSide[1][1] = solveCube.findPiece(0, 0, 1).getCol()[2]; 
-  upSide[1][2] = solveCube.findPiece(-1, 0, 1).getCol()[2]; 
-  upSide[2][0] = solveCube.findPiece(1, -1, 1).getCol()[2]; 
-  upSide[2][1] = solveCube.findPiece(0, -1, 1).getCol()[2]; 
-  upSide[2][2] = solveCube.findPiece(-1, -1, 1).getCol()[2];  
-  //update the down side 
-  downSide[0][0] = solveCube.findPiece(1, -1, -1).getCol()[2]; 
-  downSide[0][1] = solveCube.findPiece(0, -1, -1).getCol()[2]; 
-  downSide[0][2] = solveCube.findPiece(-1, -1, -1).getCol()[2]; 
-  downSide[1][0] = solveCube.findPiece(1, 0, -1).getCol()[2]; 
-  downSide[1][1] = solveCube.findPiece(0, 0, -1).getCol()[2]; 
-  downSide[1][2] = solveCube.findPiece(-1, 0, -1).getCol()[2]; 
-  downSide[2][0] = solveCube.findPiece(1, 1, -1).getCol()[2]; 
-  downSide[2][1] = solveCube.findPiece(0, 1, -1).getCol()[2]; 
-  downSide[2][2] = solveCube.findPiece(-1, 1, -1).getCol()[2]; 
-  //update the front side 
-  frontSide[0][0] = solveCube.findPiece(1, -1, 1).getCol()[1]; 
-  frontSide[0][1] = solveCube.findPiece(0, -1, 1).getCol()[1]; 
-  frontSide[0][2] = solveCube.findPiece(-1, -1, 1).getCol()[1]; 
-  frontSide[1][0] = solveCube.findPiece(1, -1, 0).getCol()[1]; 
-  frontSide[1][1] = solveCube.findPiece(0, -1, 0).getCol()[1]; 
-  frontSide[1][2] = solveCube.findPiece(-1, -1, 0).getCol()[1]; 
-  frontSide[2][0] = solveCube.findPiece(1, -1, -1).getCol()[1]; 
-  frontSide[2][1] = solveCube.findPiece(0, -1, -1).getCol()[1]; 
-  frontSide[2][2] = solveCube.findPiece(-1, -1, -1).getCol()[1]; 
-  //update the back side
-  backSide[0][0] = solveCube.findPiece(-1, 1, 1).getCol()[1]; 
-  backSide[0][1] = solveCube.findPiece(0, 1, 1).getCol()[1]; 
-  backSide[0][2] = solveCube.findPiece(1, 1, 1).getCol()[1]; 
-  backSide[1][0] = solveCube.findPiece(-1, 1, 0).getCol()[1]; 
-  backSide[1][1] = solveCube.findPiece(0, 1, 0).getCol()[1]; 
-  backSide[1][2] = solveCube.findPiece(1, 1, 0).getCol()[1]; 
-  backSide[2][0] = solveCube.findPiece(-1, 1, -1).getCol()[1]; 
-  backSide[2][1] = solveCube.findPiece(0, 1, -1).getCol()[1]; 
-  backSide[2][2] = solveCube.findPiece(1, 1, -1).getCol()[1]; 
-  //update the left side 
-  leftSide[0][0] = solveCube.findPiece(1, 1, 1).getCol()[0]; 
-  leftSide[0][1] = solveCube.findPiece(1, 0, 1).getCol()[0]; 
-  leftSide[0][2] = solveCube.findPiece(1, -1, 1).getCol()[0]; 
-  leftSide[1][0] = solveCube.findPiece(1, 1, 0).getCol()[0]; 
-  leftSide[1][1] = solveCube.findPiece(1, 0, 0).getCol()[0]; 
-  leftSide[1][2] = solveCube.findPiece(1, -1, 0).getCol()[0]; 
-  leftSide[2][0] = solveCube.findPiece(1, 1, -1).getCol()[0]; 
-  leftSide[2][1] = solveCube.findPiece(1, 0, -1).getCol()[0]; 
-  leftSide[2][2] = solveCube.findPiece(1, -1, -1).getCol()[0]; 
-  //update right side
-  rightSide[0][0] = solveCube.findPiece(-1, -1, 1).getCol()[0]; 
-  rightSide[0][1] = solveCube.findPiece(-1, 0, 1).getCol()[0]; 
-  rightSide[0][2] = solveCube.findPiece(-1, 1, 1).getCol()[0]; 
-  rightSide[1][0] = solveCube.findPiece(-1, -1, 0).getCol()[0]; 
-  rightSide[1][1] = solveCube.findPiece(-1, 0, 0).getCol()[0]; 
-  rightSide[1][2] = solveCube.findPiece(-1, 1, 0).getCol()[0]; 
-  rightSide[2][0] = solveCube.findPiece(-1, -1, -1).getCol()[0]; 
-  rightSide[2][1] = solveCube.findPiece(-1, 0, -1).getCol()[0]; 
-  rightSide[2][2] = solveCube.findPiece(-1, 1, -1).getCol()[0];
-}  
 
 void keyPressed() {
   if (key == 'q') {
@@ -157,36 +95,36 @@ void keyPressed() {
   }
 }
 
-void mouseClicked(){
- if(mouseX > 0 && mouseX < 200 && mouseY > 700 && mouseY < 750){
-   solveCube.reset();
- }else if(mouseX > 0 && mouseX < 200 && mouseY > 800 && mouseY < 850){
-   //solveCube.scramble();
- }else if(mouseX > 400 && mouseX < 450 && mouseY > 700 && mouseY < 750){
-   solveCube.L();
- }else if(mouseX > 400 && mouseX < 450 && mouseY > 800 && mouseY < 850){
-   solveCube.LPrime();
- }else if(mouseX > 500 && mouseX < 550 && mouseY > 700 && mouseY < 750){
-   solveCube.R();
- }else if(mouseX > 500 && mouseX < 550 && mouseY > 800 && mouseY < 850){
-   solveCube.RPrime();
- }else if(mouseX > 600 && mouseX < 650 && mouseY > 700 && mouseY < 750){
-   solveCube.U();
- }else if(mouseX > 600 && mouseX < 650 && mouseY > 800 && mouseY < 850){
-   solveCube.UPrime();
- }else if(mouseX > 700 && mouseX < 750 && mouseY > 700 && mouseY < 750){
-   solveCube.D();
- }else if(mouseX > 700 && mouseX < 750 && mouseY > 800 && mouseY < 850){
-   solveCube.DPrime();
- }else if(mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 750){
-   solveCube.F();
- }else if(mouseX > 800 && mouseX < 850 && mouseY > 800 && mouseY < 850){
-   solveCube.FPrime();
- }else if(mouseX > 900 && mouseX < 950 && mouseY > 700 && mouseY < 750){
-   solveCube.B();
- }else if(mouseX > 900 && mouseX < 950 && mouseY > 800 && mouseY < 850){
-   solveCube.BPrime();
- }
+void mouseClicked() {
+  if (mouseX > 0 && mouseX < 200 && mouseY > 700 && mouseY < 750) {
+    solveCube.reset();
+  } else if (mouseX > 0 && mouseX < 200 && mouseY > 800 && mouseY < 850) {
+    //solveCube.scramble();
+  } else if (mouseX > 400 && mouseX < 450 && mouseY > 700 && mouseY < 750) {
+    solveCube.L();
+  } else if (mouseX > 400 && mouseX < 450 && mouseY > 800 && mouseY < 850) {
+    solveCube.LPrime();
+  } else if (mouseX > 500 && mouseX < 550 && mouseY > 700 && mouseY < 750) {
+    solveCube.R();
+  } else if (mouseX > 500 && mouseX < 550 && mouseY > 800 && mouseY < 850) {
+    solveCube.RPrime();
+  } else if (mouseX > 600 && mouseX < 650 && mouseY > 700 && mouseY < 750) {
+    solveCube.U();
+  } else if (mouseX > 600 && mouseX < 650 && mouseY > 800 && mouseY < 850) {
+    solveCube.UPrime();
+  } else if (mouseX > 700 && mouseX < 750 && mouseY > 700 && mouseY < 750) {
+    solveCube.D();
+  } else if (mouseX > 700 && mouseX < 750 && mouseY > 800 && mouseY < 850) {
+    solveCube.DPrime();
+  } else if (mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 750) {
+    solveCube.F();
+  } else if (mouseX > 800 && mouseX < 850 && mouseY > 800 && mouseY < 850) {
+    solveCube.FPrime();
+  } else if (mouseX > 900 && mouseX < 950 && mouseY > 700 && mouseY < 750) {
+    solveCube.B();
+  } else if (mouseX > 900 && mouseX < 950 && mouseY > 800 && mouseY < 850) {
+    solveCube.BPrime();
+  }
 }
 
 void draw() {
@@ -195,7 +133,7 @@ void draw() {
   text(mouseY, 0, 100);
   update();
   display();
-  fill(255,255,255);
+  fill(255, 255, 255);
   //reset
   rect(0, 700, 200, 50);
   //scramble
@@ -224,7 +162,7 @@ void draw() {
   rect(900, 700, 50, 50);
   //Bprime
   rect(900, 800, 50, 50);
-  
+
   fill(0);
   textSize(25);
   text("Reset", 50, 730);
@@ -241,14 +179,74 @@ void draw() {
   text("F'", 815, 830);
   text("B", 915, 730);
   text("B'", 915, 830);
-  
 }
+void update() {
+  //update the top side 
+  upSide[0][0] = solveCube.findPiece(1, 1, 1).getCol()[2]; 
+  upSide[0][1] = solveCube.findPiece(0, 1, 1).getCol()[2]; 
+  upSide[0][2] = solveCube.findPiece(-1, 1, 1).getCol()[2]; 
+  upSide[1][0] = solveCube.findPiece(1, 0, 1).getCol()[2]; 
+  upSide[1][1] = solveCube.findPiece(0, 0, 1).getCol()[2]; 
+  upSide[1][2] = solveCube.findPiece(-1, 0, 1).getCol()[2]; 
+  upSide[2][0] = solveCube.findPiece(1, -1, 1).getCol()[2]; 
+  upSide[2][1] = solveCube.findPiece(0, -1, 1).getCol()[2]; 
+  upSide[2][2] = solveCube.findPiece(-1, -1, 1).getCol()[2];  
+  //update the down side 
+  downSide[0][0] = solveCube.findPiece(1, -1, -1).getCol()[2]; 
+  downSide[0][1] = solveCube.findPiece(0, -1, -1).getCol()[2]; 
+  downSide[0][2] = solveCube.findPiece(-1, -1, -1).getCol()[2]; 
+  downSide[1][0] = solveCube.findPiece(1, 0, -1).getCol()[2]; 
+  downSide[1][1] = solveCube.findPiece(0, 0, -1).getCol()[2]; 
+  downSide[1][2] = solveCube.findPiece(-1, 0, -1).getCol()[2]; 
+  downSide[2][0] = solveCube.findPiece(1, 1, -1).getCol()[2]; 
+  downSide[2][1] = solveCube.findPiece(0, 1, -1).getCol()[2]; 
+  downSide[2][2] = solveCube.findPiece(-1, 1, -1).getCol()[2]; 
+  //update the front side 
+  frontSide[0][0] = solveCube.findPiece(1, -1, 1).getCol()[1]; 
+  frontSide[0][1] = solveCube.findPiece(0, -1, 1).getCol()[1]; 
+  frontSide[0][2] = solveCube.findPiece(-1, -1, 1).getCol()[1]; 
+  frontSide[1][0] = solveCube.findPiece(1, -1, 0).getCol()[1]; 
+  frontSide[1][1] = solveCube.findPiece(0, -1, 0).getCol()[1]; 
+  frontSide[1][2] = solveCube.findPiece(-1, -1, 0).getCol()[1]; 
+  frontSide[2][0] = solveCube.findPiece(1, -1, -1).getCol()[1]; 
+  frontSide[2][1] = solveCube.findPiece(0, -1, -1).getCol()[1]; 
+  frontSide[2][2] = solveCube.findPiece(-1, -1, -1).getCol()[1]; 
+  //update the back side
+  backSide[0][0] = solveCube.findPiece(-1, 1, 1).getCol()[1]; 
+  backSide[0][1] = solveCube.findPiece(0, 1, 1).getCol()[1]; 
+  backSide[0][2] = solveCube.findPiece(1, 1, 1).getCol()[1]; 
+  backSide[1][0] = solveCube.findPiece(-1, 1, 0).getCol()[1]; 
+  backSide[1][1] = solveCube.findPiece(0, 1, 0).getCol()[1]; 
+  backSide[1][2] = solveCube.findPiece(1, 1, 0).getCol()[1]; 
+  backSide[2][0] = solveCube.findPiece(-1, 1, -1).getCol()[1]; 
+  backSide[2][1] = solveCube.findPiece(0, 1, -1).getCol()[1]; 
+  backSide[2][2] = solveCube.findPiece(1, 1, -1).getCol()[1]; 
+  //update the left side 
+  leftSide[0][0] = solveCube.findPiece(1, 1, 1).getCol()[0]; 
+  leftSide[0][1] = solveCube.findPiece(1, 0, 1).getCol()[0]; 
+  leftSide[0][2] = solveCube.findPiece(1, -1, 1).getCol()[0]; 
+  leftSide[1][0] = solveCube.findPiece(1, 1, 0).getCol()[0]; 
+  leftSide[1][1] = solveCube.findPiece(1, 0, 0).getCol()[0]; 
+  leftSide[1][2] = solveCube.findPiece(1, -1, 0).getCol()[0]; 
+  leftSide[2][0] = solveCube.findPiece(1, 1, -1).getCol()[0]; 
+  leftSide[2][1] = solveCube.findPiece(1, 0, -1).getCol()[0]; 
+  leftSide[2][2] = solveCube.findPiece(1, -1, -1).getCol()[0]; 
+  //update right side
+  rightSide[0][0] = solveCube.findPiece(-1, -1, 1).getCol()[0]; 
+  rightSide[0][1] = solveCube.findPiece(-1, 0, 1).getCol()[0]; 
+  rightSide[0][2] = solveCube.findPiece(-1, 1, 1).getCol()[0]; 
+  rightSide[1][0] = solveCube.findPiece(-1, -1, 0).getCol()[0]; 
+  rightSide[1][1] = solveCube.findPiece(-1, 0, 0).getCol()[0]; 
+  rightSide[1][2] = solveCube.findPiece(-1, 1, 0).getCol()[0]; 
+  rightSide[2][0] = solveCube.findPiece(-1, -1, -1).getCol()[0]; 
+  rightSide[2][1] = solveCube.findPiece(-1, 0, -1).getCol()[0]; 
+  rightSide[2][2] = solveCube.findPiece(-1, 1, -1).getCol()[0];
+}  
 void display() { 
   for (int i = 0; i < upSide.length; i++) {
     for (int j = 0; j < upSide[0].length; j++) {
       fill(stringToColor(upSide[i][j]));
       rect(400+j*50, 100+i*50, 50, 50);
-
     }
   } 
   for (int i = 0; i < leftSide.length; i++) {
@@ -261,7 +259,6 @@ void display() {
     for (int j = 0; j < frontSide[0].length; j++) {
       fill(stringToColor(frontSide[i][j]));
       rect(400+j*50, 250+i*50, 50, 50);
-
     }
   }
   for (int i = 0; i < rightSide.length; i++) {
