@@ -157,9 +157,91 @@ void keyPressed() {
   }
 }
 
+void mouseClicked(){
+ if(mouseX > 0 && mouseX < 200 && mouseY > 700 && mouseY < 750){
+   solveCube.reset();
+ }else if(mouseX > 0 && mouseX < 200 && mouseY > 800 && mouseY < 850){
+   //solveCube.scramble();
+ }else if(mouseX > 400 && mouseX < 450 && mouseY > 700 && mouseY < 750){
+   solveCube.L();
+ }else if(mouseX > 400 && mouseX < 450 && mouseY > 800 && mouseY < 850){
+   solveCube.LPrime();
+ }else if(mouseX > 500 && mouseX < 550 && mouseY > 700 && mouseY < 750){
+   solveCube.R();
+ }else if(mouseX > 500 && mouseX < 550 && mouseY > 800 && mouseY < 850){
+   solveCube.RPrime();
+ }else if(mouseX > 600 && mouseX < 650 && mouseY > 700 && mouseY < 750){
+   solveCube.U();
+ }else if(mouseX > 600 && mouseX < 650 && mouseY > 800 && mouseY < 850){
+   solveCube.UPrime();
+ }else if(mouseX > 700 && mouseX < 750 && mouseY > 700 && mouseY < 750){
+   solveCube.D();
+ }else if(mouseX > 700 && mouseX < 750 && mouseY > 800 && mouseY < 850){
+   solveCube.DPrime();
+ }else if(mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 750){
+   solveCube.F();
+ }else if(mouseX > 800 && mouseX < 850 && mouseY > 800 && mouseY < 850){
+   solveCube.FPrime();
+ }else if(mouseX > 900 && mouseX < 950 && mouseY > 700 && mouseY < 750){
+   solveCube.B();
+ }else if(mouseX > 900 && mouseX < 950 && mouseY > 800 && mouseY < 850){
+   solveCube.BPrime();
+ }
+}
+
 void draw() {
+  background(128);
+  text(mouseX, 0, 50);
+  text(mouseY, 0, 100);
   update();
   display();
+  fill(255,255,255);
+  //reset
+  rect(0, 700, 200, 50);
+  //scramble
+  rect(0, 800, 200, 50);
+  //L
+  rect(400, 700, 50, 50);
+  //Lprime
+  rect(400, 800, 50, 50);
+  //R
+  rect(500, 700, 50, 50);
+  //Rprime
+  rect(500, 800, 50, 50);
+  //U
+  rect(600, 700, 50, 50);
+  //Uprime
+  rect(600, 800, 50, 50);
+  //D
+  rect(700, 700, 50, 50);
+  //Dprime
+  rect(700, 800, 50, 50);
+  //F
+  rect(800, 700, 50, 50);
+  //Fprime
+  rect(800, 800, 50, 50);
+  //B
+  rect(900, 700, 50, 50);
+  //Bprime
+  rect(900, 800, 50, 50);
+  
+  fill(0);
+  textSize(25);
+  text("Reset", 50, 730);
+  text("Scramble", 50, 830);
+  text("L", 415, 730);
+  text("L'", 415, 830);
+  text("R", 515, 730);
+  text("R'", 515, 830);
+  text("U", 615, 730);
+  text("U'", 615, 830);
+  text("D", 715, 730);
+  text("D'", 715, 830);
+  text("F", 815, 730);
+  text("F'", 815, 830);
+  text("B", 915, 730);
+  text("B'", 915, 830);
+  
 }
 void display() { 
   for (int i = 0; i < upSide.length; i++) {
