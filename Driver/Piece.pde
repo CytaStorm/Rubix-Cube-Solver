@@ -12,40 +12,45 @@ public class Piece {
     col[2] = cZ;
   }
   
-  //returns color based on X/Y/Z input
-  public String getCol(String axis) {
-    switch (axis) {
-    case "x": 
-      return col[0];
-    case "y": 
-      return col[1];
-    case "z": 
-      return col[2];
-    default: 
-      print("invalid input! Please use x/y/z axis!");
-      return null;
-    }
+  //Accessor, returns all colors of piece in an array
+  public String[] getAllCol(){
+    return col;
   }
-
-  //returns XYZ position of piece inside an array
+  //Accessor returns pos of array
   public int[] getPos() {
-    return new int[] {pos[0], pos[1], pos[2]};
+    return pos[];
   }
+  //useless
+  //returns color based on X/Y/Z input
+  //public String getCol(String axis) {
+  //  switch (axis) {
+  //  case "x": 
+  //    return col[0];
+  //  case "y": 
+  //    return col[1];
+  //  case "z": 
+  //    return col[2];
+  //  default: 
+  //    print("invalid input! Please use x/y/z axis!");
+  //    return null;
+  //  }
+  //}
 
   //returns X/Y/Z position of Piece given which one the user wants
-  public int getPos(String axis) {
-    switch (axis) {
-    case "x": 
-      return pos[0];
-    case "y": 
-      return pos[1];
-    case "z": 
-      return pos[2];
-    default: 
-      print("invalid input! Please use x/y/z axis!");
-      return -100;
-    }
-  }
+  //***may be useless***
+  //public int getPos(String axis) {
+  //  switch (axis) {
+  //  case "x": 
+  //    return pos[0];
+  //  case "y": 
+  //    return pos[1];
+  //  case "z": 
+  //    return pos[2];
+  //  default: 
+  //    print("invalid input! Please use x/y/z axis!");
+  //    return -100;
+  //  }
+  //}
   private int[] matrixMultiply(int[]matrix, int[][]matrixMultiplier) {
     int[]result = new int[3];
     for (int i = 0; i < matrix.length; i++) {
