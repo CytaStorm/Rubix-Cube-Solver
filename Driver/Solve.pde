@@ -22,13 +22,10 @@ public class Solve {
    //checks if piece is in right place
    if((edgePiece.getPos().equals(new int[]{refPiece.getPos()[0], refPiece.getPos()[1], refPiece.getPos()[2])) &&
        edgePiece.getCol["z"].equals(cube.getCol("U"))){
+         print("In right place!");
          return;
        }
-   String undoMove;
-   if(edgePiece.getPos[2] == 1){
-     
-     
-       
+    print("not in right place!");
   }
   public void crossCorners(Cube cube) {
     println("crossCorners WIP!");
