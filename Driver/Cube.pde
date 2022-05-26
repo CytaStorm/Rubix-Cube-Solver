@@ -48,196 +48,197 @@ public class Cube {
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
   }
-  
-  //finds pos of edge piece based on color
-  
-  //***WIP***
- public int[] findEdge(String c1, String c2){
-   int ans = 0;
-   for (int i = 0; i < 27; i++){
-     if (getPiece(i).get("x") == c1 &&
-         getPiece(i).getPos("y") == c2 {
-          ans = i;
-        }
-   }
-   
 
-  //accessor method: returns color of face given a face, each face will always be 1 color
-  public String getCol(String face) {
-    switch(face) {
-    case "U" : 
-      return CU;
-    case "F" : 
-      return CF;
-    case "R" : 
-      return CR;
-    case "L" : 
-      return CL;
-    case "B" : 
-      return CB;
-    case "D" : 
-      return CD;
-    default : 
-      print("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
-      return null;
-    }
-  }
-  
-  public Piece findPiece(int x, int y, int z) {
+  //finds pos of edge piece based on color
+
+  //***WIP***
+  public int[] findEdge(String c1, String c2) {
     int ans = 0;
     for (int i = 0; i < 27; i++) {
-      if (getPiece(i).getPos()[0] == x &&
-        getPiece(i).getPos()[1] == y && 
-        getPiece(i).getPos()[2] == z) {
+      if (getPiece(i).get("x") == c1 &&
+        getPiece(i).getPos("y") == c2 {
         ans = i;
       }
     }
-    return solveCube.getPiece(ans);
+
+
+    //accessor method: returns color of face given a face, each face will always be 1 color
+    public String getCol(String face) {
+      switch(face) {
+      case "U" : 
+        return CU;
+      case "F" : 
+        return CF;
+      case "R" : 
+        return CR;
+      case "L" : 
+        return CL;
+      case "B" : 
+        return CB;
+      case "D" : 
+        return CD;
+      default : 
+        print("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
+        return null;
+      }
+    }
+
+    public Piece findPiece(int x, int y, int z) {
+      int ans = 0;
+      for (int i = 0; i < 27; i++) {
+        if (getPiece(i).getPos()[0] == x &&
+          getPiece(i).getPos()[1] == y && 
+          getPiece(i).getPos()[2] == z) {
+          ans = i;
+        }
+      }
+      return solveCube.getPiece(ans);
+    }
+
+    //helper method to the pieceNum-th piece in the Cube
+    private Piece getPiece(int pieceNum) {
+
+
+      switch(pieceNum) {
+      case 0: 
+        return pieces[0];
+      case 1: 
+        return pieces[1];
+      case 2: 
+        return pieces[2];
+      case 3: 
+        return pieces[3];
+      case 4: 
+        return pieces[4];
+      case 5: 
+        return pieces[5];
+      case 6: 
+        return pieces[6];
+      case 7: 
+        return pieces[7];
+      case 8: 
+        return pieces[8];
+      case 9: 
+        return pieces[9];
+      case 10: 
+        return pieces[10];
+      case 11: 
+        return pieces[11];
+      case 12: 
+        return pieces[12];
+      case 13: 
+        return pieces[13];
+      case 14: 
+        return pieces[14];
+      case 15: 
+        return pieces[15];
+      case 16: 
+        return pieces[16];
+      case 17: 
+        return pieces[17];
+      case 18: 
+        return pieces[18];
+      case 19: 
+        return pieces[19];
+      case 20: 
+        return pieces[20];
+      case 21: 
+        return pieces[21];
+      case 22: 
+        return pieces[22];
+      case 23: 
+        return pieces[23]; 
+      case 24: 
+        return pieces[24];
+      case 25: 
+        return pieces[25];
+      default: 
+        print("please enter a valid piece from 0-25");
+        return null;
+      }
+    }
+    public void L() {
+      for (int i = 0; i < pieces.length; i++) {
+        if (pieces[i].getPos()[0] == 1) {
+          pieces[i].rotateXCW();
+        }
+      }
+    } 
+    public void LPrime() {
+      for (int i = 0; i < pieces.length; i++) {
+        if (pieces[i].getPos()[0] == 1) {
+          pieces[i].rotateXCCW();
+        }
+      }
+    }
+    public void R() {
+      for (int i = 0; i < pieces.length; i++) {
+        if (pieces[i].getPos()[0] == -1) {
+          pieces[i].rotateXCW();
+        }
+      }
+    } 
+    public void RPrime() {
+      for (int i = 0; i < pieces.length; i++) {
+        if (pieces[i].getPos()[0] == -1) {
+          pieces[i].rotateXCCW();
+        }
+      }
+    } 
+    public void U() {
+      for (int i = 0; i < pieces.length; i++) {
+        if (pieces[i].getPos()[2] == 1) {
+          pieces[i].rotateZCW();
+        }
+      }
+    } 
+    public void UPrime() {
+      for (int i = 0; i < pieces.length; i++) {
+        if (pieces[i].getPos()[2] == 1) {
+          pieces[i].rotateZCCW();
+        }
+      }
+    }
+    public void D() {
+      for (int i = 0; i < pieces.length; i++) {
+        if (pieces[i].getPos()[2] == -1) {
+          pieces[i].rotateZCCW();
+        }
+      }
+    }
+    public void DPrime() {
+      for (int i = 0; i < pieces.length; i++) {
+        if (pieces[i].getPos()[2] == -1) {
+          pieces[i].rotateZCCW();
+        }
+      }
+    }
+    public void F() {
+      for (int i = 0; i < pieces.length; i++) {
+        if (pieces[i].getPos()[1] == -1) {
+          pieces[i].rotateYCW();
+        }
+      }
+    }
+    public void FPrime() {
+      for (int i = 0; i < pieces.length; i++) {
+        if (pieces[i].getPos()[1] == -1) {
+          pieces[i].rotateYCCW();
+        }
+      }
+    }
+    public void B() {
+      for (int i = 0; i < pieces.length; i++) {
+        if (pieces[i].getPos()[1] == 1) {
+          pieces[i].rotateYCW();
+        }
+      }
+    }
+    public void BPrime() {
+      for (int i = 0; i < pieces.length; i++) {
+        if (pieces[i].getPos()[1] == 1) {
+          pieces[i].rotateYCCW();
+        }
+      }
+    }
   }
-  
-  //helper method to the pieceNum-th piece in the Cube
-  private Piece getPiece(int pieceNum) {
-    
-    switch(pieceNum) {
-    case 0: 
-      return pieces[0];
-    case 1: 
-      return pieces[1];
-    case 2: 
-      return pieces[2];
-    case 3: 
-      return pieces[3];
-    case 4: 
-      return pieces[4];
-    case 5: 
-      return pieces[5];
-    case 6: 
-      return pieces[6];
-    case 7: 
-      return pieces[7];
-    case 8: 
-      return pieces[8];
-    case 9: 
-      return pieces[9];
-    case 10: 
-      return pieces[10];
-    case 11: 
-      return pieces[11];
-    case 12: 
-      return pieces[12];
-    case 13: 
-      return pieces[13];
-    case 14: 
-      return pieces[14];
-    case 15: 
-      return pieces[15];
-    case 16: 
-      return pieces[16];
-    case 17: 
-      return pieces[17];
-    case 18: 
-      return pieces[18];
-    case 19: 
-      return pieces[19];
-    case 20: 
-      return pieces[20];
-    case 21: 
-      return pieces[21];
-    case 22: 
-      return pieces[22];
-    case 23: 
-      return pieces[23]; 
-    case 24: 
-      return pieces[24];
-    case 25: 
-      return pieces[25];
-    default: 
-      print("please enter a valid piece from 0-25");
-      return null; 
-    }
-  }
-  public void L() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos()[0] == 1) {
-        pieces[i].rotateXCW();
-      }
-    }
-  } 
-  public void LPrime() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos()[0] == 1) {
-        pieces[i].rotateXCCW();
-      }
-    }
-  }
-  public void R() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos()[0] == -1) {
-        pieces[i].rotateXCW();
-      }
-    }
-  } 
-  public void RPrime() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos()[0] == -1) {
-        pieces[i].rotateXCCW();
-      }
-    }
-  } 
-  public void U() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos()[2] == 1) {
-        pieces[i].rotateZCW();
-      }
-    }
-  } 
-  public void UPrime() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos()[2] == 1) {
-        pieces[i].rotateZCCW();
-      }
-    }
-  }
-  public void D() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos()[2] == -1) {
-        pieces[i].rotateZCCW();
-      }
-    }
-  }
-  public void DPrime() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos()[2] == -1) {
-        pieces[i].rotateZCCW();
-      }
-    }
-  }
-  public void F() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos()[1] == -1) {
-        pieces[i].rotateYCW();
-      }
-    }
-  }
-  public void FPrime() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos()[1] == -1) {
-        pieces[i].rotateYCCW();
-      }
-    }
-  }
-  public void B() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos()[1] == 1) {
-        pieces[i].rotateYCW();
-      }
-    }
-  }
-  public void BPrime() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].getPos()[1] == 1) {
-        pieces[i].rotateYCCW();
-      }
-    }
-  }
-}
