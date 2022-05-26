@@ -12,46 +12,15 @@ public class Piece {
     col[1] = cY;
     col[2] = cZ;
   }
-  
+
   //Accessor, returns all colors of piece in an array
-  public String[] getCol(){
+  public String[] getCol() {
     return col;
   }
   //Accessor returns pos of array
   public int[] getPos() {
     return pos;
   }
-  //useless
-  //returns color based on X/Y/Z input
-  //public String getCol(String axis) {
-  //  switch (axis) {
-  //  case "x": 
-  //    return col[0];
-  //  case "y": 
-  //    return col[1];
-  //  case "z": 
-  //    return col[2];
-  //  default: 
-  //    print("invalid input! Please use x/y/z axis!");
-  //    return null;
-  //  }
-  //}
-
-  //returns X/Y/Z position of Piece given which one the user wants
-  //***may be useless***
-  //public int getPos(String axis) {
-  //  switch (axis) {
-  //  case "x": 
-  //    return pos[0];
-  //  case "y": 
-  //    return pos[1];
-  //  case "z": 
-  //    return pos[2];
-  //  default: 
-  //    print("invalid input! Please use x/y/z axis!");
-  //    return -100;
-  //  }
-  //}
   private int[] matrixMultiply(int[]matrix, int[][]matrixMultiplier) {
     int[]result = new int[2];
     for (int i = 0; i < matrix.length; i++) {
@@ -62,13 +31,6 @@ public class Piece {
     }
     return result;
   }
-  //private int matrixCellMultiply(int[]matrix, int[][]matrixMultiplier, int row, int col){
-  //  int result = 0;
-  //  for(int i = 0; i < matrixMultiplier.length; i++){
-  //    result += matrix[i] * matrixMultiplier[i][col];
-  //  }
-  //  return result;
-  //}
   public void rotateXCW() {
     //println("before: " + Arrays.toString(pos));
     int[] tempPos = new int[] {pos[1], pos[2]};
@@ -84,13 +46,13 @@ public class Piece {
       //println("switched!");
       //println(Arrays.toString(col));
       //return;
-    }else if (col[1] == null) { //edge piece
+    } else if (col[1] == null) { //edge piece
       col[1] = col[2];
       col[2] = null;
       //println("switched edge");
       //println(Arrays.toString(col));
       //return;
-    }else if (col[2] == null) { //edge piece
+    } else if (col[2] == null) { //edge piece
       col[2] = col[1];
       col[1] = null;
       //println("switched edge");
