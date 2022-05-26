@@ -12,6 +12,14 @@ public class Piece {
     col[2] = cZ;
   }
   
+  //Accessor, returns all colors of piece in an array
+  public String[] getAllCol(){
+    return col;
+  }
+  //Accessor returns pos of array
+  public int[] getPos() {
+    return pos[];
+  }
   //useless
   //returns color based on X/Y/Z input
   //public String getCol(String axis) {
@@ -27,14 +35,6 @@ public class Piece {
   //    return null;
   //  }
   //}
-  //Accessor, returns all colors of piece in an array
-  public String[] getAllCol(){
-    return col;
-  }
-  //Accessor returns pos of array
-  public int[] getPos() {
-    return pos[];
-  }
 
   //returns X/Y/Z position of Piece given which one the user wants
   //***may be useless***
