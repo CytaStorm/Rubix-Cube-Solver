@@ -49,15 +49,15 @@ void update() {
   leftSide[2][1] = solveCube.findPiece(1, 0, -1).getCol("L"); 
   leftSide[2][2] = solveCube.findPiece(1, -1, -1).getCol("L"); 
   //update right side
-  rightSide[0][0] = solveCube.findPiece(1, 1, 1).getCol("R"); 
-  rightSide[0][1] = solveCube.findPiece(1, 0, 1).getCol("R"); 
-  rightSide[0][2] = solveCube.findPiece(1, -1, 1).getCol("R"); 
+  rightSide[0][0] = solveCube.findPiece(-1, -1, 1).getCol("R"); 
+  rightSide[0][1] = solveCube.findPiece(-1, 0, 1).getCol("R"); 
+  rightSide[0][2] = solveCube.findPiece(-1, 1, 1).getCol("R"); 
   rightSide[1][0] = solveCube.findPiece(1, 1, 0).getCol("R"); 
-  rightSide[1][1] = solveCube.findPiece(1, 0, 0).getCol("R"); 
-  rightSide[1][2] = solveCube.findPiece(1, -1, 0).getCol("R"); 
-  rightSide[2][0] = solveCube.findPiece(1, 1, -1).getCol("R"); 
-  rightSide[2][1] = solveCube.findPiece(1, 0, -1).getCol("R"); 
-  rightSide[2][2] = solveCube.findPiece(1, -1, -1).getCol("R");
+  rightSide[1][1] = solveCube.findPiece(-1, 0, 0).getCol("R"); 
+  rightSide[1][2] = solveCube.findPiece(-1, 1, 0).getCol("R"); 
+  rightSide[2][0] = solveCube.findPiece(-1, -1, -1).getCol("R"); 
+  rightSide[2][1] = solveCube.findPiece(-1, 0, -1).getCol("R"); 
+  rightSide[2][2] = solveCube.findPiece(-1, 1, -1).getCol("R");
 }  
 
 void keyPressed() {
