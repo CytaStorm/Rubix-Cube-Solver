@@ -60,26 +60,28 @@ public class Cube {
           ans = i;
         }
    }
+   
+  //may be useless!
   //accessor method: returns color of face given a face, each face will always be 1 color
-  public String getCol(String face) {
-    switch(face) {
-    case "U" : 
-      return CU;
-    case "F" : 
-      return CF;
-    case "R" : 
-      return CR;
-    case "L" : 
-      return CL;
-    case "B" : 
-      return CB;
-    case "D" : 
-      return CD;
-    default : 
-      print("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
-      return null;
-    }
-  }
+  //public String getCol(String face) {
+  //  switch(face) {
+  //  case "U" : 
+  //    return CU;
+  //  case "F" : 
+  //    return CF;
+  //  case "R" : 
+  //    return CR;
+  //  case "L" : 
+  //    return CL;
+  //  case "B" : 
+  //    return CB;
+  //  case "D" : 
+  //    return CD;
+  //  default : 
+  //    print("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
+  //    return null;
+  //  }
+  //}
   
   public Piece findPiece(int x, int y, int z) {
     int ans = 0;

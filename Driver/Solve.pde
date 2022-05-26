@@ -10,10 +10,10 @@ public class Solve {
   }
   public void cross(Cube cube) {
     println("cross WIP!");
-    Piece ul_piece = cube.find(cube.getCol("U"), cube.getPiece(1, 0, 0).getCol("x")); //finds pos of 4 edge pieces for up cross
-    Piece ur_piece = cube.find(cube.getCol("U"), cube.getPiece(-1, 0, 0).getCol("x")); 
-    Piece uu_piece = cube.find(cube.getCol("U"), cube.getPiece(1, 0, 0).getCol("x")); 
-    Piece ud_piece = cube.find(cube.getCol("U"), cube.getPiece(1, 0, 0).getCol("x")); 
+    Piece ul_piece = cube.find(cube.getCol("U"), cube.getPiece(1, 0, 0).getCol()[0]); //finds pos of 4 edge pieces for up cross
+    Piece ur_piece = cube.find(cube.getCol("U"), cube.getPiece(-1, 0, 0).getCol()[0]); 
+    Piece uu_piece = cube.find(cube.getCol("U"), cube.getPiece(1, 0, 0).getCol()[0]); 
+    Piece ud_piece = cube.find(cube.getCol("U"), cube.getPiece(1, 0, 0).getCol()[0]); 
     
     //crossEdgeSolver(f1_piece, cube.getPiece(21)
   }
