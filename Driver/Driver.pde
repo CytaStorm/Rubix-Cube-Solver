@@ -17,29 +17,27 @@ void setup() {
     }
   }
 }
-public Piece findPiece(int x, int y, int z) {
-  int ans = 0;
-  for (int i = 0; i < 27; i++) {
-    if (solveCube.getPiece(i).getPos("x") == x &&
-      solveCube.getPiece(i).getPos("y") == y && 
-      solveCube.getPiece(i).getPos("z") == z) {
-      ans = i;
-    }
-  }
-  return solveCube.getPiece(ans);
-}
 void update() {
   //update the top side 
-  upSide[0][0] = solveCube.findPiece(1,1,1).getCol("z"); 
-  upSide[0][1] = solveCube.findPiece(1,1,1).getCol("z"); 
-  upSide[0][2] = solveCube.findPiece(1,1,1).getCol("z"); 
-  upSide[1][0] = solveCube.findPiece(1,1,1).getCol("z"); 
-  upSide[1][1] = solveCube.findPiece(1,1,1).getCol("z"); 
-  upSide[1][2] = solveCube.findPiece(1,1,1).getCol("z"); 
-  upSide[2][0] = solveCube.findPiece(1,1,1).getCol("z"); 
-  upSide[2][1] = solveCube.findPiece(1,1,1).getCol("z"); 
-  upSide[2][2] = solveCube.findPiece(1,1,1).getCol("z"); 
-  
+  upSide[0][0] = solveCube.findPiece(1, 1, 1).getCol("z"); 
+  upSide[0][1] = solveCube.findPiece(0, 1, 1).getCol("z"); 
+  upSide[0][2] = solveCube.findPiece(-1, 1, 1).getCol("z"); 
+  upSide[1][0] = solveCube.findPiece(1, 0, 1).getCol("z"); 
+  upSide[1][1] = solveCube.findPiece(0, 0, 1).getCol("z"); 
+  upSide[1][2] = solveCube.findPiece(-1, 0, 1).getCol("z"); 
+  upSide[2][0] = solveCube.findPiece(1, -1, 1).getCol("z"); 
+  upSide[2][1] = solveCube.findPiece(0, -1, 1).getCol("z"); 
+  upSide[2][2] = solveCube.findPiece(-1, -1, 1).getCol("z");  
+  //update the left side 
+  leftSide[0][0] = solveCube.findPiece(1, 1, 1).getCol("x"); 
+  leftSide[0][1] = solveCube.findPiece(1, 0, 1).getCol("x"); 
+  leftSide[0][2] = solveCube.findPiece(1, -1, 1).getCol("x"); 
+  leftSide[1][0] = solveCube.findPiece(1, 1, 0).getCol("x"); 
+  leftSide[1][1] = solveCube.findPiece(1, 0, 0).getCol("x"); 
+  leftSide[1][2] = solveCube.findPiece(1, -1, 0).getCol("x"); 
+  leftSide[2][0] = solveCube.findPiece(1, 1, -1).getCol("x"); 
+  leftSide[2][1] = solveCube.findPiece(1, 0, -1).getCol("x"); 
+  leftSide[2][2] = solveCube.findPiece(1, -1, -1).getCol("x");
 }  
 
 void keyPressed() {
