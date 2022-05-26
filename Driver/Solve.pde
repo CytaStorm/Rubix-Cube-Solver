@@ -23,6 +23,7 @@ public class Solve {
        edgePiece.getCol["z"].equals(cube.getCol("U"))){
          return;
        }
+       
   }
   public void crossCorners(Cube cube) {
     println("crossCorners WIP!");
