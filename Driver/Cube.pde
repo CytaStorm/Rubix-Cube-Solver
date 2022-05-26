@@ -7,7 +7,7 @@ public class Cube {
   private final String CB = "yellow";
   private final String CD = "red";
 
-  private Piece[] pieces = new Piece[27];
+  private Piece[] pieces = new Piece[26];
   public Cube() {
     //layer 1
     pieces[0] = new Piece(-1, -1, -1, "blue", "white", "red");
@@ -42,7 +42,7 @@ public class Cube {
 
     pieces[20] = new Piece(-1, 0, 1, "blue", null, "orange");
     pieces[21] = new Piece(0, 0, 1, null, null, "orange");
-    pieces[22] = new Piece(1, 0, 1, "green", "yellow", "orange");
+    pieces[22] = new Piece(1, 0, 1, "green", null, "orange");
 
     pieces[23] = new Piece(-1, 1, 1, "blue", "yellow", "orange");
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
@@ -84,78 +84,14 @@ public class Cube {
     }
 
     public Piece findPiece(int x, int y, int z) {
-      int ans = 0;
       for (int i = 0; i < 26; i++) {
-        if (getPiece(i).getPos()[0] == x &&
-          getPiece(i).getPos()[1] == y && 
-          getPiece(i).getPos()[2] == z) {
-          ans = i;
+        if (pieces[i].getPos()[0] == x &&
+          pieces[i].getPos()[1] == y && 
+          pieces[i].getPos()[2] == z) { 
+          return pieces[i];
         }
       }
-      return solveCube.getPiece(ans);
-    }
-
-    //helper method to the pieceNum-th piece in the Cube
-    private Piece getPiece(int pieceNum) {
-
-
-      switch(pieceNum) {
-      case 0: 
-        return pieces[0];
-      case 1: 
-        return pieces[1];
-      case 2: 
-        return pieces[2];
-      case 3: 
-        return pieces[3];
-      case 4: 
-        return pieces[4];
-      case 5: 
-        return pieces[5];
-      case 6: 
-        return pieces[6];
-      case 7: 
-        return pieces[7];
-      case 8: 
-        return pieces[8];
-      case 9: 
-        return pieces[9];
-      case 10: 
-        return pieces[10];
-      case 11: 
-        return pieces[11];
-      case 12: 
-        return pieces[12];
-      case 13: 
-        return pieces[13];
-      case 14: 
-        return pieces[14];
-      case 15: 
-        return pieces[15];
-      case 16: 
-        return pieces[16];
-      case 17: 
-        return pieces[17];
-      case 18: 
-        return pieces[18];
-      case 19: 
-        return pieces[19];
-      case 20: 
-        return pieces[20];
-      case 21: 
-        return pieces[21];
-      case 22: 
-        return pieces[22];
-      case 23: 
-        return pieces[23]; 
-      case 24: 
-        return pieces[24];
-      case 25: 
-        return pieces[25];
-      default: 
-        print("please enter a valid piece from 0-25");
-        return null;
-      }
+      return null;
     }
     public void L() {
       for (int i = 0; i < pieces.length; i++) {
