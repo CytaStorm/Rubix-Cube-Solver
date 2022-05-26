@@ -145,7 +145,7 @@ void keyPressed() {
 void display() { 
   for (int i = 0; i < upSide.length; i++) {
     for (int j = 0; j < upSide[0].length; j++) {
-      System.out.println(upSide[i][j]);
+      System.out.println(upSide[i][j]); 
     }
   } 
   for (int i = 0; i < leftSide.length; i++) {
