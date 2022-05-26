@@ -48,10 +48,10 @@ public class Cube {
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
   }
-  
+
   //reset cube
-  public void reset(){
-        //layer 1
+  public void reset() {
+    //layer 1
     pieces[0] = new Piece(-1, -1, -1, "blue", "white", "red");
     pieces[1] = new Piece(0, -1, -1, null, "white", "red");
     pieces[2] = new Piece(1, -1, -1, "green", "white", "red");
@@ -91,12 +91,52 @@ public class Cube {
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
   }
   //scrambles cube using 20 moves
-  public void scramble(){
-   int i = 0;
-   while(i<20){
-     int picker = (int)Math.random()*13;
-     
-   }
+  public void scramble() {
+    int i = 0;
+    while (i<20) {
+      int picker = (int)(Math.random()*12);
+      switch(picker) {
+      case 0: 
+        L();
+        break;
+      case 1: 
+        LPrime();
+        break;
+      case 2: 
+        R();
+        break;
+      case 3: 
+        RPrime();
+        break;
+      case 4: 
+        U();
+        break;
+      case 5: 
+        UPrime();
+        break;
+      case 6: 
+        D();
+        break;
+      case 7: 
+        DPrime();
+        break;
+      case 8: 
+        F();
+        break;
+      case 9: 
+        FPrime();
+        break;
+      case 10: 
+        B();
+        break;
+      case 11: 
+        BPrime();
+        break;
+      default: 
+        break;
+      }
+      i++;
+    }
   }
   //accessor method: returns color of face given a face, each face will always be 1 color
   public String getCol(String face) {

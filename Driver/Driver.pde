@@ -79,7 +79,7 @@ void mouseClicked() {
   if (mouseX > 0 && mouseX < 200 && mouseY > 700 && mouseY < 750) {
     solveCube.reset();
   } else if (mouseX > 0 && mouseX < 200 && mouseY > 800 && mouseY < 850) {
-    //solveCube.scramble();
+    solveCube.scramble();
   } else if (mouseX > 400 && mouseX < 450 && mouseY > 700 && mouseY < 750) {
     solveCube.L();
   } else if (mouseX > 400 && mouseX < 450 && mouseY > 800 && mouseY < 850) {
