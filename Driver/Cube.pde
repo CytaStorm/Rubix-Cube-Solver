@@ -138,7 +138,7 @@ public class Cube {
     public void D() {
       for (int i = 0; i < pieces.length; i++) {
         if (pieces[i].getPos()[2] == -1) {
-          pieces[i].rotateZCCW();
+          pieces[i].rotateZCW();
         }
       }
     }

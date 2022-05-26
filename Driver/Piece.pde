@@ -70,41 +70,39 @@ public class Piece {
   //  return result;
   //}
   public void rotateXCW() {
+    //println("before: " + Arrays.toString(pos));
     int[] tempPos = new int[] {pos[1], pos[2]};
     tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
-    pos[1] = tempPos[0];
-    pos[2] = tempPos[1];
-    println(Arrays.toString(pos));
+    pos[1] = tempPos[1];
+    pos[2] = tempPos[0];
+    //println("after: " + Arrays.toString(pos));
     //corner piece
-    if(col[1] == null && col[2] == null){ //face piece
-      println("face");
-      return;
-    }else if (col[1] != null && col[2] != null && col[0] != null) { //corner piece
+    if (col[1] != null && col[2] != null && col[0] != null) { //corner piece
       String storage = col[1];
       col[1] = col[2];
       col[2] = storage;
-      println("switched!");
-      println(Arrays.toString(col));
-      return;
+      //println("switched!");
+      //println(Arrays.toString(col));
+      //return;
     }else if (col[1] == null) { //edge piece
       col[1] = col[2];
       col[2] = null;
-      println("switched edge");
-      println(Arrays.toString(col));
-      return;
+      //println("switched edge");
+      //println(Arrays.toString(col));
+      //return;
     }else if (col[2] == null) { //edge piece
       col[2] = col[1];
       col[1] = null;
-      println("switched edge");
-      println(Arrays.toString(col));
-      return;
+      //println("switched edge");
+      //println(Arrays.toString(col));
+      //return;
     }
   }
   public void rotateXCCW() {
     int[] tempPos = new int[] {pos[1], pos[2]};
     tempPos = matrixMultiply(tempPos, CCW_ROT_MATRIX);
-    pos[1] = tempPos[0];
-    pos[2] = tempPos[1];
+    pos[1] = tempPos[1];
+    pos[2] = tempPos[0];
 
     //corner piece
     if (col[1] != null && col[2] != null && col[0] != null) {
@@ -120,10 +118,10 @@ public class Piece {
     }
   }
   public void rotateYCW() {
-    int[] tempPos = new int[] {pos[1], pos[2]};
+    int[] tempPos = new int[] {pos[0], pos[2]};
     tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
-    pos[0] = tempPos[0];
-    pos[2] = tempPos[1];
+    pos[0] = tempPos[1];
+    pos[2] = tempPos[0];
 
     //corner piece
     if (col[0] != null && col[2] != null && col[0] != null) {
@@ -139,10 +137,10 @@ public class Piece {
     }
   }
   public void rotateYCCW() {
-    int[] tempPos = new int[] {pos[1], pos[2]};
+    int[] tempPos = new int[] {pos[0], pos[2]};
     tempPos = matrixMultiply(tempPos, CCW_ROT_MATRIX);
-    pos[1] = tempPos[0];
-    pos[2] = tempPos[2];
+    pos[0] = tempPos[1];
+    pos[2] = tempPos[0];
 
     //corner piece
     if (col[0] != null && col[2] != null && col[0] != null) {
@@ -158,10 +156,10 @@ public class Piece {
     }
   }
   public void rotateZCW() {
-    int[] tempPos = new int[] {pos[1], pos[2]};
-    tempPos = matrixMultiply(tempPos, CCW_ROT_MATRIX);
+    int[] tempPos = new int[] {pos[0], pos[1]};
+    tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
+    pos[0] = tempPos[1];
     pos[1] = tempPos[0];
-    pos[2] = tempPos[1];
 
     //corner piece
     if (col[0] != null && col[2] != null && col[0] != null) {
@@ -169,8 +167,8 @@ public class Piece {
       col[0] = col[1];
       col[1] = storage;
     } else if (col[1] == null) { //edge piece
-      col[1] = col[2];
-      col[2] = null;
+      col[1] = col[0];
+      col[0] = null;
     } else if (col[0] == null) {
       col[0] = col[1];
       col[1] = null;
@@ -179,8 +177,8 @@ public class Piece {
   public void rotateZCCW() {
     int[] tempPos = new int[] {pos[0], pos[1]};
     tempPos = matrixMultiply(tempPos, CCW_ROT_MATRIX);
-    pos[0] = tempPos[0];
-    pos[1] = tempPos[1];
+    pos[0] = tempPos[1];
+    pos[1] = tempPos[0];
 
     //corner piece
     if (col[0] != null && col[1] != null) {

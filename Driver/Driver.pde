@@ -165,39 +165,39 @@ void display() {
   for (int i = 0; i < upSide.length; i++) {
     for (int j = 0; j < upSide[0].length; j++) {
       fill(stringToColor(upSide[i][j]));
-      rect(250+i*50, 250+j*50, 50, 50);
+      rect(400+j*50, 100+i*50, 50, 50);
 
     }
   } 
   for (int i = 0; i < leftSide.length; i++) {
     for (int j = 0; j < leftSide[0].length; j++) {
       fill(stringToColor(leftSide[i][j]));
-      rect(100+i*50, 400+j*50, 50, 50);
+      rect(250+j*50, 250+i*50, 50, 50);
     }
   }
   for (int i = 0; i < frontSide.length; i++) {
     for (int j = 0; j < frontSide[0].length; j++) {
       fill(stringToColor(frontSide[i][j]));
-      rect(250+i*50, 400+j*50, 50, 50);
+      rect(400+j*50, 250+i*50, 50, 50);
 
     }
   }
   for (int i = 0; i < rightSide.length; i++) {
     for (int j = 0; j < rightSide[0].length; j++) {
       fill(stringToColor(rightSide[i][j]));
-      rect(400+i*50, 400+j*50, 50, 50);
+      rect(550+j*50, 250+i*50, 50, 50);
     }
   }
   for (int i = 0; i < backSide.length; i++) {
     for (int j = 0; j < backSide[0].length; j++) {
       fill(stringToColor(backSide[i][j]));
-      rect(550+i*50, 400+j*50, 50, 50);
+      rect(700+j*50, 250+i*50, 50, 50);
     }
   }
   for (int i = 0; i < downSide.length; i++) {
     for (int j = 0; j < downSide[0].length; j++) {
       fill(stringToColor(downSide[i][j]));
-      rect(250+i*50, 550+j*50, 50, 50);
+      rect(400+j*50, 400+i*50, 50, 50);
     }
   }
 }
