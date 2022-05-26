@@ -31,4 +31,4 @@ Gil Zheng: <br />
 
 Thursday 25 May 2022 <br />
 Jeff Chen: <br />
-Finished driver to display the Cube as well as buttons to interact with cube
+Finished driver to display the Cube as well as buttons to interact with cube, including reset, scramble, and moves
