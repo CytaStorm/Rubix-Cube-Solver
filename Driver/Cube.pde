@@ -40,9 +40,9 @@ public class Cube {
     pieces[18] = new Piece(0, -1, 1, null, "white", "orange");
     pieces[19] = new Piece(1, -1, 1, "green", "white", "orange");
 
-    pieces[20] = new Piece(-1, 0, 1, null, "blue", "orange");
+    pieces[20] = new Piece(-1, 0, 1, "blue", null, "orange");
     pieces[21] = new Piece(0, 0, 1, null, null, "orange");
-    pieces[22] = new Piece(1, 0, 1, null, "green", "orange");
+    pieces[22] = new Piece(1, 0, 1, "green", "yellow", "orange");
 
     pieces[23] = new Piece(-1, 1, 1, "blue", "yellow", "orange");
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
@@ -52,14 +52,14 @@ public class Cube {
   //finds pos of edge piece based on color
 
   //***WIP***
-  public int[] findEdge(String c1, String c2) {
-    int ans = 0;
-    for (int i = 0; i < 27; i++) {
-      if (getPiece(i).get("x") == c1 &&
-        getPiece(i).getPos("y") == c2 {
-        ans = i;
-      }
-    }
+  //public int[] findEdge(String c1, String c2) {
+  //  int ans = 0;
+  //  for (int i = 0; i < 27; i++) {
+  //    if (getPiece(i).get("x") == c1 &&
+  //      getPiece(i).getPos("y") == c2 {
+  //      ans = i;
+  //    }
+  //  }
 
 
     //accessor method: returns color of face given a face, each face will always be 1 color
@@ -85,7 +85,7 @@ public class Cube {
 
     public Piece findPiece(int x, int y, int z) {
       int ans = 0;
-      for (int i = 0; i < 27; i++) {
+      for (int i = 0; i < 26; i++) {
         if (getPiece(i).getPos()[0] == x &&
           getPiece(i).getPos()[1] == y && 
           getPiece(i).getPos()[2] == z) {

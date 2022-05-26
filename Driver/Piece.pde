@@ -13,12 +13,12 @@ public class Piece {
   }
   
   //Accessor, returns all colors of piece in an array
-  public String[] getAllCol(){
+  public String[] getCol(){
     return col;
   }
   //Accessor returns pos of array
   public int[] getPos() {
-    return pos[];
+    return pos;
   }
   //useless
   //returns color based on X/Y/Z input
