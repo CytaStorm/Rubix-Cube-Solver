@@ -276,8 +276,8 @@ void cross(Cube cube) {
     println("cross WIP!");
     Piece ulPiece = cube.getCol(cube.getCol("U"), cube.getCol("L")); //finds pos of 4 edge pieces for up cross
     Piece urPiece = cube.getCol(cube.getCol("U"), cube.getCol("R")); 
-    Piece uuPiece = cube.getCol(cube.getCol("U"), cube.getCol("B")); 
-    Piece udPiece = cube.getCol(cube.getCol("U"), cube.getCol("F"));
+    Piece ubPiece = cube.getCol(cube.getCol("U"), cube.getCol("B")); 
+    Piece ufPiece = cube.getCol(cube.getCol("U"), cube.getCol("F"));
     
     //println(ulPiece);
     //println(urPiece);
@@ -286,14 +286,14 @@ void cross(Cube cube) {
     
     crossEdgeSolver(ulPiece);
     crossEdgeSolver(urPiece);
-    crossEdgeSolver(uuPiece);
-    crossEdgeSolver(udPiece);
+    crossEdgeSolver(ubPiece);
+    crossEdgeSolver(ufPiece);
     
   }
   void crossEdgeSolver(Piece edgePiece) {
     println("crossEdgeSolver WIP"); 
     //checks if piece is in right place
-    if (edgePiece.getPos().equals(edgePiece.getDesPos())){
+    if (Arrays.equals(edgePiece.getPos(), edgePiece.getDesPos())){
       println("In right place!");
       return;
     }

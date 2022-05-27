@@ -151,6 +151,19 @@ public class Cube {
     }
     return null;
   }
+  //finds piece given 3 colors
+  public Piece getCol(String col1, String col2, String col3) {
+    for (int i = 0; i < 26; i++) {
+      Integer col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
+      Integer col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
+      Integer col3Index = Arrays.asList(pieces[i].getCol()).indexOf(col3);
+      if (col1Index != -1 && col2Index != -1 && col3Index != -1 && 
+          col1Index != col2Index && col2Index != col3Index && col1Index != col3Index){
+        return pieces[i];
+      }
+    }
+    return null;
+  }
   //accessor method: returns color of face given a face, each face will always be 1 color
   public String getCol(String face) {
     switch(face) {
