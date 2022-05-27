@@ -109,8 +109,8 @@ void mouseClicked() {
 
 void draw() {
   background(128);
-  text(mouseX, 0, 50);
-  text(mouseY, 0, 100);
+  text("mouseX: " + mouseX, 0, 50);
+  text("mouseY: " + mouseY, 0, 100);
   update();
   display();
   fill(255, 255, 255);
