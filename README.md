@@ -28,7 +28,7 @@ Wednesday 25 May 2022 <br />
 Jeff Chen: <br />
 Began working on Solve, helped in dev of Driver <br />
 Gil Zheng: <br />
-
+Created methods in the drivers that allowed for user interaction, finished the update method and it's helper methods in order to keep refreshing display <br />
 Thursday 25 May 2022 <br />
 Jeff Chen: <br />
 Finished driver to display the Cube as well as buttons to interact with cube, including reset, scramble, and moves
