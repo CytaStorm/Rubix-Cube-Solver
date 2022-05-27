@@ -14,11 +14,7 @@ public class Piece {
   }
 
   //Accessor, returns all colors of piece in an array
-<<<<<<< HEAD
-  public String[] getCol(){
-=======
   public String[] getCol() {
->>>>>>> main
     return col;
   }
   //Accessor returns pos of array
