@@ -1,3 +1,4 @@
+import java.util.*;
 public class Cube {
 
   private final String CU = "orange";
@@ -137,6 +138,18 @@ public class Cube {
       }
       i++;
     }
+  }
+
+  //finds piece given 2 colors
+  public Piece getCol(String col1, String col2) {
+    for (int i = 0; i < 26; i++) {
+      Integer col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
+      Integer col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
+      if (col1Index != -1 && col2Index != -1 && col1Index != col2Index && pieces[i].getCol()[3-col1Index-col2Index] == null) {
+        return pieces[i];
+      }
+    }
+    return null;
   }
   //accessor method: returns color of face given a face, each face will always be 1 color
   public String getCol(String face) {

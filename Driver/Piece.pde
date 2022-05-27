@@ -12,6 +12,10 @@ public class Piece {
     col[1] = cY;
     col[2] = cZ;
   }
+  
+  public String toString(){
+    return Arrays.toString(pos);
+  }
 
   //Accessor, returns all colors of piece in an array
   public String[] getCol() {

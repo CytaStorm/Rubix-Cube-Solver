@@ -1,3 +1,4 @@
+import java.util.*;
 Cube solveCube = new Cube(); 
 Cube refCube = new Cube(); 
 ArrayList solutionSet = new ArrayList<String>(); 
@@ -68,6 +69,9 @@ void keyPressed() {
     break;
   case 'h': 
     solveCube.BPrime();
+    break;
+  case 'z':
+    solve(solveCube);
     break;
   default: 
     break;
@@ -259,3 +263,50 @@ void display() {
     }
   }
 }
+void solve(Cube cube) {
+    cross(cube);
+    //crossCorners(cube);
+    //secondLayer(cube);
+    //secondCross(cube);
+    //edges(cube);
+    //corners(cube);
+    //print("solved!");
+  }
+void cross(Cube cube) {
+    println("cross WIP!");
+    Piece ulPiece = cube.getCol(cube.getCol("U"), cube.findPiece(0, 0, 0).getCol()[0]); //finds pos of 4 edge pieces for up cross
+    Piece urPiece = cube.getCol(cube.getCol("U"), cube.findPiece(0, 0, 0).getCol()[0]); 
+    Piece uuPiece = cube.getCol(cube.getCol("U"), cube.findPiece(0, 0, 0).getCol()[0]); 
+    Piece udPiece = cube.getCol(cube.getCol("U"), cube.findPiece(0, 0, 0).getCol()[0]);
+    
+    println(ulPiece);
+    println(urPiece);
+    println(uuPiece);
+    println(udPiece);
+    
+  }
+//  public void crossEdgeSolver(Cube cube, Piece edgePiece, Piece refPiece, String move1, String move2) {
+//    print("crossEdgeSolver WIP"); 
+//    //checks if piece is in right place
+//    if ((edgePiece.getPos().equals(new int[]{refPiece.getPos()[0], refPiece.getPos()[1], refPiece.getPos()[2])) &&
+//      edgePiece.getCol["z"].equals(cube.getCol("U"))) {
+//      print("In right place!");
+//      return;
+//    }
+//    print("not in right place!");
+//  }
+//  public void crossCorners(Cube cube) {
+//    println("crossCorners WIP!");
+//  }
+//  public void secondLayer(Cube cube) {
+//    println("secondLayer WIP!");
+//  }
+//  public void secondCross(Cube cube) {
+//    println("secondCross WIP!");
+//  }
+//  public void edges(Cube cube) {
+//    println("edges WIP!");
+//  }
+//  public void corners(Cube cube) {
+//    println("corners WIP!");
+//  }
