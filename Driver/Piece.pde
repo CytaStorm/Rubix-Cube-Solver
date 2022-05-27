@@ -1,3 +1,4 @@
+import java.util.*;
 public class Piece {
   private final int[][] CCW_ROT_MATRIX = new int[][]{{0, -1}, {1, 0}};
   private final int[][] CW_ROT_MATRIX = new int[][]{{0, 1}, {-1, 0}};
@@ -11,48 +12,21 @@ public class Piece {
     col[1] = cY;
     col[2] = cZ;
   }
-  
+
   //Accessor, returns all colors of piece in an array
+<<<<<<< HEAD
   public String[] getCol(){
+=======
+  public String[] getCol() {
+>>>>>>> main
     return col;
   }
   //Accessor returns pos of array
   public int[] getPos() {
     return pos;
   }
-  //useless
-  //returns color based on X/Y/Z input
-  //public String getCol(String axis) {
-  //  switch (axis) {
-  //  case "x": 
-  //    return col[0];
-  //  case "y": 
-  //    return col[1];
-  //  case "z": 
-  //    return col[2];
-  //  default: 
-  //    print("invalid input! Please use x/y/z axis!");
-  //    return null;
-  //  }
-  //}
-
-  //returns X/Y/Z position of Piece given which one the user wants
-  //***may be useless***
-  //public int getPos(String axis) {
-  //  switch (axis) {
-  //  case "x": 
-  //    return pos[0];
-  //  case "y": 
-  //    return pos[1];
-  //  case "z": 
-  //    return pos[2];
-  //  default: 
-  //    print("invalid input! Please use x/y/z axis!");
-  //    return -100;
-  //  }
-  //}
   private int[] matrixMultiply(int[]matrix, int[][]matrixMultiplier) {
-    int[]result = new int[3];
+    int[]result = new int[2];
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrixMultiplier.length; j++) {
         //result[i] = matrixCellMultiply(matrix, matrixMultiplier, i, j);
@@ -61,40 +35,43 @@ public class Piece {
     }
     return result;
   }
-  //private int matrixCellMultiply(int[]matrix, int[][]matrixMultiplier, int row, int col){
-  //  int result = 0;
-  //  for(int i = 0; i < matrixMultiplier.length; i++){
-  //    result += matrix[i] * matrixMultiplier[i][col];
-  //  }
-  //  return result;
-  //}
   public void rotateXCW() {
-    int[] tempPos = new int[] {pos[0], pos[2]};
+    //println("before: " + Arrays.toString(pos));
+    int[] tempPos = new int[] {pos[1], pos[2]};
     tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
-    pos[0] = tempPos[0];
-    pos[2] = tempPos[1];
-
+    pos[1] = tempPos[1];
+    pos[2] = tempPos[0];
+    //println("after: " + Arrays.toString(pos));
     //corner piece
-    if (col[1] != null && col[2] != null) {
+    if (col[1] != null && col[2] != null && col[0] != null) { //corner piece
       String storage = col[1];
       col[1] = col[2];
       col[2] = storage;
+      //println("switched!");
+      //println(Arrays.toString(col));
+      //return;
     } else if (col[1] == null) { //edge piece
       col[1] = col[2];
       col[2] = null;
-    } else if (col[2] == null) {
+      //println("switched edge");
+      //println(Arrays.toString(col));
+      //return;
+    } else if (col[2] == null) { //edge piece
       col[2] = col[1];
       col[1] = null;
+      //println("switched edge");
+      //println(Arrays.toString(col));
+      //return;
     }
   }
   public void rotateXCCW() {
-    int[] tempPos = new int[] {pos[0], pos[2]};
+    int[] tempPos = new int[] {pos[1], pos[2]};
     tempPos = matrixMultiply(tempPos, CCW_ROT_MATRIX);
-    pos[0] = tempPos[0];
-    pos[2] = tempPos[1];
+    pos[1] = tempPos[1];
+    pos[2] = tempPos[0];
 
     //corner piece
-    if (col[1] != null && col[2] != null) {
+    if (col[1] != null && col[2] != null && col[0] != null) {
       String storage = col[1]; 
       col[1] = col[2];
       col[2] = storage;
@@ -107,13 +84,13 @@ public class Piece {
     }
   }
   public void rotateYCW() {
-    int[] tempPos = new int[] {pos[1], pos[2]};
+    int[] tempPos = new int[] {pos[0], pos[2]};
     tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
-    pos[1] = tempPos[0];
-    pos[2] = tempPos[1];
+    pos[0] = tempPos[1];
+    pos[2] = tempPos[0];
 
     //corner piece
-    if (col[0] != null && col[2] != null) {
+    if (col[0] != null && col[2] != null && col[0] != null) {
       String storage = col[0];
       col[0] = col[2];
       col[2] = storage;
@@ -126,13 +103,13 @@ public class Piece {
     }
   }
   public void rotateYCCW() {
-    int[] tempPos = new int[] {pos[1], pos[2]};
+    int[] tempPos = new int[] {pos[0], pos[2]};
     tempPos = matrixMultiply(tempPos, CCW_ROT_MATRIX);
-    pos[1] = tempPos[0];
-    pos[2] = tempPos[1];
+    pos[0] = tempPos[1];
+    pos[2] = tempPos[0];
 
     //corner piece
-    if (col[0] != null && col[2] != null) {
+    if (col[0] != null && col[2] != null && col[0] != null) {
       String storage = col[0];
       col[0] = col[2];
       col[2] = storage;
@@ -147,27 +124,27 @@ public class Piece {
   public void rotateZCW() {
     int[] tempPos = new int[] {pos[0], pos[1]};
     tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
-    pos[0] = tempPos[0];
-    pos[1] = tempPos[1];
+    pos[0] = tempPos[1];
+    pos[1] = tempPos[0];
 
     //corner piece
-    if (col[0] != null && col[1] != null) {
+    if (col[0] != null && col[2] != null && col[0] != null) {
       String storage = col[0];
       col[0] = col[1];
       col[1] = storage;
-    } else if (col[0] == null) { //edge piece
-      col[0] = col[1];
-      col[1] = null;
-    } else if (col[1] == null) {
+    } else if (col[1] == null) { //edge piece
       col[1] = col[0];
       col[0] = null;
+    } else if (col[0] == null) {
+      col[0] = col[1];
+      col[1] = null;
     }
   }
   public void rotateZCCW() {
     int[] tempPos = new int[] {pos[0], pos[1]};
     tempPos = matrixMultiply(tempPos, CCW_ROT_MATRIX);
-    pos[0] = tempPos[0];
-    pos[1] = tempPos[1];
+    pos[0] = tempPos[1];
+    pos[1] = tempPos[0];
 
     //corner piece
     if (col[0] != null && col[1] != null) {
