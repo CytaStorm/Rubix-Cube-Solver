@@ -264,48 +264,53 @@ void display() {
   }
 }
 void solve(Cube cube) {
-    cross(cube);
-    //crossCorners(cube);
-    //secondLayer(cube);
-    //secondCross(cube);
-    //edges(cube);
-    //corners(cube);
-    //print("solved!");
-  }
+  cross(cube);
+  //crossCorners(cube);
+  //secondLayer(cube);
+  //secondCross(cube);
+  //edges(cube);
+  //corners(cube);
+  //print("solved!");
+}
 void cross(Cube cube) {
-    println("cross WIP!");
-    Piece ulPiece = cube.getCol(cube.getCol("U"), cube.getCol("L")); //finds pos of 4 edge pieces for up cross
-    Piece urPiece = cube.getCol(cube.getCol("U"), cube.getCol("R")); 
-    Piece uuPiece = cube.getCol(cube.getCol("U"), cube.getCol("B")); 
-    Piece udPiece = cube.getCol(cube.getCol("U"), cube.getCol("F"));
-    
-    //println(ulPiece);
-    //println(urPiece);
-    //println(uuPiece);
-    //println(udPiece);
-    
-    crossEdgeSolver(ulPiece);
-    crossEdgeSolver(urPiece);
-    crossEdgeSolver(uuPiece);
-    crossEdgeSolver(udPiece);
+  println("cross WIP!");
+  Piece ulPiece = cube.getCol(cube.getCol("U"), cube.getCol("L")); //finds pos of 4 edge pieces for up cross
+  Piece urPiece = cube.getCol(cube.getCol("U"), cube.getCol("R")); 
+  Piece uuPiece = cube.getCol(cube.getCol("U"), cube.getCol("B")); 
+  Piece udPiece = cube.getCol(cube.getCol("U"), cube.getCol("F"));
+
+  //println(ulPiece);
+  //println(urPiece);
+  //println(uuPiece);
+  //println(udPiece);
+
+  crossEdgeSolver(ulPiece);
+  crossEdgeSolver(urPiece);
+  crossEdgeSolver(uuPiece);
+  crossEdgeSolver(udPiece);
+}
+void crossEdgeSolver(Piece edgePiece) {
+  println("crossEdgeSolver WIP"); 
+  //checks if piece is in right place
+  if (edgePiece.getPos().equals(edgePiece.getDesPos())) {
+    println("In right place!");
+    return;
+  }
+  println("not in right place!");
+}
+public void crossCorners(Cube cube) { 
+  Piece cNW = cube.getCol(cube.getCol("U"), cube.getCol("L"), cube.getCol("B"));
+  Piece cNE = cube.getCol(cube.getCol("U"), cube.getCol("R"), cube.getCol("B"));
+  Piece cSW = cube.getCol(cube.getCol("U"), cube.getCol("L"), cube.getCol("F"));
+  Piece cSE = cube.getCol(cube.getCol("U"), cube.getCol("R"), cube.getCol("F"));
+  println("crossCorners WIP!");
+} 
+
+void crossCornerSolver(Piece corner){
+  if(Arrays.equals(corner.getPos(), corner.getDesPos())){
     
   }
-  void crossEdgeSolver(Piece edgePiece) {
-    println("crossEdgeSolver WIP"); 
-    //checks if piece is in right place
-    if (edgePiece.getPos().equals(edgePiece.getDesPos())){
-      println("In right place!");
-      return;
-    }
-    println("not in right place!");
-  }
-  public void crossCorners(Cube cube) { 
-   Piece cNW = cube.getCol(cube.getCol("U"), cube.getCol("L"), cube.getCol("B"));
-   Piece cNE = cube.getCol(cube.getCol("U"), cube.getCol("R"), cube.getCol("B"));
-   Piece cSW = cube.getCol(cube.getCol("U"), cube.getCol("L"), cube.getCol("F"));
-   Piece cSE = cube.getCol(cube.getCol("U"), cube.getCol("R"), cube.getCol("F"));
-    println("crossCorners WIP!");
-  }
+}
 //  public void secondLayer(Cube cube) {
 //    println("secondLayer WIP!");
 //  }
