@@ -141,7 +141,7 @@ public class Cube {
   }
 
   //finds piece given 2 colors
-  public Piece getCol(String col1, String col2) {
+  public Piece findPiece(String col1, String col2) {
     for (int i = 0; i < 26; i++) {
       Integer col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
       Integer col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
@@ -152,7 +152,7 @@ public class Cube {
     return null;
   }
   //finds piece given 3 colors
-  public Piece getCol(String col1, String col2, String col3) {
+  public Piece findPiece(String col1, String col2, String col3) {
     for (int i = 0; i < 26; i++) {
       Integer col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
       Integer col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
@@ -164,6 +164,20 @@ public class Cube {
     }
     return null;
   }
+    
+  //gets piece at position  x y z
+  public Piece getPiece(int x, int y, int z) {
+    for (int i = 0; i < 26; i++) {
+      if (pieces[i].getPos()[0] == x &&
+        pieces[i].getPos()[1] == y && 
+        pieces[i].getPos()[2] == z) { 
+        return pieces[i];
+      }
+    }
+    return null;
+  }
+  
+  
   //accessor method: returns color of face given a face, each face will always be 1 color
   public String getCol(String face) {
     switch(face) {
@@ -184,17 +198,8 @@ public class Cube {
       return null;
     }
   }
+  
 
-  public Piece findPiece(int x, int y, int z) {
-    for (int i = 0; i < 26; i++) {
-      if (pieces[i].getPos()[0] == x &&
-        pieces[i].getPos()[1] == y && 
-        pieces[i].getPos()[2] == z) { 
-        return pieces[i];
-      }
-    }
-    return null;
-  }
   public void L() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == 1) {
