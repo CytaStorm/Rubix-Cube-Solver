@@ -299,9 +299,13 @@ void cross(Cube cube) {
     }
     println("not in right place!");
   }
-//  public void crossCorners(Cube cube) {
-//    println("crossCorners WIP!");
-//  }
+  public void crossCorners(Cube cube) { 
+   Piece cNW = cube.getCol(cube.getCol("U"), cube.getCol("L"), cube.getCol("B"));
+   Piece cNE = cube.getCol(cube.getCol("U"), cube.getCol("R"), cube.getCol("B"));
+   Piece cSW = cube.getCol(cube.getCol("U"), cube.getCol("L"), cube.getCol("F"));
+   Piece cSE = cube.getCol(cube.getCol("U"), cube.getCol("R"), cube.getCol("F"));
+    println("crossCorners WIP!");
+  }
 //  public void secondLayer(Cube cube) {
 //    println("secondLayer WIP!");
 //  }
