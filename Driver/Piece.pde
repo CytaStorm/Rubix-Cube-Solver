@@ -4,6 +4,7 @@ public class Piece {
   private final int[][] CW_ROT_MATRIX = new int[][]{{0, 1}, {-1, 0}};
   private int[] pos = new int[3]; //x,y,z
   private String[] col = new String[3]; //white, red, blue, orange, yellow, green, in x/y/z
+  private int[] desPos;
   public Piece(int pX, int pY, int pZ, String cX, String cY, String cZ) {
     pos[0] = pX;
     pos[1] = pY;
@@ -11,15 +12,21 @@ public class Piece {
     col[0] = cX;
     col[1] = cY;
     col[2] = cZ;
+    desPos = pos.clone();
   }
   
   public String toString(){
-    return Arrays.toString(pos);
+    return Arrays.toString(pos) + ", Desired Position " + Arrays.toString(desPos);
   }
+
 
   //Accessor, returns all colors of piece in an array
   public String[] getCol() {
     return col;
+  }
+  //Accessor, returns desPos
+  public int[] getDesPos(){
+    return desPos;
   }
   //Accessor returns pos of array
   public int[] getPos() {

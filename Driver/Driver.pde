@@ -274,10 +274,10 @@ void solve(Cube cube) {
   }
 void cross(Cube cube) {
     println("cross WIP!");
-    Piece ulPiece = cube.getCol(cube.getCol("U"), cube.findPiece(0, 0, 0).getCol()[0]); //finds pos of 4 edge pieces for up cross
-    Piece urPiece = cube.getCol(cube.getCol("U"), cube.findPiece(0, 0, 0).getCol()[0]); 
-    Piece uuPiece = cube.getCol(cube.getCol("U"), cube.findPiece(0, 0, 0).getCol()[0]); 
-    Piece udPiece = cube.getCol(cube.getCol("U"), cube.findPiece(0, 0, 0).getCol()[0]);
+    Piece ulPiece = cube.getCol(cube.getCol("U"), cube.getCol("L")); //finds pos of 4 edge pieces for up cross
+    Piece urPiece = cube.getCol(cube.getCol("U"), cube.getCol("R")); 
+    Piece uuPiece = cube.getCol(cube.getCol("U"), cube.getCol("B")); 
+    Piece udPiece = cube.getCol(cube.getCol("U"), cube.getCol("F"));
     
     println(ulPiece);
     println(urPiece);
@@ -285,16 +285,16 @@ void cross(Cube cube) {
     println(udPiece);
     
   }
-//  public void crossEdgeSolver(Cube cube, Piece edgePiece, Piece refPiece, String move1, String move2) {
-//    print("crossEdgeSolver WIP"); 
-//    //checks if piece is in right place
-//    if ((edgePiece.getPos().equals(new int[]{refPiece.getPos()[0], refPiece.getPos()[1], refPiece.getPos()[2])) &&
-//      edgePiece.getCol["z"].equals(cube.getCol("U"))) {
-//      print("In right place!");
-//      return;
-//    }
-//    print("not in right place!");
-//  }
+  //void crossEdgeSolver(Cube cube, Piece edgePiece, String move1, String move2) {
+  //  print("crossEdgeSolver WIP"); 
+  //  //checks if piece is in right place
+  //  if ((edgePiece.getPos().equals(new int[]{refPiece.getPos()[0], refPiece.getPos()[1], refPiece.getPos()[2])) &&
+  //    edgePiece.getCol["z"].equals(cube.getCol("U"))) {
+  //    print("In right place!");
+  //    return;
+  //  }
+  //  print("not in right place!");
+  //}
 //  public void crossCorners(Cube cube) {
 //    println("crossCorners WIP!");
 //  }
