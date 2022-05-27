@@ -297,6 +297,8 @@ void cross(Cube cube) {
       println("In right place!");
       return;
     }
+    String undoMove;
+    
     println("not in right place!");
   }
 //  public void crossCorners(Cube cube) {
