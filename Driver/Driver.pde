@@ -279,22 +279,26 @@ void cross(Cube cube) {
     Piece uuPiece = cube.getCol(cube.getCol("U"), cube.getCol("B")); 
     Piece udPiece = cube.getCol(cube.getCol("U"), cube.getCol("F"));
     
-    println(ulPiece);
-    println(urPiece);
-    println(uuPiece);
-    println(udPiece);
+    //println(ulPiece);
+    //println(urPiece);
+    //println(uuPiece);
+    //println(udPiece);
+    
+    crossEdgeSolver(ulPiece);
+    crossEdgeSolver(urPiece);
+    crossEdgeSolver(uuPiece);
+    crossEdgeSolver(udPiece);
     
   }
-  //void crossEdgeSolver(Cube cube, Piece edgePiece, String move1, String move2) {
-  //  print("crossEdgeSolver WIP"); 
-  //  //checks if piece is in right place
-  //  if ((edgePiece.getPos().equals(new int[]{refPiece.getPos()[0], refPiece.getPos()[1], refPiece.getPos()[2])) &&
-  //    edgePiece.getCol["z"].equals(cube.getCol("U"))) {
-  //    print("In right place!");
-  //    return;
-  //  }
-  //  print("not in right place!");
-  //}
+  void crossEdgeSolver(Piece edgePiece) {
+    println("crossEdgeSolver WIP"); 
+    //checks if piece is in right place
+    if (edgePiece.getPos().equals(edgePiece.getDesPos())){
+      println("In right place!");
+      return;
+    }
+    println("not in right place!");
+  }
 //  public void crossCorners(Cube cube) {
 //    println("crossCorners WIP!");
 //  }
