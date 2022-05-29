@@ -299,16 +299,20 @@ void crossEdgeSolver(Piece edgePiece) {
   println("not in right place!");
 }
 public void crossCorners(Cube cube) { 
-  Piece cNW = cube.getCol(cube.getCol("U"), cube.getCol("L"), cube.getCol("B"));
-  Piece cNE = cube.getCol(cube.getCol("U"), cube.getCol("R"), cube.getCol("B"));
-  Piece cSW = cube.getCol(cube.getCol("U"), cube.getCol("L"), cube.getCol("F"));
-  Piece cSE = cube.getCol(cube.getCol("U"), cube.getCol("R"), cube.getCol("F"));
+  Piece cNW = cube.findPiece(cube.getCol("U"), cube.getCol("L"), cube.getCol("B"));
+  Piece cNE = cube.findPiece(cube.getCol("U"), cube.getCol("R"), cube.getCol("B"));
+  Piece cSW = cube.findPiece(cube.getCol("U"), cube.getCol("L"), cube.getCol("F"));
+  Piece cSE = cube.findPiece(cube.getCol("U"), cube.getCol("R"), cube.getCol("F"));
   println("crossCorners WIP!");
 } 
 
-void crossCornerSolver(Piece corner){
+void crossCornerSolver(Cube cube, Piece corner, Piece right, Piece down){
+  int []temp = corner.getPos(); 
+  if (temp[2] == 1){
+  }
   if(Arrays.equals(corner.getPos(), corner.getDesPos())){
-    
+    println("in right place");
+    return;
   }
 }
 //  public void secondLayer(Cube cube) {
