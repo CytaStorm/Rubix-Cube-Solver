@@ -106,6 +106,9 @@ void keyPressed() {
     case 'n':
       solveCube.ZPrime();
       break;
+    case ENTER:
+      solve(solveCube);
+      break;
     default: 
       break;
     }
