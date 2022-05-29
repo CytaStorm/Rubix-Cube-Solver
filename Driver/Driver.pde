@@ -125,13 +125,13 @@ void mouseClicked() {
       solveCube.L();
     } else if (mouseX > 175 && mouseX < 225 && mouseY > 800 && mouseY < 850) {
       solveCube.LPrime();
-    } else if (mouseX > 250 && mouseX < 325 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 250 && mouseX < 300 && mouseY > 700 && mouseY < 750) {
       solveCube.R();
-    } else if (mouseX > 250 && mouseX < 325 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 250 && mouseX < 300 && mouseY > 800 && mouseY < 850) {
       solveCube.RPrime();
-    } else if (mouseX > 600 && mouseX < 650 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 325 && mouseX < 375 && mouseY > 700 && mouseY < 750) {
       solveCube.U();
-    } else if (mouseX > 600 && mouseX < 650 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 325 && mouseX < 375 && mouseY > 800 && mouseY < 850) {
       solveCube.UPrime();
     } else if (mouseX > 700 && mouseX < 750 && mouseY > 700 && mouseY < 750) {
       solveCube.D();
@@ -170,9 +170,9 @@ void draw() {
   //Rprime
   rect(250, 800, 50, 50);
   //U
-  rect(600, 700, 50, 50);
+  rect(325, 700, 50, 50);
   //Uprime
-  rect(600, 800, 50, 50);
+  rect(325, 800, 50, 50);
   //D
   rect(700, 700, 50, 50);
   //Dprime
@@ -194,8 +194,8 @@ void draw() {
   text("L'", 190, 830);
   text("R", 265, 730);
   text("R'", 265, 830);
-  text("U", 615, 730);
-  text("U'", 615, 830);
+  text("U", 340, 730);
+  text("U'", 340, 830);
   text("D", 715, 730);
   text("D'", 715, 830);
   text("F", 815, 730);
