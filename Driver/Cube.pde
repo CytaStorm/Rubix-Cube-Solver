@@ -266,4 +266,18 @@ public class Cube {
       }
     }
   }
-}
+  public void M() {
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[0] == 0) {
+        pieces[i].rotateXCW();
+      }
+    } 
+  }
+    public void MPrime() {
+      for (int i = 0; i < pieces.length; i ++) {
+        if (pieces[i].getPos()[0] == 0) {
+          pieces[i].rotateXCCW();
+        }
+      }
+    }
+  }
