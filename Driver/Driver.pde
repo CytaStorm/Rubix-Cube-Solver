@@ -166,9 +166,12 @@ void draw() {
   text("B", 915, 730);
   text("B'", 915, 830);
 }
-void move(ArrayList <String> moves) {
-  for (int i = 0; i < moves.size(); i++) {
-    switch(moves.get(i)) {
+void move(Cube cube, String move) {
+  String[] moves = str.split(" ", 1);
+  
+  for (String i: moves) {
+    cube.solAdd(i);
+    switch(i){
     case "L": 
       solveCube.L();
       break;
@@ -310,10 +313,6 @@ void display() {
     }
   }
 }
-
-void move(){
-  
-}
 void solve(Cube cube) {
   cross(cube, solutionSet);
   //crossCorners(cube);
@@ -336,10 +335,10 @@ void cross(Cube cube, ArrayList<String> solutionSet) {
   //println(uuPiece);
   //println(udPiece);
 
-  crossEdgeSolver(ulPiece);
-  crossEdgeSolver(urPiece);
-  crossEdgeSolver(ubPiece);
-  crossEdgeSolver(ufPiece);
+  crossEdgeSolver(cube, ulPiece);
+  crossEdgeSolver(cube, urPiece);
+  crossEdgeSolver(cube, ubPiece);
+  crossEdgeSolver(cube, ufPiece);
 }
 void crossEdgeSolver(Cube cube, Piece edgePiece) {
   println("crossEdgeSolver WIP"); 
@@ -356,7 +355,12 @@ void crossEdgeSolver(Cube cube, Piece edgePiece) {
     String ccw = cube.faceRot(tempPos)[0];
     
     if(Arrays.equals(edgePiece.getPos(), new int[] {1, -1, 0}) || Arrays.equals(edgePiece.getPos(), new int[]{-1, 1, 0})){
-      cube.
+      cube.move(cw);
+      undo = cc;
+    }else{
+      move(cc);
+      undo_move = cw;
+    }
   println("not in right place!");
 }
 //  public void crossCorners(Cube cube) {

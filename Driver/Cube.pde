@@ -226,7 +226,11 @@ public class Cube {
     solutionSet.add(addition);
   }
   public void solRemoveLast(){
-    solutionSet.remove(solutionSet.size()-1);
+    if(solutionSet.size() > 0){
+      solutionSet.remove(solutionSet.size()-1);
+    }else{
+      print("nothing left to remove!");
+    }
   }
   //accessor method
   public String[] faceRot(int[]pos) {
