@@ -1,5 +1,6 @@
 public class Cube {
-
+  
+  private Piece[][][] = new Piece[3][3][3];
   private final String CU = "orange";
   private final String CF = "white";
   private final String CR = "blue";
