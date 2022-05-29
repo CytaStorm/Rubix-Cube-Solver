@@ -374,10 +374,29 @@ public class Cube {
     rightPiece.swapFaceColor("x", downCol);
     downPiece.swapFaceColor("y", leftCol);
     leftPiece.swapFaceColor("x", upCol);
-      for (int i = 0; i < pieces.length; i ++) {
+    for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[1] == 0) {
         pieces[i].rotateXCCW();
       }
     }
+  }
+  public void X() {
+    R();
+    MPrime();
+    LPrime();
+  }
+  public void XPrime() {
+    L();
+    M(); 
+    RPrime();
+  }
+  public void Y() {
+    
+  } 
+  public void YPrime() {
+  }
+  public void Z() {
+  }
+  public void ZPrime() {
   }
 }
