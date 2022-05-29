@@ -179,13 +179,19 @@ public class Cube {
 
   //gets piece at position  x y z
   public Piece getPiece(int x, int y, int z) {
+    
     for (int i = 0; i < 26; i++) {
+      
       if (pieces[i].getPos()[0] == x &&
         pieces[i].getPos()[1] == y && 
         pieces[i].getPos()[2] == z) { 
         return pieces[i];
       }
     }
+    println(x);
+    println(y);
+    println(z);
+    println("not found a piece");
     return null;
   }
 
@@ -330,33 +336,35 @@ public class Cube {
     }
   }
   public void M() {
-    Piece frontPiece = findPiece(0, -1, 0); 
-    String frontCol = frontPiece.getCol("F");  
-    Piece topPiece = findPiece(0, 0, 1); 
-    String topCol = topPiece.getCol("U"); 
-    Piece backPiece = findPiece(0, 1, 0); 
-    String backCol = backPiece.getCol("B"); 
-    Piece downPiece = findPiece(0, 0, -1); 
-    String downCol = downPiece.getCol("D"); 
+    println("m is called");
+    Piece frontPiece = getPiece(0, -1, 0); 
+    String frontCol = frontPiece.getCol()[1];  
+    Piece topPiece = getPiece(0, 0, 1); 
+    String topCol = topPiece.getCol()[2]; 
+    Piece backPiece = getPiece(0, 1, 0); 
+    String backCol = backPiece.getCol()[1]; 
+    Piece downPiece = getPiece(0, 0, -1); 
+    String downCol = downPiece.getCol()[2]; 
+    
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[0] == 0 && pieces[i].getPos()[1] != 0 && pieces[i].getPos()[2] != 0) {
+        pieces[i].rotateXCW();
+      }
+    }
     frontPiece.swapFaceColor("y", topCol);
     topPiece.swapFaceColor("z", backCol);
     backPiece.swapFaceColor("y", downCol);
     downPiece.swapFaceColor("z", frontCol);
-    for (int i = 0; i < pieces.length; i ++) {
-      if (pieces[i].getPos()[0] == 0) {
-        pieces[i].rotateXCCW();
-      }
-    }
   }
   public void MPrime() {
-    Piece frontPiece = findPiece(0, -1, 0); 
-    String frontCol = frontPiece.getCol("F");  
-    Piece topPiece = findPiece(0, 0, 1); 
-    String topCol = topPiece.getCol("U"); 
-    Piece backPiece = findPiece(0, 1, 0); 
-    String backCol = backPiece.getCol("B"); 
-    Piece downPiece = findPiece(0, 0, -1); 
-    String downCol = downPiece.getCol("D"); 
+    Piece frontPiece = getPiece(0, -1, 0); 
+    String frontCol = frontPiece.getCol()[1];  
+    Piece topPiece = getPiece(0, 0, 1); 
+    String topCol = topPiece.getCol()[2]; 
+    Piece backPiece = getPiece(0, 1, 0); 
+    String backCol = backPiece.getCol()[1]; 
+    Piece downPiece = getPiece(0, 0, -1); 
+    String downCol = downPiece.getCol()[2]; 
     frontPiece.swapFaceColor("y", downCol);
     topPiece.swapFaceColor("z", frontCol);
     backPiece.swapFaceColor("y", topCol);
@@ -368,14 +376,14 @@ public class Cube {
     }
   }
   public void E() {
-    Piece frontPiece = findPiece(0, -1, 0); 
-    String frontCol = frontPiece.getCol("F");  
-    Piece rightPiece = findPiece(-1, 0, 0); 
-    String rightCol = rightPiece.getCol("R"); 
-    Piece backPiece = findPiece(0, 1, 0); 
-    String backCol = backPiece.getCol("B"); 
-    Piece leftPiece = findPiece(1, 0, 0); 
-    String leftCol = leftPiece.getCol("L"); 
+    Piece frontPiece = getPiece(0, -1, 0); 
+    String frontCol = frontPiece.getCol()[1];  
+    Piece rightPiece = getPiece(-1, 0, 0); 
+    String rightCol = rightPiece.getCol()[0]; 
+    Piece backPiece = getPiece(0, 1, 0); 
+    String backCol = backPiece.getCol()[1]; 
+    Piece leftPiece = getPiece(1, 0, 0); 
+    String leftCol = leftPiece.getCol()[0]; 
     frontPiece.swapFaceColor("y", leftCol);
     rightPiece.swapFaceColor("x", frontCol);
     backPiece.swapFaceColor("y", rightCol);
@@ -387,14 +395,14 @@ public class Cube {
     }
   }
   public void EPrime() {
-    Piece frontPiece = findPiece(0, -1, 0); 
-    String frontCol = frontPiece.getCol("F");  
-    Piece rightPiece = findPiece(-1, 0, 0); 
-    String rightCol = rightPiece.getCol("R"); 
-    Piece backPiece = findPiece(0, 1, 0); 
-    String backCol = backPiece.getCol("B"); 
-    Piece leftPiece = findPiece(1, 0, 0); 
-    String leftCol = leftPiece.getCol("L"); 
+    Piece frontPiece = getPiece(0, -1, 0); 
+    String frontCol = frontPiece.getCol()[1];  
+    Piece rightPiece = getPiece(-1, 0, 0); 
+    String rightCol = rightPiece.getCol()[0]; 
+    Piece backPiece = getPiece(0, 1, 0); 
+    String backCol = backPiece.getCol()[1]; 
+    Piece leftPiece = getPiece(1, 0, 0); 
+    String leftCol = leftPiece.getCol()[0]; 
     frontPiece.swapFaceColor("y", rightCol);
     rightPiece.swapFaceColor("x", backCol);
     backPiece.swapFaceColor("y", leftCol);
@@ -406,14 +414,14 @@ public class Cube {
     }
   } 
   public void S() {
-    Piece upPiece = findPiece(0, 0, 1); 
-    String upCol = upPiece.getCol("U");  
-    Piece rightPiece = findPiece(-1, 0, 0); 
-    String rightCol = rightPiece.getCol("R"); 
-    Piece downPiece = findPiece(0, 0, -1); 
-    String downCol = downPiece.getCol("D"); 
-    Piece leftPiece = findPiece(1, 0, 0); 
-    String leftCol = leftPiece.getCol("L"); 
+    Piece upPiece = getPiece(0, 0, 1); 
+    String upCol = upPiece.getCol()[2];  
+    Piece rightPiece = getPiece(-1, 0, 0); 
+    String rightCol = rightPiece.getCol()[0]; 
+    Piece downPiece = getPiece(0, 0, -1); 
+    String downCol = downPiece.getCol()[2]; 
+    Piece leftPiece = getPiece(1, 0, 0); 
+    String leftCol = leftPiece.getCol()[0]; 
     upPiece.swapFaceColor("y", leftCol);
     rightPiece.swapFaceColor("x", upCol);
     downPiece.swapFaceColor("y", rightCol);
@@ -425,14 +433,14 @@ public class Cube {
     }
   } 
   public void SPrime() {
-    Piece upPiece = findPiece(0, 0, 1); 
-    String upCol = upPiece.getCol("U");  
-    Piece rightPiece = findPiece(-1, 0, 0); 
-    String rightCol = rightPiece.getCol("R"); 
-    Piece downPiece = findPiece(0, 0, -1); 
-    String downCol = downPiece.getCol("D"); 
-    Piece leftPiece = findPiece(1, 0, 0); 
-    String leftCol = leftPiece.getCol("L"); 
+    Piece upPiece = getPiece(0, 0, 1); 
+    String upCol = upPiece.getCol()[2];  
+    Piece rightPiece = getPiece(-1, 0, 0); 
+    String rightCol = rightPiece.getCol()[0]; 
+    Piece downPiece = getPiece(0, 0, -1); 
+    String downCol = downPiece.getCol()[2]; 
+    Piece leftPiece = getPiece(1, 0, 0); 
+    String leftCol = leftPiece.getCol()[0]; 
     upPiece.swapFaceColor("y", rightCol);
     rightPiece.swapFaceColor("x", downCol);
     downPiece.swapFaceColor("y", leftCol);

@@ -72,16 +72,22 @@ void keyPressed() {
       break;
     case 'u':
       solveCube.M();
+      break;
     case 'j':
       solveCube.MPrime(); 
+      break;
     case 'i':
       solveCube.E(); 
+      break;
     case 'k':
       solveCube.EPrime();
+      break;
     case 'o':
       solveCube.S(); 
+      break;
     case 'l':
       solveCube.SPrime();
+      break;
     case 'z':
       solve(solveCube);
       break;
@@ -350,8 +356,7 @@ void cross(Cube cube) {
   //println(uuPiece);
   //println(udPiece);
 
-  <<<<<<< HEAD
-    crossEdgeSolver(cube, ulPiece, cube.getPiece(1, 0, 0), "L L", "E L e l");
+  crossEdgeSolver(cube, ulPiece, cube.getPiece(1, 0, 0), "L L", "E L e l");
   crossEdgeSolver(cube, urPiece, cube.getPiece(-1, 0, 0), "R R", "e R E r");
   move(cube, "Z");
   crossEdgeSolver(cube, ubPiece, cube.getPiece(0, -1, 0), "L L", "E L e l");
@@ -425,29 +430,29 @@ void crossCornerSolver(Cube cube, Piece corner, Piece right, Piece down) {
   if (temp[2] == 1) {
     temp = corner.getPos(); 
     temp[0] = temp[2] = 0; 
-    String [] moveSet = cube.faceRotation(temp);
+    String [] moveSet = cube.faceRot(temp);
     String cW = moveSet[0];
     String cC = moveSet[1];  
     int count = 0; 
     String undo = cC; 
     while (temp[2] != -1) {
-      tempSolutionSet.add(cW); 
+      cube.solAdd(cW); 
       count += 1;
     }
     if (count > 1) {
       for (int i = 0; i < count; i++) {
-        tempSolutionSet.add(cC);
+        cube.solAdd(cC);
       } 
       count = 0; 
       while (temp[2] != -1) {
-        tempSolutionSet.add(cC);
+        cube.solAdd(cC);
         count += 1;
       }
       undo = cW;
     }
-    tempSolutionSet.add("B"); 
+    cube.solAdd("B"); 
     for (int i = 0; i < count; i++) {
-      tempSolutionSet.add(undo);
+      cube.solAdd(undo);
     }
   }
 }
