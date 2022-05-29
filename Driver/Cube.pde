@@ -266,28 +266,46 @@ public class Cube {
       }
     }
   }
-  public void M() {
-    LPrime();
-    R();
+public void M() {
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[0] == 0) {
+        pieces[i].rotateXCCW();
+      }
+    }
   }
   public void MPrime() {
-    L(); 
-    RPrime();
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[0] == 0) {
+        pieces[i].rotateXCW();
+      }
+    }
   }
   public void E() {
-    U(); 
-    DPrime();
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[2] == 0) {
+        pieces[i].rotateXCCW();
+      }
+    }
   }
   public void EPrime() {
-    UPrime(); 
-    D();
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[2] == 0) {
+        pieces[i].rotateXCW();
+      }
+    }
   } 
   public void S() {
-    FPrime();
-    B();
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[1] == 0) {
+        pieces[i].rotateXCW();
+      }
+    }
   } 
   public void SPrime() {
-    F();
-    BPrime();
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[1] == 0) {
+        pieces[i].rotateXCCW();
+      }
+    }
   }
 }
