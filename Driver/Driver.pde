@@ -306,11 +306,17 @@ public void crossCorners(Cube cube) {
   println("crossCorners WIP!");
 } 
 
-void crossCornerSolver(Cube cube, Piece corner, Piece right, Piece down){
-  int []temp = corner.getPos(); 
-  if (temp[2] == 1){
+void crossCornerSolver(Cube cube, Piece corner, Piece right, Piece down) {
+  int[] temp = corner.getPos(); 
+  if (temp[2] == 1) {
+    temp = corner.getPos(); 
+    temp[0] = temp[2] = 0; 
+    String [] moveSet = cube.faceRotation(temp);
+      String cW = moveSet[0];
+      String cC = moveSet[1];
+    }
   }
-  if(Arrays.equals(corner.getPos(), corner.getDesPos())){
+  if (Arrays.equals(corner.getPos(), corner.getDesPos())) {
     println("in right place");
     return;
   }
