@@ -275,18 +275,12 @@ public class Cube {
     RPrime();
   }
   public void E() {
-    for (int i = 0; i < pieces.length; i ++) {
-      if (pieces[i].getPos()[2] == 0) {
-        pieces[i].rotateXCCW();
-      }
-    }
+    U(); 
+    DPrime();
   }
   public void EPrime() {
-    for (int i = 0; i < pieces.length; i ++) {
-      if (pieces[i].getPos()[2] == 0) {
-        pieces[i].rotateXCW();
-      }
-    }
+    UPrime(); 
+    D();
   } 
   public void S() {
     for (int i = 0; i < pieces.length; i ++) {
