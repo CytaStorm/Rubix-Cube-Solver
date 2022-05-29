@@ -133,17 +133,17 @@ void mouseClicked() {
       solveCube.U();
     } else if (mouseX > 325 && mouseX < 375 && mouseY > 800 && mouseY < 850) {
       solveCube.UPrime();
-    } else if (mouseX > 700 && mouseX < 750 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 400 && mouseX < 450 && mouseY > 700 && mouseY < 750) {
       solveCube.D();
-    } else if (mouseX > 700 && mouseX < 750 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 400 && mouseX < 450 && mouseY > 800 && mouseY < 850) {
       solveCube.DPrime();
-    } else if (mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 475 && mouseX < 525 && mouseY > 700 && mouseY < 750) {
       solveCube.F();
-    } else if (mouseX > 800 && mouseX < 850 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 475 && mouseX < 525 && mouseY > 800 && mouseY < 850) {
       solveCube.FPrime();
-    } else if (mouseX > 900 && mouseX < 950 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 550 && mouseX < 600 && mouseY > 700 && mouseY < 750) {
       solveCube.B();
-    } else if (mouseX > 900 && mouseX < 950 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 550 && mouseX < 600 && mouseY > 800 && mouseY < 850) {
       solveCube.BPrime();
     }
   }
@@ -174,17 +174,17 @@ void draw() {
   //Uprime
   rect(325, 800, 50, 50);
   //D
-  rect(700, 700, 50, 50);
+  rect(400, 700, 50, 50);
   //Dprime
-  rect(700, 800, 50, 50);
+  rect(400, 800, 50, 50);
   //F
-  rect(800, 700, 50, 50);
+  rect(475, 700, 50, 50);
   //Fprime
-  rect(800, 800, 50, 50);
+  rect(475, 800, 50, 50);
   //B
-  rect(900, 700, 50, 50);
+  rect(550, 700, 50, 50);
   //Bprime
-  rect(900, 800, 50, 50);
+  rect(550, 800, 50, 50);
 
   fill(0);
   textSize(25);
@@ -196,12 +196,12 @@ void draw() {
   text("R'", 265, 830);
   text("U", 340, 730);
   text("U'", 340, 830);
-  text("D", 715, 730);
-  text("D'", 715, 830);
-  text("F", 815, 730);
-  text("F'", 815, 830);
-  text("B", 915, 730);
-  text("B'", 915, 830);
+  text("D", 415, 730);
+  text("D'", 415, 830);
+  text("F", 490, 730);
+  text("F'", 490, 830);
+  text("B", 565, 730);
+  text("B'", 565, 830);
 }
 void move(Cube cube, String move) {
   String[] moves = move.split(" ", 0);
