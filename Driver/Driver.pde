@@ -312,15 +312,26 @@ void crossCornerSolver(Cube cube, Piece corner, Piece right, Piece down) {
     temp = corner.getPos(); 
     temp[0] = temp[2] = 0; 
     String [] moveSet = cube.faceRotation(temp);
-      String cW = moveSet[0];
-      String cC = moveSet[1];
+    String cW = moveSet[0];
+    String cC = moveSet[1]; 
+    int count = 0; 
+    String undo = cC; 
+    while (temp[2] != -1) {
+      tempSolutionSet.add(cW); 
+      count += 1;
+    }
+    if (count > 1) {
+      for (int i = 0; i < count; i++){
+        tempSolutionSet.add(cC);
+      }
     }
   }
-  if (Arrays.equals(corner.getPos(), corner.getDesPos())) {
-    println("in right place");
-    return;
-  }
 }
+//if (Arrays.equals(corner.getPos(), corner.getDesPos())) {
+//  println("in right place");
+//  return;
+//}
+//}
 //  public void secondLayer(Cube cube) {
 //    println("secondLayer WIP!");
 //  }
