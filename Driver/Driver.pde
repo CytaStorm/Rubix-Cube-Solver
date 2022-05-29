@@ -141,22 +141,34 @@ void mouseClicked() {
       solveCube.F();
     } else if (mouseX > 450 && mouseX < 500 && mouseY > 800 && mouseY < 850) {
       solveCube.FPrime();
-    } else if (mouseX > 510 && mouseX < 560 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 520 && mouseX < 570 && mouseY > 700 && mouseY < 750) {
       solveCube.B();
-    } else if (mouseX > 510 && mouseX < 560 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 520 && mouseX < 570 && mouseY > 800 && mouseY < 850) {
       solveCube.BPrime();
-    } else if (mouseX > 580 && mouseX < 630 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 590 && mouseX < 640 && mouseY > 700 && mouseY < 850) {
       solveCube.M();
-    } else if (mouseX > 580 && mouseX < 630 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 590 && mouseX < 640 && mouseY > 800 && mouseY < 850) {
       solveCube.MPrime();
-    } else if (mouseX > 650 && mouseX < 700 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 660 && mouseX < 710 && mouseY > 700 && mouseY < 850) {
       solveCube.E();
-    } else if (mouseX > 650 && mouseX < 700 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 660 && mouseX < 710 && mouseY > 800 && mouseY < 850) {
       solveCube.EPrime();
-    } else if (mouseX > 720 && mouseX < 780 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 730 && mouseX < 780 && mouseY > 700 && mouseY < 850) {
       solveCube.S();
-    } else if (mouseX > 720 && mouseX < 780 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 730 && mouseX < 780 && mouseY > 800 && mouseY < 850) {
       solveCube.SPrime();
+    } else if (mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 850) {
+      solveCube.X();
+    } else if (mouseX > 800 && mouseX < 850 && mouseY > 800 && mouseY < 850) {
+      solveCube.XPrime();
+    } else if (mouseX > 860 && mouseX < 910 && mouseY > 700 && mouseY < 850) {
+      solveCube.Y();
+    } else if (mouseX > 860 && mouseX < 910 && mouseY > 800 && mouseY < 850) {
+      solveCube.YPrime();
+    } else if (mouseX > 930 && mouseX < 980 && mouseY > 700 && mouseY < 850) {
+      solveCube.Z();
+    } else if (mouseX > 930 && mouseX < 980 && mouseY > 800 && mouseY < 850) {
+      solveCube.ZPrime();
     }
   }
 }
@@ -209,6 +221,18 @@ void draw() {
   rect(730, 700, 50, 50);
   //Sprime
   rect(730, 800, 50, 50);
+  //X
+  rect(800, 700, 50, 50);
+  //Xprime
+  rect(800, 800, 50, 50);
+  //Y
+  rect(870, 700, 50, 50);
+  //Yprime
+  rect(870, 800, 50, 50);
+  //Z
+  rect(940, 700, 50, 50);
+  //Zprime
+  rect(940, 800, 50, 50);
 
   fill(0);
   textSize(25);
@@ -232,6 +256,12 @@ void draw() {
   text("E'", 678, 830);
   text("S", 748, 730);
   text("S'", 748, 830);
+  text("X", 818, 730);
+  text("X'", 818, 830);
+  text("Y", 888, 730);
+  text("Y'", 888, 830);
+  text("Z", 958, 730);
+  text("Z'", 958, 830);
 }
 void move(Cube cube, String move) {
   String[] moves = move.split(" ", 0);
