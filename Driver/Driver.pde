@@ -351,8 +351,8 @@ void display() {
   }
 }
 void solve(Cube cube) {
-  // solving = true;
-  // cross(cube);
+   solving = true;
+   cross(cube);
   //crossCorners(cube);
   //secondLayer(cube);
   //secondCross(cube);
@@ -375,17 +375,18 @@ void cross(Cube cube) {
   //println(uuPiece);
   //println(udPiece);
 
-  fireFlower(cube, ulPiece);
+  print(fireFlower(cube, ulPiece));
 }
-void fireFlower(Cube cube, Piece edgePiece){
+int fireFlower(Cube cube, Piece edgePiece){
   if(edgePiece.getPos()[2] == 0){
 
   }
+  return orangeOriented(cube);
 }
 int orangeOriented(Cube cube){
   int result = 0;
   for(int i = 0; i < 26; i++){
-    if(cube.getPiece(i).getPos()[2] == 1){
+    if(cube.getPiece(i).getPos()[2] == 1 && cube.getPiece(i).isEdge()){
       if(Arrays.asList(cube.getPiece(i).getCol()).indexOf("orange") != -1){
         result ++;
       }
