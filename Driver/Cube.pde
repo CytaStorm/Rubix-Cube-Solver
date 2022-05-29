@@ -1,5 +1,24 @@
 import java.util.*;
 public class Cube {
+  ArrayList solutionSet = new ArrayList<String>(); 
+  private final int[] R = new int {
+    -1, 0, 0
+  };
+  private final int[] L = new int {
+    1, 0, 0
+  };
+  private final int[] U = new int {
+    0, 0, 1
+  };
+  private final int[] D = new int {
+    0, 0, -1
+  };
+  private final int[] F = new int {
+    0, 1, 0
+  };
+  private final int[] B = new int {
+    0, -1, 0
+  };
 
   private final String CU = "orange";
   private final String CF = "white";
@@ -158,13 +177,13 @@ public class Cube {
       Integer col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
       Integer col3Index = Arrays.asList(pieces[i].getCol()).indexOf(col3);
       if (col1Index != -1 && col2Index != -1 && col3Index != -1 && 
-          col1Index != col2Index && col2Index != col3Index && col1Index != col3Index){
+        col1Index != col2Index && col2Index != col3Index && col1Index != col3Index) {
         return pieces[i];
       }
     }
     return null;
   }
-    
+
   //gets piece at position  x y z
   public Piece getPiece(int x, int y, int z) {
     for (int i = 0; i < 26; i++) {
@@ -176,8 +195,8 @@ public class Cube {
     }
     return null;
   }
-  
-  
+
+
   //accessor method: returns color of face given a face, each face will always be 1 color
   public String getCol(String face) {
     switch(face) {
@@ -199,7 +218,34 @@ public class Cube {
     }
   }
   
-
+  //accessor for solutionset
+  public ArrayList<String> solutionSet(){
+    return solutionSet;
+  }
+  public void solAdd(String addition){
+    solutionSet.add(addition);
+  }
+  public void solRemove(String addition){
+    solutionSet.remove(solutionSet.size()-1);
+  }
+  //accessor method
+  public String[] faceRot(int[]pos) {
+    String[] returnMoves = new String[2];
+    if (Arrays.equals(pos, R) || Arrays.equals(pos, L)) {
+      returnMoves[0] = "X";
+      returnMoves[1] = "x";
+    } else if (Arrays.equals(pos, F) || Arrays.equals(pos, B)) {
+      returnMoves[0] = "Y";
+      returnMoves[1] = "y";
+    } else if (Arrays.equals(pos, U) || Arrays.equals(pos, D)) {
+      returnMoves[0] = "Z";
+      returnMoves[1] = "z";
+    } else {
+      println("invalid face");
+      return null;
+    }
+    return returnMoves;
+  }
   public void L() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == 1) {

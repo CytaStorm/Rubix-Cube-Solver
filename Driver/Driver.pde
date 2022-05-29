@@ -1,7 +1,7 @@
 import java.util.*;
 Cube solveCube = new Cube(); 
 Cube refCube = new Cube(); 
-ArrayList solutionSet = new ArrayList<String>(); 
+
 String[][] upSide = new String[3][3];
 String[][] leftSide = new String[3][3];
 String[][] frontSide = new String[3][3];
@@ -11,7 +11,6 @@ String[][] downSide = new String[3][3];
 
 void setup() {
   size(1000, 1000);
-  ArrayList<String> moves = new ArrayList<String>(); //movelist, uppecase for normal moves, lowercase for prime
 }
 public color stringToColor(String col) {
   switch(col) {
@@ -76,7 +75,7 @@ void keyPressed() {
     break;
   case 'l':
     solve(solveCube);
-    move(moves);
+    move(solutionSet);
   default: 
     break;
   }
@@ -311,8 +310,12 @@ void display() {
     }
   }
 }
+
+void move(){
+  
+}
 void solve(Cube cube) {
-  cross(cube);
+  cross(cube, solutionSet);
   //crossCorners(cube);
   //secondLayer(cube);
   //secondCross(cube);
@@ -320,7 +323,7 @@ void solve(Cube cube) {
   //corners(cube);
   //print("solved!");
 }
-void cross(Cube cube) {
+void cross(Cube cube, ArrayList<String> solutionSet) {
 
   println("cross WIP!");
   Piece ulPiece = cube.findPiece(cube.getCol("U"), cube.getCol("L")); //finds pos of 4 edge pieces for up cross
@@ -338,7 +341,7 @@ void cross(Cube cube) {
   crossEdgeSolver(ubPiece);
   crossEdgeSolver(ufPiece);
 }
-void crossEdgeSolver(Piece edgePiece) {
+void crossEdgeSolver(Cube cube, Piece edgePiece) {
   println("crossEdgeSolver WIP"); 
   //checks if piece is in right place
   if (Arrays.equals(edgePiece.getPos(), edgePiece.getDesPos())) {
@@ -346,7 +349,14 @@ void crossEdgeSolver(Piece edgePiece) {
     return;
   }
   String undoMove;
-
+  if (edgePiece.getPos()[2] == 0){//if edge piece is in middle row
+    int[] tempPos = edgePiece.getPos().clone();
+    tempPos[0] = 0;
+    String cw = cube.faceRot(tempPos)[1];
+    String ccw = cube.faceRot(tempPos)[0];
+    
+    if(Arrays.equals(edgePiece.getPos(), new int[] {1, -1, 0}) || Arrays.equals(edgePiece.getPos(), new int[]{-1, 1, 0})){
+      cube.
   println("not in right place!");
 }
 //  public void crossCorners(Cube cube) {
