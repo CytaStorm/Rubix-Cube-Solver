@@ -343,6 +343,18 @@ public class Cube {
     }
   } 
   public void S() {
+    Piece upPiece = findPiece(0, 0, 1); 
+    String upCol = upPiece.getCol("U");  
+    Piece rightPiece = findPiece(-1, 0, 0); 
+    String rightCol = rightPiece.getCol("R"); 
+    Piece downPiece = findPiece(0, 0, -1); 
+    String downCol = downPiece.getCol("D"); 
+    Piece leftPiece = findPiece(1, 0, 0); 
+    String leftCol = leftPiece.getCol("L"); 
+    upPiece.swapFaceColor("y", leftCol);
+    rightPiece.swapFaceColor("x", upCol);
+    downPiece.swapFaceColor("y", rightCol);
+    leftPiece.swapFaceColor("x", downCol);
     for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[1] == 0) {
         pieces[i].rotateXCW();
@@ -350,7 +362,18 @@ public class Cube {
     }
   } 
   public void SPrime() {
-    findPiece(
+    Piece upPiece = findPiece(0, 0, 1); 
+    String upCol = upPiece.getCol("U");  
+    Piece rightPiece = findPiece(-1, 0, 0); 
+    String rightCol = rightPiece.getCol("R"); 
+    Piece downPiece = findPiece(0, 0, -1); 
+    String downCol = downPiece.getCol("D"); 
+    Piece leftPiece = findPiece(1, 0, 0); 
+    String leftCol = leftPiece.getCol("L"); 
+    upPiece.swapFaceColor("y", rightCol);
+    rightPiece.swapFaceColor("x", downCol);
+    downPiece.swapFaceColor("y", leftCol);
+    leftPiece.swapFaceColor("x", upCol);
       for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[1] == 0) {
         pieces[i].rotateXCCW();
