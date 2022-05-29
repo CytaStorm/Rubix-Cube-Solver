@@ -117,17 +117,17 @@ void keyPressed() {
 
 void mouseClicked() {
   if (!solving) {
-    if (mouseX > 0 && mouseX < 200 && mouseY > 700 && mouseY < 750) {
+    if (mouseX > 0 && mouseX < 150 && mouseY > 700 && mouseY < 750) {
       solveCube.reset();
-    } else if (mouseX > 0 && mouseX < 200 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 0 && mouseX < 150 && mouseY > 800 && mouseY < 850) {
       solveCube.scramble();
-    } else if (mouseX > 400 && mouseX < 450 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 175 && mouseX < 225 && mouseY > 700 && mouseY < 750) {
       solveCube.L();
-    } else if (mouseX > 400 && mouseX < 450 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 175 && mouseX < 225 && mouseY > 800 && mouseY < 850) {
       solveCube.LPrime();
-    } else if (mouseX > 500 && mouseX < 550 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 250 && mouseX < 325 && mouseY > 700 && mouseY < 750) {
       solveCube.R();
-    } else if (mouseX > 500 && mouseX < 550 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 250 && mouseX < 325 && mouseY > 800 && mouseY < 850) {
       solveCube.RPrime();
     } else if (mouseX > 600 && mouseX < 650 && mouseY > 700 && mouseY < 750) {
       solveCube.U();
@@ -158,17 +158,17 @@ void draw() {
   display();
   fill(255, 255, 255);
   //reset
-  rect(0, 700, 200, 50);
+  rect(0, 700, 150, 50);
   //scramble
-  rect(0, 800, 200, 50);
+  rect(0, 800, 150, 50);
   //L
-  rect(400, 700, 50, 50);
+  rect(175, 700, 50, 50);
   //Lprime
-  rect(400, 800, 50, 50);
+  rect(175, 800, 50, 50);
   //R
-  rect(500, 700, 50, 50);
+  rect(250, 700, 50, 50);
   //Rprime
-  rect(500, 800, 50, 50);
+  rect(250, 800, 50, 50);
   //U
   rect(600, 700, 50, 50);
   //Uprime
@@ -188,12 +188,12 @@ void draw() {
 
   fill(0);
   textSize(25);
-  text("Reset", 50, 730);
-  text("Scramble", 50, 830);
-  text("L", 415, 730);
-  text("L'", 415, 830);
-  text("R", 515, 730);
-  text("R'", 515, 830);
+  text("Reset", 42, 730);
+  text("Scramble", 10, 830);
+  text("L", 190, 730);
+  text("L'", 190, 830);
+  text("R", 265, 730);
+  text("R'", 265, 830);
   text("U", 615, 730);
   text("U'", 615, 830);
   text("D", 715, 730);
