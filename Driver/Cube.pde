@@ -269,15 +269,29 @@ public class Cube {
   public void M() {
     for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[0] == 0) {
-        pieces[i].rotateXCW();
-      }
-    } 
-  }
-    public void MPrime() {
-      for (int i = 0; i < pieces.length; i ++) {
-        if (pieces[i].getPos()[0] == 0) {
-          pieces[i].rotateXCCW();
-        }
+        pieces[i].rotateXCCW();
       }
     }
   }
+  public void MPrime() {
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[0] == 0) {
+        pieces[i].rotateXCW();
+      }
+    }
+  }
+  public void E() {
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[2] == 0) {
+        pieces[i].rotateXCCW();
+      }
+    }
+  }
+  public void EPrime() {
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[2] == 0) {
+        pieces[i].rotateXCW();
+      }
+    }
+  }
+}
