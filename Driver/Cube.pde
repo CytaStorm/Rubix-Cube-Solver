@@ -293,5 +293,19 @@ public class Cube {
         pieces[i].rotateXCW();
       }
     }
+  } 
+  public void S() {
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[1] == 0) {
+        pieces[i].rotateXCW();
+      }
+    }
+  } 
+  public void SPrime() {
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[1] == 0) {
+        pieces[i].rotateXCCW();
+      }
+    }
   }
 }
