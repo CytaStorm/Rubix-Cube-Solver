@@ -1,11 +1,24 @@
+import java.util.*;
 public class Cube {
-
-  private final String CU = "orange";
-  private final String CF = "white";
-  private final String CR = "blue";
-  private final String CL = "green";
-  private final String CB = "yellow";
-  private final String CD = "red";
+  ArrayList solutionSet = new ArrayList<String>(); 
+  private final int[] R = new int[] {
+    -1, 0, 0
+  };
+  private final int[] L = new int[] {
+    1, 0, 0
+  };
+  private final int[] U = new int[] {
+    0, 0, 1
+  };
+  private final int[] D = new int[] {
+    0, 0, -1
+  };
+  private final int[] F = new int[] {
+    0, 1, 0
+  };
+  private final int[] B = new int[] {
+    0, -1, 0
+  };
 
   private Piece[] pieces = new Piece[26];
   public Cube() {
@@ -138,37 +151,106 @@ public class Cube {
       i++;
     }
   }
-  //accessor method: returns color of face given a face, each face will always be 1 color
-  public String getCol(String face) {
-    switch(face) {
-    case "U" : 
-      return CU;
-    case "F" : 
-      return CF;
-    case "R" : 
-      return CR;
-    case "L" : 
-      return CL;
-    case "B" : 
-      return CB;
-    case "D" : 
-      return CD;
-    default : 
-      print("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
-      return null;
+
+  //finds piece given 2 colors
+  public Piece findPiece(String col1, String col2) {
+    for (int i = 0; i < 26; i++) {
+      Integer col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
+      Integer col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
+      if (col1Index != -1 && col2Index != -1 && col1Index != col2Index && pieces[i].getCol()[3-col1Index-col2Index] == null) {
+        return pieces[i];
+      }
     }
+    return null;
+  }
+  //finds piece given 3 colors
+  public Piece findPiece(String col1, String col2, String col3) {
+    for (int i = 0; i < 26; i++) {
+      Integer col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
+      Integer col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
+      Integer col3Index = Arrays.asList(pieces[i].getCol()).indexOf(col3);
+      if (col1Index != -1 && col2Index != -1 && col3Index != -1 && 
+        col1Index != col2Index && col2Index != col3Index && col1Index != col3Index) {
+        return pieces[i];
+      }
+    }
+    return null;
   }
 
-  public Piece findPiece(int x, int y, int z) {
+  //gets piece at position  x y z
+  public Piece getPiece(int x, int y, int z) {
+    
     for (int i = 0; i < 26; i++) {
+      
       if (pieces[i].getPos()[0] == x &&
         pieces[i].getPos()[1] == y && 
         pieces[i].getPos()[2] == z) { 
         return pieces[i];
       }
     }
+    println(x);
+    println(y);
+    println(z);
+    println("not found a piece");
     return null;
   }
+
+
+  //accessor method: returns color of face given a face, each face will always be 1 color
+  public String getCol(String face) {
+    switch(face) {
+    case "U" : 
+      return getPiece(0,0,1).col[2];
+    case "F" : 
+      return getPiece(0,-1,0).col[1];
+    case "R" : 
+      return getPiece(-1,0,0).col[0];
+    case "L" : 
+      return getPiece(1,0,0).col[0];
+    case "B" : 
+      return getPiece(0,1,0).col[1];
+    case "D" : 
+      return getPiece(0,0,-1).col[2];
+    default : 
+      print("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
+      return null;
+    }
+  }
+  
+  //accessor for solutionset
+  public ArrayList<String> solutionSet(){
+    return solutionSet;
+  }
+  public void solAdd(String addition){
+    solutionSet.add(addition);
+  }
+  public void solRemoveLast(){
+    if(solutionSet.size() > 0){
+      solutionSet.remove(solutionSet.size()-1);
+    }else{
+      print("nothing left to remove!");
+    }
+  }
+  //accessor method
+  public String[] faceRot(int[]pos) {
+    String[] returnMoves = new String[2];
+    if (Arrays.equals(pos, R) || Arrays.equals(pos, L)) {
+      returnMoves[0] = "X";
+      returnMoves[1] = "x";
+    } else if (Arrays.equals(pos, F) || Arrays.equals(pos, B)) {
+      returnMoves[0] = "Y";
+      returnMoves[1] = "y";
+    } else if (Arrays.equals(pos, U) || Arrays.equals(pos, D)) {
+      returnMoves[0] = "Z";
+      returnMoves[1] = "z";
+    } else {
+      println("invalid face");
+      return null;
+    }
+    return returnMoves;
+  }
+  //swap faces
+
   public void L() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == 1) {
@@ -252,5 +334,151 @@ public class Cube {
         pieces[i].rotateYCCW();
       }
     }
+  }
+  public void M() {
+    println("m is called");
+    Piece frontPiece = getPiece(0, -1, 0); 
+    String frontCol = frontPiece.getCol()[1];  
+    Piece topPiece = getPiece(0, 0, 1); 
+    String topCol = topPiece.getCol()[2]; 
+    Piece backPiece = getPiece(0, 1, 0); 
+    String backCol = backPiece.getCol()[1]; 
+    Piece downPiece = getPiece(0, 0, -1); 
+    String downCol = downPiece.getCol()[2]; 
+    frontPiece.swapFaceColor("y", topCol);
+    topPiece.swapFaceColor("z", backCol);
+    backPiece.swapFaceColor("y", downCol);
+    downPiece.swapFaceColor("z", frontCol);
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[0] == 0 && pieces[i].getPos()[1] != 0 && pieces[i].getPos()[2] != 0) {
+        pieces[i].rotateXCW();
+      }
+    }
+    
+  }
+  public void MPrime() {
+    Piece frontPiece = getPiece(0, -1, 0); 
+    String frontCol = frontPiece.getCol()[1];  
+    Piece topPiece = getPiece(0, 0, 1); 
+    String topCol = topPiece.getCol()[2]; 
+    Piece backPiece = getPiece(0, 1, 0); 
+    String backCol = backPiece.getCol()[1]; 
+    Piece downPiece = getPiece(0, 0, -1); 
+    String downCol = downPiece.getCol()[2]; 
+    frontPiece.swapFaceColor("y", downCol);
+    topPiece.swapFaceColor("z", frontCol);
+    backPiece.swapFaceColor("y", topCol);
+    downPiece.swapFaceColor("z", backCol);
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[0] == 0 && pieces[i].getPos()[1] != 0 && pieces[i].getPos()[2] != 0) {
+        pieces[i].rotateXCCW();
+      }
+    }
+  }
+  public void E() {
+    Piece frontPiece = getPiece(0, -1, 0); 
+    String frontCol = frontPiece.getCol()[1];  
+    Piece rightPiece = getPiece(-1, 0, 0); 
+    String rightCol = rightPiece.getCol()[0]; 
+    Piece backPiece = getPiece(0, 1, 0); 
+    String backCol = backPiece.getCol()[1]; 
+    Piece leftPiece = getPiece(1, 0, 0); 
+    String leftCol = leftPiece.getCol()[0]; 
+    frontPiece.swapFaceColor("y", leftCol);
+    rightPiece.swapFaceColor("x", frontCol);
+    backPiece.swapFaceColor("y", rightCol);
+    leftPiece.swapFaceColor("x", backCol);
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[2] == 0 && pieces[i].getPos()[0] != 0 && pieces[i].getPos()[1] != 0) {
+        pieces[i].rotateZCCW();
+      }
+    }
+  }
+  public void EPrime() {
+    Piece frontPiece = getPiece(0, -1, 0); 
+    String frontCol = frontPiece.getCol()[1];  
+    Piece rightPiece = getPiece(-1, 0, 0); 
+    String rightCol = rightPiece.getCol()[0]; 
+    Piece backPiece = getPiece(0, 1, 0); 
+    String backCol = backPiece.getCol()[1]; 
+    Piece leftPiece = getPiece(1, 0, 0); 
+    String leftCol = leftPiece.getCol()[0]; 
+    frontPiece.swapFaceColor("y", rightCol);
+    rightPiece.swapFaceColor("x", backCol);
+    backPiece.swapFaceColor("y", leftCol);
+    leftPiece.swapFaceColor("x", frontCol);
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[2] == 0 && pieces[i].getPos()[0] != 0 && pieces[i].getPos()[1] != 0) {
+        pieces[i].rotateZCW();
+      }
+    }
+  } 
+  public void S() {
+    Piece upPiece = getPiece(0, 0, 1); 
+    String upCol = upPiece.getCol()[2];  
+    Piece rightPiece = getPiece(-1, 0, 0); 
+    String rightCol = rightPiece.getCol()[0]; 
+    Piece downPiece = getPiece(0, 0, -1); 
+    String downCol = downPiece.getCol()[2]; 
+    Piece leftPiece = getPiece(1, 0, 0); 
+    String leftCol = leftPiece.getCol()[0]; 
+    upPiece.swapFaceColor("z", leftCol);
+    rightPiece.swapFaceColor("x", upCol);
+    downPiece.swapFaceColor("z", rightCol);
+    leftPiece.swapFaceColor("x", downCol);
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[1] == 0 && pieces[i].getPos()[0] != 0 && pieces[i].getPos()[2] != 0) {
+        pieces[i].rotateYCW();
+      }
+    }
+  } 
+  public void SPrime() {
+    Piece upPiece = getPiece(0, 0, 1); 
+    String upCol = upPiece.getCol()[2];  
+    Piece rightPiece = getPiece(-1, 0, 0); 
+    String rightCol = rightPiece.getCol()[0]; 
+    Piece downPiece = getPiece(0, 0, -1); 
+    String downCol = downPiece.getCol()[2]; 
+    Piece leftPiece = getPiece(1, 0, 0); 
+    String leftCol = leftPiece.getCol()[0]; 
+    upPiece.swapFaceColor("z", rightCol);
+    rightPiece.swapFaceColor("x", downCol);
+    downPiece.swapFaceColor("z", leftCol);
+    leftPiece.swapFaceColor("x", upCol);
+    for (int i = 0; i < pieces.length; i ++) {
+      if (pieces[i].getPos()[1] == 0 && pieces[i].getPos()[0] != 0 && pieces[i].getPos()[2] != 0) {
+        pieces[i].rotateYCCW();
+      }
+    }
+  }
+  public void X() {
+    RPrime();
+    MPrime();
+    LPrime();
+  }
+  public void XPrime() {
+    L();
+    M(); 
+    R();
+  }
+  public void Z() {
+    UPrime();
+    E(); 
+    DPrime();
+  } 
+  public void ZPrime() {
+    U(); 
+    EPrime(); 
+    D();
+  }
+  public void Y() {
+    FPrime();
+    SPrime();
+    BPrime();
+  }
+  public void YPrime() {
+    F();
+    S();
+    B();
   }
 }
