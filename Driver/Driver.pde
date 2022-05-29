@@ -121,30 +121,42 @@ void mouseClicked() {
       solveCube.reset();
     } else if (mouseX > 0 && mouseX < 150 && mouseY > 800 && mouseY < 850) {
       solveCube.scramble();
-    } else if (mouseX > 175 && mouseX < 225 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 170 && mouseX < 220 && mouseY > 700 && mouseY < 750) {
       solveCube.L();
-    } else if (mouseX > 175 && mouseX < 225 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 170 && mouseX < 220 && mouseY > 800 && mouseY < 850) {
       solveCube.LPrime();
-    } else if (mouseX > 250 && mouseX < 300 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 240 && mouseX < 290 && mouseY > 700 && mouseY < 750) {
       solveCube.R();
-    } else if (mouseX > 250 && mouseX < 300 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 240 && mouseX < 290 && mouseY > 800 && mouseY < 850) {
       solveCube.RPrime();
-    } else if (mouseX > 325 && mouseX < 375 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 310 && mouseX < 360 && mouseY > 700 && mouseY < 750) {
       solveCube.U();
-    } else if (mouseX > 325 && mouseX < 375 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 310 && mouseX < 360 && mouseY > 800 && mouseY < 850) {
       solveCube.UPrime();
-    } else if (mouseX > 400 && mouseX < 450 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 380 && mouseX < 420 && mouseY > 700 && mouseY < 750) {
       solveCube.D();
-    } else if (mouseX > 400 && mouseX < 450 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 380 && mouseX < 420 && mouseY > 800 && mouseY < 850) {
       solveCube.DPrime();
-    } else if (mouseX > 475 && mouseX < 525 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 450 && mouseX < 500 && mouseY > 700 && mouseY < 750) {
       solveCube.F();
-    } else if (mouseX > 475 && mouseX < 525 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 450 && mouseX < 500 && mouseY > 800 && mouseY < 850) {
       solveCube.FPrime();
-    } else if (mouseX > 550 && mouseX < 600 && mouseY > 700 && mouseY < 750) {
+    } else if (mouseX > 510 && mouseX < 560 && mouseY > 700 && mouseY < 750) {
       solveCube.B();
-    } else if (mouseX > 550 && mouseX < 600 && mouseY > 800 && mouseY < 850) {
+    } else if (mouseX > 510 && mouseX < 560 && mouseY > 800 && mouseY < 850) {
       solveCube.BPrime();
+    } else if (mouseX > 580 && mouseX < 630 && mouseY > 700 && mouseY < 850) {
+      solveCube.M();
+    } else if (mouseX > 580 && mouseX < 630 && mouseY > 800 && mouseY < 850) {
+      solveCube.MPrime();
+    } else if (mouseX > 650 && mouseX < 700 && mouseY > 700 && mouseY < 850) {
+      solveCube.E();
+    } else if (mouseX > 650 && mouseX < 700 && mouseY > 800 && mouseY < 850) {
+      solveCube.EPrime();
+    } else if (mouseX > 720 && mouseX < 780 && mouseY > 700 && mouseY < 850) {
+      solveCube.S();
+    } else if (mouseX > 720 && mouseX < 780 && mouseY > 800 && mouseY < 850) {
+      solveCube.SPrime();
     }
   }
 }
@@ -162,46 +174,64 @@ void draw() {
   //scramble
   rect(0, 800, 150, 50);
   //L
-  rect(175, 700, 50, 50);
+  rect(170, 700, 50, 50);
   //Lprime
-  rect(175, 800, 50, 50);
+  rect(170, 800, 50, 50);
   //R
-  rect(250, 700, 50, 50);
+  rect(240, 700, 50, 50);
   //Rprime
-  rect(250, 800, 50, 50);
+  rect(240, 800, 50, 50);
   //U
-  rect(325, 700, 50, 50);
+  rect(310, 700, 50, 50);
   //Uprime
-  rect(325, 800, 50, 50);
+  rect(310, 800, 50, 50);
   //D
-  rect(400, 700, 50, 50);
+  rect(380, 700, 50, 50);
   //Dprime
-  rect(400, 800, 50, 50);
+  rect(380, 800, 50, 50);
   //F
-  rect(475, 700, 50, 50);
+  rect(450, 700, 50, 50);
   //Fprime
-  rect(475, 800, 50, 50);
+  rect(450, 800, 50, 50);
   //B
-  rect(550, 700, 50, 50);
+  rect(520, 700, 50, 50);
   //Bprime
-  rect(550, 800, 50, 50);
+  rect(520, 800, 50, 50);
+  //M
+  rect(590, 700, 50, 50);
+  //Mprime
+  rect(590, 800, 50, 50);
+  //E
+  rect(660, 700, 50, 50);
+  //Eprime
+  rect(660, 800, 50, 50);
+  //S
+  rect(730, 700, 50, 50);
+  //Sprime
+  rect(730, 800, 50, 50);
 
   fill(0);
   textSize(25);
   text("Reset", 42, 730);
   text("Scramble", 10, 830);
-  text("L", 190, 730);
-  text("L'", 190, 830);
-  text("R", 265, 730);
-  text("R'", 265, 830);
-  text("U", 340, 730);
-  text("U'", 340, 830);
-  text("D", 415, 730);
-  text("D'", 415, 830);
-  text("F", 490, 730);
-  text("F'", 490, 830);
-  text("B", 565, 730);
-  text("B'", 565, 830);
+  text("L", 188, 730);
+  text("L'", 188, 830);
+  text("R", 258, 730);
+  text("R'", 258, 830);
+  text("U", 328, 730);
+  text("U'", 328, 830);
+  text("D", 398, 730);
+  text("D'", 398, 830);
+  text("F", 468, 730);
+  text("F'", 468, 830);
+  text("B", 538, 730);
+  text("B'", 538, 830);
+  text("M", 608, 730);
+  text("M'", 608, 830);
+  text("E", 678, 730);
+  text("E'", 678, 830);
+  text("S", 748, 730);
+  text("S'", 748, 830);
 }
 void move(Cube cube, String move) {
   String[] moves = move.split(" ", 0);
