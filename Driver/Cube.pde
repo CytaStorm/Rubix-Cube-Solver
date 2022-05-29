@@ -155,8 +155,8 @@ public class Cube {
   //finds piece given 2 colors
   public Piece findPiece(String col1, String col2) {
     for (int i = 0; i < 26; i++) {
-      Integer col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
-      Integer col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
+      int col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
+      int col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
       if (col1Index != -1 && col2Index != -1 && col1Index != col2Index && pieces[i].getCol()[3-col1Index-col2Index] == null) {
         return pieces[i];
       }
@@ -166,9 +166,9 @@ public class Cube {
   //finds piece given 3 colors
   public Piece findPiece(String col1, String col2, String col3) {
     for (int i = 0; i < 26; i++) {
-      Integer col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
-      Integer col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
-      Integer col3Index = Arrays.asList(pieces[i].getCol()).indexOf(col3);
+      int col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
+      int col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
+      int col3Index = Arrays.asList(pieces[i].getCol()).indexOf(col3);
       if (col1Index != -1 && col2Index != -1 && col3Index != -1 && 
         col1Index != col2Index && col2Index != col3Index && col1Index != col3Index) {
         return pieces[i];
@@ -195,7 +195,10 @@ public class Cube {
     return null;
   }
 
-
+  //gets piece at element Piece
+  public Piece getPiece(int i){
+    return pieces[i];
+  }
   //accessor method: returns color of face given a face, each face will always be 1 color
   public String getCol(String face) {
     switch(face) {
@@ -234,22 +237,30 @@ public class Cube {
   //accessor method
   public String[] faceRot(int[]pos) {
     String[] returnMoves = new String[2];
-    if (Arrays.equals(pos, R) || Arrays.equals(pos, L)) {
+    if (Arrays.equals(pos, R)) {
       returnMoves[0] = "X";
       returnMoves[1] = "x";
-    } else if (Arrays.equals(pos, F) || Arrays.equals(pos, B)) {
-      returnMoves[0] = "Y";
-      returnMoves[1] = "y";
-    } else if (Arrays.equals(pos, U) || Arrays.equals(pos, D)) {
-      returnMoves[0] = "Z";
-      returnMoves[1] = "z";
+    } else if (Arrays.equals(pos, L)){
+      returnMoves[0] = "L";
+      returnMoves[1] = "l";
+    } else if (Arrays.equals(pos, F)) {
+      returnMoves[0] = "F";
+      returnMoves[1] = "f";
+    } else if (Arrays.equals(pos, B)){
+      returnMoves[0] = "B";
+      returnMoves[1] = "b";
+    } else if (Arrays.equals(pos, D)){
+      returnMoves[0] = "D";
+      returnMoves[1] = "d";
+    } else if (Arrays.equals(pos, U)) {
+      returnMoves[0] = "U";
+      returnMoves[1] = "u";
     } else {
       println("invalid face");
       return null;
     }
     return returnMoves;
   }
-  //swap faces
 
   public void L() {
     for (int i = 0; i < pieces.length; i++) {

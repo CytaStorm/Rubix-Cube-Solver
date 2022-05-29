@@ -351,90 +351,104 @@ void display() {
   }
 }
 void solve(Cube cube) {
-  solving = true;
-  cross(cube);
+  // solving = true;
+  // cross(cube);
   //crossCorners(cube);
   //secondLayer(cube);
   //secondCross(cube);
   //edges(cube);
   //corners(cube);
   //print("solved!");
-  solving = false;
+  // solving = false;
 }
+
 void cross(Cube cube) {
 
   println("cross WIP!");
   Piece ulPiece = cube.findPiece(cube.getCol("U"), cube.getCol("L")); //finds pos of 4 edge pieces for up cross
-  Piece urPiece = cube.findPiece(cube.getCol("U"), cube.getCol("R")); 
-  Piece ubPiece = cube.findPiece(cube.getCol("U"), cube.getCol("B")); 
-  Piece ufPiece = cube.findPiece(cube.getCol("U"), cube.getCol("F"));
+  // Piece urPiece = cube.findPiece(cube.getCol("U"), cube.getCol("R")); 
+  // Piece ubPiece = cube.findPiece(cube.getCol("U"), cube.getCol("B")); 
+  // Piece ufPiece = cube.findPiece(cube.getCol("U"), cube.getCol("F"));
 
-  //println(ulPiece);
+  println(ulPiece);
   //println(urPiece);
   //println(uuPiece);
   //println(udPiece);
 
-  crossEdgeSolver(cube, ulPiece, cube.getPiece(1, 0, 0), "L L", "E L e l");
-  crossEdgeSolver(cube, urPiece, cube.getPiece(-1, 0, 0), "R R", "e R E r");
-  move(cube, "Z");
-  crossEdgeSolver(cube, ubPiece, cube.getPiece(0, -1, 0), "L L", "E L e l");
-  crossEdgeSolver(cube, ufPiece, cube.getPiece(0, 1, 0), "R R", "e R E r");
-  move(cube, "z");
+  fireFlower(cube, ulPiece);
 }
-void crossEdgeSolver(Cube cube, Piece edgePiece, Piece facePiece, String move1, String move2) {
-  println("crossEdgeSolver WIP"); 
-  //checks if piece is in right place
-  if (Arrays.equals(edgePiece.getPos(), edgePiece.getDesPos())) {
-    println("In right place!");
-    return;
-  }
-  String undoMove = null;
-  String cw;
-  String ccw;
-  if (edgePiece.getPos()[2] == 0) {//if edge piece is in middle row
-    int[] tempPos = edgePiece.getPos().clone();
-    tempPos[0] = 0;
-    cw = cube.faceRot(tempPos)[1];
-    ccw = cube.faceRot(tempPos)[0];
+void fireFlower(Cube cube, Piece edgePiece){
+  if(edgePiece.getPos()[2] == 0){
 
-    if (Arrays.equals(edgePiece.getPos(), new int[] {1, -1, 0}) || Arrays.equals(edgePiece.getPos(), new int[]{-1, 1, 0})) {
-      move(cube, cw);
-      undoMove = ccw;
-    } else {
-      move(cube, ccw);
-      undoMove = cw;
-    }
-  } else if (edgePiece.getPos()[2] == 1) {
-    int[] tempPos = edgePiece.getPos().clone();
-    tempPos[2] = 0;
-    cw = cube.faceRot(tempPos)[1];
-    ccw = cube.faceRot(tempPos)[0];
-    move(cube, ccw + " " + ccw);
-    if (edgePiece.getPos()[0] != facePiece.getPos()[0]) {
-      undoMove = cw + " " + cw;
-    }
-  }
-
-  print("Is it in top? " + (edgePiece.getPos()[2] == -1));
-
-  int count = 0;
-  while (!Arrays.equals(new int[]{edgePiece.getPos()[0], edgePiece.getPos()[1]}, 
-    new int[]{facePiece.getPos()[0], facePiece.getPos()[1]})) {
-    move(cube, "B");
-    count += 1;
-    if (count == 10) {
-      print("stuck in loop?");
-    }
-  }
-  if (undoMove != null) {
-    move(cube, undoMove);
-  }
-  if (edgePiece.getCol()[0] == facePiece.getCol()[0]) {
-    move(cube, move1);
-  } else {
-    move(cube, move2);
   }
 }
+int orangeOriented(Cube cube){
+  int result = 0;
+  for(int i = 0; i < 26; i++){
+    if(cube.getPiece(i).getPos()[2] == 1){
+      if(Arrays.asList(cube.getPiece(i).getCol()).indexOf("orange") != -1){
+        result ++;
+      }
+    }
+  }
+  return result;
+}
+// void crossEdgeSolver(Cube cube, Piece edgePiece) {
+//   println("crossEdgeSolver WIP"); 
+//   //checks if piece is in right place
+//   if (Arrays.equals(edgePiece.getPos(), edgePiece.getDesPos())) {
+//     println("In right place!");
+//     return;
+//   }
+//   String undoMove = null;
+//   String cw;
+//   String ccw;
+//   if (edgePiece.getPos()[2] == 0) {//if edge piece is in middle row
+//     int[] tempPos = edgePiece.getPos().clone();
+//     tempPos[0] = 0;
+//     cw = cube.faceRot(tempPos)[1];
+//     ccw = cube.faceRot(tempPos)[0];
+
+//     if (Arrays.equals(edgePiece.getPos(), new int[] {1, -1, 0}) || Arrays.equals(edgePiece.getPos(), new int[]{-1, 1, 0})) {
+//       move(cube, cw);
+//       undoMove = ccw;
+//     } else {
+//       move(cube, ccw);
+//       undoMove = cw;
+//     }
+//   } else if (edgePiece.getPos()[2] == 1) {
+//     int[] tempPos = edgePiece.getPos().clone();
+//     tempPos[2] = 0;
+//     cw = cube.faceRot(tempPos)[1];
+//     ccw = cube.faceRot(tempPos)[0];
+//     move(cube, ccw + " " + ccw);
+//     if (edgePiece.getPos()[0] != facePiece.getPos()[0]) {
+//       undoMove = cw + " " + cw;
+//     }
+//   }
+
+//   print("Is it in top? " + (edgePiece.getPos()[2] == -1));
+
+//   int count = 0;
+//   while (!Arrays.equals(new int[]{edgePiece.getPos()[0], edgePiece.getPos()[1]}, 
+//     new int[]{facePiece.getPos()[0], facePiece.getPos()[1]})) {
+//     move(cube, "B");
+//     count += 1;
+//     if (count == 10) {
+//       print("stuck in loop?");
+//       break;
+//     }
+//   }
+//   if (undoMove != null) {
+//     move(cube, undoMove);
+//   }
+//   if (edgePiece.getCol()[0] == faceColor) {
+//     move(cube, move1);
+//   } else {
+//     move(cube, move2);
+//   }
+// }
+
 public void crossCorners(Cube cube) { 
   Piece cNW = cube.findPiece(cube.getCol("U"), cube.getCol("L"), cube.getCol("B"));
   Piece cNE = cube.findPiece(cube.getCol("U"), cube.getCol("R"), cube.getCol("B"));

@@ -41,6 +41,26 @@ public class Piece {
     }
     return result;
   }
+  //return is corner
+  public boolean isCorner(){
+    int result = 0;
+    for(String i:col){
+      if(i != null){
+        result ++;
+      }
+    }
+    return result == 3;
+  }
+  //return is edge?
+  public boolean isEdge(){
+    int result = 0;
+    for(String i:col){
+      if(i != null){
+        result ++;
+      }
+    }
+    return result == 2;
+  }
   public void rotateXCW() {
     int[] tempPos = new int[] {pos[1], pos[2]};
     tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
