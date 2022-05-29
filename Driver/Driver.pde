@@ -1,7 +1,6 @@
 import java.util.*;
 Cube solveCube = new Cube(); 
-Cube refCube = new Cube(); 
-
+boolean solving = false;
 String[][] upSide = new String[3][3];
 String[][] leftSide = new String[3][3];
 String[][] frontSide = new String[3][3];
@@ -33,83 +32,84 @@ public color stringToColor(String col) {
 
 
 void keyPressed() {
-  switch(key) {
-  case 'q': 
-    solveCube.L();
-    break;
-  case 'a': 
-    solveCube.LPrime();
-    break;
-  case 'w': 
-    solveCube.R();
-    break;
-  case 's': 
-    solveCube.RPrime();
-    break;
-  case 'e': 
-    solveCube.U();
-    break;
-  case 'd': 
-    solveCube.UPrime();
-    break;
-  case 'r': 
-    solveCube.D();
-    break;
-  case 'f': 
-    solveCube.D();
-    break;
-  case 't': 
-    solveCube.F();
-    break;
-  case 'g': 
-    solveCube.FPrime();
-    break;
-  case 'y': 
-    solveCube.B();
-    break;
-  case 'h': 
-    solveCube.BPrime();
-    break;
-  case 'z':
-    solve(solveCube);
-    break;
-  case 'l':
-    solve(solveCube);
-    move(solutionSet);
-  default: 
-    break;
+  if (!solving) {
+    switch(key) {
+    case 'q': 
+      solveCube.L();
+      break;
+    case 'a': 
+      solveCube.LPrime();
+      break;
+    case 'w': 
+      solveCube.R();
+      break;
+    case 's': 
+      solveCube.RPrime();
+      break;
+    case 'e': 
+      solveCube.U();
+      break;
+    case 'd': 
+      solveCube.UPrime();
+      break;
+    case 'r': 
+      solveCube.D();
+      break;
+    case 'f': 
+      solveCube.D();
+      break;
+    case 't': 
+      solveCube.F();
+      break;
+    case 'g': 
+      solveCube.FPrime();
+      break;
+    case 'y': 
+      solveCube.B();
+      break;
+    case 'h': 
+      solveCube.BPrime();
+      break;
+    case 'z':
+      solve(solveCube);
+      break;
+    default: 
+      break;
+    }
   }
 }
 
 void mouseClicked() {
-  if (mouseX > 0 && mouseX < 200 && mouseY > 700 && mouseY < 750) {
-    solveCube.reset();
-  } else if (mouseX > 0 && mouseX < 200 && mouseY > 800 && mouseY < 850) {
-    solveCube.scramble();
-  } else if (mouseX > 400 && mouseX < 450 && mouseY > 700 && mouseY < 750) {
-    solveCube.L();
-  } else if (mouseX > 400 && mouseX < 450 && mouseY > 800 && mouseY < 850) {
-    solveCube.LPrime();
-  } else if (mouseX > 500 && mouseX < 550 && mouseY > 700 && mouseY < 750) {
-    solveCube.R();
-  } else if (mouseX > 500 && mouseX < 550 && mouseY > 800 && mouseY < 850) {
-    solveCube.RPrime();
-  } else if (mouseX > 600 && mouseX < 650 && mouseY > 700 && mouseY < 750) {
-    solveCube.U();
-  } else if (mouseX > 600 && mouseX < 650 && mouseY > 800 && mouseY < 850) {
-    solveCube.UPrime();
-  } else if (mouseX > 700 && mouseX < 750 && mouseY > 700 && mouseY < 750) {
-    solveCube.D();
-  } else if (mouseX > 700 && mouseX < 750 && mouseY > 800 && mouseY < 850) {
-    solveCube.DPrime();
-  } else if (mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 750) {
-    solveCube.F();
-  } else if (mouseX > 800 && mouseX < 850 && mouseY > 800 && mouseY < 850) {
-    solveCube.FPrime();
-  } else if (mouseX > 900 && mouseX < 950 && mouseY > 700 && mouseY < 750) {
-    solveCube.B();
-  } else if (mouseX > 900 && mouseX < 950 && mouseY > 800 && mouseY < 850) {
-    solveCube.BPrime();
+  if (!solving) {
+    if (mouseX > 0 && mouseX < 200 && mouseY > 700 && mouseY < 750) {
+      solveCube.reset();
+    } else if (mouseX > 0 && mouseX < 200 && mouseY > 800 && mouseY < 850) {
+      solveCube.scramble();
+    } else if (mouseX > 400 && mouseX < 450 && mouseY > 700 && mouseY < 750) {
+      solveCube.L();
+    } else if (mouseX > 400 && mouseX < 450 && mouseY > 800 && mouseY < 850) {
+      solveCube.LPrime();
+    } else if (mouseX > 500 && mouseX < 550 && mouseY > 700 && mouseY < 750) {
+      solveCube.R();
+    } else if (mouseX > 500 && mouseX < 550 && mouseY > 800 && mouseY < 850) {
+      solveCube.RPrime();
+    } else if (mouseX > 600 && mouseX < 650 && mouseY > 700 && mouseY < 750) {
+      solveCube.U();
+    } else if (mouseX > 600 && mouseX < 650 && mouseY > 800 && mouseY < 850) {
+      solveCube.UPrime();
+    } else if (mouseX > 700 && mouseX < 750 && mouseY > 700 && mouseY < 750) {
+      solveCube.D();
+    } else if (mouseX > 700 && mouseX < 750 && mouseY > 800 && mouseY < 850) {
+      solveCube.DPrime();
+    } else if (mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 750) {
+      solveCube.F();
+    } else if (mouseX > 800 && mouseX < 850 && mouseY > 800 && mouseY < 850) {
+      solveCube.FPrime();
+    } else if (mouseX > 900 && mouseX < 950 && mouseY > 700 && mouseY < 750) {
+      solveCube.B();
+    } else if (mouseX > 900 && mouseX < 950 && mouseY > 800 && mouseY < 850) {
+      solveCube.BPrime();
+    }
   }
 }
 
@@ -117,6 +117,7 @@ void draw() {
   background(128);
   text("mouseX: " + mouseX, 0, 50);
   text("mouseY: " + mouseY, 0, 100);
+  text("Keyboard disabled: " + solving, 0, 150);
   update();
   display();
   fill(255, 255, 255);
@@ -167,16 +168,16 @@ void draw() {
   text("B'", 915, 830);
 }
 void move(Cube cube, String move) {
-  String[] moves = str.split(" ", 1);
-  
-  for (String i: moves) {
+  String[] moves = move.split(" ", 0);
+
+  for (String i : moves) {
     cube.solAdd(i);
-    switch(i){
+    switch(i) {
     case "L": 
       solveCube.L();
       break;
     case "l": 
-      solveCube.LPrime():
+      solveCube.LPrime();
       break;
     case "R": 
       solveCube.R();
@@ -314,15 +315,17 @@ void display() {
   }
 }
 void solve(Cube cube) {
-  cross(cube, solutionSet);
+  solving = true;
+  cross(cube);
   //crossCorners(cube);
   //secondLayer(cube);
   //secondCross(cube);
   //edges(cube);
   //corners(cube);
   //print("solved!");
+  solving = false;
 }
-void cross(Cube cube, ArrayList<String> solutionSet) {
+void cross(Cube cube) {
 
   println("cross WIP!");
   Piece ulPiece = cube.findPiece(cube.getCol("U"), cube.getCol("L")); //finds pos of 4 edge pieces for up cross
@@ -335,12 +338,14 @@ void cross(Cube cube, ArrayList<String> solutionSet) {
   //println(uuPiece);
   //println(udPiece);
 
-  crossEdgeSolver(cube, ulPiece);
-  crossEdgeSolver(cube, urPiece);
-  crossEdgeSolver(cube, ubPiece);
-  crossEdgeSolver(cube, ufPiece);
+  crossEdgeSolver(cube, ulPiece, cube.getPiece(1, 0, 0), "L L", "E L e l");
+  crossEdgeSolver(cube, urPiece, cube.getPiece(-1, 0, 0), "R R", "e R E r");
+  move(cube, "Z");
+  crossEdgeSolver(cube, ubPiece, cube.getPiece(0, -1, 0), "L L", "E L e l");
+  crossEdgeSolver(cube, ufPiece, cube.getPiece(0, 1, 0), "R R", "e R E r");
+  move(cube, "z");
 }
-void crossEdgeSolver(Cube cube, Piece edgePiece) {
+void crossEdgeSolver(Cube cube, Piece edgePiece, Piece facePiece, String move1, String move2) {
   println("crossEdgeSolver WIP"); 
   //checks if piece is in right place
   if (Arrays.equals(edgePiece.getPos(), edgePiece.getDesPos())) {
@@ -348,21 +353,53 @@ void crossEdgeSolver(Cube cube, Piece edgePiece) {
     return;
   }
   String undoMove;
-  if (edgePiece.getPos()[2] == 0){//if edge piece is in middle row
+  String cw;
+  String ccw;
+  if (edgePiece.getPos()[2] == 0) {//if edge piece is in middle row
     int[] tempPos = edgePiece.getPos().clone();
     tempPos[0] = 0;
-    String cw = cube.faceRot(tempPos)[1];
-    String ccw = cube.faceRot(tempPos)[0];
-    
-    if(Arrays.equals(edgePiece.getPos(), new int[] {1, -1, 0}) || Arrays.equals(edgePiece.getPos(), new int[]{-1, 1, 0})){
-      cube.move(cw);
-      undo = cc;
-    }else{
-      move(cc);
-      undo_move = cw;
+    cw = cube.faceRot(tempPos)[1];
+    ccw = cube.faceRot(tempPos)[0];
+
+    if (Arrays.equals(edgePiece.getPos(), new int[] {1, -1, 0}) || Arrays.equals(edgePiece.getPos(), new int[]{-1, 1, 0})) {
+      move(cube, cw);
+      undoMove = ccw;
+    } else {
+      move(cube, ccw);
+      undoMove = cw;
     }
-  println("not in right place!");
+  } else if (edgePiece.getPos()[2] == 1) {
+    int[] tempPos = edgePiece.getPos().clone();
+    tempPos[2] = 0;
+    cw = cube.faceRot(tempPos)[1];
+    ccw = cube.faceRot(tempPos)[0];
+    move(cube, ccw + " " + ccw);
+    if (edgePiece.getPos()[0] != facePiece.getPos()[0]) {
+      undoMove = cw + " " + cw;
+    }
+  }
+
+  print("Is it in top? " + (edgePiece.getPos()[2] == -1));
+
+  int count = 0;
+  while (!Arrays.equals(new int[]{edgePiece.getPos()[0], edgePiece.getPos()[1]}, 
+    new int[]{facePiece.getPos()[0], facePiece.getPos()[1]})) {
+    move(cube, "B");
+    count += 1;
+    if (count == 10) {
+      print("stuck in loop?");
+    }
+  }
+  if (undoMove != null){
+    move(cube, undoMove);
+  }
+  if(edgePiece.getCol()[0] == facePiece.getCol()[0]){
+    move(cube, move1);
+  }else{
+    move(cube, move2);
+  }
 }
+
 //  public void crossCorners(Cube cube) {
 //    println("crossCorners WIP!");
 //  }

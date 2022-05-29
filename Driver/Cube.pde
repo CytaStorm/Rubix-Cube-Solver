@@ -1,31 +1,24 @@
 import java.util.*;
 public class Cube {
   ArrayList solutionSet = new ArrayList<String>(); 
-  private final int[] R = new int {
+  private final int[] R = new int[] {
     -1, 0, 0
   };
-  private final int[] L = new int {
+  private final int[] L = new int[] {
     1, 0, 0
   };
-  private final int[] U = new int {
+  private final int[] U = new int[] {
     0, 0, 1
   };
-  private final int[] D = new int {
+  private final int[] D = new int[] {
     0, 0, -1
   };
-  private final int[] F = new int {
+  private final int[] F = new int[] {
     0, 1, 0
   };
-  private final int[] B = new int {
+  private final int[] B = new int[] {
     0, -1, 0
   };
-
-  private final String CU = "orange";
-  private final String CF = "white";
-  private final String CR = "blue";
-  private final String CL = "green";
-  private final String CB = "yellow";
-  private final String CD = "red";
 
   private Piece[] pieces = new Piece[26];
   public Cube() {
@@ -201,17 +194,17 @@ public class Cube {
   public String getCol(String face) {
     switch(face) {
     case "U" : 
-      return CU;
+      return getPiece(0,0,1).col[2];
     case "F" : 
-      return CF;
+      return getPiece(0,-1,0).col[1];
     case "R" : 
-      return CR;
+      return getPiece(-1,0,0).col[0];
     case "L" : 
-      return CL;
+      return getPiece(1,0,0).col[0];
     case "B" : 
-      return CB;
+      return getPiece(0,1,0).col[1];
     case "D" : 
-      return CD;
+      return getPiece(0,0,-1).col[2];
     default : 
       print("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
       return null;
@@ -250,6 +243,8 @@ public class Cube {
     }
     return returnMoves;
   }
+  //swap faces
+
   public void L() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == 1) {

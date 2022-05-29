@@ -14,8 +14,8 @@ public class Piece {
     col[2] = cZ;
     desPos = pos.clone();
   }
-  
-  public String toString(){
+
+  public String toString() {
     return Arrays.toString(pos) + ", Desired Position " + Arrays.toString(getDesPos());
   }
 
@@ -24,7 +24,7 @@ public class Piece {
     return col;
   }
   //Accessor, returns desPos
-  public int[] getDesPos(){
+  public int[] getDesPos() {
     return desPos;
   }
   //Accessor returns pos of array
@@ -68,6 +68,27 @@ public class Piece {
       //println("switched edge");
       //println(Arrays.toString(col));
       //return;
+    }
+  }
+  public void swapFaceColor(String dir, String newCol) {
+    switch(dir) {
+    case "x": 
+      col[0] = newCol;
+      col[1] = null;
+      col[2] = null;
+      break;
+    case "y": 
+      col[0] = null;
+      col[1] = newCol;
+      col[2] = null;
+      break;
+    case "z":
+      col[0] = null;
+      col[1] = null;
+      col[2] = newCol;
+      break;
+    default: 
+      break;
     }
   }
   public void rotateXCCW() {
