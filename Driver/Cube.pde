@@ -345,16 +345,16 @@ public class Cube {
     String backCol = backPiece.getCol()[1]; 
     Piece downPiece = getPiece(0, 0, -1); 
     String downCol = downPiece.getCol()[2]; 
-    
+    frontPiece.swapFaceColor("y", topCol);
+    topPiece.swapFaceColor("z", backCol);
+    backPiece.swapFaceColor("y", downCol);
+    downPiece.swapFaceColor("z", frontCol);
     for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[0] == 0 && pieces[i].getPos()[1] != 0 && pieces[i].getPos()[2] != 0) {
         pieces[i].rotateXCW();
       }
     }
-    frontPiece.swapFaceColor("y", topCol);
-    topPiece.swapFaceColor("z", backCol);
-    backPiece.swapFaceColor("y", downCol);
-    downPiece.swapFaceColor("z", frontCol);
+    
   }
   public void MPrime() {
     Piece frontPiece = getPiece(0, -1, 0); 
@@ -370,8 +370,8 @@ public class Cube {
     backPiece.swapFaceColor("y", topCol);
     downPiece.swapFaceColor("z", backCol);
     for (int i = 0; i < pieces.length; i ++) {
-      if (pieces[i].getPos()[0] == 0) {
-        pieces[i].rotateXCW();
+      if (pieces[i].getPos()[0] == 0 && pieces[i].getPos()[1] != 0 && pieces[i].getPos()[2] != 0) {
+        pieces[i].rotateXCCW();
       }
     }
   }
@@ -389,8 +389,8 @@ public class Cube {
     backPiece.swapFaceColor("y", rightCol);
     leftPiece.swapFaceColor("x", backCol);
     for (int i = 0; i < pieces.length; i ++) {
-      if (pieces[i].getPos()[2] == 0) {
-        pieces[i].rotateXCCW();
+      if (pieces[i].getPos()[2] == 0 && pieces[i].getPos()[0] != 0 && pieces[i].getPos()[1] != 0) {
+        pieces[i].rotateZCCW();
       }
     }
   }
@@ -408,8 +408,8 @@ public class Cube {
     backPiece.swapFaceColor("y", leftCol);
     leftPiece.swapFaceColor("x", frontCol);
     for (int i = 0; i < pieces.length; i ++) {
-      if (pieces[i].getPos()[2] == 0) {
-        pieces[i].rotateXCW();
+      if (pieces[i].getPos()[2] == 0 && pieces[i].getPos()[0] != 0 && pieces[i].getPos()[1] != 0) {
+        pieces[i].rotateZCW();
       }
     }
   } 
@@ -422,13 +422,13 @@ public class Cube {
     String downCol = downPiece.getCol()[2]; 
     Piece leftPiece = getPiece(1, 0, 0); 
     String leftCol = leftPiece.getCol()[0]; 
-    upPiece.swapFaceColor("y", leftCol);
+    upPiece.swapFaceColor("z", leftCol);
     rightPiece.swapFaceColor("x", upCol);
-    downPiece.swapFaceColor("y", rightCol);
+    downPiece.swapFaceColor("z", rightCol);
     leftPiece.swapFaceColor("x", downCol);
     for (int i = 0; i < pieces.length; i ++) {
-      if (pieces[i].getPos()[1] == 0) {
-        pieces[i].rotateXCW();
+      if (pieces[i].getPos()[1] == 0 && pieces[i].getPos()[0] != 0 && pieces[i].getPos()[2] != 0) {
+        pieces[i].rotateYCW();
       }
     }
   } 
@@ -441,13 +441,13 @@ public class Cube {
     String downCol = downPiece.getCol()[2]; 
     Piece leftPiece = getPiece(1, 0, 0); 
     String leftCol = leftPiece.getCol()[0]; 
-    upPiece.swapFaceColor("y", rightCol);
+    upPiece.swapFaceColor("z", rightCol);
     rightPiece.swapFaceColor("x", downCol);
-    downPiece.swapFaceColor("y", leftCol);
+    downPiece.swapFaceColor("z", leftCol);
     leftPiece.swapFaceColor("x", upCol);
     for (int i = 0; i < pieces.length; i ++) {
-      if (pieces[i].getPos()[1] == 0) {
-        pieces[i].rotateXCCW();
+      if (pieces[i].getPos()[1] == 0 && pieces[i].getPos()[0] != 0 && pieces[i].getPos()[2] != 0) {
+        pieces[i].rotateYCCW();
       }
     }
   }

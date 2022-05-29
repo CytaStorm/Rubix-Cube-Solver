@@ -42,32 +42,28 @@ public class Piece {
     return result;
   }
   public void rotateXCW() {
-    //println("before: " + Arrays.toString(pos));
     int[] tempPos = new int[] {pos[1], pos[2]};
     tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
     pos[1] = tempPos[1];
     pos[2] = tempPos[0];
-    //println("after: " + Arrays.toString(pos));
     //corner piece
     if (col[1] != null && col[2] != null && col[0] != null) { //corner piece
       String storage = col[1];
       col[1] = col[2];
       col[2] = storage;
-      //println("switched!");
-      //println(Arrays.toString(col));
       //return;
     } else if (col[1] == null) { //edge piece
       col[1] = col[2];
       col[2] = null;
-      //println("switched edge");
-      //println(Arrays.toString(col));
       //return;
     } else if (col[2] == null) { //edge piece
       col[2] = col[1];
       col[1] = null;
-      //println("switched edge");
-      //println(Arrays.toString(col));
       //return;
+    } else {
+      String tempCol = col[1];
+      col[1] = col[2];
+      col[2] = tempCol;
     }
   }
   public void swapFaceColor(String dir, String newCol) {
@@ -108,6 +104,10 @@ public class Piece {
     } else if (col[2] == null) {
       col[2] = col[1];
       col[1] = null;
+    } else {
+      String tempCol = col[1];
+      col[1] = col[2];
+      col[2] = tempCol;
     }
   }
   public void rotateYCW() {
@@ -127,6 +127,10 @@ public class Piece {
     } else if (col[2] == null) {
       col[2] = col[0];
       col[0] = null;
+    } else {
+      String tempCol = col[0];
+      col[0] = col[2];
+      col[2] = tempCol;
     }
   }
   public void rotateYCCW() {
@@ -146,6 +150,10 @@ public class Piece {
     } else if (col[2] == null) {
       col[2] = col[0];
       col[0] = null;
+    } else {
+      String tempCol = col[0];
+      col[0] = col[2];
+      col[2] = tempCol;
     }
   }
   public void rotateZCW() {
@@ -165,6 +173,10 @@ public class Piece {
     } else if (col[0] == null) {
       col[0] = col[1];
       col[1] = null;
+    } else {
+      String tempCol = col[1];
+      col[1] = col[0];
+      col[0] = tempCol;
     }
   }
   public void rotateZCCW() {
@@ -184,6 +196,10 @@ public class Piece {
     } else if (col[1] == null) {
       col[1] = col[0];
       col[0] = null;
+    } else {
+      String tempCol = col[1];
+      col[1] = col[0];
+      col[0] = tempCol;
     }
   }
 }
