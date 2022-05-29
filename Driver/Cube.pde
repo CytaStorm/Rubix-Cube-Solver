@@ -278,7 +278,7 @@ public class Cube {
     frontPiece.swapFaceColor("y", topCol);
     topPiece.swapFaceColor("z", backCol);
     backPiece.swapFaceColor("y", downCol);
-    downPiece.swapFaceColor("y", frontCol);
+    downPiece.swapFaceColor("z", frontCol);
     for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[0] == 0) {
         pieces[i].rotateXCCW();
@@ -297,7 +297,7 @@ public class Cube {
     frontPiece.swapFaceColor("y", downCol);
     topPiece.swapFaceColor("z", frontCol);
     backPiece.swapFaceColor("y", topCol);
-    downPiece.swapFaceColor("y", backCol);
+    downPiece.swapFaceColor("z", backCol);
     for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[0] == 0) {
         pieces[i].rotateXCW();
@@ -313,10 +313,10 @@ public class Cube {
     String backCol = backPiece.getCol("B"); 
     Piece leftPiece = findPiece(1, 0, 0); 
     String leftCol = leftPiece.getCol("L"); 
-    frontPiece.swapFaceColor("y", downCol);
-    rightPiece.swapFaceColor("z", frontCol);
-    backPiece.swapFaceColor("y", topCol);
-    leftPiece.swapFaceColor("y", backCol);
+    frontPiece.swapFaceColor("y", leftCol);
+    rightPiece.swapFaceColor("x", frontCol);
+    backPiece.swapFaceColor("y", rightCol);
+    leftPiece.swapFaceColor("x", backCol);
     for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[2] == 0) {
         pieces[i].rotateXCCW();
@@ -324,6 +324,18 @@ public class Cube {
     }
   }
   public void EPrime() {
+    Piece frontPiece = findPiece(0, -1, 0); 
+    String frontCol = frontPiece.getCol("F");  
+    Piece rightPiece = findPiece(-1, 0, 0); 
+    String rightCol = rightPiece.getCol("R"); 
+    Piece backPiece = findPiece(0, 1, 0); 
+    String backCol = backPiece.getCol("B"); 
+    Piece leftPiece = findPiece(1, 0, 0); 
+    String leftCol = leftPiece.getCol("L"); 
+    frontPiece.swapFaceColor("y", rightCol);
+    rightPiece.swapFaceColor("x", backCol);
+    backPiece.swapFaceColor("y", leftCol);
+    leftPiece.swapFaceColor("x", frontCol);
     for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[2] == 0) {
         pieces[i].rotateXCW();
