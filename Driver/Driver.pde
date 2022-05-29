@@ -89,7 +89,22 @@ void keyPressed() {
       solveCube.SPrime();
       break;
     case 'z':
-      solve(solveCube);
+      solveCube.X();
+      break;
+    case 'x':
+      solveCube.Y();
+      break;
+    case 'c':
+      solveCube.Z();
+      break;
+    case 'v':
+      solveCube.XPrime();
+      break;
+    case 'b':
+      solveCube.YPrime();
+      break;
+    case 'n':
+      solveCube.ZPrime();
       break;
     default: 
       break;

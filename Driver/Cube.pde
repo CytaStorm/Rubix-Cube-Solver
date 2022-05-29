@@ -452,33 +452,33 @@ public class Cube {
     }
   }
   public void X() {
-    R();
+    RPrime();
     MPrime();
     LPrime();
   }
   public void XPrime() {
     L();
     M(); 
-    RPrime();
-  }
-  public void Y() {
-    U();
-    EPrime(); 
-    DPrime();
-  } 
-  public void YPrime() {
-    UPrime(); 
-    E(); 
-    D();
+    R();
   }
   public void Z() {
-    F();
-    S();
-    BPrime();
-  }
+    UPrime();
+    E(); 
+    DPrime();
+  } 
   public void ZPrime() {
+    U(); 
+    EPrime(); 
+    D();
+  }
+  public void Y() {
     FPrime();
     SPrime();
+    BPrime();
+  }
+  public void YPrime() {
+    F();
+    S();
     B();
   }
 }
