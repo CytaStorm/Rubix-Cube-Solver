@@ -401,7 +401,13 @@ public class Cube {
     D();
   }
   public void Z() {
+    F();
+    S();
+    BPrime();
   }
   public void ZPrime() {
+    FPrime();
+    SPrime();
+    B();
   }
 }
