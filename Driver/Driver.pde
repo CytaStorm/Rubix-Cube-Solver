@@ -352,7 +352,7 @@ void crossEdgeSolver(Cube cube, Piece edgePiece, Piece facePiece, String move1, 
     println("In right place!");
     return;
   }
-  String undoMove;
+  String undoMove = null;
   String cw;
   String ccw;
   if (edgePiece.getPos()[2] == 0) {//if edge piece is in middle row
