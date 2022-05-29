@@ -268,7 +268,7 @@ public class Cube {
   }
   public void M() {
     LPrime();
-    R(); 
+    R();
   }
   public void MPrime() {
     L(); 
@@ -283,17 +283,11 @@ public class Cube {
     D();
   } 
   public void S() {
-    for (int i = 0; i < pieces.length; i ++) {
-      if (pieces[i].getPos()[1] == 0) {
-        pieces[i].rotateXCW();
-      }
-    }
+    FPrime();
+    B();
   } 
   public void SPrime() {
-    for (int i = 0; i < pieces.length; i ++) {
-      if (pieces[i].getPos()[1] == 0) {
-        pieces[i].rotateXCCW();
-      }
-    }
+    F();
+    BPrime();
   }
 }
