@@ -70,6 +70,18 @@ void keyPressed() {
     case 'h': 
       solveCube.BPrime();
       break;
+    case 'u':
+      solveCube.M();
+    case 'j':
+      solveCube.MPrime(); 
+    case 'i':
+      solveCube.E(); 
+    case 'k':
+      solveCube.EPrime();
+    case 'o':
+      solveCube.S(); 
+    case 'l':
+      solveCube.SPrime();
     case 'z':
       solve(solveCube);
       break;
@@ -338,7 +350,8 @@ void cross(Cube cube) {
   //println(uuPiece);
   //println(udPiece);
 
-  crossEdgeSolver(cube, ulPiece, cube.getPiece(1, 0, 0), "L L", "E L e l");
+  <<<<<<< HEAD
+    crossEdgeSolver(cube, ulPiece, cube.getPiece(1, 0, 0), "L L", "E L e l");
   crossEdgeSolver(cube, urPiece, cube.getPiece(-1, 0, 0), "R R", "e R E r");
   move(cube, "Z");
   crossEdgeSolver(cube, ubPiece, cube.getPiece(0, -1, 0), "L L", "E L e l");
@@ -390,28 +403,51 @@ void crossEdgeSolver(Cube cube, Piece edgePiece, Piece facePiece, String move1, 
       print("stuck in loop?");
     }
   }
-  if (undoMove != null){
+  if (undoMove != null) {
     move(cube, undoMove);
   }
-  if(edgePiece.getCol()[0] == facePiece.getCol()[0]){
+  if (edgePiece.getCol()[0] == facePiece.getCol()[0]) {
     move(cube, move1);
-  }else{
+  } else {
     move(cube, move2);
   }
 }
+public void crossCorners(Cube cube) { 
+  Piece cNW = cube.findPiece(cube.getCol("U"), cube.getCol("L"), cube.getCol("B"));
+  Piece cNE = cube.findPiece(cube.getCol("U"), cube.getCol("R"), cube.getCol("B"));
+  Piece cSW = cube.findPiece(cube.getCol("U"), cube.getCol("L"), cube.getCol("F"));
+  Piece cSE = cube.findPiece(cube.getCol("U"), cube.getCol("R"), cube.getCol("F"));
+  println("crossCorners WIP!");
+} 
 
-//  public void crossCorners(Cube cube) {
-//    println("crossCorners WIP!");
-//  }
-//  public void secondLayer(Cube cube) {
-//    println("secondLayer WIP!");
-//  }
-//  public void secondCross(Cube cube) {
-//    println("secondCross WIP!");
-//  }
-//  public void edges(Cube cube) {
-//    println("edges WIP!");
-//  }
-//  public void corners(Cube cube) {
-//    println("corners WIP!");
-//  }
+void crossCornerSolver(Cube cube, Piece corner, Piece right, Piece down) {
+  int[] temp = corner.getPos(); 
+  if (temp[2] == 1) {
+    temp = corner.getPos(); 
+    temp[0] = temp[2] = 0; 
+    String [] moveSet = cube.faceRotation(temp);
+    String cW = moveSet[0];
+    String cC = moveSet[1];  
+    int count = 0; 
+    String undo = cC; 
+    while (temp[2] != -1) {
+      tempSolutionSet.add(cW); 
+      count += 1;
+    }
+    if (count > 1) {
+      for (int i = 0; i < count; i++) {
+        tempSolutionSet.add(cC);
+      } 
+      count = 0; 
+      while (temp[2] != -1) {
+        tempSolutionSet.add(cC);
+        count += 1;
+      }
+      undo = cW;
+    }
+    tempSolutionSet.add("B"); 
+    for (int i = 0; i < count; i++) {
+      tempSolutionSet.add(undo);
+    }
+  }
+}
