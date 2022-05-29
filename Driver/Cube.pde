@@ -391,9 +391,14 @@ public class Cube {
     RPrime();
   }
   public void Y() {
-    
+    U();
+    EPrime(); 
+    DPrime();
   } 
   public void YPrime() {
+    UPrime(); 
+    E(); 
+    D();
   }
   public void Z() {
   }
