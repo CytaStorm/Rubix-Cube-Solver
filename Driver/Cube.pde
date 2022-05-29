@@ -225,7 +225,7 @@ public class Cube {
   public void solAdd(String addition){
     solutionSet.add(addition);
   }
-  public void solRemove(String addition){
+  public void solRemoveLast(){
     solutionSet.remove(solutionSet.size()-1);
   }
   //accessor method
