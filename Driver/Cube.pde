@@ -843,33 +843,46 @@ public class Cube {
   void redCross() {
     checkPosition();
   }
-  int checkPosition() { 
-    ArrayList<String> crossOrienter = new ArrayList<String>();
-    for (int i = solutionSet.size()-1; i > -1; i--) {
-      if (solutionSet.get(i).equals("X") || 
-        solutionSet.get(i).equals("x") || 
-        solutionSet.get(i).equals("Y") || 
-        solutionSet.get(i).equals("y") || 
-        solutionSet.get(i).equals("Z") || 
-        solutionSet.get(i).equals("z")) {
-        crossOrienter.add(solutionSet.get(i));
-      }
-    }
-    println(crossOrienter);
+  void checkPosition() { 
+    // ArrayList<String> crossOrienter = new ArrayList<String>();
+    // for (int i = solutionSet.size()-1; i > -1; i--) {
+    //   if (solutionSet.get(i).equals("X") || 
+    //     solutionSet.get(i).equals("x") || 
+    //     solutionSet.get(i).equals("Y") || 
+    //     solutionSet.get(i).equals("y") || 
+    //     solutionSet.get(i).equals("Z") || 
+    //     solutionSet.get(i).equals("z")) {
+    //     crossOrienter.add(solutionSet.get(i));
+    //   }
+    // }
+    // println(crossOrienter);
     // for(String i : crossOrienter){
     //   move(i);
     // }
-
-    int result = 0;
-    // for(int i = 0; i < pieces.length; i++){
-    //   Piece current = pieces[i];
-    //   if(current.isEdge() && current.zPos() == 1 && current.zCol().equals("yellow"){
-
-    //   }
-    // }
-
-    // check for horizontal line
-    return -1;
+    Piece face = getPiece(0, 0, 1);
+    Piece ulb = getPiece(1, 1, 1);
+    Piece ul = getPiece(1, 0, 1);
+    Piece urb = getPiece(-1, 1, 1);
+    Piece ur = getPiece(-1, 0, 1);
+    Piece urf = getPiece(-1, -1 , 1);
+    Piece ub = getPiece(0, 1, 1);
+    Piece ulf = getPiece(1, -1, 1);
+    Piece uf = getPiece(0, -1, 1);
+    if(getPiece(0, 1, 1).zCol().equals("red") && getPiece(0,-1,1).zCol().equals("red")) {//vertical stripe, not horizontal
+      move("Z");
+      return;
+    }
+    if(ul.zCol().equals("red") && uf.zCol().equals("red") && !ulf.zCol().equals("red")){
+      move("z");
+      return;
+    } else if(ur.zCol().equals("red") && ub.zCol().equals("red") && !urb.zCol().equals("red")){
+      move("Z");
+      return;
+    } else if(ur.zCol().equals("red") && uf.zCol().equals("red") && !urf.zCol().equals("red")){
+      move("Z");
+      move("Z");
+      return;
+    }
   }
   void singleAlgo() {
     move("F");
