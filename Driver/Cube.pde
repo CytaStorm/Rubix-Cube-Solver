@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.*; //<>//
 public class Cube {
   boolean solving;
   ArrayList solutionSet = new ArrayList<String>(); 
@@ -856,28 +856,56 @@ public class Cube {
     }
     return uTurnsMade;
   }
-  boolean isWhiteCorner(Piece corner) {
-    return ((corner.isCorner() && corner.getCol()[0] == "white")  || 
-      (corner.isCorner() && corner.getCol()[1] == "white") || 
-      (corner.isCorner() && corner.getCol()[2] == "white"));
+  boolean isOrangeCorner(Piece corner) {
+    return ((corner.isCorner() && corner.getCol()[0] == "orange")  || 
+      (corner.isCorner() && corner.getCol()[1] == "orange") || 
+      (corner.isCorner() && corner.getCol()[2] == "orange"));
   } 
   //check if the corner piece's two colors is next to the corresponding faces
-  boolean isPlacedFace(Piece corner){
-    if 
-  }
-  boolean isOrientated(Piece corner){
-    return(isWhiteCorner(corner) && corner.zPos() == -1);
+  //boolean isPlacedFace(Piece corner){
+  //  if 
+  //}
+  boolean isOrientated(Piece corner) {
+    return(isOrangeCorner(corner) && corner.zPos() == -1);
   } 
-  public void getColorofFace(){
-    for(int i = 0; i < pieces.length; i ++){
-      
+  //public void getColorofFace(){
+  //  for(int i = 0; i < pieces.length; i ++){
+
+  //  }
+  //}
+  void orangeAtRight(Piece corner) { 
+    if (isOrientated(corner) && corner.YCol() = "orange" ) {
+      move("r"); 
+        move("d"); 
+        move("R");
+    }
+  } 
+  void orangeAtFront(Piece corner) {
+    if (isOrientated(corner) && corner.XCol() == "orange") {
+      move("F"); 
+        move("D"); 
+        move("f");
     }
   }
-  void whiteAtRight(Piece corner){ 
-    if(corner.getY() == -1){
-      RPrime(); 
-      DPrime(); 
-      R(); 
+  void orangeAtDown(Piece corner) {
+    if (isOrientated(corner) && corner.ZCol() == "orange") {
+      move("r"); 
+        move("d"); 
+        move("d"); 
+        move("R"); 
+        move("D"); 
+        move("d"); 
+        move("R");
+    }
+  } 
+  void orangeAtWrong(Piece corner) {
+    if (isOrangeCorner(corner) && corner.ZCol() == - 1) {
+      move("L"); 
+        move("D"); 
+        move("l"); 
+        move("r"); 
+        move("d"); 
+        move("R");
     }
   }
 }
