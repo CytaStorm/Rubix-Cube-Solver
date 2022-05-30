@@ -2,22 +2,22 @@ import java.util.*;
 public class Cube {
   boolean solving;
   ArrayList solutionSet = new ArrayList<String>(); 
-  private final Integer[] R = new Integer[] {
+  private final int[] R = new int[] {
     -1, 0, 0
   };
-  private final Integer[] L = new Integer[] {
+  private final int[] L = new int[] {
     1, 0, 0
   };
-  private final Integer[] U = new Integer[] {
+  private final int[] U = new int[] {
     0, 0, 1
   };
-  private final Integer[] D = new Integer[] {
+  private final int[] D = new int[] {
     0, 0, -1
   };
-  private final Integer[] F = new Integer[] {
+  private final int[] F = new int[] {
     0, 1, 0
   };
-  private final Integer[] B = new Integer[] {
+  private final int[] B = new int[] {
     0, -1, 0
   };
 
@@ -155,6 +155,50 @@ public class Cube {
     }
   }
 
+  void move(String move) {
+    switch(move) {
+    case "L": 
+      L();
+      break;
+    case "l": 
+      LPrime();
+      break;
+    case "R": 
+      R();
+      break;
+    case "r": 
+      RPrime();
+      break;
+    case "U": 
+      U();
+      break;
+    case "u": 
+      UPrime();
+      break;
+    case "D": 
+      D();
+      break;
+    case "d": 
+      DPrime();
+      break;
+    case "F": 
+      F();
+      break;
+    case "f": 
+      FPrime();
+      break;
+    case "B": 
+      B();
+      break;
+    case "b": 
+      BPrime();
+      break;
+    default: 
+      break;
+    }
+    println("move: " + move);
+  }
+
   //finds piece given 2 colors
   public Piece findPiece(String col1, String col2) {
     for (int i = 0; i < 26; i++) {
@@ -238,7 +282,7 @@ public class Cube {
     }
   }
   //gets rotation from face
-  public String[] faceRot(Integer[]pos) {
+  public String[] faceRot(int[]pos) {
     String[] returnMoves = new String[2];
     if (Arrays.equals(pos, R)) {
       returnMoves[0] = "R";
@@ -287,14 +331,16 @@ public class Cube {
     }
   }
   public void R() {
-    for (int i = 0; i < pieces.length; i++) {
+    println("R used"); 
+      for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == -1) {
         pieces[i].rotateXCW();
       }
     }
   } 
   public void RPrime() {
-    for (int i = 0; i < pieces.length; i++) {
+    println("RPrime used"); 
+      for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == -1) {
         pieces[i].rotateXCCW();
       }
@@ -357,8 +403,8 @@ public class Cube {
     }
   }
   public void M() {
-    println("m is called"); 
-      Piece frontPiece = getPiece(0, -1, 0); 
+    // println("m is called");
+    Piece frontPiece = getPiece(0, -1, 0); 
       String frontCol = frontPiece.getCol()[1]; 
       Piece topPiece = getPiece(0, 0, 1); 
       String topCol = topPiece.getCol()[2]; 
@@ -502,17 +548,18 @@ public class Cube {
       B();
   }
   void solve() {
-    // solving = true;
-    // cross(cube);
-    //crossCorners(cube);
-    //secondLayer(cube);
-    //secondCross(cube);
-    //edges(cube);
-    //corners(cube);
-    //print("solved!");
-    solving = false;
+    solving = true; 
+      cross(); 
+      //crossCorners(cube);
+      //secondLayer(cube);
+      //secondCross(cube);
+      //edges(cube);
+      //corners(cube);
+      //print("solved!");
+      solving = false;
   }
-  void move(String move) {
+  <<<<<<< HEAD
+    void move(String move) {
     switch(move) {
       case "L" : 
         L(); 
@@ -554,80 +601,7 @@ public class Cube {
         break;
     }
   }
-  void cross(Cube cube) {
 
-    println("cross WIP!"); 
-      Piece ulPiece = cube.findPiece(cube.getCol("U"), cube.getCol("L")); //finds pos of 4 edge pieces for up cross
-      Piece urPiece = cube.findPiece(cube.getCol("U"), cube.getCol("R")); 
-      Piece ubPiece = cube.findPiece(cube.getCol("U"), cube.getCol("B")); 
-      Piece ufPiece = cube.findPiece(cube.getCol("U"), cube.getCol("F")); 
-
-      //println(ulPiece);
-      //println(urPiece);
-      //println(uuPiece);
-      //println(udPiece);
-
-      crossEdgeSolver(cube, ulPiece, cube.getPiece(1, 0, 0), "L L", "E L e l"); 
-      crossEdgeSolver(cube, urPiece, cube.getPiece(-1, 0, 0), "R R", "e R E r"); 
-      move(cube, "Z"); 
-      crossEdgeSolver(cube, ubPiece, cube.getPiece(0, -1, 0), "L L", "E L e l"); 
-      crossEdgeSolver(cube, ufPiece, cube.getPiece(0, 1, 0), "R R", "e R E r"); 
-      move(cube, "z");
-  }
-  void crossEdgeSolver(Cube cube, Piece edgePiece, Piece facePiece, String move1, String move2) {
-    println("crossEdgeSolver WIP"); 
-      //checks if piece is in right place
-      if (Arrays.equals(edgePiece.getPos(), edgePiece.getDesPos())) {
-      println("In right place!"); 
-        return;
-    }
-    String undoMove = null; 
-      String cw; 
-      String ccw; 
-      if (edgePiece.getPos()[2] == 0) {//if edge piece is in middle row
-      int[] tempPos = edgePiece.getPos().clone(); 
-        tempPos[0] = 0; 
-        cw = cube.faceRot(tempPos)[1]; 
-        ccw = cube.faceRot(tempPos)[0]; 
-
-        if (Arrays.equals(edgePiece.getPos(), new int[] {1, -1, 0}) || Arrays.equals(edgePiece.getPos(), new int[]{-1, 1, 0})) {
-        move(cube, cw); 
-          undoMove = ccw;
-      } else {
-        move(cube, ccw); 
-          undoMove = cw;
-      }
-    } else if (edgePiece.getPos()[2] == 1) {
-      int[] tempPos = edgePiece.getPos().clone(); 
-        tempPos[2] = 0; 
-        cw = cube.faceRot(tempPos)[1]; 
-        ccw = cube.faceRot(tempPos)[0]; 
-        move(cube, ccw + " " + ccw); 
-        if (edgePiece.getPos()[0] != facePiece.getPos()[0]) {
-        undoMove = cw + " " + cw;
-      }
-    }
-
-    print("Is it in top? " + (edgePiece.getPos()[2] == -1)); 
-
-      int count = 0; 
-      while (!Arrays.equals(new int[]{edgePiece.getPos()[0], edgePiece.getPos()[1]}, 
-      new int[]{facePiece.getPos()[0], facePiece.getPos()[1]})) {
-      move(cube, "B"); 
-        count += 1; 
-        if (count == 10) {
-        print("stuck in loop?");
-      }
-    }
-    if (undoMove != null) {
-      move(cube, undoMove);
-    }
-    if (edgePiece.getCol()[0] == facePiece.getCol()[0]) {
-      move(cube, move1);
-    } else {
-      move(cube, move2);
-    }
-  }
 
   //boolean isWhiteCorner(Piece corner) {
   //  return ((corner.isCorner() && corner.getCol()[0] == "white")  || 
@@ -670,7 +644,217 @@ public class Cube {
   //    }
   //  }
   //} 
-  void moveCorners(Piece corner){
-    if(corner.isCorner()&&
+  void cross() {
+    poppy(); 
+      // makeCross();
+  }
+  void poppy() {
+
+    //moves all petals on bottom layer with red color at all to top
+    // if (poppyPetalsOriented() < 4) {
+    //   for (int i = 0; i < pieces.length; i++) {
+    //     // println("line 562 debug: " + i);
+    //     // println(pieces[i].isEdge());
+    //     if (pieces[i].isEdge() && pieces[i].getPos()[2] == -1 && pieces[i].hasColor("red")) {
+    //       // println("inside for loop");
+    //       makeSpace(pieces[i].getPos()[0], pieces[i].getPos()[1], 1, "red");
+    //       String moveToMake = pieces[i].verticalFace();
+    //       // println(moveToMake);
+    //       move(moveToMake);
+    //       move(moveToMake);
+    //     }
+    //   }
+    // }
+    while (poppySemiOriented() < 4) {
+      for (int j = 0; j < 4; j++) { // if edge piece has red color while on at -1, 0, -1 
+        for (int i = 0; i < pieces.length; i++) {
+          // println("line 562 debug: " + i);
+          // println(pieces[i].isEdge());
+          Piece current = pieces[i]; 
+            if (current.isEdge() && current.hasColor("orange") && current.xPos() == -1 && current.zPos() != -1) {
+            println("inside for loop"); 
+              makeSpace(current.xPos(), 0, -1, "orange"); 
+              if (current.zPos() == 0) {
+              if (current.yPos() == -1) {
+                move("R"); 
+                  println("at -1 1 1");
+              } else {
+                println("at -1 1 -1"); 
+                  move("r");
+              }
+            } else if (current.zPos() == 1) {
+              println("orange on top layer"); 
+                move("R"); 
+                move("R");
+            }
+          }
+        }
+        Z();
+      }
+    }
+
+    // if (poppyPetalsOriented() < 5) {
+    //   for (int i = 0; i < pieces.length; i++) {
+    //     //if has red and red is not bottom
+    //     if (pieces[i].isEdge() && pieces[i].getPos()[2] == -1 && (pieces[i].hasColor("red") && !pieces[i].getCol()[2].equals("red"))) {
+    //       String moveToMake = pieces[i].verticalFace();
+    //       int reverseU = makeSpace(pieces[i].getPos()[0], pieces[i].getPos()[1], 1, "red");
+
+    //       switch (moveToMake) {
+    //       case "F": 
+    //         move("f");
+    //         move("u");
+    //         move("R");
+    //         break;
+    //       case "L":
+    //         move("l");
+    //         move("u");
+    //         move("F");
+    //         break;
+    //       case "R":
+    //         move("r");
+    //         move("u");
+    //         move("B");
+    //         break;
+    //       case "B":
+    //         move("b");
+    //         move("L");
+    //         move("f");
+    //         break;
+    //       default:
+    //         break;
+    //       }
+    //       while (reverseU != 0) {
+    //         move("u");
+    //         reverseU --;
+    //       }
+    //     }
+    //   }
+    // }
+
+    //bring up red petals in middle layer
+    // if (poppyPetalsOriented() < 5) {
+    //   for (int i = 0; i < pieces.length; i++) {
+    //     if (pieces[i].isEdge() && pieces[i].getPos()[2] == 0) {
+    //       Piece tempPiece = pieces[i];
+    //       for (int j = 0; j < 2; j++) {
+    //         if (tempPiece.getCol()[j].equals("red")) {
+    //           if (pieces[i].getPos()[0] == -1 && pieces[i].getPos()[1] == -1) {
+    //             if (tempPiece.getDir(tempPiece.getPos()[0], tempPiece.getPos()[1], tempPiece.getPos()[2], tempPiece.getDir(tempPiece.getCol()[j])).equals("L")) {
+    //               makeSpace(0, -1, -1, "red");
+    //               move("F");
+    //             } else {
+    //               makeSpace(-1, 0, -1, "red");
+    //               move("l");
+    //             }
+    //           } else if (pieces[i].getPos()[0] == 1 && pieces[i].getPos()[1] == -1) {
+    //             if (tempPiece.getDir(tempPiece.getPos()[0], tempPiece.getPos()[1], tempPiece.getPos()[2], tempPiece.getDir(tempPiece.getCol()[j])).equals("F")) {
+    //               makeSpace(1, 0, -1, "red");
+    //               move("R");
+    //             } else {
+    //               makeSpace(0, -1, -1, "red");
+    //               move("f");
+    //             }
+    //           } else if (pieces[i].getPos()[0] == 1 && pieces[i].getPos()[1] == 1) {
+    //             if (tempPiece.getDir(tempPiece.getPos()[0], tempPiece.getPos()[1], tempPiece.getPos()[2], tempPiece.getDir(tempPiece.getCol()[j])).equals("B")) {
+    //               makeSpace(1, 0, -1, "red");
+    //               move("r");
+    //             } else {
+    //               makeSpace(0, 1, -1, "red");
+    //               move("B");
+    //             }
+    //           } else {
+    //             if (tempPiece.getDir(tempPiece.getPos()[0], tempPiece.getPos()[1], tempPiece.getPos()[2], tempPiece.getDir(tempPiece.getCol()[j])).equals("B")) {
+    //               makeSpace(-1, 0, -1, "red");
+    //               move("L");
+    //             } else {
+    //               makeSpace(0, 1, -1, "red");
+    //               move("b");
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+
+    //fix orientation in U layer
+    // if (poppyPetalsOriented() < 5) {
+    //   for (int i = 0; i < pieces.length; i++) {
+    //     if (pieces[i].isEdge() && pieces[i].getPos()[2] == 1 && pieces[i].hasColor("red")){
+    //       if (!(pieces[i].getCol()[2].equals("red"))) {
+    //         println("inside if statement");
+    //         String moveToMake = pieces[i].verticalFace();
+    //         println("gets to switch statement");
+    //         switch(moveToMake) {
+    //         case "F": 
+    //           move("F");
+    //           move("u");
+    //           move("R");
+    //           break;
+    //         case "R": 
+    //           move("R");
+    //           move("u");
+    //           move("B");
+    //           break;
+    //         case "B": 
+    //           move("B");
+    //           move("u");
+    //           move("L");
+    //           break;
+    //         case "L": 
+    //           move("L");
+    //           move("u");
+    //           move("F");
+    //           break;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+
+    // if(poppyPetalsOriented() < 4){
+    //   poppy();
+    // }
+    return;
+  }
+
+  //counts how many petals are oriented correctly on top
+  int poppyFullOriented() {
+    int result = 0; 
+      for (int i = 0; i < pieces.length; i++) {
+      if (pieces[i].isEdge() && pieces[i].getPos()[2] == -1) {
+        if (pieces[i].getCol()[2] != null && pieces[i].getCol()[2].equals("orange")) {
+          result++;
+        }
+      }
+    }
+    return result;
+  }
+
+  int poppySemiOriented() {
+    int result = 0; 
+      for (int i = 0; i < pieces.length; i++) {
+      if (pieces[i].isEdge() && pieces[i].getPos()[2] == -1) {
+        if (pieces[i].getCol()[2] != null && pieces[i].hasColor("orange")) {
+          result++;
+        }
+      }
+    }
+    return result;
+  }
+
+  //if the piece on z = 1 on same slice as piece[i] is red, rotate top unti it is not a red piece
+  int makeSpace(int x, int y, int z, String col) { 
+    println("makeSpace called"); 
+      int uTurnsMade = 0; 
+      String[] tempColor = getPiece(x, y, z).getCol(); 
+      while (Arrays.asList(tempColor).indexOf(col) != -1 && ((tempColor[0] != null && tempColor[0].equals(col)) || (tempColor[1] != null && tempColor[1].equals(col)))) {
+      move("D"); 
+        tempColor = getPiece(x, y, z).getCol(); 
+        uTurnsMade++;
+    }
+    return uTurnsMade; 
+      >>>>>>> main
   }
 }
