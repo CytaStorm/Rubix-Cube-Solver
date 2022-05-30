@@ -587,19 +587,19 @@ public class Cube {
           // println(pieces[i].isEdge());
           Piece current = pieces[i];
           if (current.isEdge() && current.hasColor("orange") && current.xPos() == -1 && current.zPos() != -1) {
-            println("inside for loop");
+            // println("inside for loop");
             makeSpace(current.xPos(), 0, -1, "orange");
             if(current.zPos() == 0){
               if(current.yPos() == -1){
                 move("R");
-                println("at -1 1 1");
+                // println("at -1 1 1");
                 
               } else {
-                println("at -1 1 -1");
+                // println("at -1 1 -1");
                 move("r");
               }
             } else if (current.zPos() == 1){
-              println("orange on top layer");
+              // println("orange on top layer");
               move("R");
               move("R");
             }
@@ -609,7 +609,8 @@ public class Cube {
       }
     }
     
-    println("finished using semiPoppy");
+    // println("finished using semiPoppy");
+
     X();
     X();
     // fixes all orientation of orange edges
@@ -631,51 +632,8 @@ public class Cube {
     XPrime();
     XPrime();
 
-    //bring up red petals in middle layer
-    // if (poppyPetalsOriented() < 5) {
-    //   for (int i = 0; i < pieces.length; i++) {
-    //     if (pieces[i].isEdge() && pieces[i].getPos()[2] == 0) {
-    //       Piece tempPiece = pieces[i];
-    //       for (int j = 0; j < 2; j++) {
-    //         if (tempPiece.getCol()[j].equals("red")) {
-    //           if (pieces[i].getPos()[0] == -1 && pieces[i].getPos()[1] == -1) {
-    //             if (tempPiece.getDir(tempPiece.getPos()[0], tempPiece.getPos()[1], tempPiece.getPos()[2], tempPiece.getDir(tempPiece.getCol()[j])).equals("L")) {
-    //               makeSpace(0, -1, -1, "red");
-    //               move("F");
-    //             } else {
-    //               makeSpace(-1, 0, -1, "red");
-    //               move("l");
-    //             }
-    //           } else if (pieces[i].getPos()[0] == 1 && pieces[i].getPos()[1] == -1) {
-    //             if (tempPiece.getDir(tempPiece.getPos()[0], tempPiece.getPos()[1], tempPiece.getPos()[2], tempPiece.getDir(tempPiece.getCol()[j])).equals("F")) {
-    //               makeSpace(1, 0, -1, "red");
-    //               move("R");
-    //             } else {
-    //               makeSpace(0, -1, -1, "red");
-    //               move("f");
-    //             }
-    //           } else if (pieces[i].getPos()[0] == 1 && pieces[i].getPos()[1] == 1) {
-    //             if (tempPiece.getDir(tempPiece.getPos()[0], tempPiece.getPos()[1], tempPiece.getPos()[2], tempPiece.getDir(tempPiece.getCol()[j])).equals("B")) {
-    //               makeSpace(1, 0, -1, "red");
-    //               move("r");
-    //             } else {
-    //               makeSpace(0, 1, -1, "red");
-    //               move("B");
-    //             }
-    //           } else {
-    //             if (tempPiece.getDir(tempPiece.getPos()[0], tempPiece.getPos()[1], tempPiece.getPos()[2], tempPiece.getDir(tempPiece.getCol()[j])).equals("B")) {
-    //               makeSpace(-1, 0, -1, "red");
-    //               move("L");
-    //             } else {
-    //               makeSpace(0, 1, -1, "red");
-    //               move("b");
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+    ///finish petals
+
     return;
   }
 
@@ -708,7 +666,7 @@ public class Cube {
 
   //makes space for orange petals
   int makeSpace(int x, int y, int z, String col) { 
-    println("makeSpace called");
+    // println("makeSpace called");
     int dTurnsMade = 0;
     Piece tempPiece = getPiece(x, y, z);
     while (tempPiece.hasColor(col)) {
