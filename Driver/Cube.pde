@@ -279,7 +279,7 @@ public class Cube {
     return null;
   }
 
-  //gets piece at element Piece
+  //gets piece at element piece
   public Piece getPiece(int i) {
     return pieces[i];
   }
