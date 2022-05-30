@@ -879,10 +879,10 @@ void whiteCornerRightAlgo() {
     }
   }
 }  
-void whiteCornerLeftAlgo(){
-  for(int i= 0; i < pieces.length; i++){
-    if(isOrientated(pieces[i]) && pieces[i].yCol().equals("orange") && (pieces[i].xCol().equals(getCol("F")))
-    && pieces[i].zCol().equals(getCol("R"))){
+void whiteCornerLeftAlgo() {
+  for (int i= 0; i < pieces.length; i++) {
+    if (isOrientated(pieces[i]) && pieces[i].yCol().equals("orange") && (pieces[i].xCol().equals(getCol("F")))
+      && pieces[i].zCol().equals(getCol("R"))) {
       move("D");
       move("L");
       move("d"); 
@@ -890,10 +890,10 @@ void whiteCornerLeftAlgo(){
     }
   }
 } 
-void whiteCornerDownAlgo(){
-  for(int i = 0; i < pieces.length; i++){
-    if(isOrientated(pieces[i]) && pieces[i].zCol().equals("orange") && (pieces[i].xCol().equals(getCol("R")))
-    && pieces[i].yCol().equals(getCol("F"))){
+void whiteCornerDownAlgo() {
+  for (int i = 0; i < pieces.length; i++) {
+    if (isOrientated(pieces[i]) && pieces[i].zCol().equals("orange") && (pieces[i].xCol().equals(getCol("R")))
+      && pieces[i].yCol().equals(getCol("F"))) {
       move("F"); 
       move("d"); 
       move("f"); 
@@ -905,7 +905,22 @@ void whiteCornerDownAlgo(){
       move("R");
     }
   }
+} 
+void whiteCornerTopAlgo() {
+  for (int i = 0; i < pieces.length; i++) {
+    if (isOrientated(pieces[i]) && pieces[i].xCol().equals("orange") && (pieces[i].zCol().equals(getCol("R")))
+      && pieces[i].yCol().equals(getCol("F"))) {
+      move("r"); 
+      move("D"); 
+      move("R");  
+      move("d"); 
+      move("r"); 
+      move("D"); 
+      move("R");
+    }
+  }
 }
+
 
 //boolean isPlacedFaceFront(Piece corner){
 //  return(corner.zCol().equals(getPiece(0, 
