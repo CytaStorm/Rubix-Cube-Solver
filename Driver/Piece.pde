@@ -69,7 +69,7 @@ public class Piece {
       }
     }
     return false;
-  }
+  }   
   public void rotateXCW() {
     int[] tempPos = new int[] {pos[1], pos[2]};
     tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
@@ -115,7 +115,7 @@ public class Piece {
     default: 
       break;
     }
-  }
+  } 
   public void rotateXCCW() {
     int[] tempPos = new int[] {pos[1], pos[2]};
     tempPos = matrixMultiply(tempPos, CCW_ROT_MATRIX);
@@ -229,48 +229,6 @@ public class Piece {
       String tempCol = col[1];
       col[1] = col[0];
       col[0] = tempCol;
-    }
-  }
-  void move(String move) {
-    switch(move) {
-    case "L": 
-      L();
-      break;
-    case "l": 
-      LPrime();
-      break;
-    case "R": 
-      R();
-      break;
-    case "r": 
-      RPrime();
-      break;
-    case "U": 
-      U();
-      break;
-    case "u": 
-      UPrime();
-      break;
-    case "D": 
-      D();
-      break;
-    case "d": 
-      DPrime();
-      break;
-    case "F": 
-      F();
-      break;
-    case "f": 
-      FPrime();
-      break;
-    case "B": 
-      B();
-      break;
-    case "b": 
-      BPrime();
-      break;
-    default: 
-      break;
     }
   }
 }

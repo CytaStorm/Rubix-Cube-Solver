@@ -241,8 +241,8 @@ public class Cube {
   public String[] faceRot(Integer[]pos) {
     String[] returnMoves = new String[2];
     if (Arrays.equals(pos, R)) {
-      returnMoves[0] = "X";
-      returnMoves[1] = "x";
+      returnMoves[0] = "R";
+      returnMoves[1] = "r";
     } else if (Arrays.equals(pos, L)) {
       returnMoves[0] = "L";
       returnMoves[1] = "l";
@@ -268,6 +268,9 @@ public class Cube {
   //accessor to get solving state
   public boolean isSolving() {
     return solving;
+  } 
+  public String colorOfDir(String dir) {
+    for (int i = 0; i < colors.length
   }
   public void L() {
     for (int i = 0; i < pieces.length; i++) {
@@ -354,20 +357,20 @@ public class Cube {
     }
   }
   public void M() {
-    println("m is called");
-    Piece frontPiece = getPiece(0, -1, 0); 
-    String frontCol = frontPiece.getCol()[1];  
-    Piece topPiece = getPiece(0, 0, 1); 
-    String topCol = topPiece.getCol()[2]; 
-    Piece backPiece = getPiece(0, 1, 0); 
-    String backCol = backPiece.getCol()[1]; 
-    Piece downPiece = getPiece(0, 0, -1); 
-    String downCol = downPiece.getCol()[2]; 
-    frontPiece.swapFaceColor("y", topCol);
-    topPiece.swapFaceColor("z", backCol);
-    backPiece.swapFaceColor("y", downCol);
-    downPiece.swapFaceColor("z", frontCol);
-    for (int i = 0; i < pieces.length; i ++) {
+    println("m is called"); 
+      Piece frontPiece = getPiece(0, -1, 0); 
+      String frontCol = frontPiece.getCol()[1]; 
+      Piece topPiece = getPiece(0, 0, 1); 
+      String topCol = topPiece.getCol()[2]; 
+      Piece backPiece = getPiece(0, 1, 0); 
+      String backCol = backPiece.getCol()[1]; 
+      Piece downPiece = getPiece(0, 0, -1); 
+      String downCol = downPiece.getCol()[2]; 
+      frontPiece.swapFaceColor("y", topCol); 
+      topPiece.swapFaceColor("z", backCol); 
+      backPiece.swapFaceColor("y", downCol); 
+      downPiece.swapFaceColor("z", frontCol); 
+      for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[0] == 0 && pieces[i].getPos()[1] != 0 && pieces[i].getPos()[2] != 0) {
         pieces[i].rotateXCW();
       }
@@ -375,18 +378,18 @@ public class Cube {
   }
   public void MPrime() {
     Piece frontPiece = getPiece(0, -1, 0); 
-    String frontCol = frontPiece.getCol()[1];  
-    Piece topPiece = getPiece(0, 0, 1); 
-    String topCol = topPiece.getCol()[2]; 
-    Piece backPiece = getPiece(0, 1, 0); 
-    String backCol = backPiece.getCol()[1]; 
-    Piece downPiece = getPiece(0, 0, -1); 
-    String downCol = downPiece.getCol()[2]; 
-    frontPiece.swapFaceColor("y", downCol);
-    topPiece.swapFaceColor("z", frontCol);
-    backPiece.swapFaceColor("y", topCol);
-    downPiece.swapFaceColor("z", backCol);
-    for (int i = 0; i < pieces.length; i ++) {
+      String frontCol = frontPiece.getCol()[1]; 
+      Piece topPiece = getPiece(0, 0, 1); 
+      String topCol = topPiece.getCol()[2]; 
+      Piece backPiece = getPiece(0, 1, 0); 
+      String backCol = backPiece.getCol()[1]; 
+      Piece downPiece = getPiece(0, 0, -1); 
+      String downCol = downPiece.getCol()[2]; 
+      frontPiece.swapFaceColor("y", downCol); 
+      topPiece.swapFaceColor("z", frontCol); 
+      backPiece.swapFaceColor("y", topCol); 
+      downPiece.swapFaceColor("z", backCol); 
+      for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[0] == 0 && pieces[i].getPos()[1] != 0 && pieces[i].getPos()[2] != 0) {
         pieces[i].rotateXCCW();
       }
@@ -394,18 +397,18 @@ public class Cube {
   }
   public void E() {
     Piece frontPiece = getPiece(0, -1, 0); 
-    String frontCol = frontPiece.getCol()[1];  
-    Piece rightPiece = getPiece(-1, 0, 0); 
-    String rightCol = rightPiece.getCol()[0]; 
-    Piece backPiece = getPiece(0, 1, 0); 
-    String backCol = backPiece.getCol()[1]; 
-    Piece leftPiece = getPiece(1, 0, 0); 
-    String leftCol = leftPiece.getCol()[0]; 
-    frontPiece.swapFaceColor("y", leftCol);
-    rightPiece.swapFaceColor("x", frontCol);
-    backPiece.swapFaceColor("y", rightCol);
-    leftPiece.swapFaceColor("x", backCol);
-    for (int i = 0; i < pieces.length; i ++) {
+      String frontCol = frontPiece.getCol()[1]; 
+      Piece rightPiece = getPiece(-1, 0, 0); 
+      String rightCol = rightPiece.getCol()[0]; 
+      Piece backPiece = getPiece(0, 1, 0); 
+      String backCol = backPiece.getCol()[1]; 
+      Piece leftPiece = getPiece(1, 0, 0); 
+      String leftCol = leftPiece.getCol()[0]; 
+      frontPiece.swapFaceColor("y", leftCol); 
+      rightPiece.swapFaceColor("x", frontCol); 
+      backPiece.swapFaceColor("y", rightCol); 
+      leftPiece.swapFaceColor("x", backCol); 
+      for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[2] == 0 && pieces[i].getPos()[0] != 0 && pieces[i].getPos()[1] != 0) {
         pieces[i].rotateZCCW();
       }
@@ -413,18 +416,18 @@ public class Cube {
   }
   public void EPrime() {
     Piece frontPiece = getPiece(0, -1, 0); 
-    String frontCol = frontPiece.getCol()[1];  
-    Piece rightPiece = getPiece(-1, 0, 0); 
-    String rightCol = rightPiece.getCol()[0]; 
-    Piece backPiece = getPiece(0, 1, 0); 
-    String backCol = backPiece.getCol()[1]; 
-    Piece leftPiece = getPiece(1, 0, 0); 
-    String leftCol = leftPiece.getCol()[0]; 
-    frontPiece.swapFaceColor("y", rightCol);
-    rightPiece.swapFaceColor("x", backCol);
-    backPiece.swapFaceColor("y", leftCol);
-    leftPiece.swapFaceColor("x", frontCol);
-    for (int i = 0; i < pieces.length; i ++) {
+      String frontCol = frontPiece.getCol()[1]; 
+      Piece rightPiece = getPiece(-1, 0, 0); 
+      String rightCol = rightPiece.getCol()[0]; 
+      Piece backPiece = getPiece(0, 1, 0); 
+      String backCol = backPiece.getCol()[1]; 
+      Piece leftPiece = getPiece(1, 0, 0); 
+      String leftCol = leftPiece.getCol()[0]; 
+      frontPiece.swapFaceColor("y", rightCol); 
+      rightPiece.swapFaceColor("x", backCol); 
+      backPiece.swapFaceColor("y", leftCol); 
+      leftPiece.swapFaceColor("x", frontCol); 
+      for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[2] == 0 && pieces[i].getPos()[0] != 0 && pieces[i].getPos()[1] != 0) {
         pieces[i].rotateZCW();
       }
@@ -432,18 +435,18 @@ public class Cube {
   } 
   public void S() {
     Piece upPiece = getPiece(0, 0, 1); 
-    String upCol = upPiece.getCol()[2];  
-    Piece rightPiece = getPiece(-1, 0, 0); 
-    String rightCol = rightPiece.getCol()[0]; 
-    Piece downPiece = getPiece(0, 0, -1); 
-    String downCol = downPiece.getCol()[2]; 
-    Piece leftPiece = getPiece(1, 0, 0); 
-    String leftCol = leftPiece.getCol()[0]; 
-    upPiece.swapFaceColor("z", leftCol);
-    rightPiece.swapFaceColor("x", upCol);
-    downPiece.swapFaceColor("z", rightCol);
-    leftPiece.swapFaceColor("x", downCol);
-    for (int i = 0; i < pieces.length; i ++) {
+      String upCol = upPiece.getCol()[2]; 
+      Piece rightPiece = getPiece(-1, 0, 0); 
+      String rightCol = rightPiece.getCol()[0]; 
+      Piece downPiece = getPiece(0, 0, -1); 
+      String downCol = downPiece.getCol()[2]; 
+      Piece leftPiece = getPiece(1, 0, 0); 
+      String leftCol = leftPiece.getCol()[0]; 
+      upPiece.swapFaceColor("z", leftCol); 
+      rightPiece.swapFaceColor("x", upCol); 
+      downPiece.swapFaceColor("z", rightCol); 
+      leftPiece.swapFaceColor("x", downCol); 
+      for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[1] == 0 && pieces[i].getPos()[0] != 0 && pieces[i].getPos()[2] != 0) {
         pieces[i].rotateYCW();
       }
@@ -451,52 +454,52 @@ public class Cube {
   } 
   public void SPrime() {
     Piece upPiece = getPiece(0, 0, 1); 
-    String upCol = upPiece.getCol()[2];  
-    Piece rightPiece = getPiece(-1, 0, 0); 
-    String rightCol = rightPiece.getCol()[0]; 
-    Piece downPiece = getPiece(0, 0, -1); 
-    String downCol = downPiece.getCol()[2]; 
-    Piece leftPiece = getPiece(1, 0, 0); 
-    String leftCol = leftPiece.getCol()[0]; 
-    upPiece.swapFaceColor("z", rightCol);
-    rightPiece.swapFaceColor("x", downCol);
-    downPiece.swapFaceColor("z", leftCol);
-    leftPiece.swapFaceColor("x", upCol);
-    for (int i = 0; i < pieces.length; i ++) {
+      String upCol = upPiece.getCol()[2]; 
+      Piece rightPiece = getPiece(-1, 0, 0); 
+      String rightCol = rightPiece.getCol()[0]; 
+      Piece downPiece = getPiece(0, 0, -1); 
+      String downCol = downPiece.getCol()[2]; 
+      Piece leftPiece = getPiece(1, 0, 0); 
+      String leftCol = leftPiece.getCol()[0]; 
+      upPiece.swapFaceColor("z", rightCol); 
+      rightPiece.swapFaceColor("x", downCol); 
+      downPiece.swapFaceColor("z", leftCol); 
+      leftPiece.swapFaceColor("x", upCol); 
+      for (int i = 0; i < pieces.length; i ++) {
       if (pieces[i].getPos()[1] == 0 && pieces[i].getPos()[0] != 0 && pieces[i].getPos()[2] != 0) {
         pieces[i].rotateYCCW();
       }
     }
   }
   public void X() {
-    RPrime();
-    MPrime();
-    LPrime();
+    RPrime(); 
+      MPrime(); 
+      LPrime();
   }
   public void XPrime() {
-    L();
-    M(); 
-    R();
+    L(); 
+      M(); 
+      R();
   }
   public void Z() {
-    UPrime();
-    E(); 
-    DPrime();
+    UPrime(); 
+      E(); 
+      DPrime();
   } 
   public void ZPrime() {
     U(); 
-    EPrime(); 
-    D();
+      EPrime(); 
+      D();
   }
   public void Y() {
-    FPrime();
-    SPrime();
-    BPrime();
+    FPrime(); 
+      SPrime(); 
+      BPrime();
   }
   public void YPrime() {
-    F();
-    S();
-    B();
+    F(); 
+      S(); 
+      B();
   }
   void solve() {
     // solving = true;
@@ -509,68 +512,110 @@ public class Cube {
     //print("solved!");
     solving = false;
   }
+  void move(String move) {
+    switch(move) {
+      case "L" : 
+        L(); 
+        break; 
+        case "l" : 
+        LPrime(); 
+        break; 
+        case "R" : 
+        R(); 
+        break; 
+        case "r" : 
+        RPrime(); 
+        break; 
+        case "U" : 
+        U(); 
+        break; 
+        case "u" : 
+        UPrime(); 
+        break; 
+        case "D" : 
+        D(); 
+        break; 
+        case "d" : 
+        DPrime(); 
+        break; 
+        case "F" : 
+        F(); 
+        break; 
+        case "f" : 
+        FPrime(); 
+        break; 
+        case "B" : 
+        B(); 
+        break; 
+        case "b" : 
+        BPrime(); 
+        break; 
+        default : 
+        break;
+    }
+  }
   void cross(Cube cube) {
 
-    println("cross WIP!");
-    Piece ulPiece = cube.findPiece(cube.getCol("U"), cube.getCol("L")); //finds pos of 4 edge pieces for up cross
-    Piece urPiece = cube.findPiece(cube.getCol("U"), cube.getCol("R")); 
-    Piece ubPiece = cube.findPiece(cube.getCol("U"), cube.getCol("B")); 
-    Piece ufPiece = cube.findPiece(cube.getCol("U"), cube.getCol("F"));
+    println("cross WIP!"); 
+      Piece ulPiece = cube.findPiece(cube.getCol("U"), cube.getCol("L")); //finds pos of 4 edge pieces for up cross
+      Piece urPiece = cube.findPiece(cube.getCol("U"), cube.getCol("R")); 
+      Piece ubPiece = cube.findPiece(cube.getCol("U"), cube.getCol("B")); 
+      Piece ufPiece = cube.findPiece(cube.getCol("U"), cube.getCol("F")); 
 
-    //println(ulPiece);
-    //println(urPiece);
-    //println(uuPiece);
-    //println(udPiece);
+      //println(ulPiece);
+      //println(urPiece);
+      //println(uuPiece);
+      //println(udPiece);
 
-    crossEdgeSolver(cube, ulPiece, cube.getPiece(1, 0, 0), "L L", "E L e l");
-    crossEdgeSolver(cube, urPiece, cube.getPiece(-1, 0, 0), "R R", "e R E r");
-    move(cube, "Z");
-    crossEdgeSolver(cube, ubPiece, cube.getPiece(0, -1, 0), "L L", "E L e l");
-    crossEdgeSolver(cube, ufPiece, cube.getPiece(0, 1, 0), "R R", "e R E r");
-    move(cube, "z");
+      crossEdgeSolver(cube, ulPiece, cube.getPiece(1, 0, 0), "L L", "E L e l"); 
+      crossEdgeSolver(cube, urPiece, cube.getPiece(-1, 0, 0), "R R", "e R E r"); 
+      move(cube, "Z"); 
+      crossEdgeSolver(cube, ubPiece, cube.getPiece(0, -1, 0), "L L", "E L e l"); 
+      crossEdgeSolver(cube, ufPiece, cube.getPiece(0, 1, 0), "R R", "e R E r"); 
+      move(cube, "z");
   }
   void crossEdgeSolver(Cube cube, Piece edgePiece, Piece facePiece, String move1, String move2) {
     println("crossEdgeSolver WIP"); 
-    //checks if piece is in right place
-    if (Arrays.equals(edgePiece.getPos(), edgePiece.getDesPos())) {
-      println("In right place!");
-      return;
+      //checks if piece is in right place
+      if (Arrays.equals(edgePiece.getPos(), edgePiece.getDesPos())) {
+      println("In right place!"); 
+        return;
     }
-    String undoMove = null;
-    String cw;
-    String ccw;
-    if (edgePiece.getPos()[2] == 0) {//if edge piece is in middle row
-      int[] tempPos = edgePiece.getPos().clone();
-      tempPos[0] = 0;
-      cw = cube.faceRot(tempPos)[1];
-      ccw = cube.faceRot(tempPos)[0];
+    String undoMove = null; 
+      String cw; 
+      String ccw; 
+      if (edgePiece.getPos()[2] == 0) {//if edge piece is in middle row
+      int[] tempPos = edgePiece.getPos().clone(); 
+        tempPos[0] = 0; 
+        cw = cube.faceRot(tempPos)[1]; 
+        ccw = cube.faceRot(tempPos)[0]; 
 
-      if (Arrays.equals(edgePiece.getPos(), new int[] {1, -1, 0}) || Arrays.equals(edgePiece.getPos(), new int[]{-1, 1, 0})) {
-        move(cube, cw);
-        undoMove = ccw;
+        if (Arrays.equals(edgePiece.getPos(), new int[] {1, -1, 0}) || Arrays.equals(edgePiece.getPos(), new int[]{-1, 1, 0})) {
+        move(cube, cw); 
+          undoMove = ccw;
       } else {
-        move(cube, ccw);
-        undoMove = cw;
+        move(cube, ccw); 
+          undoMove = cw;
       }
     } else if (edgePiece.getPos()[2] == 1) {
-      int[] tempPos = edgePiece.getPos().clone();
-      tempPos[2] = 0;
-      cw = cube.faceRot(tempPos)[1];
-      ccw = cube.faceRot(tempPos)[0];
-      move(cube, ccw + " " + ccw);
-      if (edgePiece.getPos()[0] != facePiece.getPos()[0]) {
+      int[] tempPos = edgePiece.getPos().clone(); 
+        tempPos[2] = 0; 
+        cw = cube.faceRot(tempPos)[1]; 
+        ccw = cube.faceRot(tempPos)[0]; 
+        move(cube, ccw + " " + ccw); 
+        if (edgePiece.getPos()[0] != facePiece.getPos()[0]) {
         undoMove = cw + " " + cw;
       }
     }
 
-    print("Is it in top? " + (edgePiece.getPos()[2] == -1));
+    print("Is it in top? " + (edgePiece.getPos()[2] == -1)); 
 
-    int count = 0;
-    while (!Arrays.equals(new int[]{edgePiece.getPos()[0], edgePiece.getPos()[1]}, 
+      int count = 0; 
+      while (!Arrays.equals(new int[]{edgePiece.getPos()[0], edgePiece.getPos()[1]}, 
       new int[]{facePiece.getPos()[0], facePiece.getPos()[1]})) {
-      move(cube, "B");
-      count += 1;
-      if (count == 10) {
+      move(cube, "B"); 
+        count += 1; 
+        if (count == 10) {
         print("stuck in loop?");
       }
     }
@@ -583,9 +628,49 @@ public class Cube {
       move(cube, move2);
     }
   }
-  boolean whiteCorners(Piece corner){
-    return (corner.isCorner()&& corner.getCol()[0] == "white"  || corner.getCol()[1] == "white" || 
-    corner.getCol()[2] == "white");
-  } 
-  
+
+  //boolean isWhiteCorner(Piece corner) {
+  //  return ((corner.isCorner() && corner.getCol()[0] == "white")  || 
+  //    (corner.isCorner() && corner.getCol()[1] == "white") || 
+  //    (corner.isCorner() && corner.getCol()[2] == "white"));
+  //}  
+  //boolean isCornersIns(int x, int y, int z) {
+  //  if (getPiece(x, y, z).isCorner()) {
+  //    return(getPiece(x, y, z).getDir(x,y,z,) == getPiece(1,1,2
+  //  }
+  //} 
+  //boolean checkWhiteInU() {
+  //  for (int i = 0; i < pieces.length; i++) {
+  //    if (pieces[i].isCorner()) {
+  //      return (pieces[i].getCol()[0] ==
+  //    }
+  //  }
+  //}
+  //boolean preparedWhiteCorners(Cube cube){
+  //  if(cube.getPiece(2,0,0).isCorner() && cube.getPiece(2,0,0).getDir()
+  //}
+  //void insertCorners() {
+  //  for (int i = 0; i < 26; i++) {
+  //    if (pieces[i].isCorner() && isWhiteCorner(pieces[i])) {
+  //      if (pieces[i].getPos()[0] == 0) {
+  //        if (pieces[i].getPos()[2] == 0) {
+  //          move("UPrime");
+  //        } else {
+  //          move("U"); 
+  //            move("U");
+  //        }
+  //      } else {
+  //        if (pieces[i].getPos()[2] == 2) {
+  //          move("U");
+  //        }
+  //      }
+  //      int uTurns = 0; 
+  //        int yRot = 0; 
+  //        while
+  //    }
+  //  }
+  //} 
+  void moveCorners(Piece corner){
+    if(corner.isCorner()&&
+  }
 }
