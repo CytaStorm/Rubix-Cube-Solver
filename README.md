@@ -43,4 +43,4 @@ Tried out 3 different implementations, all failed <br />
 
 Monday 30 May 2022 <br />
 Jeff Chen: <br />
-Began homemade method for solving beginner's alogorithm, finished Poppy <br />
+Began homemade method for solving beginner's alogorithm, finished Poppy and Cross<br />
