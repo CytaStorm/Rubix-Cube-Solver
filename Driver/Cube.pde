@@ -179,9 +179,9 @@ public class Cube {
 
   //gets piece at position  x y z
   public Piece getPiece(int x, int y, int z) {
-    
+
     for (int i = 0; i < 26; i++) {
-      
+
       if (pieces[i].getPos()[0] == x &&
         pieces[i].getPos()[1] == y && 
         pieces[i].getPos()[2] == z) { 
@@ -200,34 +200,34 @@ public class Cube {
   public String getCol(String face) {
     switch(face) {
     case "U" : 
-      return getPiece(0,0,1).col[2];
+      return getPiece(0, 0, 1).col[2];
     case "F" : 
-      return getPiece(0,-1,0).col[1];
+      return getPiece(0, -1, 0).col[1];
     case "R" : 
-      return getPiece(-1,0,0).col[0];
+      return getPiece(-1, 0, 0).col[0];
     case "L" : 
-      return getPiece(1,0,0).col[0];
+      return getPiece(1, 0, 0).col[0];
     case "B" : 
-      return getPiece(0,1,0).col[1];
+      return getPiece(0, 1, 0).col[1];
     case "D" : 
-      return getPiece(0,0,-1).col[2];
+      return getPiece(0, 0, -1).col[2];
     default : 
       print("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
       return null;
     }
   }
-  
+
   //accessor for solutionset
-  public ArrayList<String> solutionSet(){
+  public ArrayList<String> solutionSet() {
     return solutionSet;
   }
-  public void solAdd(String addition){
+  public void solAdd(String addition) {
     solutionSet.add(addition);
   }
-  public void solRemoveLast(){
-    if(solutionSet.size() > 0){
+  public void solRemoveLast() {
+    if (solutionSet.size() > 0) {
       solutionSet.remove(solutionSet.size()-1);
-    }else{
+    } else {
       print("nothing left to remove!");
     }
   }
@@ -354,7 +354,6 @@ public class Cube {
         pieces[i].rotateXCW();
       }
     }
-    
   }
   public void MPrime() {
     Piece frontPiece = getPiece(0, -1, 0); 
@@ -481,4 +480,94 @@ public class Cube {
     S();
     B();
   }
+  void solve(Cube cube) {
+    solving = true;
+    cross(cube);
+    //crossCorners(cube);
+    //secondLayer(cube);
+    //secondCross(cube);
+    //edges(cube);
+    //corners(cube);
+    //print("solved!");
+    solving = false;
+  }
+  void cross(Cube cube) {
+
+    println("cross WIP!");
+    Piece ulPiece = cube.findPiece(cube.getCol("U"), cube.getCol("L")); //finds pos of 4 edge pieces for up cross
+    Piece urPiece = cube.findPiece(cube.getCol("U"), cube.getCol("R")); 
+    Piece ubPiece = cube.findPiece(cube.getCol("U"), cube.getCol("B")); 
+    Piece ufPiece = cube.findPiece(cube.getCol("U"), cube.getCol("F"));
+
+    //println(ulPiece);
+    //println(urPiece);
+    //println(uuPiece);
+    //println(udPiece);
+
+    crossEdgeSolver(cube, ulPiece, cube.getPiece(1, 0, 0), "L L", "E L e l");
+    crossEdgeSolver(cube, urPiece, cube.getPiece(-1, 0, 0), "R R", "e R E r");
+    move(cube, "Z");
+    crossEdgeSolver(cube, ubPiece, cube.getPiece(0, -1, 0), "L L", "E L e l");
+    crossEdgeSolver(cube, ufPiece, cube.getPiece(0, 1, 0), "R R", "e R E r");
+    move(cube, "z");
+  }
+  void crossEdgeSolver(Cube cube, Piece edgePiece, Piece facePiece, String move1, String move2) {
+    println("crossEdgeSolver WIP"); 
+    //checks if piece is in right place
+    if (Arrays.equals(edgePiece.getPos(), edgePiece.getDesPos())) {
+      println("In right place!");
+      return;
+    }
+    String undoMove = null;
+    String cw;
+    String ccw;
+    if (edgePiece.getPos()[2] == 0) {//if edge piece is in middle row
+      int[] tempPos = edgePiece.getPos().clone();
+      tempPos[0] = 0;
+      cw = cube.faceRot(tempPos)[1];
+      ccw = cube.faceRot(tempPos)[0];
+
+      if (Arrays.equals(edgePiece.getPos(), new int[] {1, -1, 0}) || Arrays.equals(edgePiece.getPos(), new int[]{-1, 1, 0})) {
+        move(cube, cw);
+        undoMove = ccw;
+      } else {
+        move(cube, ccw);
+        undoMove = cw;
+      }
+    } else if (edgePiece.getPos()[2] == 1) {
+      int[] tempPos = edgePiece.getPos().clone();
+      tempPos[2] = 0;
+      cw = cube.faceRot(tempPos)[1];
+      ccw = cube.faceRot(tempPos)[0];
+      move(cube, ccw + " " + ccw);
+      if (edgePiece.getPos()[0] != facePiece.getPos()[0]) {
+        undoMove = cw + " " + cw;
+      }
+    }
+
+    print("Is it in top? " + (edgePiece.getPos()[2] == -1));
+
+    int count = 0;
+    while (!Arrays.equals(new int[]{edgePiece.getPos()[0], edgePiece.getPos()[1]}, 
+      new int[]{facePiece.getPos()[0], facePiece.getPos()[1]})) {
+      move(cube, "B");
+      count += 1;
+      if (count == 10) {
+        print("stuck in loop?");
+      }
+    }
+    if (undoMove != null) {
+      move(cube, undoMove);
+    }
+    if (edgePiece.getCol()[0] == facePiece.getCol()[0]) {
+      move(cube, move1);
+    } else {
+      move(cube, move2);
+    }
+  }
+  boolean whiteCorners(Piece corner){
+    return (corner.isCorner()&& corner.getCol()[0] == "white"  || corner.getCol()[1] == "white" || 
+    corner.getCol()[2] == "white");
+  } 
+  
 }
