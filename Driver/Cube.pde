@@ -1,22 +1,23 @@
 import java.util.*;
 public class Cube {
+  boolean solving;
   ArrayList solutionSet = new ArrayList<String>(); 
-  private final int[] R = new int[] {
+  private final Integer[] R = new Integer[] {
     -1, 0, 0
   };
-  private final int[] L = new int[] {
+  private final Integer[] L = new Integer[] {
     1, 0, 0
   };
-  private final int[] U = new int[] {
+  private final Integer[] U = new Integer[] {
     0, 0, 1
   };
-  private final int[] D = new int[] {
+  private final Integer[] D = new Integer[] {
     0, 0, -1
   };
-  private final int[] F = new int[] {
+  private final Integer[] F = new Integer[] {
     0, 1, 0
   };
-  private final int[] B = new int[] {
+  private final Integer[] B = new Integer[] {
     0, -1, 0
   };
 
@@ -60,6 +61,8 @@ public class Cube {
     pieces[23] = new Piece(-1, 1, 1, "blue", "yellow", "orange");
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
+
+    solving = false;
   }
 
   //reset cube
@@ -155,8 +158,8 @@ public class Cube {
   //finds piece given 2 colors
   public Piece findPiece(String col1, String col2) {
     for (int i = 0; i < 26; i++) {
-      int col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
-      int col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
+      Integer col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
+      Integer col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
       if (col1Index != -1 && col2Index != -1 && col1Index != col2Index && pieces[i].getCol()[3-col1Index-col2Index] == null) {
         return pieces[i];
       }
@@ -166,9 +169,9 @@ public class Cube {
   //finds piece given 3 colors
   public Piece findPiece(String col1, String col2, String col3) {
     for (int i = 0; i < 26; i++) {
-      int col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
-      int col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
-      int col3Index = Arrays.asList(pieces[i].getCol()).indexOf(col3);
+      Integer col1Index = Arrays.asList(pieces[i].getCol()).indexOf(col1);
+      Integer col2Index = Arrays.asList(pieces[i].getCol()).indexOf(col2);
+      Integer col3Index = Arrays.asList(pieces[i].getCol()).indexOf(col3);
       if (col1Index != -1 && col2Index != -1 && col3Index != -1 && 
         col1Index != col2Index && col2Index != col3Index && col1Index != col3Index) {
         return pieces[i];
@@ -179,9 +182,9 @@ public class Cube {
 
   //gets piece at position  x y z
   public Piece getPiece(int x, int y, int z) {
-    
+
     for (int i = 0; i < 26; i++) {
-      
+
       if (pieces[i].getPos()[0] == x &&
         pieces[i].getPos()[1] == y && 
         pieces[i].getPos()[2] == z) { 
@@ -196,60 +199,60 @@ public class Cube {
   }
 
   //gets piece at element Piece
-  public Piece getPiece(int i){
+  public Piece getPiece(int i) {
     return pieces[i];
   }
   //accessor method: returns color of face given a face, each face will always be 1 color
   public String getCol(String face) {
     switch(face) {
     case "U" : 
-      return getPiece(0,0,1).col[2];
+      return getPiece(0, 0, 1).col[2];
     case "F" : 
-      return getPiece(0,-1,0).col[1];
+      return getPiece(0, -1, 0).col[1];
     case "R" : 
-      return getPiece(-1,0,0).col[0];
+      return getPiece(-1, 0, 0).col[0];
     case "L" : 
-      return getPiece(1,0,0).col[0];
+      return getPiece(1, 0, 0).col[0];
     case "B" : 
-      return getPiece(0,1,0).col[1];
+      return getPiece(0, 1, 0).col[1];
     case "D" : 
-      return getPiece(0,0,-1).col[2];
+      return getPiece(0, 0, -1).col[2];
     default : 
       print("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
       return null;
     }
   }
-  
+
   //accessor for solutionset
-  public ArrayList<String> solutionSet(){
+  public ArrayList<String> solutionSet() {
     return solutionSet;
   }
-  public void solAdd(String addition){
+  public void solAdd(String addition) {
     solutionSet.add(addition);
   }
-  public void solRemoveLast(){
-    if(solutionSet.size() > 0){
+  public void solRemoveLast() {
+    if (solutionSet.size() > 0) {
       solutionSet.remove(solutionSet.size()-1);
-    }else{
+    } else {
       print("nothing left to remove!");
     }
   }
-  //accessor method
-  public String[] faceRot(int[]pos) {
+  //gets rotation from face
+  public String[] faceRot(Integer[]pos) {
     String[] returnMoves = new String[2];
     if (Arrays.equals(pos, R)) {
       returnMoves[0] = "X";
       returnMoves[1] = "x";
-    } else if (Arrays.equals(pos, L)){
+    } else if (Arrays.equals(pos, L)) {
       returnMoves[0] = "L";
       returnMoves[1] = "l";
     } else if (Arrays.equals(pos, F)) {
       returnMoves[0] = "F";
       returnMoves[1] = "f";
-    } else if (Arrays.equals(pos, B)){
+    } else if (Arrays.equals(pos, B)) {
       returnMoves[0] = "B";
       returnMoves[1] = "b";
-    } else if (Arrays.equals(pos, D)){
+    } else if (Arrays.equals(pos, D)) {
       returnMoves[0] = "D";
       returnMoves[1] = "d";
     } else if (Arrays.equals(pos, U)) {
@@ -262,6 +265,10 @@ public class Cube {
     return returnMoves;
   }
 
+  //accessor to get solving state
+  public boolean isSolving() {
+    return solving;
+  }
   public void L() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == 1) {
@@ -365,7 +372,6 @@ public class Cube {
         pieces[i].rotateXCW();
       }
     }
-    
   }
   public void MPrime() {
     Piece frontPiece = getPiece(0, -1, 0); 
@@ -491,5 +497,16 @@ public class Cube {
     F();
     S();
     B();
+  }
+  void solve() {
+    // solving = true;
+    // cross(cube);
+    //crossCorners(cube);
+    //secondLayer(cube);
+    //secondCross(cube);
+    //edges(cube);
+    //corners(cube);
+    //print("solved!");
+    // solving = false;
   }
 }

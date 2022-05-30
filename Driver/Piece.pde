@@ -42,24 +42,33 @@ public class Piece {
     return result;
   }
   //return is corner
-  public boolean isCorner(){
+  public boolean isCorner() {
     int result = 0;
-    for(String i:col){
-      if(i != null){
+    for (String i : col) {
+      if (i != null) {
         result ++;
       }
     }
     return result == 3;
   }
   //return is edge?
-  public boolean isEdge(){
+  public boolean isEdge() {
     int result = 0;
-    for(String i:col){
-      if(i != null){
+    for (String i : col) {
+      if (i != null) {
         result ++;
       }
     }
     return result == 2;
+  }
+  //return true if has color
+  public boolean hasColor(String hasColor) {
+    for (String i : col) {
+      if (i != null && i.equals(hasColor)) {
+        return true;
+      }
+    }
+    return false;
   }
   public void rotateXCW() {
     int[] tempPos = new int[] {pos[1], pos[2]};
@@ -220,6 +229,48 @@ public class Piece {
       String tempCol = col[1];
       col[1] = col[0];
       col[0] = tempCol;
+    }
+  }
+  void move(String move) {
+    switch(move) {
+    case "L": 
+      L();
+      break;
+    case "l": 
+      LPrime();
+      break;
+    case "R": 
+      R();
+      break;
+    case "r": 
+      RPrime();
+      break;
+    case "U": 
+      U();
+      break;
+    case "u": 
+      UPrime();
+      break;
+    case "D": 
+      D();
+      break;
+    case "d": 
+      DPrime();
+      break;
+    case "F": 
+      F();
+      break;
+    case "f": 
+      FPrime();
+      break;
+    case "B": 
+      B();
+      break;
+    case "b": 
+      BPrime();
+      break;
+    default: 
+      break;
     }
   }
 }
