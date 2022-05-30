@@ -209,8 +209,8 @@ public class Cube {
     case "S":
       S();
       break;
-      case "s":
-        SPrime();
+    case "s":
+      SPrime();
       break;
     case "X":
       X();
@@ -287,17 +287,17 @@ public class Cube {
   public String getCol(String face) {
     switch(face) {
     case "U" : 
-      return getPiece(0, 0, 1).col[2];
+      return getPiece(0, 0, 1).zCol();
     case "F" : 
-      return getPiece(0, -1, 0).col[1];
+      return getPiece(0, -1, 0).yCol();
     case "R" : 
-      return getPiece(-1, 0, 0).col[0];
+      return getPiece(-1, 0, 0).xCol();
     case "L" : 
-      return getPiece(1, 0, 0).col[0];
+      return getPiece(1, 0, 0).xCol();
     case "B" : 
-      return getPiece(0, 1, 0).col[1];
+      return getPiece(0, 1, 0).yCol();
     case "D" : 
-      return getPiece(0, 0, -1).col[2];
+      return getPiece(0, 0, -1).zCol();
     default : 
       print("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
       return null;
@@ -585,10 +585,10 @@ public class Cube {
   }
   void solve() {
     solving = true;
-    cross();
-    //crossCorners(cube);
-    secondLayer();
-    redCross();
+    // cross();
+    makeCorners();
+    // secondLayer();
+    // redCross();
     //edges(cube);
     //corners(cube);
     //print("solved!");
@@ -720,6 +720,95 @@ public class Cube {
     return current.zCol().equals("orange") && current.xCol().equals(getPiece(-1, 0, 0).xCol());
   }
 
+  //corners
+  void makeCorners() {
+    // for(int i = 0; i < pieces.length; i++){//filters out all correct pieces
+    //   Piece current = pieces[i];
+    //   if(current.isCorner() && current.hasColor("orange")){
+    //     if(current.zPos() == 1 && current.xPos() == -1 && current.yPos() == -1){
+    //       if(!(isCornerAlignedRight(current))){
+    //         moveToBottom();
+    //         cornerRightAlgo();
+    //       }
+    //     }else if(current.zPos() == -1){
+
+    //     }
+    //   }
+    // }
+    Piece test1 = getPiece(-1, -1, 1);
+    Piece test2 = getPiece(1, -1, 1);
+    println("test1: " + isCornerAlignedRight(test1));
+    println("test2: " + isCornerAlignedLeft(test2));
+  }
+
+  //move corner piece to bottom layer
+  void moveToBottom(){
+    move("r");
+    move("d");
+    move("R");
+  }
+
+  //algos
+  void cornerLeftAlgo(){
+    move("D");
+    move("L");
+    move("d");
+    move("l");
+  }
+
+  void cornerRightAlgo(){
+    move("d");
+    move("r");
+    move("D");
+    move("R");
+  }
+
+  void cornerDownAlgo(){
+    
+  }
+
+  void whiteDownAlgo(){
+    move("F");
+    move("d");
+    move("f");
+    move("D");
+  }
+
+  void whiteUpAlgo(){
+    move("r");
+    move("D");
+    move("R");
+  }
+  //moves z = 1, z = 2 layer until piece aligns with color, then rotates cube to have orange facing us
+  void alignCenter(Piece piece){
+    while(!piece.xCol().equals(getCol("F"))){
+      move("u");
+      move("e");
+    }
+  }
+
+  void makeOrangeFaceUs(Piece piece){
+    if(piece.yPos() == -1 && !piece.xCol().equals("orange")){
+      move("Z");
+    }
+  }
+
+  boolean isCornerAlignedRight(Piece piece){
+    println(piece);
+    println(getCol("F") + " " + getCol("R"));
+    return 
+    piece.zCol().equals("orange") &&
+    piece.xCol().equals(getCol("R")) &&
+    piece.yCol().equals(getCol("F"));
+  }
+  boolean isCornerAlignedLeft(Piece piece){
+    println(piece);
+    println(getCol("F") + " " + getCol("L"));
+    return 
+    piece.zCol().equals("orange") &&
+    piece.xCol().equals(getCol("L")) &&
+    piece.yCol().equals(getCol("F"));
+  }
   //secondLayer
   void secondLayer() {
     move("X");
@@ -842,16 +931,16 @@ public class Cube {
   //third layer
   void redCross() {
     checkPosition();
-    while(!redCrossChecker()){
+    while (!redCrossChecker()) {
       singleAlgo();
       checkPosition();
     }
     println("redCross finished");
   }
-  boolean redCrossChecker(){
-    for(int i = 0; i < pieces.length; i++){
+  boolean redCrossChecker() {
+    for (int i = 0; i < pieces.length; i++) {
       Piece current = pieces[i];
-      if(current.zPos() == 1 && current.isEdge() && !current.zCol().equals("red")){
+      if (current.zPos() == 1 && current.isEdge() && !current.zCol().equals("red")) {
         return false;
       }
     }
@@ -863,21 +952,21 @@ public class Cube {
     Piece ul = getPiece(1, 0, 1);
     Piece urb = getPiece(-1, 1, 1);
     Piece ur = getPiece(-1, 0, 1);
-    Piece urf = getPiece(-1, -1 , 1);
+    Piece urf = getPiece(-1, -1, 1);
     Piece ub = getPiece(0, 1, 1);
     Piece ulf = getPiece(1, -1, 1);
     Piece uf = getPiece(0, -1, 1);
-    if(getPiece(0, 1, 1).zCol().equals("red") && getPiece(0,-1,1).zCol().equals("red")) {//vertical stripe, not horizontal
+    if (getPiece(0, 1, 1).zCol().equals("red") && getPiece(0, -1, 1).zCol().equals("red")) {//vertical stripe, not horizontal
       move("Z");
       return;
     }
-    if(ul.zCol().equals("red") && uf.zCol().equals("red") && !ulf.zCol().equals("red")){
+    if (ul.zCol().equals("red") && uf.zCol().equals("red") && !ulf.zCol().equals("red")) {
       move("z");
       return;
-    } else if(ur.zCol().equals("red") && ub.zCol().equals("red") && !urb.zCol().equals("red")){
+    } else if (ur.zCol().equals("red") && ub.zCol().equals("red") && !urb.zCol().equals("red")) {
       move("Z");
       return;
-    } else if(ur.zCol().equals("red") && uf.zCol().equals("red") && !urf.zCol().equals("red")){
+    } else if (ur.zCol().equals("red") && uf.zCol().equals("red") && !urf.zCol().equals("red")) {
       move("Z");
       move("Z");
       return;
