@@ -1,7 +1,7 @@
 import java.util.*;
 public class Cube {
   boolean solving;
-  ArrayList solutionSet = new ArrayList<String>(); 
+  ArrayList<String> solutionSet = new ArrayList<String>(); 
   private final int[] R = new int[] {
     -1, 0, 0
   };
@@ -156,8 +156,9 @@ public class Cube {
   }
 
   void move(String move) {
+    solutionSet.add(move);
     switch(move) {
-    case "L": 
+    case "L":  
       L();
       break;
     case "l": 
@@ -169,7 +170,7 @@ public class Cube {
     case "r": 
       RPrime();
       break;
-    case "U": 
+    case "U":
       U();
       break;
     case "u": 
@@ -192,6 +193,42 @@ public class Cube {
       break;
     case "b": 
       BPrime();
+      break;
+    case "M":
+      M();
+      break;
+    case "m":
+      MPrime();
+      break;
+    case "E":
+      E();
+      break;
+    case "e":
+      EPrime();
+      break;
+    case "S":
+      S();
+      break;
+      case "s":
+        SPrime();
+      break;
+    case "X":
+      X();
+      break;
+    case "x":
+      XPrime();
+      break;
+    case "Y":
+      Y();
+      break;
+    case "y":
+      YPrime();
+      break;
+    case "Z":
+      Z();
+      break;
+    case "z":
+      ZPrime();
       break;
     default: 
       break;
@@ -590,14 +627,14 @@ public class Cube {
             }
           }
         }
-        Z();
+        move("Z");
       }
     }
 
     // println("finished using semiPoppy");
 
-    X();
-    X();
+    move("X");
+    move("X");
     // fixes all orientation of orange edges
     while (poppyFullOriented() < 4) {
       for (int j = 0; j < 4; j++) { 
@@ -611,7 +648,7 @@ public class Cube {
             }
           }
         }
-        Z();
+        move("Z");
       }
     }
 
@@ -666,16 +703,16 @@ public class Cube {
     for (int i = 0; i < 4; i++) {
       // Piece current = getPiece(-1, 0, 1);
       while (!isOriented(-1, 0, 1)) {
-        U();
+        move("U");
         // println(isOriented(-1, 0, 1));
         // println(getPiece(-1, 0, 1));
       }
       move("R");
       move("R");
-      Z();
+      move("Z");
     }
-    XPrime();
-    XPrime();
+    move("x");
+    move("x");
   }
   //checks if piece is oriented correctly
   boolean isOriented(int x, int y, int z) {
@@ -685,15 +722,15 @@ public class Cube {
 
   //secondLayer
   void secondLayer() {
-    X();
-    X();
+    move("X");
+    move("X");
     secondLayerHelper();
-    for(int i = 0; i < pieces.length; i ++){
+    for (int i = 0; i < pieces.length; i ++) {
       Piece current = pieces[i];
-      
-      if(current.isEdge() && current.zPos() == 0){
-        
-        if(!current.hasColor("red")){
+
+      if (current.isEdge() && current.zPos() == 0) {
+
+        if (!current.hasColor("red")) {
           // println(current);
           moveToTop(current.getPos());
           secondLayerHelper();
@@ -703,8 +740,8 @@ public class Cube {
     println("second layer finished");
   }
 
-  
-  void secondLayerHelper(){
+
+  void secondLayerHelper() {
     for (int i = 0; i < 4; i++) { //goes through each of the 4 edge pieces on the cube and puts them in the right spot if possible, results in only red edge pieces on top
       if (noRed()) {
         Piece current = getPiece(0, -1, 1);
@@ -721,15 +758,15 @@ public class Cube {
           i--;
         }
       }
-      U();
+      move("U");
     }
   }
-  
+
   //checks if in right place
   boolean inRightPlace(Piece piece) {
     return 
-    piece.xCol().equals(getPiece(piece.xPos(), 0, 0).xCol()) &&
-    piece.yCol().equals(getPiece(0, piece.yPos(), 0).yCol());
+      piece.xCol().equals(getPiece(piece.xPos(), 0, 0).xCol()) &&
+      piece.yCol().equals(getPiece(0, piece.yPos(), 0).yCol());
     // &&
     // piece.xCol().equals(getPiece(piece.xPos(), 0, 0).xCol()) &&
     // piece.yCol().equals(getPiece(piece.xPos(), 0, 0).yCol());
@@ -779,31 +816,67 @@ public class Cube {
 
   //rotate bottom to create vertLine
   void moveBottom() {
-    D();
-    EPrime();
+    move("D");
+    move("e");
   }
 
   //move leftover pieces to top
-  void moveToTop(int[] pos){
+  void moveToTop(int[] pos) {
     Piece current = getPiece(pos[0], pos[1], pos[2]);
     // println("moveToTop");
     // println(current);
-    while(current.yPos() != -1){
-      Z();
+    while (current.yPos() != -1) {
+      move("Z");
       // println("rotZ");
       // println(current);
       current = findPiece(current.xCol(), current.yCol());
     }
 
-    if(current.xPos() == -1){
+    if (current.xPos() == -1) {
       rightAlgo();
-    }else{
+    } else {
       leftAlgo();
     }
   }
 
   //third layer
-  void redCross(){
-    
+  void redCross() {
+    checkPosition();
+  }
+  int checkPosition() { 
+    ArrayList<String> crossOrienter = new ArrayList<String>();
+    for (int i = solutionSet.size()-1; i > -1; i--) {
+      if (solutionSet.get(i).equals("X") || 
+        solutionSet.get(i).equals("x") || 
+        solutionSet.get(i).equals("Y") || 
+        solutionSet.get(i).equals("y") || 
+        solutionSet.get(i).equals("Z") || 
+        solutionSet.get(i).equals("z")) {
+        crossOrienter.add(solutionSet.get(i));
+      }
+    }
+    println(crossOrienter);
+    // for(String i : crossOrienter){
+    //   move(i);
+    // }
+
+    int result = 0;
+    // for(int i = 0; i < pieces.length; i++){
+    //   Piece current = pieces[i];
+    //   if(current.isEdge() && current.zPos() == 1 && current.zCol().equals("yellow"){
+
+    //   }
+    // }
+
+    // check for horizontal line
+    return -1;
+  }
+  void singleAlgo() {
+    move("F");
+    move("U");
+    move("R");
+    move("u");
+    move("r");
+    move("f");
   }
 }
