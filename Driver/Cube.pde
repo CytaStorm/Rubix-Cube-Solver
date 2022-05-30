@@ -577,6 +577,8 @@ public class Cube {
     //     }
     //   }
     // }
+
+    //moves all orange edges to bottom regardless of orientation
     while(poppySemiOriented() < 4){
       for(int j = 0; j < 4; j++) { // if edge piece has red color while on at -1, 0, -1 
         for (int i = 0; i < pieces.length; i++) {
@@ -605,7 +607,27 @@ public class Cube {
         Z();
       }
     }
-
+    
+    X();
+    X();
+    // fixes all orientation of orange edges
+    while(poppyFullOriented() < 4){
+      for(int j = 0; j < 4; j++) { 
+        for (int i = 0; i < pieces.length; i++) {
+          Piece current = pieces[i];
+          if (current.isEdge() &&  Arrays.equals(current.getPos(), new int[] {-1, 0, 1})) {
+            if(current.hasColor("orange") && !(current.zCol().equals("orange"))){
+              move("r");
+              move("U");
+              move("f");
+            }
+          }
+        }
+        Z();
+      }
+    }
+    XPrime();
+    XPrime();
     // if (poppyPetalsOriented() < 5) {
     //   for (int i = 0; i < pieces.length; i++) {
     //     //if has red and red is not bottom
@@ -736,8 +758,9 @@ public class Cube {
   int poppyFullOriented() {
     int result = 0;
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].isEdge() && pieces[i].getPos()[2] == -1) {
-        if (pieces[i].getCol()[2] != null && pieces[i].getCol()[2].equals("orange")) {
+      Piece current = pieces[i];
+      if (current.isEdge() && current.zPos() == 1) {
+        if (current.zCol() != null && current.zCol().equals("orange")) {
           result++;
         }
       }
@@ -748,8 +771,9 @@ public class Cube {
   int poppySemiOriented() {
     int result = 0;
     for (int i = 0; i < pieces.length; i++) {
-      if (pieces[i].isEdge() && pieces[i].getPos()[2] == -1) {
-        if (pieces[i].getCol()[2] != null && pieces[i].hasColor("orange")) {
+      Piece current = pieces[i];
+      if (current.isEdge() && current.zPos() == -1) {
+        if (current.zCol() != null && current.hasColor("orange")) {
           result++;
         }
       }
@@ -757,16 +781,16 @@ public class Cube {
     return result;
   }
 
-  //if the piece on z = 1 on same slice as piece[i] is red, rotate top unti it is not a red piece
+  //makes space for orange petals
   int makeSpace(int x, int y, int z, String col) { 
     println("makeSpace called");
-    int uTurnsMade = 0;
-    String[] tempColor = getPiece(x, y, z).getCol();
-    while (Arrays.asList(tempColor).indexOf(col) != -1 && ((tempColor[0] != null && tempColor[0].equals(col)) || (tempColor[1] != null && tempColor[1].equals(col)))) {
+    int dTurnsMade = 0;
+    Piece tempPiece = getPiece(x, y, z);
+    while (tempPiece.hasColor(col)) {
       move("D");
-      tempColor = getPiece(x, y, z).getCol();
-      uTurnsMade++;
+      tempPiece = getPiece(x,y,z);
+      dTurnsMade++;
     }
-    return uTurnsMade;
+    return dTurnsMade;
   }
 }
