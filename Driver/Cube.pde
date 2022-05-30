@@ -313,30 +313,30 @@ public class Cube {
   public boolean isSolving() {
     return solving;
   }
-  public void L() {
+  public void LPrime() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == 1) {
         pieces[i].rotateXCW();
       }
     }
   } 
-  public void LPrime() {
+  public void L() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == 1) {
         pieces[i].rotateXCCW();
       }
     }
   }
-  public void R() {
-    println("R used");
+  public void RPrime() {
+    // println("R used");
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == -1) {
         pieces[i].rotateXCW();
       }
     }
   } 
-  public void RPrime() {
-    println("RPrime used");
+  public void R() {
+    // println("RPrime used");
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == -1) {
         pieces[i].rotateXCCW();
@@ -515,17 +515,18 @@ public class Cube {
     }
   }
   public void X() {
+    println("X used");
     RPrime();
     MPrime();
     LPrime();
   }
   public void XPrime() {
+    println("XPrime used");
     L();
     M(); 
     R();
   }
   public void Z() {
-    println("Z");
     UPrime();
     E(); 
     DPrime();
@@ -608,6 +609,7 @@ public class Cube {
       }
     }
     
+    println("finished using semiPoppy");
     X();
     X();
     // fixes all orientation of orange edges
@@ -615,7 +617,7 @@ public class Cube {
       for(int j = 0; j < 4; j++) { 
         for (int i = 0; i < pieces.length; i++) {
           Piece current = pieces[i];
-          if (current.isEdge() &&  Arrays.equals(current.getPos(), new int[] {-1, 0, 1})) {
+          if (current.isEdge() && Arrays.equals(current.getPos(), new int[] {-1, 0, 1})) {
             if(current.hasColor("orange") && !(current.zCol().equals("orange"))){
               move("r");
               move("U");
@@ -628,44 +630,6 @@ public class Cube {
     }
     XPrime();
     XPrime();
-    // if (poppyPetalsOriented() < 5) {
-    //   for (int i = 0; i < pieces.length; i++) {
-    //     //if has red and red is not bottom
-    //     if (pieces[i].isEdge() && pieces[i].getPos()[2] == -1 && (pieces[i].hasColor("red") && !pieces[i].getCol()[2].equals("red"))) {
-    //       String moveToMake = pieces[i].verticalFace();
-    //       int reverseU = makeSpace(pieces[i].getPos()[0], pieces[i].getPos()[1], 1, "red");
-
-    //       switch (moveToMake) {
-    //       case "F": 
-    //         move("f");
-    //         move("u");
-    //         move("R");
-    //         break;
-    //       case "L":
-    //         move("l");
-    //         move("u");
-    //         move("F");
-    //         break;
-    //       case "R":
-    //         move("r");
-    //         move("u");
-    //         move("B");
-    //         break;
-    //       case "B":
-    //         move("b");
-    //         move("L");
-    //         move("f");
-    //         break;
-    //       default:
-    //         break;
-    //       }
-    //       while (reverseU != 0) {
-    //         move("u");
-    //         reverseU --;
-    //       }
-    //     }
-    //   }
-    // }
 
     //bring up red petals in middle layer
     // if (poppyPetalsOriented() < 5) {
@@ -711,45 +675,6 @@ public class Cube {
     //       }
     //     }
     //   }
-    // }
-
-    //fix orientation in U layer
-    // if (poppyPetalsOriented() < 5) {
-    //   for (int i = 0; i < pieces.length; i++) {
-    //     if (pieces[i].isEdge() && pieces[i].getPos()[2] == 1 && pieces[i].hasColor("red")){
-    //       if (!(pieces[i].getCol()[2].equals("red"))) {
-    //         println("inside if statement");
-    //         String moveToMake = pieces[i].verticalFace();
-    //         println("gets to switch statement");
-    //         switch(moveToMake) {
-    //         case "F": 
-    //           move("F");
-    //           move("u");
-    //           move("R");
-    //           break;
-    //         case "R": 
-    //           move("R");
-    //           move("u");
-    //           move("B");
-    //           break;
-    //         case "B": 
-    //           move("B");
-    //           move("u");
-    //           move("L");
-    //           break;
-    //         case "L": 
-    //           move("L");
-    //           move("u");
-    //           move("F");
-    //           break;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
-
-    // if(poppyPetalsOriented() < 4){
-    //   poppy();
     // }
     return;
   }
