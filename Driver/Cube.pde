@@ -737,7 +737,7 @@ public class Cube {
     // }
     Piece test1 = getPiece(-1, -1, -1);
     // Piece test2 = getPiece(1, -1, 0);
-    alignCenter(test1.yCol());
+    makeOrangeFaceUs(test1);
   }
 
   //move corner piece to bottom layer
@@ -791,7 +791,15 @@ public class Cube {
   }
 
   void makeOrangeFaceUs(Piece piece){
-    if(piece.yPos() == -1 && !piece.xCol().equals("orange")){
+    if(piece.yPos() == -1){
+      move("Z");
+      move("Z");
+    }
+    if(piece.xPos() == -1){
+      if(piece.yCol().equals("orange")){
+        move("z");
+      }
+    }else if(piece.yCol().equals("orange")){
       move("Z");
     }
   }
