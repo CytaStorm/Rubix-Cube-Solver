@@ -79,6 +79,15 @@ public class Piece {
     }
     return result == 3;
   }
+  public boolean isFace(){
+    int result = 0;
+    for(String i : col){
+      if(i == null){
+        result++;
+      }
+    }
+    return result == 2; 
+  }
   //return is edge?
   public boolean isEdge() {
     int result = 0;

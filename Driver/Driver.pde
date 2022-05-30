@@ -11,6 +11,18 @@ String[][] downSide = new String[3][3];
 void setup() {
   size(1000, 1000);
 }
+  //void solve() {
+  //  solving = true; 
+  //  //cross(); 
+  //  crossCorners(solveCube);
+  //  //secondLayer(cube);
+  //  //secondCross(cube);
+  //  //edges(cube);
+  //  //corners(cube);
+  //  //print("solved!");
+  //  solving = false;
+  //}
+
 public color stringToColor(String col) {
   switch(col) {
   case "orange": 
@@ -361,5 +373,7 @@ void display() {
       fill(stringToColor(downSide[i][j]));
       rect(400+j*50, 400+i*50, 50, 50);
     }
-  }
-}
+  } 
+} 
+
+  
