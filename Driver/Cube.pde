@@ -559,25 +559,9 @@ public class Cube {
   }
   void cross() {
     poppy();
-    // makeCross();
+    makeCross();
   }
   void poppy() {
-
-    //moves all petals on bottom layer with red color at all to top
-    // if (poppyPetalsOriented() < 4) {
-    //   for (int i = 0; i < pieces.length; i++) {
-    //     // println("line 562 debug: " + i);
-    //     // println(pieces[i].isEdge());
-    //     if (pieces[i].isEdge() && pieces[i].getPos()[2] == -1 && pieces[i].hasColor("red")) {
-    //       // println("inside for loop");
-    //       makeSpace(pieces[i].getPos()[0], pieces[i].getPos()[1], 1, "red");
-    //       String moveToMake = pieces[i].verticalFace();
-    //       // println(moveToMake);
-    //       move(moveToMake);
-    //       move(moveToMake);
-    //     }
-    //   }
-    // }
 
     //moves all orange edges to bottom regardless of orientation
     while(poppySemiOriented() < 4){
@@ -629,15 +613,14 @@ public class Cube {
         Z();
       }
     }
-    XPrime();
-    XPrime();
 
     ///finish petals
 
     return;
   }
 
-  //counts how many petals are oriented correctly on top
+  //poppy helpers
+  //counts fully correct petals
   int poppyFullOriented() {
     int result = 0;
     for (int i = 0; i < pieces.length; i++) {
@@ -650,7 +633,7 @@ public class Cube {
     }
     return result;
   }
-
+  //counts petal in right pos, but wrong color
   int poppySemiOriented() {
     int result = 0;
     for (int i = 0; i < pieces.length; i++) {
@@ -663,8 +646,7 @@ public class Cube {
     }
     return result;
   }
-
-  //makes space for orange petals
+  //makes space for algorithm
   int makeSpace(int x, int y, int z, String col) { 
     // println("makeSpace called");
     int dTurnsMade = 0;
@@ -675,5 +657,23 @@ public class Cube {
       dTurnsMade++;
     }
     return dTurnsMade;
+  }
+
+  
+
+  void makeCross(){
+    for(int j = 0; j < pieces.length; j++){
+      Piece current = pieces[j];
+      if(current.isEdge() && current.zPos() == 1){
+        println(isOriented(current.getPos()));
+      }
+    }
+  }
+  boolean isOriented(int[] pos) {
+    Piece current = getPiece(pos[0], pos[1], pos[2]);
+    if (current.yCol() != null && current.yCol().equals(getPiece(pos[0], -1, 0))) {
+      return true;
+    }
+    return false;
   }
 }
