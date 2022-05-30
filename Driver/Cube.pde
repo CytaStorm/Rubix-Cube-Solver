@@ -550,7 +550,7 @@ public class Cube {
     solving = true;
     cross();
     //crossCorners(cube);
-    //secondLayer(cube);
+    secondLayer();
     //secondCross(cube);
     //edges(cube);
     //corners(cube);
@@ -681,5 +681,108 @@ public class Cube {
   boolean isOriented(int x, int y, int z) {
     Piece current = getPiece(x, y, z);
     return current.zCol().equals("orange") && current.xCol().equals(getPiece(-1, 0, 0).xCol());
+  }
+
+  //secondLayer
+  void secondLayer() {
+    X();
+    X();
+    secondLayerHelper();
+    for(int i = 0; i < pieces.length; i ++){
+      Piece current = pieces[i];
+      
+      if(current.isEdge() && current.zPos() == 0){
+        
+        if(!current.hasColor("red")){
+          // println(current);
+          moveToTop(current.getPos());
+          secondLayerHelper();
+        }
+      }
+    }
+  }
+  void secondLayerHelper(){
+    for (int i = 0; i < 4; i++) { //goes through each of the 4 edge pieces on the cube and puts them in the right spot if possible, results in only red edge pieces on top
+      if (noRed()) {
+        Piece current = getPiece(0, -1, 1);
+        String targetColor = current.xCol();
+        // println(current);
+        while (!makesVertLine()) {
+          moveBottom();
+        }
+        if (isAdjacentLeft()) {
+          leftAlgo();
+          i--;
+        } else {
+          rightAlgo();
+          i--;
+        }
+      }
+      U();
+    }
+  }
+  boolean inRightPlace(Piece piece) {
+    return 
+    piece.xCol().equals(getPiece(piece.xPos(), 0, 0).xCol()) &&
+    piece.yCol().equals(getPiece(0, piece.yPos(), 0).yCol());
+    // &&
+    // piece.xCol().equals(getPiece(piece.xPos(), 0, 0).xCol()) &&
+    // piece.yCol().equals(getPiece(piece.xPos(), 0, 0).yCol());
+  }
+  boolean noRed() {
+    return !getPiece(0, -1, 1).hasColor("red");
+  }
+
+  boolean isAdjacentLeft() {
+    return getPiece(0, -1, 1).zCol().equals(getPiece(1, 0, 0).xCol());
+  }
+  boolean isAdjacentRight() {
+    return getPiece(0, -1, 1).zCol().equals(getPiece(-1, 0, 0).xCol());
+  }
+  boolean makesVertLine() {
+    return getPiece(0, -1, 1).yCol().equals(getPiece(0, -1, 0).yCol());
+  }
+  void leftAlgo() {
+    // println("use left algo");
+    move("u");
+    move("l");
+    move("U");
+    move("L");
+    move("U");
+    move("F");
+    move("u");
+    move("f");
+  }
+  void rightAlgo() {
+    // println("use right algo");
+    move("U");
+    move("R");
+    move("u");
+    move("r");
+    move("u");
+    move("f");
+    move("U");
+    move("F");
+  }
+  void moveBottom() {
+    D();
+    EPrime();
+  }
+  void moveToTop(int[] pos){
+    Piece current = getPiece(pos[0], pos[1], pos[2]);
+    // println("moveToTop");
+    // println(current);
+    while(current.yPos() != -1){
+      Z();
+      // println("rotZ");
+      // println(current);
+      current = findPiece(current.xCol(), current.yCol());
+    }
+
+    if(current.xPos() == -1){
+      rightAlgo();
+    }else{
+      leftAlgo();
+    }
   }
 }
