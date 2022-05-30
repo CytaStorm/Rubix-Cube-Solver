@@ -550,7 +550,7 @@ public class Cube {
     solving = true;
     cross();
     //crossCorners(cube);
-    //secondLayer(cube);
+    secondLayer();
     //secondCross(cube);
     //edges(cube);
     //corners(cube);
@@ -681,5 +681,138 @@ public class Cube {
   boolean isOriented(int x, int y, int z) {
     Piece current = getPiece(x, y, z);
     return current.zCol().equals("orange") && current.xCol().equals(getPiece(-1, 0, 0).xCol());
+  }
+
+  //secondLayer
+  void secondLayer() {
+    X();
+    X();
+    //   for (int j = 0; j < 4; j++) {
+    //     int red = 0;
+    //     for (int i = 0; i < 4; i++) {
+    //       Piece current = getPiece(0, -1, 1);
+    //       println(Arrays.toString(current.getCol()));
+    //       if (noRed() && !makesVertLine()) {
+    //         moveIntoPos(findPiece(current.getZ(), current.getX()));
+    //       }//guarantees vertical line
+    //         println(getPiece(0, -1, 1).zCol());
+    //         if (isAdjacentLeft()) {
+    //           println("gets inside leftalgo");
+    //           leftAlgo();
+    //           break;
+    //         } else {
+    //           println("gets inside rightalgo");
+    //           rightAlgo();
+    //           break;
+    //         }
+    //         println("no adjacency");
+    //       } else if (!noRed()) {
+    //         red++;
+    //       } else {
+
+    //       }
+    //       println("loop i");
+    //       U();
+    //     }
+    //     // println("reds: " + red);
+    //     if (red == 4) {
+    //       println("reds: " + red);
+    //       rightAlgo();
+    //       j--;
+    //       ZPrime();
+    //     }
+    //     Z();
+    //     println("loop jjjjjjjjjjjjjjjjjjjjjjjj");
+    //   }
+    // XPrime();
+    // XPrime();
+    // }
+    for (int j = 0; j < 4; j++) { //goes through all 4 faces on z axis
+      Piece current = getPiece(0, -1, 1); //sets to top piece
+      Piece faceFace = getPiece(0, -1, 0);
+      // println("before movement: " + faceFace);
+      Piece leftFace = getPiece(1, 0, 0);
+      Piece rightFace = getPiece(-1, 0, 0);
+      Piece target = findPiece(faceFace.yCol(), rightFace.xCol());
+      // println(current.yCol());
+      // println(rightFace.xCol());
+      // println(findPiece(faceFace.yCol(), rightFace.xCol()));
+      if (target.zPos() == 0) { //if target piece is in middle layer, finds it, moves to top layer
+        int reverse = moveIntoPos(faceFace.yCol(), rightFace.xCol());
+        while (reverse != 0) {
+          Z();
+          reverse--; //brings cube back to correct orientation after use of moveintoPos
+        }
+      }
+      println("after movement: " + target);
+      println("after movement: " + faceFace);
+      for (int i = 0; i < 4; i ++) { //each face checks if there is a vertical piece
+        println("after " + i + " loops, target is at: " + target);
+        if(makesVertLine()){
+          if (isAdjacentLeft()) {
+            leftAlgo();
+            break;
+          } else if (isAdjacentRight()) {
+            rightAlgo();
+            break;
+          }
+        }
+        println("loop i");
+        U();
+      }
+      println("loop JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ");
+      Z();
+    }
+    XPrime();
+    XPrime();
+  }
+
+  boolean noRed() {
+    return !getPiece(0, -1, 1).hasColor("red");
+  }
+
+  boolean isAdjacentLeft() {
+    return getPiece(0, -1, 1).zCol().equals(getPiece(1, 0, 0).xCol());
+  }
+  boolean isAdjacentRight() {
+    return getPiece(0, -1, 1).zCol().equals(getPiece(-1, 0, 0).xCol());
+  }
+  boolean makesVertLine() {
+    return getPiece(0, -1, 1).yCol().equals(getPiece(0, -1, 0).yCol());
+  }
+  void leftAlgo() {
+    println("use left algo");
+    move("u");
+    move("l");
+    move("U");
+    move("L");
+    move("U");
+    move("F");
+    move("u");
+    move("f");
+  }
+  void rightAlgo() {
+    println("use right algo");
+    move("U");
+    move("R");
+    move("u");
+    move("r");
+    move("u");
+    move("f");
+    move("U");
+    move("F");
+  }
+  int moveIntoPos(String col, String col2) {
+    int reverseMoves = 0;
+    Piece current = findPiece(col, col2);
+    while (!Arrays.equals(current.getPos(), new int[] {-1, -1, 0})) {
+      println("moves into place");
+      ZPrime();
+      reverseMoves++;
+      current = findPiece(col, col2);
+    }
+    rightAlgo();
+    // println("moved piece: " + current);
+    return reverseMoves;
   }
 }
