@@ -582,67 +582,15 @@ public class Cube {
     B();
   }
   void solve() {
-<<<<<<< HEAD
-    solving = true; 
-    //cross(); 
-    //crossCorners(solveCube);
-    //secondLayer(cube);
-    //secondCross(cube);
-=======
     solving = true;
     cross();
-    //crossCorners(cube);
     secondLayer();
     redCross();
->>>>>>> c2b52de82d356792af2c44f11301d5cc48e2b854
     //edges(cube);
     //corners(cube);
     //print("solved!");
     solving = false;
   }
-
-
-  //boolean isWhiteCorner(Piece corner) {
-  //  return ((corner.isCorner() && corner.getCol()[0] == "white")  || 
-  //    (corner.isCorner() && corner.getCol()[1] == "white") || 
-  //    (corner.isCorner() && corner.getCol()[2] == "white"));
-  //}  
-  //boolean isCornersIns(int x, int y, int z) {
-  //  if (getPiece(x, y, z).isCorner()) {
-  //    return(getPiece(x, y, z).getDir(x,y,z,) == getPiece(1,1,2
-  //  }
-  //} 
-  //boolean checkWhiteInU() {
-  //  for (int i = 0; i < pieces.length; i++) {
-  //    if (pieces[i].isCorner()) {
-  //      return (pieces[i].getCol()[0] ==
-  //    }
-  //  }
-  //}
-  //boolean preparedWhiteCorners(Cube cube){
-  //  if(cube.getPiece(2,0,0).isCorner() && cube.getPiece(2,0,0).getDir()
-  //}
-  //void insertCorners() {
-  //  for (int i = 0; i < 26; i++) {
-  //    if (pieces[i].isCorner() && isWhiteCorner(pieces[i])) {
-  //      if (pieces[i].getPos()[0] == 0) {
-  //        if (pieces[i].getPos()[2] == 0) {
-  //          move("UPrime");
-  //        } else {
-  //          move("U"); 
-  //            move("U");
-  //        }
-  //      } else {
-  //        if (pieces[i].getPos()[2] == 2) {
-  //          move("U");
-  //        }
-  //      }
-  //      int uTurns = 0; 
-  //        int yRot = 0; 
-  //        while
-  //    }
-  //  }
-  //} 
   void cross() {
     poppy();
     println("finished poppy");
@@ -661,12 +609,8 @@ public class Cube {
             move("R");
           }
         }
-<<<<<<< HEAD
-=======
         move("Z");
->>>>>>> c2b52de82d356792af2c44f11301d5cc48e2b854
       }
-      Z();
     }
 
 
@@ -778,17 +722,9 @@ public class Cube {
     }
     println("second layer finished");
   }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> c2b52de82d356792af2c44f11301d5cc48e2b854
   void secondLayerHelper() {
     for (int i = 0; i < 4; i++) { //goes through each of the 4 edge pieces on the cube and puts them in the right spot if possible, results in only red edge pieces on top
       if (noRed()) {
-        Piece current = getPiece(0, -1, 1);
-        String targetColor = current.xCol();
-        // println(current);
         while (!makesVertLine()) {
           moveBottom();
         }
@@ -861,21 +797,13 @@ public class Cube {
     move("D");
     move("e");
   }
-<<<<<<< HEAD
-=======
-
   //move leftover pieces to top
->>>>>>> c2b52de82d356792af2c44f11301d5cc48e2b854
   void moveToTop(int[] pos) {
     Piece current = getPiece(pos[0], pos[1], pos[2]);
     // println("moveToTop");
     // println(current);
     while (current.yPos() != -1) {
-<<<<<<< HEAD
-      Z();
-=======
       move("Z");
->>>>>>> c2b52de82d356792af2c44f11301d5cc48e2b854
       // println("rotZ");
       // println(current);
       current = findPiece(current.xCol(), current.yCol());
@@ -887,145 +815,6 @@ public class Cube {
       leftAlgo();
     }
   }
-
-<<<<<<< HEAD
-  //see if there's any wrong corners on top and move it down
-  void checkCornersOnTop() {
-    for (int i = 0; i < pieces.length; i ++) {
-      if (isOrangeCorner(pieces[i]) && pieces[i].zPos() == 1) {
-        if (!((pieces[i].xCol().equals(getCol("F"))) || (pieces[i].yCol().equals(getCol("R"))))) {
-          move("r"); 
-          move("d");
-          move("R");
-        }
-      }
-    }
-  } 
-  boolean isOrangeCorner(Piece corner) {
-    return ((corner.isCorner() && corner.getCol()[0] == "orange")  || 
-      (corner.isCorner() && corner.getCol()[1] == "orange") || 
-      (corner.isCorner() && corner.getCol()[2] == "orange"));
-  } 
-  int allOrangeCorners() {
-    int ans = 0;
-    for (int i = 0; i < pieces.length; i++) {
-      if (isOrangeCorner(pieces[i])) {
-        ans += 1;
-      }
-    }
-    return ans;
-  }
-
-  boolean isOrientated(Piece corner) {
-    return(isOrangeCorner(corner) && corner.zPos() == -1);
-  } 
-  //public String getColorofFace(String dir) {
-  //  String ans = ""; 
-  //  for (int i = 0; i < pieces.length; i ++) {
-  //    if (pieces[i].isFace()) {
-  //      for (String j : pieces[i].getCol()) {
-  //        if (j != null) {
-  //          ans = j;
-  //        }
-  //      }
-  //    }
-  //  }
-  //  return ans;
-  //}
-  //check if the corner piece's two colors is next to the corresponding faces
-  //boolean isPlacedFaceRight(Piece corner) {
-  //  return (corner.xCol().equals(getPiece(0, -1, 0).xCol()) &&
-  //    corner.zCol().equals(getPiece(-1, 0, 0).zCol()));
-  //}
-  //void orangeAtRight(Piece corner) { 
-  //  if (isOrientated(corner) && corner.yCol() == "orange" ) {
-  //    move("r"); 
-  //    move("d"); 
-  //    move("R");
-  //  }
-  //}   
-  boolean rightAdj(Piece corner) {
-    return corner.yCol().equals(getCol("R")) && corner.zCol().equals(getCol("D"))
-      && corner.xCol().equals("orange");
-  }
-  void whiteCornerRightAlgo() {
-    move("d"); 
-    move("r"); 
-    move("D"); 
-    move("R");
-  }  
-  boolean leftAdj(Piece corner) {
-    return corner.yCol().equals("orange") && corner.xCol().equals(getCol("F"))
-      && corner.zCol().equals(getCol("R"));
-  }
-
-  void whiteCornerLeftAlgo() {
-    move("D");
-    move("L");
-    move("d"); 
-    move("l");
-  } 
-  boolean downAdj(Piece corner) {
-    return corner.zCol().equals("orange") && corner.xCol().equals(getCol("R"))
-      && corner.yCol().equals(getCol("F"));
-  }
-  void whiteCornerDownAlgo() {
-    move("F"); 
-    move("d"); 
-    move("f"); 
-    move("D"); 
-    move("D"); 
-    move("d"); 
-    move("r"); 
-    move("D"); 
-    move("R");
-  }  
-  boolean topAdjacent(Piece corner) {
-    return corner.zCol().equals(getCol("R")) && corner.yCol().equals(getCol("F"))
-      && corner.xCol().equals("orange");
-  }
-  void whiteCornerTopAlgo() {
-    move("r"); 
-    move("D"); 
-    move("R");  
-    move("d"); 
-    move("r"); 
-    move("D"); 
-    move("R");
-  } 
-  boolean hasCross(){
-    return (getPiece(1,-1,1).zCol().equals("orange") && getPiece(-1,-1,1).zCol().equals("orange") 
-    && getPiece(-1,1,1).zCol().equals("orange") && getPiece(1,1,1).zCol().equals("orange"));
-  }
-  void crossCornerHelper() {
-    checkCornersOnTop();
-    for (int i = 0; i < 4; i++) {
-      if (isOrientated(pieces[i])) {
-        Piece current = pieces[i]; 
-        while (!(hasCross())){
-          move("D");
-        }
-        if(rightAdj(current)){
-          whiteCornerRightAlgo(); 
-          i--; 
-        }
-         else if(leftAdj(current)){
-          whiteCornerRightAlgo(); 
-          i--; 
-        } 
-        else if(downAdj(current)){
-          whiteCornerDownAlgo();
-          i--; 
-        }
-  
-      }
-    }
-  }
-  void crossCorners() {
-    for (int i = 0; i < pieces.length; i ++) {
-    }
-  }
-=======
   //third layer
   void redCross() {
     checkPosition();
@@ -1079,5 +868,4 @@ public class Cube {
     move("r");
     move("f");
   }
->>>>>>> c2b52de82d356792af2c44f11301d5cc48e2b854
 }
