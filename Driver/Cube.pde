@@ -313,14 +313,14 @@ public class Cube {
   public boolean isSolving() {
     return solving;
   }
-  public void LPrime() {
+  public void L() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == 1) {
         pieces[i].rotateXCW();
       }
     }
   } 
-  public void L() {
+  public void LPrime() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == 1) {
         pieces[i].rotateXCCW();
@@ -516,7 +516,7 @@ public class Cube {
   }
   public void X() {
     println("X used");
-    RPrime();
+    R();
     MPrime();
     LPrime();
   }
@@ -524,7 +524,7 @@ public class Cube {
     println("XPrime used");
     L();
     M(); 
-    R();
+    RPrime();
   }
   public void Z() {
     UPrime();
@@ -559,13 +559,15 @@ public class Cube {
   }
   void cross() {
     poppy();
+    println("finished poppy");
     makeCross();
+    println("finished cross");
   }
   void poppy() {
 
     //moves all orange edges to bottom regardless of orientation
-    while(poppySemiOriented() < 4){
-      for(int j = 0; j < 4; j++) { // if edge piece has red color while on at -1, 0, -1 
+    while (poppySemiOriented() < 4) {
+      for (int j = 0; j < 4; j++) { // if edge piece has red color while on at -1, 0, -1 
         for (int i = 0; i < pieces.length; i++) {
           // println("line 562 debug: " + i);
           // println(pieces[i].isEdge());
@@ -573,16 +575,15 @@ public class Cube {
           if (current.isEdge() && current.hasColor("orange") && current.xPos() == -1 && current.zPos() != -1) {
             // println("inside for loop");
             makeSpace(current.xPos(), 0, -1, "orange");
-            if(current.zPos() == 0){
-              if(current.yPos() == -1){
+            if (current.zPos() == 0) {
+              if (current.yPos() == -1) {
                 move("R");
                 // println("at -1 1 1");
-                
               } else {
                 // println("at -1 1 -1");
                 move("r");
               }
-            } else if (current.zPos() == 1){
+            } else if (current.zPos() == 1) {
               // println("orange on top layer");
               move("R");
               move("R");
@@ -592,18 +593,18 @@ public class Cube {
         Z();
       }
     }
-    
+
     // println("finished using semiPoppy");
 
     X();
     X();
     // fixes all orientation of orange edges
-    while(poppyFullOriented() < 4){
-      for(int j = 0; j < 4; j++) { 
+    while (poppyFullOriented() < 4) {
+      for (int j = 0; j < 4; j++) { 
         for (int i = 0; i < pieces.length; i++) {
           Piece current = pieces[i];
           if (current.isEdge() && Arrays.equals(current.getPos(), new int[] {-1, 0, 1})) {
-            if(current.hasColor("orange") && !(current.zCol().equals("orange"))){
+            if (current.hasColor("orange") && !(current.zCol().equals("orange"))) {
               move("r");
               move("U");
               move("f");
@@ -653,27 +654,32 @@ public class Cube {
     Piece tempPiece = getPiece(x, y, z);
     while (tempPiece.hasColor(col)) {
       move("D");
-      tempPiece = getPiece(x,y,z);
+      tempPiece = getPiece(x, y, z);
       dTurnsMade++;
     }
     return dTurnsMade;
   }
 
-  
 
-  void makeCross(){
-    for(int j = 0; j < pieces.length; j++){
-      Piece current = pieces[j];
-      if(current.isEdge() && current.zPos() == 1){
-        println(isOriented(current.getPos()));
+  //makes cross
+  void makeCross() {
+    for (int i = 0; i < 4; i++) {
+      // Piece current = getPiece(-1, 0, 1);
+      while (!isOriented(-1, 0, 1)) {
+        U();
+        // println(isOriented(-1, 0, 1));
+        // println(getPiece(-1, 0, 1));
       }
+      move("R");
+      move("R");
+      Z();
     }
+    XPrime();
+    XPrime();
   }
-  boolean isOriented(int[] pos) {
-    Piece current = getPiece(pos[0], pos[1], pos[2]);
-    if (current.yCol() != null && current.yCol().equals(getPiece(pos[0], -1, 0))) {
-      return true;
-    }
-    return false;
+  //checks if piece is oriented correctly
+  boolean isOriented(int x, int y, int z) {
+    Piece current = getPiece(x, y, z);
+    return current.zCol().equals("orange") && current.xCol().equals(getPiece(-1, 0, 0).xCol());
   }
 }
