@@ -939,8 +939,13 @@ public class Cube {
   //  }
   //}  
   void rightAlgo(){
-    for(int i = 0; i < allOrangeCorners(); i ++){
-      if(
+    for(int i = 0; i < pieces.length; i ++){
+      if(isOrientated(pieces[i]) && pieces[i].yCol() == getCol("R") && pieces[i].zCol() == getCol("D")){
+        move("d"); 
+        move("r"); 
+        move("D"); 
+        move("R");
+      }
     }
   }
   //boolean isPlacedFaceFront(Piece corner){
