@@ -233,7 +233,7 @@ public class Cube {
     default: 
       break;
     }
-    println("move: " + move);
+    // println("move: " + move);
   }
 
   //finds piece given 2 colors
@@ -299,7 +299,7 @@ public class Cube {
     case "D" : 
       return getPiece(0, 0, -1).zCol();
     default : 
-      print("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
+      println("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
       return null;
     }
   }
@@ -585,7 +585,7 @@ public class Cube {
   }
   void solve() {
     solving = true;
-    // cross();
+    cross();
     makeCorners();
     // secondLayer();
     // redCross();
@@ -722,103 +722,159 @@ public class Cube {
 
   //corners
   void makeCorners() {
-    // for(int i = 0; i < pieces.length; i++){//filters out all correct pieces
-    //   Piece current = pieces[i];
-    //   if(current.isCorner() && current.hasColor("orange")){
-    //     if(current.zPos() == 1 && current.xPos() == -1 && current.yPos() == -1){
-    //       if(!(isCornerAlignedRight(current))){
-    //         moveToBottom();
-    //         cornerRightAlgo();
-    //       }
-    //     }else if(current.zPos() == -1){
+    for (int i = 0; i < pieces.length; i++) {//filters out all correct pieces
+      Piece current = pieces[i];
+      if (current.isCorner() && current.hasColor("orange")) {
+        if (current.yPos() == 1) { //force to front
+          move("Z");
+          move("Z");
+        }
 
-    //     }
-    //   }
-    // }
-    Piece test1 = getPiece(-1, -1, -1);
-    // Piece test2 = getPiece(1, -1, 0);
-    makeOrangeFaceUs(test1);
+
+        if (current.zPos() == 1) { //starts in top 
+          //both these move the piece to the bottom if they are on top
+          if (current.xPos() == -1) { //rightside
+            if (isCornerAlignedRight(current) == -1) {
+              moveToBottom();
+            } else if (isCornerAlignedRight(current) == 1) {
+              whiteUsAlgo();
+            }
+          } else { //left side
+            if (isCornerAlignedLeft(current) == -1) { //its on top left / right corner and its not aligned
+              moveToBottom(); //move to bottom
+            } else if (isCornerAlignedLeft(current) == 1) { //its on top left/ right corner, aligned but misoriented
+              whiteUsAlgo();
+            }
+          }
+          if(!current.yCol().equals("orange")){
+            alignCenter(current.yCol()); //align center
+          } else {
+            alignCenter(current.xCol());
+          }
+          atBottomtoTop(current); //use helper method to decide which algo to use to move to top
+        } 
+        else { //if is on bottom of F face
+          if (current.zCol().equals("orange")) { //orange on bottom
+            alignCenter(current.xCol()); //aligns to opposite color
+            whiteDownAlgo();
+            atBottomtoTop(current);
+          }
+        }
+      }
+    }
+    println("finished making corners");
   }
+  // Piece test1 = getPiece(-1, -1, -1);
+  // Piece test2 = getPiece(1, -1, 0);
+  // makeOrangeFaceUs(test1);
 
   //move corner piece to bottom layer
-  void moveToBottom(){
+  void atBottomtoTop(Piece piece) {
+    makeOrangeFaceUs(piece); //make orange face us
+    if (piece.xPos() == -1) { //on right side, use right algo
+      cornerRightAlgo();
+    } else {
+      cornerLeftAlgo();
+    }
+  }
+  void moveToBottom() {
     move("r");
     move("d");
     move("R");
   }
 
   //algos
-  void cornerLeftAlgo(){
+  void cornerLeftAlgo() {
     move("D");
     move("L");
     move("d");
     move("l");
   }
 
-  void cornerRightAlgo(){
+  void cornerRightAlgo() {
     move("d");
     move("r");
     move("D");
     move("R");
   }
 
-  void cornerDownAlgo(){
-    
-  }
-
-  void whiteDownAlgo(){
+  void whiteDownAlgo() {
     move("F");
     move("d");
     move("f");
     move("D");
+    move("D");
   }
-
-  void whiteUpAlgo(){
+  //piece in in correct position but is misoriented
+  void whiteUsAlgo() {
     move("r");
     move("D");
     move("R");
   }
-  //moves z = 1, z = 2 layer until piece aligns with color, then rotates cube to have orange facing us
-  void alignCenter(String col){
-    // println("col is: " + col);
-    while(!getCol("F").equals(col)){
-      
+  //moves z = 0, z = 1 layer until piece aligns with color, then rotates cube to have orange facing us
+  void alignCenter(String col) {
+
+    while (!getCol("F").equals(col)) {
+
       move("u");
       move("E");
-      // println(getCol("F"));
-      
+      // println("getCol: " + getCol("F"));
+      // println("col is: " + col);
     }
   }
 
-  void makeOrangeFaceUs(Piece piece){
-    if(piece.yPos() == -1){
+  void makeOrangeFaceUs(Piece piece) {
+    if (piece.yPos() == -1) {
       move("Z");
       move("Z");
     }
-    if(piece.xPos() == -1){
-      if(piece.yCol().equals("orange")){
+    if (piece.xPos() == -1) {
+      if (piece.yCol().equals("orange")) {
         move("z");
       }
-    }else if(piece.yCol().equals("orange")){
+    } else if (piece.yCol().equals("orange")) {
       move("Z");
     }
   }
 
-  boolean isCornerAlignedRight(Piece piece){
-    println(piece);
-    println(getCol("F") + " " + getCol("R"));
-    return 
-    piece.zCol().equals("orange") &&
-    piece.xCol().equals(getCol("R")) &&
-    piece.yCol().equals(getCol("F"));
+  //0 is completely aligned
+  //1 is aligned but misoriented
+  //-1 is completely misaligned
+  int isCornerAlignedRight(Piece piece) {
+    String[] faceColors = new String[] {getCol("R"), getCol("F"), getCol("D")};
+    // println(piece);
+    // println(getCol("F") + " " + getCol("R"));
+    if (
+      piece.zCol().equals("orange") &&
+      piece.xCol().equals(getCol("R")) &&
+      piece.yCol().equals(getCol("F"))) {
+      return 0;
+    } else if (
+      (Arrays.asList(faceColors).indexOf(piece.xCol()) != -1) &&
+      (Arrays.asList(faceColors).indexOf(piece.yCol()) != -1) &&
+      (Arrays.asList(faceColors).indexOf(piece.zCol()) != -1)) {
+      return 1;
+    } else {
+      return -1;
+    }
   }
-  boolean isCornerAlignedLeft(Piece piece){
-    println(piece);
-    println(getCol("F") + " " + getCol("L"));
-    return 
-    piece.zCol().equals("orange") &&
-    piece.xCol().equals(getCol("L")) &&
-    piece.yCol().equals(getCol("F"));
+  int isCornerAlignedLeft(Piece piece) {
+    String[] faceColors = new String[] {getCol("L"), getCol("F"), getCol("D")};
+    // println(piece);
+    // println(getCol("F") + " " + getCol("L"));
+    if (
+      piece.zCol().equals("orange") &&
+      piece.xCol().equals(getCol("L")) &&
+      piece.yCol().equals(getCol("F"))) {
+      return 0;
+    } else if (
+      (Arrays.asList(faceColors).indexOf(piece.xCol()) != -1) &&
+      (Arrays.asList(faceColors).indexOf(piece.yCol()) != -1) &&
+      (Arrays.asList(faceColors).indexOf(piece.zCol()) != -1)) {
+      return 1;
+    } else {
+      return -1;
+    }
   }
   //secondLayer
   void secondLayer() {
