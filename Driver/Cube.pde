@@ -337,7 +337,7 @@ public class Cube {
   } 
   public void R() {
     // println("RPrime used");
-      for (int i = 0; i < pieces.length; i++) {
+    for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == -1) {
         pieces[i].rotateXCCW();
       }
@@ -545,7 +545,7 @@ public class Cube {
     B();
   }
   void solve() {
-      solving = true; 
+    solving = true; 
     //cross(); 
     //crossCorners(solveCube);
     //secondLayer(cube);
@@ -810,81 +810,8 @@ void moveToTop(int[] pos) {
     rightAlgo();
   } else {
     leftAlgo();
-    >>>>>>> main
   }
 }
-//public void crossCorners(Cube cube) { 
-//  Piece cNW = cube.findPiece(cube.getCol("U"), cube.getCol("L"), cube.getCol("B")); //back is up
-//  Piece cNE = cube.findPiece(cube.getCol("U"), cube.getCol("R"), cube.getCol("B"));
-//  Piece cSW = cube.findPiece(cube.getCol("U"), cube.getCol("L"), cube.getCol("F"));
-//  Piece cSE = cube.findPiece(cube.getCol("U"), cube.getCol("R"), cube.getCol("F"));
-//  crossCornerSolver(cube, cSE, cube.getPiece(-1,0,0), cube.getPiece(0,0,-1), cube.getCol("U"));
-//  move("Z");
-//  crossCornerSolver(cube, cNE, cube.getPiece(0,1,0), cube.getPiece(-1,0,0), cube.getCol("U"));
-//  move("Z"); 
-//  crossCornerSolver(cube, cNW, cube.getPiece(1,0,0), cube.getPiece(0,1,0), cube.getCol("U"));
-//  move("Z"); 
-//  crossCornerSolver(cube, cSW, cube.getPiece(0,0,-1), cube.getPiece(-1,0,0), cube.getCol("U"));
-//  move("Z"); 
-//} 
-
-//void crossCornerSolver(Cube cube, Piece corner, Piece right, Piece down, String frontColor) {
-//  int[] temp = corner.getPos(); 
-//  if (temp[2] == 1) {
-//    temp = corner.getPos(); 
-//    temp[0] = temp[2] = 0; 
-//    String [] moveSet = cube.faceRot(temp);
-//    String cW = moveSet[0];
-//    String cC = moveSet[1];  
-//    int count = 0; 
-//    String undo = cC; 
-//    while (temp[2] != -1) {
-//      move(cW); 
-//      count += 1;
-//    }
-//    if (count > 1) {
-//      for (int i = 0; i < count; i++) {
-//        move(cC);
-//      } 
-//      count = 0; 
-//      while (temp[2] != -1) {
-//        move(cC);
-//        count += 1;
-//      }
-//      undo = cW;
-//    }
-//    move("B"); 
-//    for (int i = 0; i < count; i++) {
-//      move(undo);
-//    }
-//  }
-//  while ((corner.xPos() != right.xPos()) && (corner.yPos() !=  down.yPos())) {
-//    move("B");
-//  }
-//  if(corner.xCol() == frontColor)/*getPiece(0,0,1).zCol())*/{
-//    move("B");
-//    move("D");
-//    move("b");
-//    move("d");
-//  }
-//  else if (corner.yCol() == frontColor) /*getPiece(0,0,1).zCol()) */{
-//    move("b");
-//    move("r");
-//    move("B");
-//    move("R");
-//  }
-//  else {
-//    move("r");
-//    move("B");
-//    move("B");
-//    move("R");
-//    move("b");
-//    move("b");
-//    move("D");
-//    move("b");
-//    move("d");
-//  }
-//} 
 
 //see if there's any wrong corners on top and move it down
 void checkCornersOnTop() {
@@ -941,17 +868,44 @@ boolean isOrientated(Piece corner) {
 //    move("R");
 //  }
 //}  
-void rightAlgo() {
+void whiteCornerRightAlgo() {
   for (int i = 0; i < pieces.length; i ++) {
-    if (isOrientated(pieces[i]) && pieces[i].yCol() == getCol("R") && pieces[i].zCol() == getCol("D")
-      && pieces[i].xCol().equals("white")) {
+    if (isOrientated(pieces[i]) && pieces[i].yCol().equals(getCol("R")) && pieces[i].zCol().equals(getCol("D"))
+      && pieces[i].xCol().equals("orange")) {
       move("d"); 
       move("r"); 
       move("D"); 
       move("R");
     }
   }
+}  
+void whiteCornerLeftAlgo(){
+  for(int i= 0; i < pieces.length; i++){
+    if(isOrientated(pieces[i]) && pieces[i].yCol().equals("orange") && (pieces[i].xCol().equals(getCol("F")))
+    && pieces[i].zCol().equals(getCol("R"))){
+      move("D");
+      move("L");
+      move("d"); 
+      move("l");
+    }
+  }
 } 
+void whiteCornerDownAlgo(){
+  for(int i = 0; i < pieces.length; i++){
+    if(isOrientated(pieces[i]) && pieces[i].zCol().equals("orange") && (pieces[i].xCol().equals(getCol("R")))
+    && pieces[i].yCol().equals(getCol("F"))){
+      move("F"); 
+      move("d"); 
+      move("f"); 
+      move("D"); 
+      move("D"); 
+      move("d"); 
+      move("r"); 
+      move("D"); 
+      move("R");
+    }
+  }
+}
 
 //boolean isPlacedFaceFront(Piece corner){
 //  return(corner.zCol().equals(getPiece(0, 
