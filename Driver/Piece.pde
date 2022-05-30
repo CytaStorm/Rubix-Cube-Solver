@@ -20,7 +20,7 @@ public class Piece {
   }
 
   //Accessor, returns all colors of piece in an array
-  public String[] getCol() {
+  public String[] getCol () {
     return col;
   }
   //Accessor, returns desPos
@@ -79,6 +79,15 @@ public class Piece {
     }
     return result == 3;
   }
+  public boolean isFace(){
+    int result = 0;
+    for(String i : col){
+      if(i == null){
+        result++;
+      }
+    }
+    return result == 2; 
+  }
   //return is edge?
   public boolean isEdge() {
     int result = 0;
@@ -97,7 +106,7 @@ public class Piece {
       }
     }
     return false;
-  }
+  }   
   public void rotateXCW() {
     int[] tempPos = new int[] {pos[1], pos[2]};
     tempPos = matrixMultiply(tempPos, CW_ROT_MATRIX);
@@ -143,7 +152,7 @@ public class Piece {
     default: 
       break;
     }
-  }
+  } 
   public void rotateXCCW() {
     int[] tempPos = new int[] {pos[1], pos[2]};
     tempPos = matrixMultiply(tempPos, CCW_ROT_MATRIX);
@@ -259,7 +268,6 @@ public class Piece {
       col[0] = tempCol;
     }
   }
-
   String verticalFace() {
     if (isEdge()) {
       if (pos[1] == -1) {
