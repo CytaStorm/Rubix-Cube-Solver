@@ -884,6 +884,7 @@ public class Cube {
       return;
     }
   }
+  //the single algorithm
   void singleAlgo() {
     move("F");
     move("U");
