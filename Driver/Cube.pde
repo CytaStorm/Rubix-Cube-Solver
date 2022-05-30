@@ -926,7 +926,22 @@ public class Cube {
     for (int i = 0; i < 4; i++) {
       if (isOrientated(pieces[i])) {
         Piece current = pieces[i]; 
-        while (rightAdj(current)
+        while (!(hasCross())){
+          move("D");
+        }
+        if(rightAdj(current)){
+          whiteCornerRightAlgo(); 
+          i--; 
+        }
+         else if(leftAdj(current)){
+          whiteCornerRightAlgo(); 
+          i--; 
+        } 
+        else if(downAdj(current)){
+          whiteCornerDownAlgo();
+          i--; 
+        }
+  
       }
     }
   }
