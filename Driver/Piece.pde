@@ -232,7 +232,7 @@ public class Piece {
     }
   }
 
-  String verticalFace(int x, int y) {
+  String verticalFace() {
     if (isEdge()) {
       if (pos[1] == -1) {
         return "F";
@@ -246,5 +246,353 @@ public class Piece {
     }
     print("invalid face!");
     return null;
+  }
+
+  String getDir(int x, int y, int z, int dir) {
+    if (x == -1) {
+      if (y == -1) {
+        if (z == -1) {
+          switch(dir) {
+          case 0: 
+            return "F";
+          case 1: 
+            return "R";
+          case 2: 
+            return "D";
+          default: 
+            break;
+          }
+        } else if (z == 0) {
+          switch(dir) {
+          case 0: 
+            return "F";
+          case 1: 
+            return "R";
+          case 2: 
+            return null;
+          default: 
+            break;
+          }
+        } else {
+          switch(dir) {
+          case 0: 
+            return "F";
+          case 1: 
+            return "R";
+          case 2: 
+            return "U";
+          default: 
+            break;
+          }
+        }
+      } else if (y == 0) {
+        if (z == -1) {
+          switch(dir) {
+          case 0: 
+            return null;
+          case 1: 
+            return "R";
+          case 2: 
+            return "D";
+            default: 
+            break;
+          }
+        } else if (z == 0) {
+          switch(dir) {
+          case 0: 
+            return null;
+          case 1: 
+            return "R";
+          case 2: 
+            return null;
+          default: 
+            break;
+          }
+        } else {
+          switch(dir) {
+          case 0: 
+            return null;
+          case 1: 
+            return "R";
+          case 2: 
+            return "U";
+          default: 
+            break;
+          }
+        }
+      } else {
+        if (z == -1) {
+          switch(dir) {
+          case 0: 
+            return "B";
+          case 1: 
+            return "R";
+          case 2: 
+            return "D";
+          default: 
+            break;
+          }
+        } else if (z == 0) {
+          switch(dir) {
+          case 0: 
+            return "B";
+          case 1: 
+            return "R";
+          case 2: 
+            return null;
+          default: 
+            break;
+          }
+        } else {
+          switch(dir) {
+          case 0: 
+            return "B";
+          case 1: 
+            return "R";
+          case 2: 
+            return "U";
+          default: 
+            break;
+          }
+        }
+      }
+    } else if (x == 0) {
+      if (y == -1) {
+        if (z == -1) {
+          switch(dir) {
+          case 0: 
+            return "F";
+          case 1: 
+            return null;
+          case 2: 
+            return "D";
+          default: 
+            break;
+          }
+        } else if (z == 0) {
+          switch(dir) {
+          case 0: 
+            return "F";
+          case 1: 
+            return null;
+          case 2: 
+            return null;
+          default: 
+            break;
+          }
+        } else {
+          switch(dir) {
+          case 0: 
+            return "F";
+          case 1: 
+            return null;
+          case 2: 
+            return "U";
+          default: 
+            break;
+          }
+        }
+      } else if (y == 0) {
+        if (z == -1) {
+          switch(dir) {
+          case 0: 
+            return null;
+          case 1: 
+            return null;
+          case 2: 
+            return "D";
+          default: 
+            break;
+          }
+        } else if (z == 0) {
+          switch(dir) {
+          case 0: 
+            return null;
+          case 1: 
+            return null;
+          case 2: 
+            return null;
+          default: 
+            break;
+          }
+        } else {
+          switch(dir) {
+          case 0: 
+            return null;
+          case 1: 
+            return null;
+          case 2: 
+            return "U";
+          default: 
+            break;
+          }
+        }
+      } else {
+        if (z == -1) {
+          switch(dir) {
+          case 0: 
+            return "B";
+          case 1: 
+            return null;
+          case 2: 
+            return "D";
+          default: 
+            break;
+          }
+        } else if (z == 0) {
+          switch(dir) {
+          case 0: 
+            return "B";
+          case 1: 
+            return null;
+          case 2: 
+            return null;
+          default: 
+            break;
+          }
+        } else {
+          switch(dir) {
+          case 0: 
+            return "B";
+          case 1: 
+            return null;
+          case 2: 
+            return "U";
+          default: 
+            break;
+          }
+        }
+      }
+    } else {
+      if (y == -1) {
+        if (z == -1) {
+          switch(dir) {
+          case 0: 
+            return "F";
+          case 1: 
+            return "L";
+          case 2: 
+            return "D";
+          default: 
+            break;
+          }
+        } else if (z == 0) {
+          switch(dir) {
+          case 0: 
+            return "F";
+          case 1: 
+            return "L";
+          case 2: 
+            return null;
+          default: 
+            break;
+          }
+        } else {
+          switch(dir) {
+          case 0: 
+            return "F";
+          case 1: 
+            return "L";
+          case 2: 
+            return "U";
+          default: 
+            break;
+          }
+        }
+      } else if (y == 0) {
+        if (z == -1) {
+          switch(dir) {
+          case 0: 
+            return null;
+          case 1: 
+            return "L";
+          case 2: 
+            return "D";
+          default: 
+            break;
+          }
+        } else if (z == 0) {
+          switch(dir) {
+          case 0: 
+            return null;
+          case 1: 
+            return "L";
+          case 2: 
+            return null;
+          default: 
+            break;
+          }
+        } else {
+          switch(dir) {
+          case 0: 
+            return null;
+          case 1: 
+            return "L";
+          case 2: 
+            return "U";
+          default: 
+            break;
+          }
+        }
+      } else {
+        if (z == -1) {
+          switch(dir) {
+          case 0: 
+            return "B";
+          case 1: 
+            return "L";
+          case 2: 
+            return "D";
+          default: 
+            break;
+          }
+        } else if (z == 0) {
+          switch(dir) {
+          case 0: 
+            return "B";
+          case 1: 
+            return "L";
+          case 2: 
+            return null;
+          default: 
+            break;
+          }
+        } else {
+          switch(dir) {
+          case 0: 
+            return "B";
+          case 1: 
+            return "L";
+          case 2: 
+            return "U";
+          default: 
+            break;
+          }
+        }
+      }
+    }
+    println("you shouldn't be here!");
+    return "you shouldn't be here!";
+  }
+
+  int getDir(String col) {
+    int dir = -1;
+    if (hasColor(col)) {
+      dir = Arrays.asList(col).indexOf(col);
+    }
+    switch(dir) {
+    case 0: 
+      dir = 0;
+      break;
+    case 1: 
+      dir = 1;
+      break;
+    case 2: 
+      dir = 2;
+      break;
+    default: 
+      break;
+    }
+    return dir;
   }
 }
