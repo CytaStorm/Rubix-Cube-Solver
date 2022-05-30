@@ -873,14 +873,10 @@ public class Cube {
       && corner.xCol().equals("orange");
   }
   void whiteCornerRightAlgo() {
-    for (int i = 0; i < pieces.length; i ++) {
-      if (isOrientated(pieces[i]) && rightAdj(pieces[i])) {
-        move("d"); 
-        move("r"); 
-        move("D"); 
-        move("R");
-      }
-    }
+    move("d"); 
+    move("r"); 
+    move("D"); 
+    move("R");
   }  
   boolean leftAdj(Piece corner) {
     return corner.yCol().equals("orange") && corner.xCol().equals(getCol("F"))
@@ -888,54 +884,50 @@ public class Cube {
   }
 
   void whiteCornerLeftAlgo() {
-    for (int i= 0; i < pieces.length; i++) {
-      if (isOrientated(pieces[i]) && leftAdj(pieces[i])) {
-        move("D");
-        move("L");
-        move("d"); 
-        move("l");
-      }
-    }
+    move("D");
+    move("L");
+    move("d"); 
+    move("l");
   } 
   boolean downAdj(Piece corner) {
     return corner.zCol().equals("orange") && corner.xCol().equals(getCol("R"))
       && corner.yCol().equals(getCol("F"));
   }
   void whiteCornerDownAlgo() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (isOrientated(pieces[i]) && downAdj(pieces[i])); 
-      {
-        move("F"); 
-        move("d"); 
-        move("f"); 
-        move("D"); 
-        move("D"); 
-        move("d"); 
-        move("r"); 
-        move("D"); 
-        move("R");
-      }
-    }
+    move("F"); 
+    move("d"); 
+    move("f"); 
+    move("D"); 
+    move("D"); 
+    move("d"); 
+    move("r"); 
+    move("D"); 
+    move("R");
   }  
   boolean topAdjacent(Piece corner) {
     return corner.zCol().equals(getCol("R")) && corner.yCol().equals(getCol("F"))
       && corner.xCol().equals("orange");
   }
   void whiteCornerTopAlgo() {
-    for (int i = 0; i < pieces.length; i++) {
-      if (isOrientated(pieces[i]) && topAdjacent(pieces[i])) {
-        move("r"); 
-        move("D"); 
-        move("R");  
-        move("d"); 
-        move("r"); 
-        move("D"); 
-        move("R");
-      }
-    }
+    move("r"); 
+    move("D"); 
+    move("R");  
+    move("d"); 
+    move("r"); 
+    move("D"); 
+    move("R");
+  } 
+  boolean hasCross(){
+    return (getPiece(1,-1,1).zCol().equals("orange") && getPiece(-1,-1,1).zCol().equals("orange") 
+    && getPiece(-1,1,1).zCol().equals("orange") && getPiece(1,1,1).zCol().equals("orange"));
   }
   void crossCornerHelper() {
+    checkCornersOnTop();
     for (int i = 0; i < 4; i++) {
+      if (isOrientated(pieces[i])) {
+        Piece current = pieces[i]; 
+        while (rightAdj(current)
+      }
     }
   }
   void crossCorners() {
