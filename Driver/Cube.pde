@@ -735,10 +735,9 @@ public class Cube {
     //     }
     //   }
     // }
-    Piece test1 = getPiece(-1, -1, 1);
-    Piece test2 = getPiece(1, -1, 1);
-    println("test1: " + isCornerAlignedRight(test1));
-    println("test2: " + isCornerAlignedLeft(test2));
+    Piece test1 = getPiece(-1, -1, -1);
+    // Piece test2 = getPiece(1, -1, 0);
+    alignCenter(test1.yCol());
   }
 
   //move corner piece to bottom layer
@@ -780,10 +779,14 @@ public class Cube {
     move("R");
   }
   //moves z = 1, z = 2 layer until piece aligns with color, then rotates cube to have orange facing us
-  void alignCenter(Piece piece){
-    while(!piece.xCol().equals(getCol("F"))){
+  void alignCenter(String col){
+    // println("col is: " + col);
+    while(!getCol("F").equals(col)){
+      
       move("u");
-      move("e");
+      move("E");
+      // println(getCol("F"));
+      
     }
   }
 
