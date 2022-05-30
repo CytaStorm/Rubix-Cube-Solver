@@ -854,7 +854,30 @@ public class Cube {
         tempColor = getPiece(x, y, z).getCol(); 
         uTurnsMade++;
     }
-    return uTurnsMade; 
-      >>>>>>> main
+    return uTurnsMade;
+  }
+  boolean isWhiteCorner(Piece corner) {
+    return ((corner.isCorner() && corner.getCol()[0] == "white")  || 
+      (corner.isCorner() && corner.getCol()[1] == "white") || 
+      (corner.isCorner() && corner.getCol()[2] == "white"));
+  } 
+  //check if the corner piece's two colors is next to the corresponding faces
+  boolean isPlacedFace(Piece corner){
+    if 
+  }
+  boolean isOrientated(Piece corner){
+    return(isWhiteCorner(corner) && corner.zPos() == -1);
+  } 
+  public void getColorofFace(){
+    for(int i = 0; i < pieces.length; i ++){
+      
+    }
+  }
+  void whiteAtRight(Piece corner){ 
+    if(corner.getY() == -1){
+      RPrime(); 
+      DPrime(); 
+      R(); 
+    }
   }
 }
