@@ -551,7 +551,7 @@ public class Cube {
     cross();
     //crossCorners(cube);
     secondLayer();
-    //secondCross(cube);
+    redCross();
     //edges(cube);
     //corners(cube);
     //print("solved!");
@@ -700,7 +700,10 @@ public class Cube {
         }
       }
     }
+    println("second layer finished");
   }
+
+  
   void secondLayerHelper(){
     for (int i = 0; i < 4; i++) { //goes through each of the 4 edge pieces on the cube and puts them in the right spot if possible, results in only red edge pieces on top
       if (noRed()) {
@@ -721,6 +724,8 @@ public class Cube {
       U();
     }
   }
+  
+  //checks if in right place
   boolean inRightPlace(Piece piece) {
     return 
     piece.xCol().equals(getPiece(piece.xPos(), 0, 0).xCol()) &&
@@ -729,19 +734,26 @@ public class Cube {
     // piece.xCol().equals(getPiece(piece.xPos(), 0, 0).xCol()) &&
     // piece.yCol().equals(getPiece(piece.xPos(), 0, 0).yCol());
   }
+
+  //checks if it has red face
   boolean noRed() {
     return !getPiece(0, -1, 1).hasColor("red");
   }
 
+  //checks adjacency
   boolean isAdjacentLeft() {
     return getPiece(0, -1, 1).zCol().equals(getPiece(1, 0, 0).xCol());
   }
   boolean isAdjacentRight() {
     return getPiece(0, -1, 1).zCol().equals(getPiece(-1, 0, 0).xCol());
   }
+
+  //checks if makes vertical line
   boolean makesVertLine() {
     return getPiece(0, -1, 1).yCol().equals(getPiece(0, -1, 0).yCol());
   }
+
+  //left right algos
   void leftAlgo() {
     // println("use left algo");
     move("u");
@@ -764,10 +776,14 @@ public class Cube {
     move("U");
     move("F");
   }
+
+  //rotate bottom to create vertLine
   void moveBottom() {
     D();
     EPrime();
   }
+
+  //move leftover pieces to top
   void moveToTop(int[] pos){
     Piece current = getPiece(pos[0], pos[1], pos[2]);
     // println("moveToTop");
@@ -784,5 +800,10 @@ public class Cube {
     }else{
       leftAlgo();
     }
+  }
+
+  //third layer
+  void redCross(){
+    
   }
 }
