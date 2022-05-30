@@ -499,14 +499,14 @@ public class Cube {
     B();
   }
   void solve() {
-    // solving = true;
-    // cross(cube);
+    solving = true;
+    cross(cube);
     //crossCorners(cube);
     //secondLayer(cube);
     //secondCross(cube);
     //edges(cube);
     //corners(cube);
     //print("solved!");
-    // solving = false;
+    solving = false;
   }
 }
