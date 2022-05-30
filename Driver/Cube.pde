@@ -842,23 +842,22 @@ public class Cube {
   //third layer
   void redCross() {
     checkPosition();
+    while(!redCrossChecker()){
+      singleAlgo();
+      checkPosition();
+    }
+    println("redCross finished");
+  }
+  boolean redCrossChecker(){
+    for(int i = 0; i < pieces.length; i++){
+      Piece current = pieces[i];
+      if(current.zPos() == 1 && current.isEdge() && !current.zCol().equals("red")){
+        return false;
+      }
+    }
+    return true;
   }
   void checkPosition() { 
-    // ArrayList<String> crossOrienter = new ArrayList<String>();
-    // for (int i = solutionSet.size()-1; i > -1; i--) {
-    //   if (solutionSet.get(i).equals("X") || 
-    //     solutionSet.get(i).equals("x") || 
-    //     solutionSet.get(i).equals("Y") || 
-    //     solutionSet.get(i).equals("y") || 
-    //     solutionSet.get(i).equals("Z") || 
-    //     solutionSet.get(i).equals("z")) {
-    //     crossOrienter.add(solutionSet.get(i));
-    //   }
-    // }
-    // println(crossOrienter);
-    // for(String i : crossOrienter){
-    //   move(i);
-    // }
     Piece face = getPiece(0, 0, 1);
     Piece ulb = getPiece(1, 1, 1);
     Piece ul = getPiece(1, 0, 1);
