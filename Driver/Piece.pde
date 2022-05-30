@@ -16,7 +16,7 @@ public class Piece {
   }
 
   public String toString() {
-    return Arrays.toString(pos) + ", Desired Position " + Arrays.toString(getDesPos());
+    return Arrays.toString(pos) + ", Colors: " + Arrays.toString(col) + ", Desired Position " + Arrays.toString(getDesPos());
   }
 
   //Accessor, returns all colors of piece in an array
@@ -230,5 +230,21 @@ public class Piece {
       col[1] = col[0];
       col[0] = tempCol;
     }
+  }
+
+  String verticalFace(int x, int y) {
+    if (isEdge()) {
+      if (pos[1] == -1) {
+        return "F";
+      } else if (pos[0] == -1) {
+        return "R";
+      } else if (pos[0] == 1) {
+        return "L";
+      } else if (pos[1] == 1) {
+        return "B";
+      }
+    }
+    print("invalid face!");
+    return null;
   }
 }
