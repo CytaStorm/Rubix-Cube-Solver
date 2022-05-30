@@ -263,53 +263,6 @@ void draw() {
   text("Z", 958, 730);
   text("Z'", 958, 830);
 }
-void move(Cube cube, String move) {
-  String[] moves = move.split(" ", 0);
-
-  for (String i : moves) {
-    cube.solAdd(i);
-    switch(i) {
-    case "L": 
-      solveCube.L();
-      break;
-    case "l": 
-      solveCube.LPrime();
-      break;
-    case "R": 
-      solveCube.R();
-      break;
-    case "r": 
-      solveCube.RPrime();
-      break;
-    case "U": 
-      solveCube.U();
-      break;
-    case "u": 
-      solveCube.UPrime();
-      break;
-    case "D": 
-      solveCube.D();
-      break;
-    case "d": 
-      solveCube.DPrime();
-      break;
-    case "F": 
-      solveCube.F();
-      break;
-    case "f": 
-      solveCube.FPrime();
-      break;
-    case "B": 
-      solveCube.B();
-      break;
-    case "b": 
-      solveCube.BPrime();
-      break;
-    default: 
-      break;
-    }
-  }
-}
 void update() {
   //update the top side 
   upSide[0][0] = solveCube.getPiece(1, 1, 1).getCol()[2]; 

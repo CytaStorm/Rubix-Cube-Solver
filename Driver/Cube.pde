@@ -1,22 +1,23 @@
 import java.util.*;
 public class Cube {
+  boolean solving;
   ArrayList solutionSet = new ArrayList<String>(); 
-  private final int[] R = new int[] {
+  private final Integer[] R = new Integer[] {
     -1, 0, 0
   };
-  private final int[] L = new int[] {
+  private final Integer[] L = new Integer[] {
     1, 0, 0
   };
-  private final int[] U = new int[] {
+  private final Integer[] U = new Integer[] {
     0, 0, 1
   };
-  private final int[] D = new int[] {
+  private final Integer[] D = new Integer[] {
     0, 0, -1
   };
-  private final int[] F = new int[] {
+  private final Integer[] F = new Integer[] {
     0, 1, 0
   };
-  private final int[] B = new int[] {
+  private final Integer[] B = new Integer[] {
     0, -1, 0
   };
 
@@ -60,6 +61,8 @@ public class Cube {
     pieces[23] = new Piece(-1, 1, 1, "blue", "yellow", "orange");
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
+
+    solving = false;
   }
 
   //reset cube
@@ -195,7 +198,10 @@ public class Cube {
     return null;
   }
 
-
+  //gets piece at element Piece
+  public Piece getPiece(int i) {
+    return pieces[i];
+  }
   //accessor method: returns color of face given a face, each face will always be 1 color
   public String getCol(String face) {
     switch(face) {
@@ -231,26 +237,38 @@ public class Cube {
       print("nothing left to remove!");
     }
   }
-  //accessor method
-  public String[] faceRot(int[]pos) {
+  //gets rotation from face
+  public String[] faceRot(Integer[]pos) {
     String[] returnMoves = new String[2];
-    if (Arrays.equals(pos, R) || Arrays.equals(pos, L)) {
+    if (Arrays.equals(pos, R)) {
       returnMoves[0] = "X";
       returnMoves[1] = "x";
-    } else if (Arrays.equals(pos, F) || Arrays.equals(pos, B)) {
-      returnMoves[0] = "Y";
-      returnMoves[1] = "y";
-    } else if (Arrays.equals(pos, U) || Arrays.equals(pos, D)) {
-      returnMoves[0] = "Z";
-      returnMoves[1] = "z";
+    } else if (Arrays.equals(pos, L)) {
+      returnMoves[0] = "L";
+      returnMoves[1] = "l";
+    } else if (Arrays.equals(pos, F)) {
+      returnMoves[0] = "F";
+      returnMoves[1] = "f";
+    } else if (Arrays.equals(pos, B)) {
+      returnMoves[0] = "B";
+      returnMoves[1] = "b";
+    } else if (Arrays.equals(pos, D)) {
+      returnMoves[0] = "D";
+      returnMoves[1] = "d";
+    } else if (Arrays.equals(pos, U)) {
+      returnMoves[0] = "U";
+      returnMoves[1] = "u";
     } else {
       println("invalid face");
       return null;
     }
     return returnMoves;
   }
-  //swap faces
 
+  //accessor to get solving state
+  public boolean isSolving() {
+    return solving;
+  }
   public void L() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == 1) {
@@ -480,9 +498,9 @@ public class Cube {
     S();
     B();
   }
-  void solve(Cube cube) {
-    solving = true;
-    cross(cube);
+  void solve() {
+    // solving = true;
+    // cross(cube);
     //crossCorners(cube);
     //secondLayer(cube);
     //secondCross(cube);
