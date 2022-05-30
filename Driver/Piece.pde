@@ -231,46 +231,4 @@ public class Piece {
       col[0] = tempCol;
     }
   }
-  void move(String move) {
-    switch(move) {
-    case "L": 
-      L();
-      break;
-    case "l": 
-      LPrime();
-      break;
-    case "R": 
-      R();
-      break;
-    case "r": 
-      RPrime();
-      break;
-    case "U": 
-      U();
-      break;
-    case "u": 
-      UPrime();
-      break;
-    case "D": 
-      D();
-      break;
-    case "d": 
-      DPrime();
-      break;
-    case "F": 
-      F();
-      break;
-    case "f": 
-      FPrime();
-      break;
-    case "B": 
-      B();
-      break;
-    case "b": 
-      BPrime();
-      break;
-    default: 
-      break;
-    }
-  }
 }

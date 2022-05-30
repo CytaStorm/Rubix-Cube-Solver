@@ -155,6 +155,49 @@ public class Cube {
     }
   }
 
+  void move(String move) {
+    switch(move) {
+    case "L": 
+      L();
+      break;
+    case "l": 
+      LPrime();
+      break;
+    case "R": 
+      R();
+      break;
+    case "r": 
+      RPrime();
+      break;
+    case "U": 
+      U();
+      break;
+    case "u": 
+      UPrime();
+      break;
+    case "D": 
+      D();
+      break;
+    case "d": 
+      DPrime();
+      break;
+    case "F": 
+      F();
+      break;
+    case "f": 
+      FPrime();
+      break;
+    case "B": 
+      B();
+      break;
+    case "b": 
+      BPrime();
+      break;
+    default: 
+      break;
+    }
+  }
+
   //finds piece given 2 colors
   public Piece findPiece(String col1, String col2) {
     for (int i = 0; i < 26; i++) {
@@ -500,7 +543,7 @@ public class Cube {
   }
   void solve() {
     solving = true;
-    cross(cube);
+    cross();
     //crossCorners(cube);
     //secondLayer(cube);
     //secondCross(cube);
@@ -508,5 +551,24 @@ public class Cube {
     //corners(cube);
     //print("solved!");
     solving = false;
+  }
+  void cross() {
+    poppy();
+    // makeCross();
+  }
+  void poppy() {
+    println(poppyPetalsOriented());
+    return;
+  }
+  int poppyPetalsOriented() {
+    int result = 0;
+    for (int i = 0; i < pieces.length; i++) {
+      if (pieces[i].isEdge() && pieces[i].getPos()[2] == 1) {
+        if (pieces[i].getCol()[2] != null && pieces[i].getCol()[2].equals("red")) {
+          result++;
+        }
+      }
+    }
+    return result;
   }
 }
