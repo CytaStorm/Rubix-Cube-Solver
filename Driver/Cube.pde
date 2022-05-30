@@ -557,22 +557,24 @@ public class Cube {
     // makeCross();
   }
   void poppy() {
-    if(poppyPetalsOriented() < 5){
-      for(int i = 0; i < pieces.length; i++){
-        println("line 562 debug: " + i);
-        println(pieces[i].isEdge());
-        if(pieces[i].isEdge() && pieces[i].getPos()[2] == -1 && (pieces[i].getCol()[2] != null && pieces[i].getCol()[2].equals("red"))){
-          println("inside for loop");
+
+    //moves all petals on bottom layer with red on bottom to top
+    if (poppyPetalsOriented() < 5) {
+      for (int i = 0; i < pieces.length; i++) {
+        // println("line 562 debug: " + i);
+        // println(pieces[i].isEdge());
+        if (pieces[i].isEdge() && pieces[i].getPos()[2] == -1 && (pieces[i].getCol()[2] != null && pieces[i].getCol()[2].equals("red"))) {
+          // println("inside for loop");
           int reverseU = makeSpace(pieces[i].getPos()[0], pieces[i].getPos()[1]);
           // int[] facePiece = pieces[i].getPos();
           // facePiece[2] = 0;
           // println(Arrays.toString(facePiece));
           // String[] moveToMake = faceRot(facePiece);
-          String moveToMake = pieces[i].verticalFace(pieces[i].getPos()[0],pieces[i].getPos()[1]);
-          println(moveToMake);
+          String moveToMake = pieces[i].verticalFace(pieces[i].getPos()[0], pieces[i].getPos()[1]);
+          // println(moveToMake);
           move(moveToMake);
           move(moveToMake);
-          while(reverseU != 0){
+          while (reverseU != 0) {
             move("u");
             reverseU --;
           }
@@ -584,9 +586,48 @@ public class Cube {
     //   println(i);
     // }
 
-    
+    if (poppyPetalsOriented() < 5) {
+      for (int i = 0; i < pieces.length; i++) {
+        //if has red and red is not bottom
+        if (pieces[i].isEdge() && pieces[i].getPos()[2] == -1 && (pieces[i].hasColor("red") && !pieces[i].getCol()[2].equals("red"))) {
+          String moveToMake = pieces[i].verticalFace(pieces[i].getPos()[0], pieces[i].getPos()[1]);
+          int reverseU = makeSpace(pieces[i].getPos()[0], pieces[i].getPos()[1]);
+
+          switch (moveToMake) {
+          case "F": 
+            move("f");
+            move("u");
+            move("R");
+            break;
+          case "L":
+            move("l");
+            move("u");
+            move("F");
+            break;
+          case "R":
+            move("r");
+            move("u");
+            move("B");
+            break;
+          case "B":
+            move("b");
+            move("L");
+            move("f");
+            break;
+          default:
+            break;
+          }
+          while (reverseU != 0) {
+            move("u");
+            reverseU --;
+          }
+        }
+      }
+    }
     return;
   }
+
+  //counts how many petals are oriented correctly on top
   int poppyPetalsOriented() {
     int result = 0;
     for (int i = 0; i < pieces.length; i++) {
@@ -598,11 +639,13 @@ public class Cube {
     }
     return result;
   }
-  int makeSpace(int x, int y){ //if the piece on z = 1 on same slice as piece[i] is red, rotate top unti it is not a red piece
-  println("makeSpace called");
+
+  //if the piece on z = 1 on same slice as piece[i] is red, rotate top unti it is not a red piece
+  int makeSpace(int x, int y) { 
+    // println("makeSpace called");
     int uTurnsMade = 0;
     String[] tempColor = getPiece(x, y, 1).getCol();
-    while((Arrays.asList(tempColor).indexOf("red") != -1) && uTurnsMade < 5){
+    while ((Arrays.asList(tempColor).indexOf("red") != -1) && uTurnsMade < 5) {
       move("U");
       tempColor = getPiece(x, y, 1).getCol();
       uTurnsMade++;
