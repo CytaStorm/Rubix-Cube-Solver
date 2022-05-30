@@ -1,7 +1,7 @@
 import java.util.*; //<>// //<>// //<>//
 public class Cube {
   boolean solving;
-  ArrayList solutionSet = new ArrayList<String>(); 
+  ArrayList<String> solutionSet = new ArrayList<String>(); 
   private final int[] R = new int[] {
     -1, 0, 0
   };
@@ -156,8 +156,9 @@ public class Cube {
   }
 
   void move(String move) {
+    solutionSet.add(move);
     switch(move) {
-    case "L": 
+    case "L":  
       L();
       break;
     case "l": 
@@ -169,7 +170,7 @@ public class Cube {
     case "r": 
       RPrime();
       break;
-    case "U": 
+    case "U":
       U();
       break;
     case "u": 
@@ -192,6 +193,42 @@ public class Cube {
       break;
     case "b": 
       BPrime();
+      break;
+    case "M":
+      M();
+      break;
+    case "m":
+      MPrime();
+      break;
+    case "E":
+      E();
+      break;
+    case "e":
+      EPrime();
+      break;
+    case "S":
+      S();
+      break;
+      case "s":
+        SPrime();
+      break;
+    case "X":
+      X();
+      break;
+    case "x":
+      XPrime();
+      break;
+    case "Y":
+      Y();
+      break;
+    case "y":
+      YPrime();
+      break;
+    case "Z":
+      Z();
+      break;
+    case "z":
+      ZPrime();
       break;
     default: 
       break;
@@ -242,7 +279,7 @@ public class Cube {
     return null;
   }
 
-  //gets piece at element Piece
+  //gets piece at element piece
   public Piece getPiece(int i) {
     return pieces[i];
   }
@@ -545,11 +582,19 @@ public class Cube {
     B();
   }
   void solve() {
+<<<<<<< HEAD
     solving = true; 
     //cross(); 
     //crossCorners(solveCube);
     //secondLayer(cube);
     //secondCross(cube);
+=======
+    solving = true;
+    cross();
+    //crossCorners(cube);
+    secondLayer();
+    redCross();
+>>>>>>> c2b52de82d356792af2c44f11301d5cc48e2b854
     //edges(cube);
     //corners(cube);
     //print("solved!");
@@ -616,6 +661,10 @@ public class Cube {
             move("R");
           }
         }
+<<<<<<< HEAD
+=======
+        move("Z");
+>>>>>>> c2b52de82d356792af2c44f11301d5cc48e2b854
       }
       Z();
     }
@@ -623,8 +672,8 @@ public class Cube {
 
     // println("finished using semiPoppy");
 
-    X();
-    X();
+    move("X");
+    move("X");
     // fixes all orientation of orange edges
     while (poppyFullOriented() < 4) {
       for (int j = 0; j < 4; j++) { 
@@ -638,7 +687,7 @@ public class Cube {
             }
           }
         }
-        Z();
+        move("Z");
       }
     }
 
@@ -693,16 +742,16 @@ public class Cube {
     for (int i = 0; i < 4; i++) {
       // Piece current = getPiece(-1, 0, 1);
       while (!isOriented(-1, 0, 1)) {
-        U();
+        move("U");
         // println(isOriented(-1, 0, 1));
         // println(getPiece(-1, 0, 1));
       }
       move("R");
       move("R");
-      Z();
+      move("Z");
     }
-    XPrime();
-    XPrime();
+    move("x");
+    move("x");
   }
   //checks if piece is oriented correctly
   boolean isOriented(int x, int y, int z) {
@@ -712,8 +761,8 @@ public class Cube {
 
   //secondLayer
   void secondLayer() {
-    X();
-    X();
+    move("X");
+    move("X");
     secondLayerHelper();
     for (int i = 0; i < pieces.length; i ++) {
       Piece current = pieces[i];
@@ -727,7 +776,13 @@ public class Cube {
         }
       }
     }
+    println("second layer finished");
   }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c2b52de82d356792af2c44f11301d5cc48e2b854
   void secondLayerHelper() {
     for (int i = 0; i < 4; i++) { //goes through each of the 4 edge pieces on the cube and puts them in the right spot if possible, results in only red edge pieces on top
       if (noRed()) {
@@ -745,9 +800,11 @@ public class Cube {
           i--;
         }
       }
-      U();
+      move("U");
     }
   }
+
+  //checks if in right place
   boolean inRightPlace(Piece piece) {
     return 
       piece.xCol().equals(getPiece(piece.xPos(), 0, 0).xCol()) &&
@@ -756,19 +813,26 @@ public class Cube {
     // piece.xCol().equals(getPiece(piece.xPos(), 0, 0).xCol()) &&
     // piece.yCol().equals(getPiece(piece.xPos(), 0, 0).yCol());
   }
+
+  //checks if it has red face
   boolean noRed() {
     return !getPiece(0, -1, 1).hasColor("red");
   }
 
+  //checks adjacency
   boolean isAdjacentLeft() {
     return getPiece(0, -1, 1).zCol().equals(getPiece(1, 0, 0).xCol());
   }
   boolean isAdjacentRight() {
     return getPiece(0, -1, 1).zCol().equals(getPiece(-1, 0, 0).xCol());
   }
+
+  //checks if makes vertical line
   boolean makesVertLine() {
     return getPiece(0, -1, 1).yCol().equals(getPiece(0, -1, 0).yCol());
   }
+
+  //left right algos
   void leftAlgo() {
     // println("use left algo");
     move("u");
@@ -791,16 +855,27 @@ public class Cube {
     move("U");
     move("F");
   }
+
+  //rotate bottom to create vertLine
   void moveBottom() {
-    D();
-    EPrime();
+    move("D");
+    move("e");
   }
+<<<<<<< HEAD
+=======
+
+  //move leftover pieces to top
+>>>>>>> c2b52de82d356792af2c44f11301d5cc48e2b854
   void moveToTop(int[] pos) {
     Piece current = getPiece(pos[0], pos[1], pos[2]);
     // println("moveToTop");
     // println(current);
     while (current.yPos() != -1) {
+<<<<<<< HEAD
       Z();
+=======
+      move("Z");
+>>>>>>> c2b52de82d356792af2c44f11301d5cc48e2b854
       // println("rotZ");
       // println(current);
       current = findPiece(current.xCol(), current.yCol());
@@ -813,6 +888,7 @@ public class Cube {
     }
   }
 
+<<<<<<< HEAD
   //see if there's any wrong corners on top and move it down
   void checkCornersOnTop() {
     for (int i = 0; i < pieces.length; i ++) {
@@ -949,4 +1025,59 @@ public class Cube {
     for (int i = 0; i < pieces.length; i ++) {
     }
   }
+=======
+  //third layer
+  void redCross() {
+    checkPosition();
+    while(!redCrossChecker()){
+      singleAlgo();
+      checkPosition();
+    }
+    println("redCross finished");
+  }
+  boolean redCrossChecker(){
+    for(int i = 0; i < pieces.length; i++){
+      Piece current = pieces[i];
+      if(current.zPos() == 1 && current.isEdge() && !current.zCol().equals("red")){
+        return false;
+      }
+    }
+    return true;
+  }
+  void checkPosition() { 
+    Piece face = getPiece(0, 0, 1);
+    Piece ulb = getPiece(1, 1, 1);
+    Piece ul = getPiece(1, 0, 1);
+    Piece urb = getPiece(-1, 1, 1);
+    Piece ur = getPiece(-1, 0, 1);
+    Piece urf = getPiece(-1, -1 , 1);
+    Piece ub = getPiece(0, 1, 1);
+    Piece ulf = getPiece(1, -1, 1);
+    Piece uf = getPiece(0, -1, 1);
+    if(getPiece(0, 1, 1).zCol().equals("red") && getPiece(0,-1,1).zCol().equals("red")) {//vertical stripe, not horizontal
+      move("Z");
+      return;
+    }
+    if(ul.zCol().equals("red") && uf.zCol().equals("red") && !ulf.zCol().equals("red")){
+      move("z");
+      return;
+    } else if(ur.zCol().equals("red") && ub.zCol().equals("red") && !urb.zCol().equals("red")){
+      move("Z");
+      return;
+    } else if(ur.zCol().equals("red") && uf.zCol().equals("red") && !urf.zCol().equals("red")){
+      move("Z");
+      move("Z");
+      return;
+    }
+  }
+  //the single algorithm
+  void singleAlgo() {
+    move("F");
+    move("U");
+    move("R");
+    move("u");
+    move("r");
+    move("f");
+  }
+>>>>>>> c2b52de82d356792af2c44f11301d5cc48e2b854
 }
