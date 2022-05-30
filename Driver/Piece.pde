@@ -31,6 +31,34 @@ public class Piece {
   public int[] getPos() {
     return pos;
   }
+  //Accessors to get individual pos and colors
+  public int xPos() {
+    return pos[0];
+  }
+  public int yPos() {
+    return pos[1];
+  }
+  public int zPos() {
+    return pos[2];
+  }
+  public String xCol() {
+    if(col[0] != null){
+      return col[0];
+    }
+    return null;
+  }
+  public String yCol() {
+    if(col[1] != null){
+      return col[1];
+    }
+    return null;
+  }
+  public String zCol() {
+    if(col[2] != null){
+      return col[2];
+    }
+    return null;
+  }
   private int[] matrixMultiply(int[]matrix, int[][]matrixMultiplier) {
     int[]result = new int[2];
     for (int i = 0; i < matrix.length; i++) {
