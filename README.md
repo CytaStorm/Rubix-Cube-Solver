@@ -33,19 +33,18 @@ Thursday 25 May 2022 <br />
 Jeff Chen: <br />
 Finished driver to display the Cube as well as buttons to interact with cube, including reset, scramble, and moves
 Gil Zheng: <br />
-
 Saturday 28 May 2022 <br />
 Jeff Chen: <br />
 Researched different implementations of beginner's algorithm, since the python one failed, settled on a java based on to take inspiration from <br />
 
 Sunday 29 May 2022 <br />
 Jeff Chen: <br />
-Java method required heavy, heavy recursion not possible in processing, and so failed, began writing a method that directly translated beginner's method, without recursion<br /> 
+Tried out 3 different implementations, all failed <br /> 
 Gil Zheng: <br /> 
 Tried to implement a solution, but failed. Added MES and XYZ and added the display for it <br />
 
 Monday 30 May 2022 <br />
 Jeff Chen: <br />
-Began new implementation for solving beginner's algorithm, finished solving edge pieces for first, second, and partially third layer<br /> 
+Began homemade method for solving beginner's alogorithm, finished Poppy and Cross<br /> 
 Gil Zheng: <br /> 
 Attempted a white corners solution but failed
