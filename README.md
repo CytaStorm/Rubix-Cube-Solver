@@ -26,7 +26,7 @@ Started the Driver, created all the variables and started working on the display
 
 Wednesday 25 May 2022 <br />
 Jeff Chen: <br />
-Began working on Solve, helped in dev of Driver <br />
+Began working on Solve, translating a python-based beginner's method for solving, helped in dev of Driver by fixing up mistakes and adding more movements and correcting wrong rotations <br />
 Gil Zheng: <br />
 Created methods in the drivers that allowed for user interaction, finished the update method and it's helper methods in order to keep refreshing display <br />
 Thursday 25 May 2022 <br />
@@ -36,11 +36,11 @@ Gil Zheng: <br />
 
 Saturday 28 May 2022 <br />
 Jeff Chen: <br />
-Researched different implementations of beginner's algorithm <br />
+Researched different implementations of beginner's algorithm, since the python one failed, settled on a java based on to take inspiration from <br />
 
 Sunday 29 May 2022 <br />
 Jeff Chen: <br />
-Tried out 3 different  beginner's method implementations, all failed, began writing a method that directly translated beginner's method<br /> 
+Java method required heavy, heavy recursion not possible in processing, and so failed, began writing a method that directly translated beginner's method, without recursion<br /> 
 Gil Zheng: <br /> 
 Tried to implement a solution, but failed. Added MES and XYZ and added the display for it <br />
 
