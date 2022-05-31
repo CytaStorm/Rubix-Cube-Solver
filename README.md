@@ -32,15 +32,19 @@ Created methods in the drivers that allowed for user interaction, finished the u
 Thursday 25 May 2022 <br />
 Jeff Chen: <br />
 Finished driver to display the Cube as well as buttons to interact with cube, including reset, scramble, and moves
-
+Gil Zheng: <br />
 Saturday 28 May 2022 <br />
 Jeff Chen: <br />
 Researched different implementations of beginner's algorithm <br />
 
 Sunday 29 May 2022 <br />
 Jeff Chen: <br />
-Tried out 3 different implementations, all failed <br />
+Tried out 3 different implementations, all failed <br /> 
+Gil Zheng: <br /> 
+Tried to implement a solution, but failed. Added MES and XYZ and added the display for it <br />
 
 Monday 30 May 2022 <br />
 Jeff Chen: <br />
-Began homemade method for solving beginner's alogorithm, finished Poppy and Cross<br />
+Began homemade method for solving beginner's alogorithm, finished Poppy and Cross<br /> 
+Gil Zheng: <br /> 
+Attempted a white corners solution but failed
