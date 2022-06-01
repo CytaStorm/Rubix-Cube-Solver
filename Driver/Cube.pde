@@ -1,5 +1,6 @@
 import java.util.*; //<>//
 public class Cube {
+  //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
   ArrayList<String> solutionSet = new ArrayList<String>(); 
   private final int[] R = new int[] {
@@ -62,6 +63,12 @@ public class Cube {
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
 
+//    lCol = getPiece(-1, 0, 0).yCol();
+//    rCol = getPiece(1, 0, 0).yCol();
+//    fCol = getPiece(0, -1, 0).xCol();
+//    bCol = getPiece(0, 1, 0).xCol();
+//    uCol = getPiece(0, 0, 1).zCol();
+//    dCol = getPiece(0, 0, -1).zCol();
     solving = false;
   }
 
@@ -105,6 +112,13 @@ public class Cube {
     pieces[23] = new Piece(-1, 1, 1, "blue", "yellow", "orange");
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
+
+    //lCol = getPiece(-1, 0, 0).yCol();
+    //rCol = getPiece(1, 0, 0).yCol();
+    //fCol = getPiece(0, -1, 0).xCol();
+    //bCol = getPiece(0, 1, 0).xCol();
+    //uCol = getPiece(0, 0, 1).zCol();
+    //dCol = getPiece(0, 0, -1).zCol();
   }
   //scrambles cube using 20 moves
   public void scramble() {
@@ -587,12 +601,12 @@ public class Cube {
     solving = true;
     cross();
     // makeCorners();
-    secondLayer();
-    redCross();
+    //secondLayer();
+    //redCross();
     //edges(cube);
     //corners(cube);
     //print("solved!");
-    solving = false;
+    //solving = false;
   }
   void cross() {
     poppy();
@@ -609,9 +623,9 @@ public class Cube {
           // println("line 562 debug: " + i);
           // println(pieces[i].isEdge());
           Piece current = pieces[i];
-          if (current.isEdge() && current.hasColor("orange") && current.xPos() == -1 && current.zPos() != -1) {
+          if (current.isEdge() && current.hasColor(getCol("U")) && current.xPos() == -1 && current.zPos() != -1) {
             // println("inside for loop");
-            makeSpace(current.xPos(), 0, -1, "orange");
+            makeSpace(current.xPos(), 0, -1, getCol("U"));
             if (current.zPos() == 0) {
               if (current.yPos() == -1) {
                 move("R");
@@ -641,7 +655,7 @@ public class Cube {
         for (int i = 0; i < pieces.length; i++) {
           Piece current = pieces[i];
           if (current.isEdge() && Arrays.equals(current.getPos(), new int[] {-1, 0, 1})) {
-            if (current.hasColor("orange") && !(current.zCol().equals("orange"))) {
+            if (current.hasColor(getCol("U")) && !(current.zCol().equals(getCol("U")))) {
               move("r");
               move("U");
               move("f");
@@ -664,7 +678,7 @@ public class Cube {
     for (int i = 0; i < pieces.length; i++) {
       Piece current = pieces[i];
       if (current.isEdge() && current.zPos() == 1) {
-        if (current.zCol() != null && current.zCol().equals("orange")) {
+        if (current.zCol() != null && current.zCol().equals(getCol("U"))) {
           result++;
         }
       }
@@ -677,7 +691,7 @@ public class Cube {
     for (int i = 0; i < pieces.length; i++) {
       Piece current = pieces[i];
       if (current.isEdge() && current.zPos() == -1) {
-        if (current.zCol() != null && current.hasColor("orange")) {
+        if (current.zCol() != null && current.hasColor(getCol("U"))) {
           result++;
         }
       }
@@ -717,7 +731,7 @@ public class Cube {
   //checks if piece is oriented correctly
   boolean isOriented(int x, int y, int z) {
     Piece current = getPiece(x, y, z);
-    return current.zCol().equals("orange") && current.xCol().equals(getPiece(-1, 0, 0).xCol());
+    return current.zCol().equals(getCol("U")) && current.xCol().equals(getPiece(-1, 0, 0).xCol());
   }
 
   // //corners
