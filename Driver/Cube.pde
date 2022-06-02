@@ -597,8 +597,8 @@ public class Cube {
   void cross() {
     poppy();
     println("finished poppy");
-    // makeCross();
-    // println("finished cross");
+    makeCross();
+    println("finished cross");
   }
   void poppy() {
 
@@ -717,7 +717,7 @@ public class Cube {
   //checks if piece is oriented correctly
   boolean isOriented(int x, int y, int z) {
     Piece current = getPiece(x, y, z);
-    return current.zCol().equals("orange") && current.xCol().equals(getPiece(-1, 0, 0).xCol());
+    return current.zCol().equals(getCol("D")) && current.xCol().equals(getPiece(-1, 0, 0).xCol());
   }
 
   //secondLayer
