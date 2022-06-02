@@ -602,7 +602,7 @@ public class Cube {
     cross();
     // makeCorners();
     secondLayer();
-    //redCross();
+    redCross();
     //edges(cube);
     //corners(cube);
     //print("solved!");
@@ -1039,7 +1039,7 @@ public class Cube {
   boolean redCrossChecker() {
     for (int i = 0; i < pieces.length; i++) {
       Piece current = pieces[i];
-      if (current.zPos() == 1 && current.isEdge() && !current.zCol().equals("red")) {
+      if (current.zPos() == 1 && current.isEdge() && !current.zCol().equals(getCol("U"))) {
         return false;
       }
     }
@@ -1055,17 +1055,17 @@ public class Cube {
     Piece ub = getPiece(0, 1, 1);
     Piece ulf = getPiece(1, -1, 1);
     Piece uf = getPiece(0, -1, 1);
-    if (getPiece(0, 1, 1).zCol().equals("red") && getPiece(0, -1, 1).zCol().equals("red")) {//vertical stripe, not horizontal
+    if (getPiece(0, 1, 1).zCol().equals(getCol("U")) && getPiece(0, -1, 1).zCol().equals(getCol("U"))) {//vertical stripe, not horizontal
       move("Z");
       return;
     }
-    if (ul.zCol().equals("red") && uf.zCol().equals("red") && !ulf.zCol().equals("red")) {
+    if (ul.zCol().equals(getCol("U")) && uf.zCol().equals(getCol("U")) && !ulf.zCol().equals(getCol("U"))) {
       move("z");
       return;
-    } else if (ur.zCol().equals("red") && ub.zCol().equals("red") && !urb.zCol().equals("red")) {
+    } else if (ur.zCol().equals(getCol("U")) && ub.zCol().equals(getCol("U")) && !urb.zCol().equals(getCol("U"))) {
       move("Z");
       return;
-    } else if (ur.zCol().equals("red") && uf.zCol().equals("red") && !urf.zCol().equals("red")) {
+    } else if (ur.zCol().equals(getCol("U")) && uf.zCol().equals(getCol("U")) && !urf.zCol().equals(getCol("U"))) {
       move("Z");
       move("Z");
       return;
