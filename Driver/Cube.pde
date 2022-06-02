@@ -601,7 +601,7 @@ public class Cube {
     solving = true;
     cross();
     // makeCorners();
-    //secondLayer();
+    secondLayer();
     //redCross();
     //edges(cube);
     //corners(cube);
@@ -918,7 +918,7 @@ public class Cube {
 
       if (current.isEdge() && current.zPos() == 0) {
 
-        if (!current.hasColor("red")) {
+        if (!current.hasColor(getCol("U"))) {
           // println(current);
           moveToTop(current.getPos());
           secondLayerHelper();
@@ -962,7 +962,7 @@ public class Cube {
 
   //checks if it has red face
   boolean noRed() {
-    return !getPiece(0, -1, 1).hasColor("red");
+    return !getPiece(0, -1, 1).hasColor(getCol("U"));
   }
 
   //checks adjacency
