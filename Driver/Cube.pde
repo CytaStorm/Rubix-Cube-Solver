@@ -776,7 +776,10 @@ public class Cube {
               } else {
                 moveToBottom();
               }
-              atBottomtoTop(targetPiece);
+              // atBottomtoTop(targetPiece);
+              i--;
+              move("z");
+              println("infinite loop");
             }
           }
         }
@@ -793,22 +796,29 @@ public class Cube {
           println("infinite loop");
         } else { //it is on front layer
           if (targetPiece.xPos() == 1) { //if on left side
-            alignFront(targetPiece.yCol());
-            atBottomtoTop(targetPiece);
+            if(targetPiece.zCol().equals(getCol("U"))){ //if white is on bottom
+              move("D");
+              i--;
+              move("z");//decrements down so it will catch the piece on the next move, ZPrime counters loop's Z rot at end of loop
+              println("infinite loop");
+            }else{
+              align("L", targetPiece.yCol());
+              atBottomtoTop(targetPiece);
+            }
           } else { //in bot right
             if (targetPiece.zCol().equals(getCol("U"))) { //if top color is facing down
               println("up color facing down");
-              alignFront(targetPiece.xCol()); //aligned with opposite colors
+              align("F", targetPiece.xCol()); //aligned with opposite colors
               // println("aligned to opp colors");
               whiteDownAlgo();
               // println("white down algo");
               //  cornerRightAlgo();
-              alignRight(targetPiece.xCol());
+              align("R", targetPiece.xCol());
               // println("put into correct spot");
               atBottomtoTop(targetPiece);
             } else { //if top color not facing down
               // println("piece is in [-1,-1,-1]");
-              alignRight(targetPiece.xCol()); //at bottom, now align right of cube to its color
+              align("R", targetPiece.xCol()); //at bottom, now align right of cube to its color
               //println("cube aligned to right face");
               atBottomtoTop(targetPiece);
             }
@@ -826,9 +836,7 @@ public class Cube {
   }
   //move corner piece to bottom layer
   void atBottomtoTop(Piece piece) {
-    makeOrangeFaceUs(piece); //piece now at bot left or bot right with topcolor facing us
-    Piece helper = findPiece(piece.xCol(), piece.yCol(), piece.zCol());
-    if (helper.xPos()==1) { //if on left
+    if (piece.xPos()==1) { //if on left
       cornerLeftAlgo();
       move("Z"); //bc this solves left side, rotate entire cube
     } else { //if on right
@@ -870,49 +878,46 @@ public class Cube {
     move("R");
   }
 
-  void alignRight(String col) {
-    if (getCol("U").equals(col)) {
+  void align(String dir, String col){
+    if(dir.equals("L")){ //align left
+      if (getCol("U").equals(col)) {
+        move("z");
+      } else {
+        while (!getCol("L").equals(col)){
+          move("u");
+          move("E");
+        }
+      }
+
+    }else if(dir.equals("R")){ //align right
+      if (getCol("U").equals(col)) { 
       move("z");
-    } else {
-      while (!getCol("R").equals(col)) {
+      } else {
+        while (!getCol("R").equals(col)) {
 
-        move("u");
-        move("E");
-        // println("getCol: " + getCol("F"));
-        // println("col is: " + col);
+          move("u");
+          move("E");
+          // println("getCol: " + getCol("F"));
+          // println("col is: " + col);
+        }
+        //move("Z");
       }
-      //move("Z");
-    }
-  }
-  //moves z = 0, z = 1 layer until piece aligns with color, then rotates cube to have orange facing us
-  void alignFront(String col) {
-    if (getCol("U").equals(col)) {
+
+    }else{
+      if (getCol("U").equals(col)) { //align front
       move("z");
-    } else {
-      while (!getCol("F").equals(col)) {
+      } else {
+        while (!getCol("F").equals(col)) {
 
-        move("u");
-        move("E");
-        // println("getCol: " + getCol("F"));
-        // println("col is: " + col);
-      }
-      //move("Z");
-    }
-  }
-
-  void makeOrangeFaceUs(Piece piece) {
-    Piece helper = findPiece(piece.xCol(), piece.yCol(), piece.zCol());
-    if (helper.xPos()==1) { //if on left
-      if (helper.xCol().equals(getCol("U"))) { //if left color is our top color
-        move("Z"); //now at bot right, top color facing us
-      }
-    } else { //if on right
-      if (helper.xCol().equals(getCol("U"))) { // if right color is our top color
-        move("z"); // now at bot left, top color facing us
+          move("u");
+          move("E");
+          // println("getCol: " + getCol("F"));
+          // println("col is: " + col);
+        }
+        //move("Z");
       }
     }
   }
-
 
   boolean isCornerAlignedRight(Piece piece) {
     return
