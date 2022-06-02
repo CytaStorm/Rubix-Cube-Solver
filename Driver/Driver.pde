@@ -164,27 +164,27 @@ void mouseClicked() {
       solveCube.B();
     } else if (mouseX > 520 && mouseX < 570 && mouseY > 800 && mouseY < 850) {
       solveCube.BPrime();
-    } else if (mouseX > 590 && mouseX < 640 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 590 && mouseX < 640 && mouseY > 700 && mouseY < 750) {
       solveCube.M();
     } else if (mouseX > 590 && mouseX < 640 && mouseY > 800 && mouseY < 850) {
       solveCube.MPrime();
-    } else if (mouseX > 660 && mouseX < 710 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 660 && mouseX < 710 && mouseY > 700 && mouseY < 750) {
       solveCube.E();
     } else if (mouseX > 660 && mouseX < 710 && mouseY > 800 && mouseY < 850) {
       solveCube.EPrime();
-    } else if (mouseX > 730 && mouseX < 780 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 730 && mouseX < 780 && mouseY > 700 && mouseY < 750) {
       solveCube.S();
     } else if (mouseX > 730 && mouseX < 780 && mouseY > 800 && mouseY < 850) {
       solveCube.SPrime();
-    } else if (mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 750) {
       solveCube.X();
     } else if (mouseX > 800 && mouseX < 850 && mouseY > 800 && mouseY < 850) {
       solveCube.XPrime();
-    } else if (mouseX > 860 && mouseX < 910 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 860 && mouseX < 910 && mouseY > 700 && mouseY < 750) {
       solveCube.Y();
     } else if (mouseX > 860 && mouseX < 910 && mouseY > 800 && mouseY < 850) {
       solveCube.YPrime();
-    } else if (mouseX > 930 && mouseX < 980 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 930 && mouseX < 980 && mouseY > 700 && mouseY < 750) {
       solveCube.Z();
     } else if (mouseX > 930 && mouseX < 980 && mouseY > 800 && mouseY < 850) {
       solveCube.ZPrime();
@@ -406,10 +406,11 @@ void display() {
   for (int i = 0; i < upSide.length; i++) {
     for (int j = 0; j < upSide[0].length; j++) {
       fill(stringToColor(upSide[i][j])); 
-      quad(400+j*50+i*25, 250-i*50, 425+j*50+i*25, 200-i*50, 475+j*50+i*25, 200-i*50, 450+j*50+i*25, 250-i*50);
+      quad(450+j*50-i*25, 150+i*50, 475+j*50-i*25, 100+i*50, 525+j*50-i*25, 100+i*50, 500+j*50-i*25, 150+i*50);
       //quad(400+j*50+i*25,250,425+j*50,200,475+j*50,200,450+j*50,250);
     }
-  } 
+  }
+  //quad(550,250, 575, 200, 625, 200, 700, 250);
   for (int i = 0; i < rightSide.length; i++) {
     for (int j = 0; j < rightSide[0].length; j++) {
       fill(stringToColor(rightSide[i][j]));
