@@ -741,104 +741,9 @@ public class Cube {
 
   //corners
   void makeCorners() {
-    int reverseCounter = 0;
-    for (int i = 0; i < 4; i++) { //major rot on z axis to change which topRight we are solving
-      Piece targetPiece = findPiece(getCol("U"), getCol("F"), getCol("R")); //finds us targetPiece, since we are always solving top Right, finds corner Piece with front top and right colors;
-      println(targetPiece); 
-      if (targetPiece.zPos() == 1) { //it is on the top
-        if (targetPiece.yPos() == 1) { //it is on back face
-          if (targetPiece.xPos() == -1) { //if is is on right side
-            move("U");
-            reverseCounter++;
-          } else {
-            move("U");
-            move("U");
-            reverseCounter++;
-            reverseCounter++;
-          }
-          i--;
-          move("z"); //decrements down so it will catch the piece on the next move, ZPrime counters loop's Z rot at end of loop
-          println("infinite loop");
-        } else { // in front face
-          if (targetPiece.xPos() == 1) { //if on left side
-            move("u");
-            i--;
-            reverseCounter++;
-            move("z"); //decrements down so it will catch the piece on the next move, ZPrime counters loop's Z rot at end of loop
-          } else { //is on right side
-            if (!isCornerAlignedRight(targetPiece)) { //not correct piece
-              if (targetPiece.yCol().equals(getCol("U"))) { //if cube's up color is facing us
-                println("white facing us");
-                whiteUsAlgo();
-                targetPiece = findPiece(getCol("U"), getCol("F"), getCol("R"));
-              } else {
-                moveToBottom();
-                targetPiece = findPiece(getCol("U"), getCol("F"), getCol("R"));
-              }
-              if (targetPiece.zCol().equals(getCol("U"))) { //if top color is facing down
-                println("up color facing down");
-                alignRight(targetPiece, targetPiece.yCol());
-                println("aligned to opp colors");
-                whiteDownAlgo();
-                println("white down algo");
-                cornerRightAlgo();
-                println("put into correct spot");
-              } else {
-                println("piece is in [-1,-1,-1]");
-                alignRight(targetPiece, targetPiece.xCol()); //at bottom, now align right of cube to its color
-                println("cube aligned to right face");
-                atBottomtoTop(targetPiece); // make the desired color face us, then move to top.
-                println("Piece in right place");
-              }
-            }
-          }
-        }
-      } else { //it is on the bottom layer
-        if (targetPiece.yPos() == 1) { // if it is is on back layer
-          if (targetPiece.xPos() == -1) { //if is is on right side
-            move("d");
-            reverseCounter++;
-          } else { //is on left side
-            move("d");
-            move("d");
-            reverseCounter++;
-            reverseCounter++;
-          }
-          i--;
-          move("z"); //decrements down so it will catch the piece on the next move, ZPrime counters loop's Z rot at end of loop
-          println("infinite loop");
-        } else { //it is on front layer
-          if (targetPiece.xPos() == 1) { //if on left side
-            move("D");
-            i--;
-            reverseCounter++;
-            move("z"); //decrements down so it will catch the piece on the next move, ZPrime counters loop's Z rot at end of loop
-          } else {
-            if (targetPiece.zCol().equals(getCol("U"))) { //if top color is facing down
-              println("up color facing down");
-              alignRight(targetPiece, targetPiece.yCol());
-              println("aligned to opp colors");
-              whiteDownAlgo();
-              println("white down algo");
-              cornerRightAlgo();
-              println("put into correct spot");
-            } else {
-              println("piece is in [-1,-1,-1]");
-              alignRight(targetPiece, targetPiece.xCol()); //at bottom, now align right of cube to its color
-              println("cube aligned to right face");
-              atBottomtoTop(targetPiece); // make the desired color face us, then move to top.
-              println("Piece in right place");
-            }
-          }
-        }
-      }
+    
+    
 
-      move("Z"); //move on to solve next topRight
-    }
-    // while(reverseCounter > 0){
-    //   move("U");
-    //   reverseCounter--;
-    // }
     println("finished making corners");
   }
 
@@ -846,7 +751,7 @@ public class Cube {
   //move corner piece to bottom layer
   void atBottomtoTop(Piece piece) {
     makeOrangeFaceUs(piece); //make orange face us
-    cornerRightAlgo();
+    cornerLeftAlgo();
   }
   void moveToBottom() {
     move("r");
@@ -896,7 +801,7 @@ public class Cube {
 
   void makeOrangeFaceUs(Piece piece) {
     if (piece.xCol().equals(getCol("U"))) {
-      move("Z");
+      move("z");
     }
   }
 
@@ -906,6 +811,13 @@ public class Cube {
       piece.zCol().equals(getCol("U")) &&
       piece.xCol().equals(getCol("R")) &&
       piece.yCol().equals(getCol("F"));
+  }
+
+  boolean isCornerAlignedLeft(Piece piece) {
+    return
+      piece.zCol().equals(getCol("U")) &&
+      piece.xCol().equals(getCol("R")) &&
+      piece.yCol().equals(getCol("L"));
   }
 
 
