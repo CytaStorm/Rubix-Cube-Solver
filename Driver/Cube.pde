@@ -801,7 +801,7 @@ public class Cube {
           } else { //in bot right
             if (targetPiece.zCol().equals(getCol("U"))) { //if top color is facing down
               // println("up color facing down");
-              alignFront(targetPiece.xCol());
+              alignFront(targetPiece.xCol()); //aligned with opposite colors
               // println("aligned to opp colors");
               whiteDownAlgo();
               // println("white down algo");
@@ -909,13 +909,6 @@ public class Cube {
       piece.zCol().equals(getCol("U")) &&
       piece.xCol().equals(getCol("R")) &&
       piece.yCol().equals(getCol("F"));
-  }
-
-  boolean isCornerAlignedLeft(Piece piece) {
-    return
-      piece.zCol().equals(getCol("U")) &&
-      piece.xCol().equals(getCol("R")) &&
-      piece.yCol().equals(getCol("L"));
   }
 
 
