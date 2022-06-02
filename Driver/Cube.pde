@@ -587,8 +587,8 @@ public class Cube {
     solving = true;
     cross();
     //crossCorners(cube);
-    secondLayer();
-    redCross();
+    // secondLayer();
+    // redCross();
     //edges(cube);
     //corners(cube);
     //print("solved!");
@@ -597,21 +597,21 @@ public class Cube {
   void cross() {
     poppy();
     println("finished poppy");
-    makeCross();
-    println("finished cross");
+    // makeCross();
+    // println("finished cross");
   }
   void poppy() {
 
     //moves all orange edges to bottom regardless of orientation
-    while (poppySemiOriented() < 4) {
+    while (poppySemiOriented(getCol("U")) < 4) {
       for (int j = 0; j < 4; j++) { // if edge piece has red color while on at -1, 0, -1 
         for (int i = 0; i < pieces.length; i++) {
           // println("line 562 debug: " + i);
           // println(pieces[i].isEdge());
           Piece current = pieces[i];
-          if (current.isEdge() && current.hasColor("orange") && current.xPos() == -1 && current.zPos() != -1) {
+          if (current.isEdge() && current.hasColor(getCol("U")) && current.xPos() == -1 && current.zPos() != -1) {
             // println("inside for loop");
-            makeSpace(current.xPos(), 0, -1, "orange");
+            makeSpace(current.xPos(), 0, -1, getCol("U"));
             if (current.zPos() == 0) {
               if (current.yPos() == -1) {
                 move("R");
@@ -636,12 +636,12 @@ public class Cube {
     move("X");
     move("X");
     // fixes all orientation of orange edges
-    while (poppyFullOriented() < 4) {
+    while (poppyFullOriented(getCol("D")) < 4) {
       for (int j = 0; j < 4; j++) { 
         for (int i = 0; i < pieces.length; i++) {
           Piece current = pieces[i];
           if (current.isEdge() && Arrays.equals(current.getPos(), new int[] {-1, 0, 1})) {
-            if (current.hasColor("orange") && !(current.zCol().equals("orange"))) {
+            if (!(current.zCol().equals(getCol("D")))) {
               move("r");
               move("U");
               move("f");
@@ -659,12 +659,12 @@ public class Cube {
 
   //poppy helpers
   //counts fully correct petals
-  int poppyFullOriented() {
+  int poppyFullOriented(String col) {
     int result = 0;
     for (int i = 0; i < pieces.length; i++) {
       Piece current = pieces[i];
       if (current.isEdge() && current.zPos() == 1) {
-        if (current.zCol() != null && current.zCol().equals("orange")) {
+        if (current.zCol() != null && current.zCol().equals(col)) {
           result++;
         }
       }
@@ -672,12 +672,12 @@ public class Cube {
     return result;
   }
   //counts petal in right pos, but wrong color
-  int poppySemiOriented() {
+  int poppySemiOriented(String col) {
     int result = 0;
     for (int i = 0; i < pieces.length; i++) {
       Piece current = pieces[i];
       if (current.isEdge() && current.zPos() == -1) {
-        if (current.zCol() != null && current.hasColor("orange")) {
+        if (current.zCol() != null && current.hasColor(col)) {
           result++;
         }
       }
