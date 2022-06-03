@@ -39,7 +39,7 @@ Researched different implementations of beginner's algorithm, since the python o
 
 Sunday 29 May 2022 <br />
 Jeff Chen: <br />
-Tried out 3 different implementations, all failed <br /> 
+Tried out java recursive implementations, failed due to heavy use of recursion. Decided to use basic, human style method of analyzing cube instead <br /> 
 Gil Zheng: <br /> 
 Tried to implement a solution, but failed. Added MES and XYZ and added the display for it <br />
 
@@ -47,4 +47,17 @@ Monday 30 May 2022 <br />
 Jeff Chen: <br />
 Began homemade method for solving beginner's alogorithm, finished Poppy and Cross<br /> 
 Gil Zheng: <br /> 
-Attempted a white corners solution but failed
+Attempted a white corners solution but failed <br /> 
+
+Tuesday 30 May 2022 <br />
+Jeff Chen: <br />
+Helped gil in class with his computer, no work afterschool because of a meeting <br /> 
+Gil Zheng: <br /> 
+
+
+Monday 30 May 2022 <br />
+Jeff Chen: <br />
+Wrote up a method to solve white corners, but ended up being scrapped because I referenced rotations from (broken at the time) buttons, leading me to have wrong rotations and a broken method. Fixed up buttons for proper rotations<br /> 
+Gil Zheng: <br /> 
+<br /> 
+
