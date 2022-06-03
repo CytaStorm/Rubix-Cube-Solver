@@ -628,10 +628,10 @@ public class Cube {
   void solve() {
     solving = true;
     cross();
-    makeCorners();
+    // makeCorners();
     // println("Finished corners");
-    secondLayer();
-    redCross();
+    // secondLayer();
+    // redCross();
     //edges(cube);
     //corners(cube);
     //print("solved!");
