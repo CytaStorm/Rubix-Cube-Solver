@@ -1,5 +1,6 @@
 import java.util.*;
 Cube solveCube = new Cube(); 
+
 boolean solving = false;
 String[][] upSide = new String[3][3];
 String[][] leftSide = new String[3][3];
@@ -10,6 +11,7 @@ String[][] downSide = new String[3][3];
 
 void setup() {
   size(1000, 1000);
+  solveCube.scrambleFixed();
 }
   //void solve() {
   //  solving = true; 
@@ -161,23 +163,23 @@ void mouseClicked() {
       solveCube.M();
     } else if (mouseX > 590 && mouseX < 640 && mouseY > 800 && mouseY < 850) {
       solveCube.MPrime();
-    } else if (mouseX > 660 && mouseX < 710 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 660 && mouseX < 710 && mouseY > 700 && mouseY < 750) {
       solveCube.E();
     } else if (mouseX > 660 && mouseX < 710 && mouseY > 800 && mouseY < 850) {
       solveCube.EPrime();
-    } else if (mouseX > 730 && mouseX < 780 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 730 && mouseX < 780 && mouseY > 700 && mouseY < 750) {
       solveCube.S();
     } else if (mouseX > 730 && mouseX < 780 && mouseY > 800 && mouseY < 850) {
       solveCube.SPrime();
-    } else if (mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 750) {
       solveCube.X();
     } else if (mouseX > 800 && mouseX < 850 && mouseY > 800 && mouseY < 850) {
       solveCube.XPrime();
-    } else if (mouseX > 860 && mouseX < 910 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 860 && mouseX < 910 && mouseY > 700 && mouseY < 750) {
       solveCube.Y();
     } else if (mouseX > 860 && mouseX < 910 && mouseY > 800 && mouseY < 850) {
       solveCube.YPrime();
-    } else if (mouseX > 930 && mouseX < 980 && mouseY > 700 && mouseY < 850) {
+    } else if (mouseX > 930 && mouseX < 980 && mouseY > 700 && mouseY < 750) {
       solveCube.Z();
     } else if (mouseX > 930 && mouseX < 980 && mouseY > 800 && mouseY < 850) {
       solveCube.ZPrime();
