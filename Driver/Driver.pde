@@ -415,17 +415,18 @@ void display() {
   for (int i = 0; i < rightSide.length; i++) {
     for (int j = 0; j < rightSide[0].length; j++) {
       fill(stringToColor(rightSide[i][j]));
-      quad(550+j*25,300-j*40+i*50, 550+j*25, 250-j*50+i*50, 575+j*25, 200-j*50+i*50, 575+j*25, 260-j*40+i*50);
+      quad(550+j*25, 300-j*50+i*50, 550+j*25, 250-j*50+i*50, 575+j*25, 200-j*50+i*50, 575+j*25, 250-j*50+i*50);
       //quad(550, 300, 550, 250, 575, 200, 575, 260);
       //quad(575, 260, 575, 200, 600, 150, 600, 220);
     }
   }
-  //for (int i = 0; i < backSide.length; i++) {
-  //  for (int j = 0; j < backSide[0].length; j++) {
-  //    fill(stringToColor(backSide[i][j]));
-  //    rect(700+j*50, 250+i*50, 50, 50);
-  //  }
-  //}
+  //back side
+  for (int i = 0; i < backSide.length; i++) {
+    for (int j = 0; j < backSide[0].length; j++) {
+      fill(stringToColor(backSide[i][j]));
+      rect(625+j*50, 100+i*50, 50, 50);
+    }
+  }
   //quad(425, 200, 475, 200, 400, 250, 450, 250); 
   //quad(400,250,425,200, 475, 200, 450, 250);
   //}
