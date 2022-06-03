@@ -3,7 +3,7 @@ public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
   ArrayList<String> solutionSet = new ArrayList<String>(); 
-  ArrayList<String> scramble = new ArrayList<String>(Arrays.asList("l", "b", "r", "U", "F", "L", "U", "D", "L", "l", "f", "d", "L", "R", "r", "B", "b", "d", "f", "f"));
+  ArrayList<String> scramble = new ArrayList<String>(Arrays.asList("u", "U", "U", "D", "L", "r", "B", "F", "L", "r", "R", "B", "l", "F", "d", "b", "r", "r", "U", "l"));
   private final int[] R = new int[] {
     -1, 0, 0
   };
@@ -123,11 +123,11 @@ public class Cube {
   }
 
   public void scrambleFixed(){
-    // for(String i : scramble){
-    //   move(i);
-    //   solRemoveLast();
-    // }
-    // scramble.clear();
+    for(String i : scramble){
+      move(i);
+      solRemoveLast();
+    }
+    scramble.clear();
   }
   //scrambles cube using 20 moves
   public void scramble() {
