@@ -1,5 +1,6 @@
 import java.util.*;
 Cube solveCube = new Cube(); 
+
 boolean solving = false;
 String[][] upSide = new String[3][3];
 String[][] leftSide = new String[3][3];
@@ -10,6 +11,7 @@ String[][] downSide = new String[3][3];
 
 void setup() {
   size(1000, 1000);
+  solveCube.scrambleFixed();
 }
   //void solve() {
   //  solving = true; 

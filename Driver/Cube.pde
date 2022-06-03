@@ -3,6 +3,7 @@ public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
   ArrayList<String> solutionSet = new ArrayList<String>(); 
+  ArrayList<String> scramble = new ArrayList<String>(Arrays.asList("l", "b", "r", "U", "F", "L", "U", "D", "L", "l", "f", "d", "L", "R", "r", "B", "b", "d", "f", "f"));
   private final int[] R = new int[] {
     -1, 0, 0
   };
@@ -120,6 +121,14 @@ public class Cube {
     //uCol = getPiece(0, 0, 1).zCol();
     //dCol = getPiece(0, 0, -1).zCol();
   }
+
+  public void scrambleFixed(){
+    // for(String i : scramble){
+    //   move(i);
+    //   solRemoveLast();
+    // }
+    // scramble.clear();
+  }
   //scrambles cube using 20 moves
   public void scramble() {
     int i = 0;
@@ -127,50 +136,64 @@ public class Cube {
       int picker = (int)(Math.random()*12);
       switch(picker) {
       case 0: 
-        L();
+        move("L");
+        scramble.add("\"" + "L" + "\"");
         break;
       case 1: 
-        LPrime();
+         move("l");
+         scramble.add("\"" + "l" + "\"");
         break;
       case 2: 
-        R();
+         move("R");
+         scramble.add("\"" + "R" + "\"");
         break;
       case 3: 
-        RPrime();
+         move("r");
+         scramble.add("\"" + "r" + "\"");
         break;
       case 4: 
-        U();
+         move("U");
+         scramble.add("\"" + "U" + "\"");
         break;
       case 5: 
-        UPrime();
+         move("u");
+         scramble.add("\"" + "u" + "\"");
         break;
       case 6: 
-        D();
+         move("D");
+         scramble.add("\"" + "D" + "\"");
         break;
       case 7: 
-        DPrime();
+         move("d");
+         scramble.add("\"" + "d" + "\"");
         break;
       case 8: 
-        F();
+         move("F");
+         scramble.add("\"" + "F" + "\"");
         break;
       case 9: 
-        FPrime();
+         move("f");
+         scramble.add("\"" + "f" + "\"");
         break;
       case 10: 
-        B();
+         move("B");
+         scramble.add("\"" + "B" + "\"");
         break;
       case 11: 
-        BPrime();
+         move("b");
+         scramble.add("\"" + "b" + "\"");
         break;
       default: 
         break;
       }
       i++;
     }
+    // println(scramble);
+    // scramble.clear();
   }
 
   void move(String move) {
-    solutionSet.add(move);
+    // solutionSet.add(move);
     switch(move) {
     case "L":  
       L();
@@ -606,9 +629,9 @@ public class Cube {
     solving = true;
     cross();
     makeCorners();
-    println("Finished corners");
-    // secondLayer();
-    // redCross();
+    // println("Finished corners");
+    secondLayer();
+    redCross();
     //edges(cube);
     //corners(cube);
     //print("solved!");
@@ -744,8 +767,7 @@ public class Cube {
   void makeCorners() {
     for (int i = 0; i < 4; i++) { //major rot on z axis to change which topRight we are solvin
       Piece targetPiece = findPiece(getCol("U"), getCol("F"), getCol("R")); //finds us targetPiece, since we are always solving top Right, finds corner Piece with front top and right colors;
-      println(targetPiece); 
-      // if(isCornerAlignedRight(targetPiece)){
+      // println(targetPiece); 
       if (targetPiece.zPos() == 1) { //it is on the top
         if (targetPiece.yPos() == 1) { //it is on back face
           if (targetPiece.xPos() == -1) { //if is is on right side
@@ -759,7 +781,7 @@ public class Cube {
           }
           i--;
           move("z"); //decrements down so it will catch the piece on the next move, ZPrime counters loop's Z rot at end of loop
-          println("infinite loop");
+          // println("infinite loop");
         } else { // in front face
           if (targetPiece.xPos() == 1) { //if on left side
             move("L");//move to bot left
@@ -767,11 +789,11 @@ public class Cube {
             move("l");//returns left pieces
             i--;
             move("z"); //decrements down so it will catch the piece on the next move, ZPrime counters loop's Z rot at end of loop
-            println("infinite loop");
+            // println("infinite loop");
           } else { //is on right side
             if (!isCornerAlignedRight(targetPiece)) { //not correct piece
               if (targetPiece.yCol().equals(getCol("U"))) { //if cube's up color is facing us
-                println("white facing us");
+                // println("white facing us");
                 whiteUsAlgo();
               } else {
                 moveToBottom();
@@ -779,7 +801,7 @@ public class Cube {
               // atBottomtoTop(targetPiece);
               i--;
               move("z");
-              println("infinite loop");
+              // println("infinite loop");
             }
           }
         }
@@ -793,27 +815,26 @@ public class Cube {
           }
           i--;
           move("z"); //decrements down so it will catch the piece on the next move, ZPrime counters loop's Z rot at end of loop
-          println("infinite loop");
+          // println("infinite loop");
         } else { //it is on front layer
           if (targetPiece.xPos() == 1) { //if on left side
-            if(targetPiece.zCol().equals(getCol("U"))){ //if white is on bottom
+            if (targetPiece.zCol().equals(getCol("U"))) { //if white is on bottom
               move("D");
               i--;
               move("z");//decrements down so it will catch the piece on the next move, ZPrime counters loop's Z rot at end of loop
-              println("infinite loop");
-            }else{
-              align("L", targetPiece.yCol());
+              // println("infinite loop");
+            } else {
+              align("F", targetPiece.yCol());
+              align("L", targetPiece.xCol());
               atBottomtoTop(targetPiece);
             }
           } else { //in bot right
             if (targetPiece.zCol().equals(getCol("U"))) { //if top color is facing down
-              println("up color facing down");
+              // println("up color facing down");
               align("F", targetPiece.xCol()); //aligned with opposite colors
               // println("aligned to opp colors");
               whiteDownAlgo();
               // println("white down algo");
-              //  cornerRightAlgo();
-              align("R", targetPiece.xCol());
               // println("put into correct spot");
               atBottomtoTop(targetPiece);
             } else { //if top color not facing down
@@ -828,12 +849,10 @@ public class Cube {
 
       move("Z"); //move on to solve next topRight
     }
-
     println("finished making corners");
+    // println(solutionSet());
   }
 
-  void helper() {
-  }
   //move corner piece to bottom layer
   void atBottomtoTop(Piece piece) {
     if (piece.xPos()==1) { //if on left
@@ -878,20 +897,19 @@ public class Cube {
     move("R");
   }
 
-  void align(String dir, String col){
-    if(dir.equals("L")){ //align left
+  void align(String dir, String col) {
+    if (dir.equals("L")) { //align left
       if (getCol("U").equals(col)) {
-        move("z");
+        move("Z");
       } else {
-        while (!getCol("L").equals(col)){
+        while (!getCol("L").equals(col)) {
           move("u");
           move("E");
         }
       }
-
-    }else if(dir.equals("R")){ //align right
+    } else if (dir.equals("R")) { //align right
       if (getCol("U").equals(col)) { 
-      move("z");
+        move("z");
       } else {
         while (!getCol("R").equals(col)) {
 
@@ -902,10 +920,9 @@ public class Cube {
         }
         //move("Z");
       }
-
-    }else{
+    } else {
       if (getCol("U").equals(col)) { //align front
-      move("z");
+        return;
       } else {
         while (!getCol("F").equals(col)) {
 
