@@ -1,9 +1,9 @@
-import java.util.*;  //<>// //<>//
+import java.util.*;  //<>// //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
   ArrayList<String> solutionSet = new ArrayList<String>(); 
-  ArrayList<String> scramble = new ArrayList<String>(Arrays.asList("l", "b", "r", "U", "F", "L", "U", "D", "L", "l", "f", "d", "L", "R", "r", "B", "b", "d", "f", "f"));
+  ArrayList<String> scramble = new ArrayList<String>(Arrays.asList("b", "F", "D", "b", "R", "U", "B", "F", "l", "U", "l", "D", "r", "F", "l", "u", "r", "l", "U", "f"));
   private final int[] R = new int[] {
     -1, 0, 0
   };
@@ -123,11 +123,11 @@ public class Cube {
   }
 
   public void scrambleFixed(){
-    // for(String i : scramble){
-    //   move(i);
-    //   solRemoveLast();
-    // }
-    // scramble.clear();
+     for(String i : scramble){
+       move(i);
+       solRemoveLast();
+     }
+     scramble.clear();
   }
   //scrambles cube using 20 moves
   public void scramble() {
@@ -193,7 +193,7 @@ public class Cube {
   }
 
   void move(String move) {
-    // solutionSet.add(move);
+    solutionSet.add(move);
     switch(move) {
     case "L":  
       L();
@@ -640,8 +640,8 @@ public class Cube {
   void cross() {
     poppy();
     println("finished poppy");
-    makeCross();
-    println("finished cross");
+    //  makeCross();
+    //  println("finished cross");
   }
   void poppy() {
 
