@@ -13,17 +13,6 @@ void setup() {
   size(1000, 1000);
   // solveCube.scrambleFixed();
 }
-  //void solve() {
-  //  solving = true; 
-  //  //cross(); 
-  //  crossCorners(solveCube);
-  //  //secondLayer(cube);
-  //  //secondCross(cube);
-  //  //edges(cube);
-  //  //corners(cube);
-  //  //print("solved!");
-  //  solving = false;
-  //}
 
 public color stringToColor(String col) {
   switch(col) {

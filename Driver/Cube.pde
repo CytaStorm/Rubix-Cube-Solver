@@ -621,9 +621,9 @@ public class Cube {
   }
   void solve() {
     solving = true;
-    cross();
-    makeCorners();
-    // secondLayer();
+    // cross();
+    // makeCorners();
+    secondLayer();
     // redCross();
     //edges(cube);
     //corners(cube);
