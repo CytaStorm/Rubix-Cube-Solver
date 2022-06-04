@@ -628,8 +628,9 @@ public class Cube {
     botCross();
     botFace();
     botCorners();
-    //print("solved!");
-    //solving = false;
+    botEdges();
+    print("solved!");
+    solving = false;
   }
 
   void cross() {
@@ -1211,7 +1212,7 @@ public class Cube {
   }
 
   void cornerPosSingleAlgo() {
-    println("using algo");
+    // println("using algo");
     move("r");
     move("F");
     move("r");
@@ -1243,4 +1244,98 @@ public class Cube {
     }
     return false;
   }
+
+  void botEdges(){
+    for(int i = 0; i < 4; i++){
+      move("Z");
+      if(faceSolved()){
+        move("Z");
+        move("Z");
+        break;
+      }
+    }
+    for(int i = 0; i < 3  && !isCubeSolved(); i++){
+      Piece target =  getPiece(0, -1, 1);
+      if(target.yCol().equals(getCol("R"))){
+        botEdgeRightAlgo();
+      }else{
+        botEdgeLeftAlgo();
+      }
+      if(faceSolved()){
+        move("Z");
+        move("Z");
+      }
+      move("Z");
+      if(faceSolved()){
+        move("Z");
+        move("Z");
+      }
+      move("z");
+      move("z");
+      if(faceSolved()){
+        move("Z");
+        move("Z");
+      }
+    }
+  }
+  void botEdgeLeftAlgo(){
+    move("F");
+    move("F");
+    move("U");
+    move("L");
+    move("r");
+    move("F");
+    move("F");
+    move("l");
+    move("R");
+    move("U");
+    move("F");
+    move("F");
+  }
+  void botEdgeRightAlgo(){
+    move("F");
+    move("F");
+    move("u");
+    move("L");
+    move("r");
+    move("F");
+    move("F");
+    move("l");
+    move("R");
+    move("u");
+    move("F");
+    move("F");
+  }
+
+  boolean faceSolved(){
+    Piece fr = getPiece(-1, -1, 0);
+    Piece fl = getPiece(1, -1, 0);
+    Piece fu = getPiece(0, -1, 1);
+    Piece fd = getPiece(0, -1, -1);
+    Piece ful = getPiece(1, -1, 1);
+    Piece fur = getPiece(-1, -1, 1);
+    Piece fdl = getPiece(1, -1, -1);
+    Piece fdr = getPiece(-1, -1, -1);
+
+    boolean b_fr = fr.yCol().equals(getCol("F")) && fr.xCol().equals(getCol("R"));
+    boolean b_fl = fl.yCol().equals(getCol("F")) && fl.xCol().equals(getCol("L"));
+    boolean b_fu = fu.yCol().equals(getCol("F")) && fu.zCol().equals(getCol("U"));
+    boolean b_fd = fd.yCol().equals(getCol("F")) && fd.zCol().equals(getCol("D"));
+    boolean b_ful = ful.yCol().equals(getCol("F")) && ful.xCol().equals(getCol("L")) && ful.zCol().equals(getCol("U"));
+    boolean b_fur = fur.yCol().equals(getCol("F")) && fur.xCol().equals(getCol("R")) && fur.zCol().equals(getCol("U"));
+    boolean b_fdl = fdl.yCol().equals(getCol("F")) && fdl.zCol().equals(getCol("D"))  && fdl.xCol().equals(getCol("L"));
+    boolean b_fdr = fdr.yCol().equals(getCol("F")) && fdr.zCol().equals(getCol("D")) && fdr.xCol().equals(getCol("R"));
+
+    return b_fr && b_fl && b_fu && b_fd && b_ful && b_fur && b_fdl && b_fdl && b_fdr;
+  }
+
+  boolean isCubeSolved(){
+    for(int i = 0; i < 4; i++){
+      if(!faceSolved()){
+        return false;
+      }
+      move("Z");
+    }
+    return true;
+  } 
 }
