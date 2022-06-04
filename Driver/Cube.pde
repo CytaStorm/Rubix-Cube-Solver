@@ -673,22 +673,41 @@ public class Cube {
     //    move("Z");
     //  }
     //}
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 4; i++){ //solves right side piece
      Piece targetPiece = findPiece(getCol("U"), getCol("R")); //finds targetPiece
      if(targetPiece.zPos() == 1){ //if on top layer
        if(targetPiece.yPos() == 1){//if on back layer
-         move("b");
-         move("b"); //now at bot back middle
-         move("d"); // now at bot right middle
-         move("B");
-         move("B"); //returns pieces
-       }else if(targetPiece.yPos() == -1){//if on front layer
-         move("F"); 
-         move("F"); //now at bot front middle 
-         move("D"); //now at bot right middle
-         move("f");
-         move("f");
-     }
+        move("b");
+        move("b");//move to bot back middle
+        move("d");//moves to right middle
+        move("B"); 
+        move("B");//brings back pieces
+        i--;
+        move("z");
+       }else if(targetPiece.yPos()==0){//in middle
+        if(targetPiece.xPos()==1){
+          move("L");
+          move("L"); //moves to bot
+          move("D");
+          move("D"); //moves to bot right middle
+          move("l");
+          move("l"); //returns right pieces
+          i--;
+          move("z");
+        }
+       }else//in front
+        move("F");
+        move("F");//move to bot front middle
+        move("D");//moves to right middle
+        move("f"); 
+        move("f");//brings back pieces
+        i--;
+        move("z");
+       }else if(target.zPos() == 0){ //in  middle layer
+          if(target.xPos()==1){//on left side
+            
+          }
+       }
      move("Z");
     }
 
@@ -697,21 +716,21 @@ public class Cube {
     move("X");
     move("X");
     // fixes all orientation of orange edges
-    while (poppyFullOriented(getCol("D")) < 4) {
-      for (int j = 0; j < 4; j++) { 
-        for (int i = 0; i < pieces.length; i++) {
-          Piece current = pieces[i];
-          if (current.isEdge() && Arrays.equals(current.getPos(), new int[] {-1, 0, 1})) {
-            if (!(current.zCol().equals(getCol("D")))) {
-              move("r");
-              move("U");
-              move("f");
-            }
-          }
-        }
-        move("Z");
-      }
-    }
+    // while (poppyFullOriented(getCol("D")) < 4) {
+    //   for (int j = 0; j < 4; j++) { 
+    //     for (int i = 0; i < pieces.length; i++) {
+    //       Piece current = pieces[i];
+    //       if (current.isEdge() && Arrays.equals(current.getPos(), new int[] {-1, 0, 1})) {
+    //         if (!(current.zCol().equals(getCol("D")))) {
+    //           move("r");
+    //           move("U");
+    //           move("f");
+    //         }
+    //       }
+    //     }
+    //     move("Z");
+    //   }
+    // }
 
     ///finish petals
 
