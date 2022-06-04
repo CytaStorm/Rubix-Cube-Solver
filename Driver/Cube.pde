@@ -1,4 +1,4 @@
-import java.util.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import java.util.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
@@ -589,13 +589,13 @@ public class Cube {
     }
   }
   public void X() {
-    println("X used");
+    // println("X used");
     R();
     MPrime();
     LPrime();
   }
   public void XPrime() {
-    println("XPrime used");
+    // println("XPrime used");
     L();
     M(); 
     RPrime();
@@ -745,7 +745,7 @@ public class Cube {
       // println(targetPiece);
       move("Z");
     }
-    println("finished using cross");
+    println("finished using cross!");
     // println("after first layer: " + moves);
     return;
   }
@@ -838,8 +838,8 @@ public class Cube {
 
       move("Z"); //move on to solve next topRight
     }
-    println("finished making corners");
-    println("corner " + moves);
+    println("finished making corners!");
+    // println("corner " + moves);
   }
 
   //move corner piece to bottom layer
@@ -1005,7 +1005,7 @@ public class Cube {
       }
       move("Z");
     }
-    println("second layer finished");
+    println("second layer finished!");
     // println("second layer moves: " + moves);
   }
 
@@ -1040,7 +1040,7 @@ public class Cube {
       singleAlgo();
       checkPosition();
     }
-    println("redCross finished");
+    println("botcross finished!");
   }
   boolean botCrossChecker() {
     for (int i = 0; i < pieces.length; i++) {
@@ -1089,7 +1089,11 @@ public class Cube {
 
   //orient yellow corners
   void botFace() {
-    botFaceOrient();
+    while(!checkBotFace()){
+      botFaceOrient();
+      cornerSingleAlgo();
+    }
+    
     println("botFace finished!");
   }
   void botFaceOrient() {
@@ -1133,5 +1137,25 @@ public class Cube {
       default:
       return;
     }
+  }
+  //checks if all faces are same on top(bot)
+  boolean checkBotFace(){
+    int upfaces = 0;
+    for(Piece i : pieces){
+      if(i.zPos() == 1 && i.zCol().equals(getCol("U"))){
+        upfaces++;
+      }
+    }
+    return upfaces == 9;
+  }
+  void cornerSingleAlgo(){
+    move("R");
+    move("U");
+    move("r");
+    move("U");
+    move("R");
+    move("U");
+    move("U");
+    move("r");
   }
 }
