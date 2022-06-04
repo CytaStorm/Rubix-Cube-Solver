@@ -1,4 +1,4 @@
-import java.util.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+                import java.util.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
@@ -1164,17 +1164,34 @@ public class Cube {
   }
   //returns in based on position of corners
   void botCornerPos(){
+    //refer to https://assets.ctfassets.net/r3qu44etwf9a/6kAQCoLmbXXu29TTuArrk1/404118e1f9bfb6f9997157a284bbc572/Rubiks_Solution-Guide_3x3.pdf for cube positions
+    //makes position 1-4
     for(int i = 0; i < 4; i++){
       Piece target1 = getPiece(1,1,1);
       Piece target2 = getPiece(-1,1,1);
-      if(target1.yCol().equals(target2.yCol()) && target1.yCol().equals(getCol("B"))){
-        break;
+      if(target1.yCol().equals(target2.yCol()) && target1.yCol().equals(getCol("B")) && target1.xCol().equals(getCol("L")) && target2.xCol().equals(getCol("R"))){
+        return;
       }
       move("Z");
     }
-    Piece target1 = getPiece(-1,-1,1);
-    Piece target2 = getPiece(1,1,1);
-    
-    for()
+  
+    //checks for position 5
+    for(int i = 0; i < 2; i++){
+      Piece frontLeft = getPiece(-1,-1,1); //front layer piece
+      Piece backRight = getPiece(1,1,1); //back layer piece
+      if(!frontLeft.xCol().equals(getCol("L")) && frontLeft.yCol().equals(getCol("B")) && backRight.xCol().equals(getCol("R")) && backRight.yCol().equals(getCol("F"))){
+        return;
+      }
+      move("Z");
+    }
+    //checks for position 6   
+    for(int i = 0; i < 2; i++){
+      Piece frontRight = getPiece(1,-1,1); //front layer piece
+      Piece backLeft = getPiece(-1,1,1); //back layer piece
+      if(!frontRight.xCol().equals(getCol("R")) && frontRight.yCol().equals(getCol("B")) && backLeft.xCol().equals(getCol("R")) && backLeft.yCol().equals(getCol("F"))){
+        return;
+      }
+      move("Z");
+    }
   }
 }
