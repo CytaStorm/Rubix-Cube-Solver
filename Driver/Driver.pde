@@ -11,7 +11,7 @@ String[][] downSide = new String[3][3];
 
 void setup() {
   size(1000, 1000);
-  // solveCube.scrambleFixed();
+  solveCube.scrambleFixed();
 }
 
 public color stringToColor(String col) {

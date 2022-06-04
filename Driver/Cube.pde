@@ -3,7 +3,8 @@ public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
   ArrayList<String> solutionSet = new ArrayList<String>(); 
-  ArrayList<String> scramble = new ArrayList<String>(Arrays.asList("l", "F", "l", "F", "L", "l", "R", "f", "b", "F", "l", "R", "U", "d", "l", "l", "D", "R", "b", "R"));
+  ArrayList<String> scramble = new ArrayList<String>(Arrays.asList("l", "R", "b", "R", "D", "l", "d", "b", "F", "D", "b", "f", "f", "D", "d", "d", "l", "F", "r", "f", "B", "d", "b", "z", "Z", "R", "R", "Z", "F", "F", "D", "f", "f", "z", "Z", "d", "f", "R", "F", "Z", "B", "d", "b", "z", "Z", "d", "f", "R", "F", "Z", "R", "R", "z", "Z", "d", "f", "R", "F", "Z"));
+  ArrayList<String> moves = new ArrayList<String>();
   private final int[] R = new int[] {
     -1, 0, 0
   };
@@ -131,6 +132,7 @@ public class Cube {
   }
   //scrambles cube using 20 moves
   public void scramble() {
+    moves.clear();
     int i = 0;
     while (i<20) {
       int picker = (int)(Math.random()*12);
@@ -193,7 +195,7 @@ public class Cube {
   }
 
   void move(String move) {
-    solutionSet.add(move);
+    moves.add("\"" +move+ "\"");
     switch(move) {
     case "L":  
       L();
@@ -270,7 +272,6 @@ public class Cube {
     default: 
       break;
     }
-    // println("move: " + move);
   }
 
   //finds piece given 2 colors
@@ -632,6 +633,10 @@ public class Cube {
   }
 
   void cross() {
+    println("before first layer: " + moves);
+    moves.clear();
+    println("start of cross");
+
     for(int i = 0; i < 4; i++){ //solves right side piece
     // int i = 0;
     Piece targetPiece = findPiece(getCol("U"), getCol("R")); //finds targetPiece
@@ -744,6 +749,7 @@ public class Cube {
     move("Z");
     }
     println("finished using cross");
+    // println("after first layer: " + moves);
     return;
   }
 
@@ -930,6 +936,8 @@ public class Cube {
 
   // //secondLayer
   void secondLayer() {
+    println("before second layer: " + moves);
+    moves.clear();
     move("X");
     move("X");
     secondLayerHelper();
@@ -945,7 +953,10 @@ public class Cube {
         }
       }
     }
+    move("X");
+    move("X");
     println("second layer finished");
+    println("second layer moves: " + moves);
   }
 
 
