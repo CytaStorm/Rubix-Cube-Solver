@@ -49,15 +49,22 @@ Began homemade method for solving beginner's alogorithm, finished Poppy and Cros
 Gil Zheng: <br /> 
 Attempted a white corners solution but failed <br /> 
 
-Tuesday 30 May 2022 <br />
+
+Tuesday 31 May 2022 <br />
 Jeff Chen: <br />
-Helped gil in class with his computer, no work afterschool because of a meeting <br /> 
+No work done at home bc of meeting, but helped gil in class with fixing Cube<br /> 
 Gil Zheng: <br /> 
+<br /> 
 
-
-Monday 30 May 2022 <br />
+Wednesday 1 June 2022 <br />
 Jeff Chen: <br />
 Wrote up a method to solve white corners, but ended up being scrapped because I referenced rotations from (broken at the time) buttons, leading me to have wrong rotations and a broken method. Fixed up buttons for proper rotations<br /> 
+Gil Zheng: <br /> 
+<br /> 
+
+Thursday 2 June 2022 <br />
+Jeff Chen: <br />
+Finished white corners, debugged the hell out of it<br /> 
 Gil Zheng: <br /> 
 <br /> 
 
