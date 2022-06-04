@@ -625,7 +625,7 @@ public class Cube {
     cross();
     makeCorners();
     secondLayer();
-    // redCross();
+    redCross();
     //edges(cube);
     //corners(cube);
     //print("solved!");
@@ -935,8 +935,6 @@ public class Cube {
 
   // //secondLayer
   void secondLayer() {
-    // println("before second layer: " + moves);
-    moves.clear();
     move("X");
     move("X");
     for (int i = 0; i < 4; i++) { //goes through each of the 4 edge pieces on the cube and puts them in the right spot if possible, results in only red edge pieces on top
@@ -1007,8 +1005,6 @@ public class Cube {
       }
       move("Z");
     }
-    move("X");
-    move("X");
     println("second layer finished");
     println("second layer moves: " + moves);
   }
