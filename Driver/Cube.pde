@@ -1,4 +1,4 @@
-import java.util.*;  //<>// //<>// //<>// //<>// //<>// //<>//
+import java.util.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
@@ -625,8 +625,8 @@ public class Cube {
     cross();
     makeCorners();
     secondLayer();
-    redCross();
-    //edges(cube);
+    botCross();
+    botFace();
     //corners(cube);
     //print("solved!");
     //solving = false;
@@ -943,37 +943,37 @@ public class Cube {
       if (targetPiece.zPos()==0) {
         //in middle
         if (targetPiece.yPos()==1) {
-            //in back
-            if (targetPiece.xPos()==-1) {
-              //on right side
-              move("z");
-              rightAlgo();//moves to top
-              move("Z");
-              i--;
-              move("z");
-            } else {
-              //on left side
-              move("Z");
-              leftAlgo();//moves to top
-              move("z");
-              i--;
-              move("z");
-            }
-          } else if(targetPiece.xPos()==1){
-            //on front left
-            leftAlgo();//moves to top
+          //in back
+          if (targetPiece.xPos()==-1) {
+            //on right side
+            move("z");
+            rightAlgo();//moves to top
+            move("Z");
             i--;
             move("z");
           } else {
-            //in front right
-            if(targetPiece.yCol().equals(getCol("R"))){
-              //colors swapped
-              rightAlgo();
-              i--;
-              move("z");
-            }
+            //on left side
+            move("Z");
+            leftAlgo();//moves to top
+            move("z");
+            i--;
+            move("z");
           }
-      }else{
+        } else if (targetPiece.xPos()==1) {
+          //on front left
+          leftAlgo();//moves to top
+          i--;
+          move("z");
+        } else {
+          //in front right
+          if (targetPiece.yCol().equals(getCol("R"))) {
+            //colors swapped
+            rightAlgo();
+            i--;
+            move("z");
+          }
+        }
+      } else {
         //it is on top
         if (targetPiece.yPos()==1) {
           //in back 
@@ -986,27 +986,27 @@ public class Cube {
           move("u");//moves to top front middle
           i--;
           move("z");
-        } else if(targetPiece.xPos() == -1){
+        } else if (targetPiece.xPos() == -1) {
           //on right
           move("U"); //moves to top front middle
           i--;
           move("z");
         } else {
           //in front
-          if(targetPiece.yCol().equals(getCol("R"))){
+          if (targetPiece.yCol().equals(getCol("R"))) {
             move("u");
             move("z");
             leftAlgo();
             move("Z");
-          }else{
-           rightAlgo();
+          } else {
+            rightAlgo();
           }
         }
       }
       move("Z");
     }
     println("second layer finished");
-    println("second layer moves: " + moves);
+    // println("second layer moves: " + moves);
   }
 
   //left right algos
@@ -1034,15 +1034,15 @@ public class Cube {
   }
 
   //third layer
-  void redCross() {
+  void botCross() {
     checkPosition();
-    while (!redCrossChecker()) {
+    while (!botCrossChecker()) {
       singleAlgo();
       checkPosition();
     }
     println("redCross finished");
   }
-  boolean redCrossChecker() {
+  boolean botCrossChecker() {
     for (int i = 0; i < pieces.length; i++) {
       Piece current = pieces[i];
       if (current.zPos() == 1 && current.isEdge() && !current.zCol().equals(getCol("U"))) {
@@ -1085,5 +1085,53 @@ public class Cube {
     move("u");
     move("r");
     move("f");
+  }
+
+  //orient yellow corners
+  void botFace() {
+    botFaceOrient();
+    println("botFace finished!");
+  }
+  void botFaceOrient() {
+    //returns 1 of 4 orientations of bottom 
+    int o = 0; //number of top corners with topcolor facing up
+    for (Piece i : pieces) {
+      if (i.zPos() == 1 && (i.xPos() != 0 && i.yPos() != 0)) {
+        if (i.zCol().equals(getCol("U"))) {
+          o++;
+        }
+      }
+    }
+    
+    //orients based on number of faces with upcolor facing up
+    Piece targetPiece = getPiece(1, -1, 1);
+    switch(o){
+      case 0: 
+      while(!targetPiece.xCol().equals(getCol("U"))){
+        move("Z");
+        targetPiece = getPiece(1, -1, 1);
+      }
+      return;
+      case 1: 
+      while(!targetPiece.zCol().equals(getCol("U"))){
+        move("Z");
+        targetPiece = getPiece(1, -1, 1);
+      }
+      return;
+      case 2:
+      while(!targetPiece.yCol().equals(getCol("U"))){
+        move("Z");
+        targetPiece = getPiece(1, -1, 1);
+      }
+      return;
+      case 3:
+      while(!targetPiece.yCol().equals(getCol("U"))){
+        move("Z");
+        targetPiece = getPiece(1, -1, 1);
+      }
+      return;
+      default:
+      return;
+    }
   }
 }
