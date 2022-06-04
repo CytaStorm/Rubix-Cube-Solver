@@ -627,7 +627,7 @@ public class Cube {
     secondLayer();
     botCross();
     botFace();
-    //corners(cube);
+    botCorners();
     //print("solved!");
     //solving = false;
   }
@@ -1157,5 +1157,24 @@ public class Cube {
     move("U");
     move("U");
     move("r");
+  }
+
+  //positioning bot corners
+  void botCorners(){
+  }
+  //returns in based on position of corners
+  void botCornerPos(){
+    for(int i = 0; i < 4; i++){
+      Piece target1 = getPiece(1,1,1);
+      Piece target2 = getPiece(-1,1,1);
+      if(target1.yCol().equals(target2.yCol()) && target1.yCol().equals(getCol("B"))){
+        break;
+      }
+      move("Z");
+    }
+    Piece target1 = getPiece(-1,-1,1);
+    Piece target2 = getPiece(1,1,1);
+    
+    for()
   }
 }
