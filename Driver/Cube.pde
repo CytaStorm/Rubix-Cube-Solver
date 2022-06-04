@@ -1161,10 +1161,14 @@ public class Cube {
 
   //positioning bot corners
   void botCorners() {
-    botCornerPos();
+    while(!checkCornerPos()){
+      botCornerPos();
+      cornerPosSingleAlgo();
+    }
   }
   //returns in based on position of corners
   void botCornerPos() {
+    println("setting up pos");
     //refer to https://assets.ctfassets.net/r3qu44etwf9a/6kAQCoLmbXXu29TTuArrk1/404118e1f9bfb6f9997157a284bbc572/Rubiks_Solution-Guide_3x3.pdf for cube positions
     //makes position 1-4
     for (int j = 0; j < 4; j++) {
@@ -1204,5 +1208,33 @@ public class Cube {
     }
 
     // println("no position");
+  }
+  
+  void cornerPosSingleAlgo(){
+    println("using algo");
+    move("r");
+    move("F");
+    move("r");
+    move("b");
+    move("b");
+    move("R");
+    move("f");
+    move("r");
+    move("b");
+    move("b");
+    move("r");
+    move("r");
+  }
+
+  boolean checkCornerPos(){
+    int correctPos = 0;
+    for(int i = 0; i < 4; i++){
+      Piece current = getPiece(-1,-1,1);
+      if(current.yCol().equals(getCol("F")) && current.xCol().equals(getCol("R"))){
+        i++;
+      }
+      move("Z");
+    }
+    return correctPos == 4;
   }
 }
