@@ -1,4 +1,4 @@
-import java.util.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import java.util.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
@@ -627,7 +627,7 @@ public class Cube {
     secondLayer();
     botCross();
     botFace();
-    //corners(cube);
+    botCorners();
     //print("solved!");
     //solving = false;
   }
@@ -1089,11 +1089,11 @@ public class Cube {
 
   //orient yellow corners
   void botFace() {
-    while(!checkBotFace()){
+    while (!checkBotFace()) {
       botFaceOrient();
       cornerSingleAlgo();
     }
-    
+
     println("botFace finished!");
   }
   void botFaceOrient() {
@@ -1106,49 +1106,49 @@ public class Cube {
         }
       }
     }
-    
+
     //orients based on number of faces with upcolor facing up
     Piece targetPiece = getPiece(1, -1, 1);
-    switch(o){
-      case 0: 
-      while(!targetPiece.xCol().equals(getCol("U"))){
+    switch(o) {
+    case 0: 
+      while (!targetPiece.xCol().equals(getCol("U"))) {
         move("Z");
         targetPiece = getPiece(1, -1, 1);
       }
       return;
-      case 1: 
-      while(!targetPiece.zCol().equals(getCol("U"))){
+    case 1: 
+      while (!targetPiece.zCol().equals(getCol("U"))) {
         move("Z");
         targetPiece = getPiece(1, -1, 1);
       }
       return;
-      case 2:
-      while(!targetPiece.yCol().equals(getCol("U"))){
+    case 2:
+      while (!targetPiece.yCol().equals(getCol("U"))) {
         move("Z");
         targetPiece = getPiece(1, -1, 1);
       }
       return;
-      case 3:
-      while(!targetPiece.yCol().equals(getCol("U"))){
+    case 3:
+      while (!targetPiece.yCol().equals(getCol("U"))) {
         move("Z");
         targetPiece = getPiece(1, -1, 1);
       }
       return;
-      default:
+    default:
       return;
     }
   }
   //checks if all faces are same on top(bot)
-  boolean checkBotFace(){
+  boolean checkBotFace() {
     int upfaces = 0;
-    for(Piece i : pieces){
-      if(i.zPos() == 1 && i.zCol().equals(getCol("U"))){
+    for (Piece i : pieces) {
+      if (i.zPos() == 1 && i.zCol().equals(getCol("U"))) {
         upfaces++;
       }
     }
     return upfaces == 9;
   }
-  void cornerSingleAlgo(){
+  void cornerSingleAlgo() {
     move("R");
     move("U");
     move("r");
@@ -1157,5 +1157,90 @@ public class Cube {
     move("U");
     move("U");
     move("r");
+  }
+
+  //positioning bot corners
+  void botCorners() {
+    while (!checkCornerPos()) {
+      botCornerPos();
+      cornerPosSingleAlgo();
+    }
+  }
+  //returns in based on position of corners
+  void botCornerPos() {
+    // println("setting up pos");
+    //refer to https://assets.ctfassets.net/r3qu44etwf9a/6kAQCoLmbXXu29TTuArrk1/404118e1f9bfb6f9997157a284bbc572/Rubiks_Solution-Guide_3x3.pdf for cube positions
+    //makes position 1-4
+    for (int j = 0; j < 4; j++) {
+      for (int i = 0; i < 4; i++) {
+        Piece frontLeft = getPiece(1, -1, 1);
+        Piece frontRight = getPiece(-1, -1, 1);
+        if (frontLeft.yCol().equals(frontRight.yCol()) && frontLeft.yCol().equals(getCol("F")) && frontLeft.xCol().equals(getCol("L")) && frontRight.xCol().equals(getCol("R"))) {
+          move("Z");
+          move("Z");
+          println("position 1-4");
+          return;
+        }
+        move("U");
+      }
+      move("Z");
+    }
+
+    //checks for position 5
+    for (int i = 0; i < 2; i++) {
+      Piece frontLeft = getPiece(1, -1, 1); //front layer piece
+      Piece backRight = getPiece(-1, 1, 1); //back layer piece
+      if (frontLeft.xCol().equals(getCol("L")) && frontLeft.yCol().equals(getCol("F")) && backRight.xCol().equals(getCol("R")) && backRight.yCol().equals(getCol("B"))) {
+        println("position 5");
+        return;
+      }
+      move("Z");
+    }
+    //checks for position 6   
+    for (int i = 0; i < 2; i++) {
+      Piece frontRight = getPiece(-1, -1, 1); //front layer piece
+      Piece backLeft = getPiece(1, 1, 1); //back layer piece
+      if (frontRight.xCol().equals(getCol("R")) && frontRight.yCol().equals(getCol("F")) && backLeft.xCol().equals(getCol("L")) && backLeft.yCol().equals(getCol("B"))) {
+        println("position 6");
+        return;
+      }
+      move("Z");
+    }
+
+    // println("no position");
+  }
+
+  void cornerPosSingleAlgo() {
+    println("using algo");
+    move("r");
+    move("F");
+    move("r");
+    move("b");
+    move("b");
+    move("R");
+    move("f");
+    move("r");
+    move("b");
+    move("b");
+    move("r");
+    move("r");
+  }
+
+  boolean checkCornerPos() {
+    for (int i = 0; i < 4; i++) { //big Z rot
+      int correctPos = 0;
+      for (int j = 0; j < 4; j++) { //checks corners for each face
+        Piece current = getPiece(-1, -1, 1);
+        if (current.yCol().equals(getCol("F")) && current.xCol().equals(getCol("R"))) {
+          correctPos++;
+        }
+        if(correctPos == 4){
+          return true;
+        }
+        move("Z");
+      }
+      move("U");
+    }
+    return false;
   }
 }
