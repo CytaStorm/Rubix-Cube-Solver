@@ -426,7 +426,20 @@ void draw() {
     rect(515, 440, 20, 100);
     triangle(710, 360, 725, 390, 740, 360);
     rect(715, 260, 20, 100); 
+  } 
+  //RPrime  
+  if (mouseX > 240 && mouseX < 290 && mouseY > 800 && mouseY < 850){ 
+    fill(0, 0, 0, 63);
+    triangle(510, 360, 525, 390, 540, 360);
+    rect(515, 260, 20, 100);
+    triangle(510, 210, 525, 240, 540, 210);
+    rect(515, 110, 20, 100);
+    triangle(510, 510, 525, 540, 540, 510);
+    rect(515, 410, 20, 100);
+    triangle(710, 290, 725, 260, 740, 290); 
+    rect(715, 290, 20, 100);
   }
+  
 }
 void update() {
   //update the top side 
