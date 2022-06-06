@@ -68,3 +68,7 @@ Finished white corners, debugged the hell out of it<br />
 Gil Zheng: <br /> 
 <br /> 
 
+Saturday 4 June 2022 <br/>
+Jeff Chen: <br/>
+Totally rewrote solve middle layer and finished writing solve using the beginner's method <br/>
+
