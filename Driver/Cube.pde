@@ -1179,7 +1179,7 @@ public class Cube {
         if (frontLeft.yCol().equals(frontRight.yCol()) && frontLeft.yCol().equals(getCol("F")) && frontLeft.xCol().equals(getCol("L")) && frontRight.xCol().equals(getCol("R"))) {
           move("Z");
           move("Z");
-          println("position 1-4");
+          //println("position 1-4");
           return;
         }
         move("U");
@@ -1192,7 +1192,7 @@ public class Cube {
       Piece frontLeft = getPiece(1, -1, 1); //front layer piece
       Piece backRight = getPiece(-1, 1, 1); //back layer piece
       if (frontLeft.xCol().equals(getCol("L")) && frontLeft.yCol().equals(getCol("F")) && backRight.xCol().equals(getCol("R")) && backRight.yCol().equals(getCol("B"))) {
-        println("position 5");
+        //println("position 5");
         return;
       }
       move("Z");
@@ -1277,6 +1277,8 @@ public class Cube {
         move("Z");
       }
     }
+    move("X");
+    move("X");
   }
   void botEdgeLeftAlgo(){
     move("F");
