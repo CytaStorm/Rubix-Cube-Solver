@@ -3,7 +3,7 @@ public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
   ArrayList<String> solutionSet = new ArrayList<String>(); 
-  ArrayList<String> scramble = new ArrayList<String>(Arrays.asList("a"));
+  ArrayList<String> scramble = new ArrayList<String>();
   ArrayList<String> moves = new ArrayList<String>();
   private final int[] R = new int[] {
     -1, 0, 0
@@ -114,13 +114,6 @@ public class Cube {
     pieces[23] = new Piece(-1, 1, 1, "blue", "yellow", "orange");
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
-
-    //lCol = getPiece(-1, 0, 0).yCol();
-    //rCol = getPiece(1, 0, 0).yCol();
-    //fCol = getPiece(0, -1, 0).xCol();
-    //bCol = getPiece(0, 1, 0).xCol();
-    //uCol = getPiece(0, 0, 1).zCol();
-    //dCol = getPiece(0, 0, -1).zCol();
   }
 
   public void scrambleFixed() {
@@ -132,66 +125,114 @@ public class Cube {
   }
   //scrambles cube using 20 moves
   public void scramble() {
-    moves.clear();
+    scramble.clear();
     int i = 0;
     while (i<20) {
-      int picker = (int)(Math.random()*12);
+      int picker = (int)(Math.random()*24);
       switch(picker) {
       case 0: 
-        move("L");
-        scramble.add("\"" + "L" + "\"");
+        L();
+        scramble.add("L");
         break;
       case 1: 
-        move("l");
-        scramble.add("\"" + "l" + "\"");
+        LPrime();
+        scramble.add("L'");
         break;
       case 2: 
-        move("R");
-        scramble.add("\"" + "R" + "\"");
+        R();
+        scramble.add("R");
         break;
       case 3: 
-        move("r");
-        scramble.add("\"" + "r" + "\"");
+        RPrime();
+        scramble.add("R'");
         break;
       case 4: 
-        move("U");
-        scramble.add("\"" + "U" + "\"");
+        U();
+        scramble.add("U");
         break;
       case 5: 
-        move("u");
-        scramble.add("\"" + "u" + "\"");
+        UPrime();
+        scramble.add("U'");
         break;
       case 6: 
-        move("D");
-        scramble.add("\"" + "D" + "\"");
+        D();
+        scramble.add("D");
         break;
       case 7: 
-        move("d");
-        scramble.add("\"" + "d" + "\"");
+        DPrime();
+        scramble.add("D'");
         break;
       case 8: 
-        move("F");
-        scramble.add("\"" + "F" + "\"");
+        F();
+        scramble.add("F");
         break;
       case 9: 
-        move("f");
-        scramble.add("\"" + "f" + "\"");
+        FPrime();
+        scramble.add("F'");
         break;
       case 10: 
-        move("B");
-        scramble.add("\"" + "B" + "\"");
+        B();
+        scramble.add("B");
         break;
       case 11: 
-        move("b");
-        scramble.add("\"" + "b" + "\"");
+        BPrime();
+        scramble.add("B'");
+        break;
+      case 12:
+        M();
+        scramble.add("M");
+        break;
+      case 13:
+        MPrime();
+        scramble.add("M'");
+        break;
+      case 14:
+        E();
+        scramble.add("E");
+        break;
+      case 15:
+        EPrime();
+        scramble.add("E'");
+        break;
+      case 16:
+        S();
+        scramble.add("S");
+        break;
+      case 17:
+        SPrime();
+        scramble.add("S'");
+        break;
+      case 18:
+        X();
+        scramble.add("X");
+        break;
+     case 19:
+        XPrime();
+        scramble.add("X'");
+        break;
+      case 20:
+        Y();
+        scramble.add("Y");
+        break;
+      case 21:
+        YPrime();
+        scramble.add("Y'");
+        break;
+      case 22:
+        Z();
+        scramble.add("Z");
+        break;
+      case 23:
+        ZPrime();
+        scramble.add("Z'");
         break;
       default: 
         break;
       }
       i++;
     }
-    // println(scramble);
-    // scramble.clear();
+    println("Your scramble is: " + scramble);
+    //scramble.clear();
   }
 
   void move(String move) {
@@ -1235,7 +1276,7 @@ public class Cube {
         if (current.yCol().equals(getCol("F")) && current.xCol().equals(getCol("R"))) {
           correctPos++;
         }
-        if(correctPos == 4){
+        if (correctPos == 4) {
           return true;
         }
         move("Z");
@@ -1245,34 +1286,34 @@ public class Cube {
     return false;
   }
 
-  void botEdges(){
-    for(int i = 0; i < 4; i++){
+  void botEdges() {
+    for (int i = 0; i < 4; i++) {
       move("Z");
-      if(faceSolved()){
+      if (faceSolved()) {
         move("Z");
         move("Z");
         break;
       }
     }
-    for(int i = 0; i < 3  && !isCubeSolved(); i++){
+    for (int i = 0; i < 3  && !isCubeSolved(); i++) {
       Piece target =  getPiece(0, -1, 1);
-      if(target.yCol().equals(getCol("R"))){
+      if (target.yCol().equals(getCol("R"))) {
         botEdgeRightAlgo();
-      }else{
+      } else {
         botEdgeLeftAlgo();
       }
-      if(faceSolved()){
+      if (faceSolved()) {
         move("Z");
         move("Z");
       }
       move("Z");
-      if(faceSolved()){
+      if (faceSolved()) {
         move("Z");
         move("Z");
       }
       move("z");
       move("z");
-      if(faceSolved()){
+      if (faceSolved()) {
         move("Z");
         move("Z");
       }
@@ -1280,7 +1321,7 @@ public class Cube {
     move("X");
     move("X");
   }
-  void botEdgeLeftAlgo(){
+  void botEdgeLeftAlgo() {
     move("F");
     move("F");
     move("U");
@@ -1294,7 +1335,7 @@ public class Cube {
     move("F");
     move("F");
   }
-  void botEdgeRightAlgo(){
+  void botEdgeRightAlgo() {
     move("F");
     move("F");
     move("u");
@@ -1309,7 +1350,7 @@ public class Cube {
     move("F");
   }
 
-  boolean faceSolved(){
+  boolean faceSolved() {
     Piece fr = getPiece(-1, -1, 0);
     Piece fl = getPiece(1, -1, 0);
     Piece fu = getPiece(0, -1, 1);
@@ -1331,13 +1372,13 @@ public class Cube {
     return b_fr && b_fl && b_fu && b_fd && b_ful && b_fur && b_fdl && b_fdl && b_fdr;
   }
 
-  boolean isCubeSolved(){
-    for(int i = 0; i < 4; i++){
-      if(!faceSolved()){
+  boolean isCubeSolved() {
+    for (int i = 0; i < 4; i++) {
+      if (!faceSolved()) {
         return false;
       }
       move("Z");
     }
     return true;
-  } 
+  }
 }
