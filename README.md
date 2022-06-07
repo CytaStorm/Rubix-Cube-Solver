@@ -53,22 +53,43 @@ Attempted a white corners solution but failed <br />
 Tuesday 31 May 2022 <br />
 Jeff Chen: <br />
 No work done at home bc of meeting, but helped gil in class with fixing Cube<br /> 
-Gil Zheng: <br /> 
+Gil Zheng: Started working on the semi-3d visualiser <br /> 
 <br /> 
 
 Wednesday 1 June 2022 <br />
 Jeff Chen: <br />
 Wrote up a method to solve white corners, but ended up being scrapped because I referenced rotations from (broken at the time) buttons, leading me to have wrong rotations and a broken method. Fixed up buttons for proper rotations<br /> 
-Gil Zheng: <br /> 
+Gil Zheng: Continued to work on the semi-3d visualizer, got the top side of the Cube to work<br /> 
 <br /> 
 
 Thursday 2 June 2022 <br />
 Jeff Chen: <br />
 Finished white corners, debugged the hell out of it<br /> 
-Gil Zheng: <br /> 
+Gil Zheng: Rewrote the top side to fix the rotations and started working on the right side<br /> 
+<br />  
+
+Friday 3 June 2022 <br />
+Jeff Chen: Continued to revamp the cube and started with poppy<br />
+Gil Zheng: Finished one of the visualizer and got the mode switching to work <br /> 
 <br /> 
 
 Saturday 4 June 2022 <br/>
 Jeff Chen: <br/>
 Totally rewrote solve middle layer and finished writing solve using the beginner's method <br/>
+Gil Zheng: Continued working on arrows to pop up when you hover over the buttons and made the arrows transparent<br /> 
+<br />  
 
+Sunday 5 June 2022 <br/>
+Jeff Chen: <br/>
+Gil Zheng: Finished L, L', R, R', M, M', X, and X' arrows <br /> 
+<br /> 
+
+Monday 6 June 2022 <br/>
+Jeff Chen: <br/>
+Gil Zheng: Finished the arrows for the U rotation and merged to main for Jeff to fix a bug<br /> 
+<br /> 
+
+Tuesday 7 June 2022 <br/>
+Jeff Chen: <br/>
+Gil Zheng: <br /> 
+<br /> 
