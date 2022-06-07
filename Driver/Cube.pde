@@ -213,12 +213,17 @@ public class Cube {
       }
       i++;
     }
+    moveOptimizer(scramble);
     println("Your scramble is: " + scramble);
     //scramble.clear();
   }
 
   void move(String move) {
-    moves.add("\"" +move+ "\"");
+    if(!Character.isUpperCase(move.charAt(0))){
+      moves.add(move.toUpperCase() + "'");
+    }else{
+      moves.add(move);
+    }
     switch(move) {
     case "L":  
       L();
@@ -627,6 +632,7 @@ public class Cube {
     botCorners();
     botEdges();
     println("solved!");
+    moveOptimizer(moves);
     println(moves);
     //solving = false;
   }
@@ -1051,8 +1057,8 @@ public class Cube {
     return true;
   }
   void checkPosition() { 
-    Piece face = getPiece(0, 0, 1);
-    Piece ulb = getPiece(1, 1, 1);
+    //Piece face = getPiece(0, 0, 1);
+    //Piece ulb = getPiece(1, 1, 1);
     Piece ul = getPiece(1, 0, 1);
     Piece urb = getPiece(-1, 1, 1);
     Piece ur = getPiece(-1, 0, 1);
@@ -1337,5 +1343,19 @@ public class Cube {
       move("Z");
     }
     return true;
+  }
+  
+  void moveOptimizer(ArrayList<String> moves){
+   for(int i = 0; i < moves.size() - 1; i++){
+     if((moves.get(i+1).length() == 2 && moves.get(i+1).equals(moves.get(i) + "'"))|| //if next is prime & current is not prime
+         moves.get(i).length() == 2 && moves.get(i).equals(moves.get(i+1) + "'")){ //if current is prime and next is not prime
+       moves.remove(i+1);
+       moves.remove(i);
+     }
+     if(moves.get(i).equals(moves.get(i+1))){
+      moves.remove(i+1); 
+      moves.set(i, "2" + moves.get(i));
+     }
+    }
   }
 }
