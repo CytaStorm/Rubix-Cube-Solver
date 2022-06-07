@@ -1,28 +1,10 @@
-import java.util.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+import java.util.*; //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
   ArrayList<String> solutionSet = new ArrayList<String>(); 
   ArrayList<String> scramble = new ArrayList<String>();
   ArrayList<String> moves = new ArrayList<String>();
-  private final int[] R = new int[] {
-    -1, 0, 0
-  };
-  private final int[] L = new int[] {
-    1, 0, 0
-  };
-  private final int[] U = new int[] {
-    0, 0, 1
-  };
-  private final int[] D = new int[] {
-    0, 0, -1
-  };
-  private final int[] F = new int[] {
-    0, 1, 0
-  };
-  private final int[] B = new int[] {
-    0, -1, 0
-  };
 
   private Piece[] pieces = new Piece[26];
   public Cube() {
@@ -269,10 +251,10 @@ public class Cube {
       FPrime();
       break;
     case "b": 
-      B();
+      BPrime();
       break;
     case "B": 
-      BPrime();
+      B();
       break;
     case "M":
       M();
@@ -635,7 +617,8 @@ public class Cube {
     BPrime();
   }
   void solve() {
-    solving = true;
+    //solving = true;
+    moves.clear();
     cross();
     makeCorners();
     secondLayer();
@@ -643,8 +626,9 @@ public class Cube {
     botFace();
     botCorners();
     botEdges();
-    print("solved!");
-    solving = false;
+    println("solved!");
+    println(moves);
+    //solving = false;
   }
 
   void cross() {
