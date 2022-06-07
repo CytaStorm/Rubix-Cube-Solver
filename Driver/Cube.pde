@@ -1354,7 +1354,7 @@ public class Cube {
      }
      if(moves.get(i).equals(moves.get(i+1))){
       moves.remove(i+1); 
-      moves.set(i, "2" + moves.get(i));
+      moves.set(i, "2" + moves.get(i).substring(0,1));
      }
     }
   }
