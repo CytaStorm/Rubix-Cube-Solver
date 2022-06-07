@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import java.util.*; //<>// //<>// //<>//
+=======
+import java.util.*; //<>// //<>//
+>>>>>>> 02caea9c0ab5bdf9c89da5fa57ee493439098c17
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
