@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import java.util.*; //<>// //<>//
-=======
-import java.util.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
->>>>>>> main
+import java.util.*;  //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   boolean solving;
@@ -176,7 +172,7 @@ public class Cube {
         break;
       case 10: 
         B();
-        scramble.add("B");
+        scramble.add("b");
         break;
       case 11: 
         BPrime();
@@ -272,10 +268,10 @@ public class Cube {
     case "f": 
       FPrime();
       break;
-    case "B": 
+    case "b": 
       B();
       break;
-    case "b": 
+    case "B": 
       BPrime();
       break;
     case "M":
@@ -395,33 +391,6 @@ public class Cube {
       print("nothing left to remove!");
     }
   }
-  //gets rotation from face
-  public String[] faceRot(int[]pos) {
-    String[] returnMoves = new String[2];
-    if (Arrays.equals(pos, R)) {
-      returnMoves[0] = "R";
-      returnMoves[1] = "r";
-    } else if (Arrays.equals(pos, L)) {
-      returnMoves[0] = "L";
-      returnMoves[1] = "l";
-    } else if (Arrays.equals(pos, F)) {
-      returnMoves[0] = "F";
-      returnMoves[1] = "f";
-    } else if (Arrays.equals(pos, B)) {
-      returnMoves[0] = "B";
-      returnMoves[1] = "b";
-    } else if (Arrays.equals(pos, D)) {
-      returnMoves[0] = "D";
-      returnMoves[1] = "d";
-    } else if (Arrays.equals(pos, U)) {
-      returnMoves[0] = "U";
-      returnMoves[1] = "u";
-    } else {
-      println("invalid face");
-      return null;
-    }
-    return returnMoves;
-  }
 
   //accessor to get solving state
   public boolean isSolving() {
@@ -499,14 +468,14 @@ public class Cube {
       }
     }
   }
-  public void B() {
+  public void BPrime() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[1] == 1) {
         pieces[i].rotateYCW();
       }
     }
   }
-  public void BPrime() {
+  public void B() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[1] == 1) {
         pieces[i].rotateYCCW();
@@ -658,12 +627,12 @@ public class Cube {
   public void Y() {
     FPrime();
     SPrime();
-    BPrime();
+    B();
   }
   public void YPrime() {
     F();
     S();
-    B();
+    BPrime();
   }
   void solve() {
     solving = true;
@@ -687,11 +656,11 @@ public class Cube {
       if (targetPiece.zPos() == 1) { //if on top layer
         if (targetPiece.yPos() == 1) {//if on back layer
           // println("in back");
-          move("b");
-          move("b");//move to bot back middle
+          move("B");
+          move("B");//move to bot back middle
           move("d");//moves to right middle
-          move("B"); 
-          move("B");//brings back pieces
+          move("b"); 
+          move("b");//brings back pieces
           i--;
           move("z");
         } else if (targetPiece.yPos()==0) {//in middle
@@ -725,15 +694,15 @@ public class Cube {
       } else if (targetPiece.zPos() == 0) { //in  middle layer
         if (targetPiece.yPos() == 1) { //in back layer
           if (targetPiece.xPos() == 1) { //in left side
-            move("b");//move to bot back middle
-            move("d");//move to bot right middle
-            move("B");//puts piece back
-            i--;
-            move("z");
-          } else {//on right side
             move("B");//move to bot back middle
             move("d");//move to bot right middle
             move("b");//puts piece back
+            i--;
+            move("z");
+          } else {//on right side
+            move("b");//move to bot back middle
+            move("d");//move to bot right middle
+            move("B");//puts piece back
             i--;
             move("z");
           }
@@ -806,13 +775,13 @@ public class Cube {
       if (targetPiece.zPos() == 1) { //it is on the top
         if (targetPiece.yPos() == 1) { //it is on back face
           if (targetPiece.xPos() == -1) { //if is is on right side
-            move("B"); //move to bot layer
-            move("d"); //now at bot right
-            move("b"); //return top layer pieces
-          } else { //on left
             move("b"); //move to bot layer
-            move("D"); //move to bot left
+            move("d"); //now at bot right
             move("B"); //return top layer pieces
+          } else { //on left
+            move("B"); //move to bot layer
+            move("D"); //move to bot left
+            move("b"); //return top layer pieces
           }
           i--;
           move("z"); //decrements down so it will catch the piece on the next move, ZPrime counters loop's Z rot at end of loop
@@ -1236,7 +1205,7 @@ public class Cube {
     for (int i = 0; i < 2; i++) {
       Piece frontLeft = getPiece(1, -1, 1); //front layer piece
       Piece backRight = getPiece(-1, 1, 1); //back layer piece
-      if (frontLeft.xCol().equals(getCol("L")) && frontLeft.yCol().equals(getCol("F")) && backRight.xCol().equals(getCol("R")) && backRight.yCol().equals(getCol("B"))) {
+      if (frontLeft.xCol().equals(getCol("L")) && frontLeft.yCol().equals(getCol("F")) && backRight.xCol().equals(getCol("R")) && backRight.yCol().equals(getCol("b"))) {
         //println("position 5");
         return;
       }
@@ -1246,7 +1215,7 @@ public class Cube {
     for (int i = 0; i < 2; i++) {
       Piece frontRight = getPiece(-1, -1, 1); //front layer piece
       Piece backLeft = getPiece(1, 1, 1); //back layer piece
-      if (frontRight.xCol().equals(getCol("R")) && frontRight.yCol().equals(getCol("F")) && backLeft.xCol().equals(getCol("L")) && backLeft.yCol().equals(getCol("B"))) {
+      if (frontRight.xCol().equals(getCol("R")) && frontRight.yCol().equals(getCol("F")) && backLeft.xCol().equals(getCol("L")) && backLeft.yCol().equals(getCol("b"))) {
         println("position 6");
         return;
       }
@@ -1261,13 +1230,13 @@ public class Cube {
     move("r");
     move("F");
     move("r");
-    move("b");
-    move("b");
+    move("B");
+    move("B");
     move("R");
     move("f");
     move("r");
-    move("b");
-    move("b");
+    move("B");
+    move("B");
     move("r");
     move("r");
   }
