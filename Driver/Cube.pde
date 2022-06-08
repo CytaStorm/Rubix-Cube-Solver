@@ -1346,16 +1346,39 @@ public class Cube {
   }
   
   void moveOptimizer(ArrayList<String> moves){
-   for(int i = 0; i < moves.size() - 1; i++){
-     if((moves.get(i+1).length() == 2 && moves.get(i+1).equals(moves.get(i) + "'"))|| //if next is prime & current is not prime
-         moves.get(i).length() == 2 && moves.get(i).equals(moves.get(i+1) + "'")){ //if current is prime and next is not prime
-       moves.remove(i+1);
-       moves.remove(i);
+   //for(int i = 0; i < moves.size() - 1; i++){
+   //  if((moves.get(i+1).length() == 2 && moves.get(i+1).equals(moves.get(i) + "'"))|| //if next is prime & current is not prime
+   //      moves.get(i).length() == 2 && moves.get(i).equals(moves.get(i+1) + "'")){ //if current is prime and next is not prime
+   //    moves.remove(i+1);
+   //    moves.remove(i);
+   //  }
+   //  if(moves.get(i).equals(moves.get(i+1))){
+   //   moves.remove(i+1); 
+   //   moves.set(i, "2" + moves.get(i).substring(0,1));
+   //  }
+   // }
+   // for(int i = 0; i < moves.size() - 1; i++){
+   //   if(moves.get(i).equals(moves.get(i+1)) && moves.get(i).charAt(0) == '2'){
+   //     moves.remove(i+1);
+   //     moves.remove(i);
+   //   }
+   // }
+  }
+  
+  void conRepeat(ArrayList<String> moves, int index){
+    int result = 1;
+    int currentIndex = index + 1;
+    while(currentIndex < moves.size()){
+     if(moves.get(currentIndex).equals(moves.get(index))){
+       result++;
+     }else{
+       break;
      }
-     if(moves.get(i).equals(moves.get(i+1))){
-      moves.remove(i+1); 
-      moves.set(i, "2" + moves.get(i).substring(0,1));
-     }
+    }
+    if(result == 3){
+      moves.remove(index+2);
+      moves.remove(index+1);
+      moves.set(index, moves.get(index)+"'");
     }
   }
 }
