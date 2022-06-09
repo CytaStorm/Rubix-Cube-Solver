@@ -1348,62 +1348,85 @@ public class Cube {
   }
   
   void moveOptimizer(ArrayList<String> moves){
-   for(int i = 0; i < moves.size(); i++){
-    //  println("test");
-    //  i += 
-     conRepeat(moves, i);
-    //  println("move size: " + moves.size());
-    }
-    // println("end of optimizer");
+    ArrayDeque<int[]> duplicates = duplicates(moves);
+    println(duplicates);
+    // while(duplicates.size() != 0){
+    //   //loop so it will look for duplicates multiple times
+    //   while(duplicates.size() != 0){
+    //     int[] currentDupe = duplicates.getFirst();
+    //     int dupeBegin = currentDupe[0];
+    //     int dupeEnd = currentDupe[1];
+    //     int dupeSize = dupeEnd - dupeBegin + 1;//how large the duplicate is
+    //     moves.remove(dupeEnd); //end must be removed no matter what
+    //     if (dupeSize == 2){
+    //       //double move
+    //       moves.set(dupeBegin, "2" + moves.get(dupeBegin));
+    //     } else {
+    //       moves.remove(dupeEnd - 1); //both 3 and 4 size duplicates require elements at index dupeEnd-1 to be removed
+    //       if (dupeSize == 3){
+    //       //triple move, turn into prime
+    //         moves.set(dupeBegin, moves.get(dupeBegin) = "'");
+    //       } else {
+    //         //quad move, remove all
+    //         moves.remove(dupeEnd - 2);
+    //         moves.remove(dupeBegin);
+    //       }
+    //     }
+    //     duplicates.removeFirst();
+    //   }
+    //   duplicates = duplicates(moves);
+    // }
   }
   
-  void conRepeat(ArrayList<String> moves, int index){
+  ArrayDeque<int[]> duplicates(ArrayList<String> moves){
     // println("conRepeat");
-    int result = 1;
-    int currentIndex = index + 1;
-    while(currentIndex < moves.size()){
-      // println(currentIndex);
-     if(!moves.get(currentIndex).equals(moves.get(index))){
-       break;
-     }
-     result++;
-     currentIndex++;
+    ArrayDeque<int[]> dupesInProgress = new ArrayDeque<int[]>();
+    for(int i = moves.size() - 1; i > -1; i--){
+      //looks for and adds duplicates in reverse order so it can remove duplicates without affecting more of the moves.
+      dupesInProgress.offerLast(findDupes(moves, i));
     }
-    // if(result != 1){
-    //  println("result is: " + result);
-    // }
-    // println("finishes loop");
-    if(result == 3){
-      //replaces 3 moves with prime version
+    // // if(result != 1){
+    // //  println("result is: " + result);
+    // // }
+    // // println("finishes loop");
+    // if(result == 3){
+    //   //replaces 3 moves with prime version
       
-      moves.remove(index+2);
-      moves.remove(index+1);
-      moves.set(index, moves.get(index)+"'");
-      println("replaces 3 moves with prime version " + moves);
-    }else if(result == 2){
-      //replaces double move with 2move
+    //   moves.remove(index+2);
+    //   moves.remove(index+1);
+    //   moves.set(index, moves.get(index)+"'");
+    //   println("replaces 3 moves with prime version " + moves);
+    // }else if(result == 2){
+    //   //replaces double move with 2move
       
-      moves.remove(index+1);
-      moves.set(index, "2" + moves.get(index));
-      println("replaces double move with 2move " + moves);
-    }
-    // else if(result > 3){
-    //   //removes 4 (redundant)
-    //   // println("found 4");
+    //   moves.remove(index+1);
+    //   moves.set(index, "2" + moves.get(index));
+    //   println("replaces double move with 2move " + moves);
+    // }else if(result == 4){
+    //   // removes 4 (redundant)
+    //   println("removes 4 move " + moves);
     //   moves.remove(index+3);
     //   moves.remove(index+2);
     //   moves.remove(index+1);
     //   moves.remove(index);
-    //   result = result - 4;
-    //   if(result != 0){
-    //    conRepeat(moves, index);
-    //   }
+    //   conRepeat(moves, index);// in case removing 4 creates another double/triple
     // }
-    // else{
-    //   println("single move");
-    // }
-    println("end of conRepeat");
-    // return result-1;
-    
+    // // else{
+    // //   println("single move");
+    // // }
+    // println("end of conRepeat");
+    return dupesInProgress;
+  }
+
+  int[] findDupes(ArrayList<String> moves, int index){
+    int result = 1;
+    int currentIndex = index - 1;
+    while(currentIndex > 0 && result < 4){
+      if(!moves.get(currentIndex).equals(moves.get(index))){
+        break;
+      }
+      currentIndex--;
+    }
+    return new int[] {index, currentIndex};
   }
 }
