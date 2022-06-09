@@ -1350,6 +1350,15 @@ public class Cube {
   }
   
   void moveOptimizer(ArrayList<String> moves){
+    for(int i = moves.size() - 1; i > 0; i--){
+      if(moves.get(i).charAt(0) == moves.get(i-1).charAt(0) && moves.get(i).length() != moves.get(i-1).length()){
+        //if the first char is the same in both indexes but their lengths are different
+        //meaning their rotations are the same, but the only difference is prime/unprime
+        moves.remove(i);
+        moves.remove(i-1);
+        i--; //since you're removing the item in front of it as well
+      }
+    }
     ArrayDeque<int[]> duplicates = duplicates(moves);
     // while(duplicates.size() != 0){
     //   print("" + duplicates.peek()[0] + " " + duplicates.poll()[1]);
@@ -1394,36 +1403,6 @@ public class Cube {
         i = i - tempArray[2];
       }
     }
-    // // if(result != 1){
-    // //  println("result is: " + result);
-    // // }
-    // // println("finishes loop");
-    // if(result == 3){
-    //   //replaces 3 moves with prime version
-      
-    //   moves.remove(index+2);
-    //   moves.remove(index+1);
-    //   moves.set(index, moves.get(index)+"'");
-    //   println("replaces 3 moves with prime version " + moves);
-    // }else if(result == 2){
-    //   //replaces double move with 2move
-      
-    //   moves.remove(index+1);
-    //   moves.set(index, "2" + moves.get(index));
-    //   println("replaces double move with 2move " + moves);
-    // }else if(result == 4){
-    //   // removes 4 (redundant)
-    //   println("removes 4 move " + moves);
-    //   moves.remove(index+3);
-    //   moves.remove(index+2);
-    //   moves.remove(index+1);
-    //   moves.remove(index);
-    //   conRepeat(moves, index);// in case removing 4 creates another double/triple
-    // }
-    // // else{
-    // //   println("single move");
-    // // }
-    // println("end of conRepeat");
     return dupesInProgress;
   }
 
@@ -1439,4 +1418,5 @@ public class Cube {
     }
     return new int[] {index, currentIndex+1, result};
   }
+
 }
