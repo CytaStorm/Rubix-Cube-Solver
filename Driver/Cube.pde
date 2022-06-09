@@ -1,7 +1,6 @@
 import java.util.*; //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
-  boolean solving;
   ArrayList<String> solutionSet = new ArrayList<String>(); 
   ArrayList<String> scramble = new ArrayList<String>();
   ArrayList<String> moves = new ArrayList<String>();
@@ -46,14 +45,6 @@ public class Cube {
     pieces[23] = new Piece(-1, 1, 1, "blue", "yellow", "orange");
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
-
-    //    lCol = getPiece(-1, 0, 0).yCol();
-    //    rCol = getPiece(1, 0, 0).yCol();
-    //    fCol = getPiece(0, -1, 0).xCol();
-    //    bCol = getPiece(0, 1, 0).xCol();
-    //    uCol = getPiece(0, 0, 1).zCol();
-    //    dCol = getPiece(0, 0, -1).zCol();
-    solving = false;
   }
 
   //reset cube
@@ -213,7 +204,7 @@ public class Cube {
       }
       i++;
     }
-    println("Your scramble (before optimize) is: " + scramble);
+    // println("Your scramble (before optimize) is: " + scramble);
     moveOptimizer(scramble);
     println("Your scramble is: " + scramble);
     //scramble.clear();
@@ -380,11 +371,6 @@ public class Cube {
     } else {
       print("nothing left to remove!");
     }
-  }
-
-  //accessor to get solving state
-  public boolean isSolving() {
-    return solving;
   }
   public void L() {
     for (int i = 0; i < pieces.length; i++) {
@@ -625,7 +611,6 @@ public class Cube {
     BPrime();
   }
   void solve() {
-    //solving = true;
     moves.clear();
     cross();
     makeCorners();
@@ -635,10 +620,9 @@ public class Cube {
     botCorners();
     botEdges();
     println("solved!");
-    println("Solution before optimize: " + moves);
+    // println("Solution before optimize: " + moves);
     moveOptimizer(moves);
     println("Solution after optimize: " + moves);
-    //solving = false;
   }
 
   void cross() {
