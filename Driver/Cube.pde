@@ -1350,13 +1350,13 @@ public class Cube {
   void moveOptimizer(ArrayList<String> moves){
    for(int i = 0; i < moves.size(); i++){
     //  println("test");
-     conRepeat(moves, i);
+     i += conRepeat(moves, i);
     //  println("move size: " + moves.size());
     }
     // println("end of optimizer");
   }
   
-  void conRepeat(ArrayList<String> moves, int index){
+  int conRepeat(ArrayList<String> moves, int index){
     // println("conRepeat");
     int result = 1;
     int currentIndex = index + 1;
@@ -1397,6 +1397,7 @@ public class Cube {
     else{
       println("single move");
     }
+    return result-1;
     // println("end of conRepeat");
   }
 }
