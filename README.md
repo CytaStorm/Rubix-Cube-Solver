@@ -100,6 +100,6 @@ Gil Zheng: <br />
 <br /> 
 
 Thursday 9 June 2022 <br/>
-Jeff Chen: <br/>
+Jeff Chen: Finished solution optimizer<br/>
 Gil Zheng: <br /> 
 <br /> 
