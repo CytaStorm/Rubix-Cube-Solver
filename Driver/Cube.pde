@@ -221,9 +221,9 @@ public class Cube {
 
   void move(String move) {
     if(!Character.isUpperCase(move.charAt(0))){
-      moves.add(move.toUpperCase() + "'");
+      moves.add("\"" + move.toUpperCase() + "'" + "\"");
     }else{
-      moves.add(move);
+      moves.add("\"" + move + "\"");
     }
     switch(move) {
     case "L":  
@@ -1349,7 +1349,10 @@ public class Cube {
   
   void moveOptimizer(ArrayList<String> moves){
     ArrayDeque<int[]> duplicates = duplicates(moves);
-    println(duplicates);
+    while(duplicates.size() != 0){
+      print("" + duplicates.peek()[0] + " " + duplicates.poll()[1]);
+      println();
+    }
     // while(duplicates.size() != 0){
     //   //loop so it will look for duplicates multiple times
     //   while(duplicates.size() != 0){
@@ -1381,9 +1384,13 @@ public class Cube {
   ArrayDeque<int[]> duplicates(ArrayList<String> moves){
     // println("conRepeat");
     ArrayDeque<int[]> dupesInProgress = new ArrayDeque<int[]>();
-    for(int i = moves.size() - 1; i > -1; i--){
+    for(int i = moves.size() - 1; i > 0; i--){
       //looks for and adds duplicates in reverse order so it can remove duplicates without affecting more of the moves.
-      dupesInProgress.offerLast(findDupes(moves, i));
+      int[]tempArray = findDupes(moves, i);
+      if(tempArray[2] > 0){
+        dupesInProgress.offerLast(new int[] {tempArray[0], tempArray[1]});
+        i = i - tempArray[2];
+      }
     }
     // // if(result != 1){
     // //  println("result is: " + result);
@@ -1419,14 +1426,15 @@ public class Cube {
   }
 
   int[] findDupes(ArrayList<String> moves, int index){
-    int result = 1;
+    int result = 0;//how many duplicates there are, not including original
     int currentIndex = index - 1;
-    while(currentIndex > 0 && result < 4){
+    while(currentIndex > -1 && result < 3){
       if(!moves.get(currentIndex).equals(moves.get(index))){
         break;
       }
       currentIndex--;
+      result++;
     }
-    return new int[] {index, currentIndex};
+    return new int[] {index, currentIndex+1, result};
   }
 }
