@@ -90,6 +90,16 @@ Gil Zheng: Finished the arrows for the U rotation and merged to main for Jeff to
 <br /> 
 
 Tuesday 7 June 2022 <br/>
+Jeff Chen: Began working on solution optimizer, not much work because of math final<br/>
+Gil Zheng: <br /> 
+<br /> 
+
+Wednesday 8 June 2022 <br/>
+Jeff Chen: Continued working on solution optimizer, not much work because of math final<br/>
+Gil Zheng: <br /> 
+<br /> 
+
+Thursday 9 June 2022 <br/>
 Jeff Chen: <br/>
 Gil Zheng: <br /> 
 <br /> 
