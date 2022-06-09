@@ -1,7 +1,6 @@
 import java.util.*; //<>// //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
-  boolean solving;
   ArrayList<String> solutionSet = new ArrayList<String>(); 
   ArrayList<String> scramble = new ArrayList<String>();
   ArrayList<String> moves = new ArrayList<String>();
@@ -46,14 +45,6 @@ public class Cube {
     pieces[23] = new Piece(-1, 1, 1, "blue", "yellow", "orange");
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
-
-    //    lCol = getPiece(-1, 0, 0).yCol();
-    //    rCol = getPiece(1, 0, 0).yCol();
-    //    fCol = getPiece(0, -1, 0).xCol();
-    //    bCol = getPiece(0, 1, 0).xCol();
-    //    uCol = getPiece(0, 0, 1).zCol();
-    //    dCol = getPiece(0, 0, -1).zCol();
-    solving = false;
   }
 
   //reset cube
@@ -154,7 +145,7 @@ public class Cube {
         break;
       case 10: 
         B();
-        scramble.add("b");
+        scramble.add("B");
         break;
       case 11: 
         BPrime();
@@ -213,12 +204,20 @@ public class Cube {
       }
       i++;
     }
+    // println("Your scramble (before optimize) is: " + scramble);
+    moveOptimizer(scramble);
     println("Your scramble is: " + scramble);
     //scramble.clear();
   }
 
   void move(String move) {
-    moves.add("\"" +move+ "\"");
+    if(!Character.isUpperCase(move.charAt(0))){
+      // moves.add("\"" + move.toUpperCase() + "'" + "\"");
+      moves.add(move.toUpperCase() + "'");
+    }else{
+      // moves.add("\"" + move + "\"");
+      moves.add(move);
+    }
     switch(move) {
     case "L":  
       L();
@@ -372,11 +371,6 @@ public class Cube {
     } else {
       print("nothing left to remove!");
     }
-  }
-
-  //accessor to get solving state
-  public boolean isSolving() {
-    return solving;
   }
   public void L() {
     for (int i = 0; i < pieces.length; i++) {
@@ -617,7 +611,6 @@ public class Cube {
     BPrime();
   }
   void solve() {
-    //solving = true;
     moves.clear();
     cross();
     makeCorners();
@@ -627,8 +620,9 @@ public class Cube {
     botCorners();
     botEdges();
     println("solved!");
-    println(moves);
-    //solving = false;
+    // println("Solution before optimize: " + moves);
+    moveOptimizer(moves);
+    println("Solution after optimize: " + moves);
   }
 
   void cross() {
@@ -1051,8 +1045,8 @@ public class Cube {
     return true;
   }
   void checkPosition() { 
-    Piece face = getPiece(0, 0, 1);
-    Piece ulb = getPiece(1, 1, 1);
+    //Piece face = getPiece(0, 0, 1);
+    //Piece ulb = getPiece(1, 1, 1);
     Piece ul = getPiece(1, 0, 1);
     Piece urb = getPiece(-1, 1, 1);
     Piece ur = getPiece(-1, 0, 1);
@@ -1338,4 +1332,75 @@ public class Cube {
     }
     return true;
   }
+  
+  void moveOptimizer(ArrayList<String> moves){
+    for(int i = moves.size() - 1; i > 0; i--){
+      if(moves.get(i).charAt(0) == moves.get(i-1).charAt(0) && moves.get(i).length() != moves.get(i-1).length()){
+        //if the first char is the same in both indexes but their lengths are different
+        //meaning their rotations are the same, but the only difference is prime/unprime
+        moves.remove(i);
+        moves.remove(i-1);
+        i--; //since you're removing the item in front of it as well
+      }
+    }
+    ArrayDeque<int[]> duplicates = duplicates(moves);
+    // while(duplicates.size() != 0){
+    //   print("" + duplicates.peek()[0] + " " + duplicates.poll()[1]);
+    //   println();
+    // }
+    while(duplicates.size() != 0){
+      //loop so it will look for duplicates multiple times
+      while(duplicates.size() != 0){
+        int[] currentDupe = duplicates.getFirst();
+        int dupeBegin = currentDupe[1];
+        int dupeEnd = currentDupe[0];
+        int dupeSize = dupeEnd - dupeBegin + 1;//how large the duplicate is
+        moves.remove(dupeEnd); //end must be removed no matter what
+        if (dupeSize == 2){
+          //double move
+          moves.set(dupeBegin, "2" + moves.get(dupeBegin));
+        } else {
+          moves.remove(dupeEnd - 1); //both 3 and 4 size duplicates require elements at index dupeEnd-1 to be removed
+          if (dupeSize == 3){
+          //triple move, turn into prime
+          moves.set(dupeBegin, moves.get(dupeBegin) + "'");
+          } else {
+            //quad move, remove all
+            moves.remove(dupeEnd - 2);
+            moves.remove(dupeBegin);
+          }
+        }
+        duplicates.removeFirst();
+      }
+      duplicates = duplicates(moves);
+    }
+  }
+  
+  ArrayDeque<int[]> duplicates(ArrayList<String> moves){
+    // println("conRepeat");
+    ArrayDeque<int[]> dupesInProgress = new ArrayDeque<int[]>();
+    for(int i = moves.size() - 1; i > 0; i--){
+      //looks for and adds duplicates in reverse order so it can remove duplicates without affecting more of the moves.
+      int[]tempArray = findDupes(moves, i);
+      if(tempArray[2] > 0){
+        dupesInProgress.offerLast(new int[] {tempArray[0], tempArray[1]});
+        i = i - tempArray[2];
+      }
+    }
+    return dupesInProgress;
+  }
+
+  int[] findDupes(ArrayList<String> moves, int index){
+    int result = 0;//how many duplicates there are, not including original
+    int currentIndex = index - 1;
+    while(currentIndex > -1 && result < 3){
+      if(!moves.get(currentIndex).equals(moves.get(index))){
+        break;
+      }
+      currentIndex--;
+      result++;
+    }
+    return new int[] {index, currentIndex+1, result};
+  }
+
 }
