@@ -221,9 +221,11 @@ public class Cube {
 
   void move(String move) {
     if(!Character.isUpperCase(move.charAt(0))){
-      moves.add("\"" + move.toUpperCase() + "'" + "\"");
+      // moves.add("\"" + move.toUpperCase() + "'" + "\"");
+      moves.add(move.toUpperCase() + "'");
     }else{
-      moves.add("\"" + move + "\"");
+      // moves.add("\"" + move + "\"");
+      moves.add(move);
     }
     switch(move) {
     case "L":  
@@ -1349,36 +1351,36 @@ public class Cube {
   
   void moveOptimizer(ArrayList<String> moves){
     ArrayDeque<int[]> duplicates = duplicates(moves);
-    while(duplicates.size() != 0){
-      print("" + duplicates.peek()[0] + " " + duplicates.poll()[1]);
-      println();
-    }
     // while(duplicates.size() != 0){
-    //   //loop so it will look for duplicates multiple times
-    //   while(duplicates.size() != 0){
-    //     int[] currentDupe = duplicates.getFirst();
-    //     int dupeBegin = currentDupe[0];
-    //     int dupeEnd = currentDupe[1];
-    //     int dupeSize = dupeEnd - dupeBegin + 1;//how large the duplicate is
-    //     moves.remove(dupeEnd); //end must be removed no matter what
-    //     if (dupeSize == 2){
-    //       //double move
-    //       moves.set(dupeBegin, "2" + moves.get(dupeBegin));
-    //     } else {
-    //       moves.remove(dupeEnd - 1); //both 3 and 4 size duplicates require elements at index dupeEnd-1 to be removed
-    //       if (dupeSize == 3){
-    //       //triple move, turn into prime
-    //         moves.set(dupeBegin, moves.get(dupeBegin) = "'");
-    //       } else {
-    //         //quad move, remove all
-    //         moves.remove(dupeEnd - 2);
-    //         moves.remove(dupeBegin);
-    //       }
-    //     }
-    //     duplicates.removeFirst();
-    //   }
-    //   duplicates = duplicates(moves);
+    //   print("" + duplicates.peek()[0] + " " + duplicates.poll()[1]);
+    //   println();
     // }
+    while(duplicates.size() != 0){
+      //loop so it will look for duplicates multiple times
+      while(duplicates.size() != 0){
+        int[] currentDupe = duplicates.getFirst();
+        int dupeBegin = currentDupe[1];
+        int dupeEnd = currentDupe[0];
+        int dupeSize = dupeEnd - dupeBegin + 1;//how large the duplicate is
+        moves.remove(dupeEnd); //end must be removed no matter what
+        if (dupeSize == 2){
+          //double move
+          moves.set(dupeBegin, "2" + moves.get(dupeBegin));
+        } else {
+          moves.remove(dupeEnd - 1); //both 3 and 4 size duplicates require elements at index dupeEnd-1 to be removed
+          if (dupeSize == 3){
+          //triple move, turn into prime
+          moves.set(dupeBegin, moves.get(dupeBegin) + "'");
+          } else {
+            //quad move, remove all
+            moves.remove(dupeEnd - 2);
+            moves.remove(dupeBegin);
+          }
+        }
+        duplicates.removeFirst();
+      }
+      duplicates = duplicates(moves);
+    }
   }
   
   ArrayDeque<int[]> duplicates(ArrayList<String> moves){
