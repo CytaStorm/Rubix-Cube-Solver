@@ -154,7 +154,7 @@ public class Cube {
         break;
       case 10: 
         B();
-        scramble.add("b");
+        scramble.add("B");
         break;
       case 11: 
         BPrime();
@@ -213,6 +213,7 @@ public class Cube {
       }
       i++;
     }
+    println("Your scramble (before optimize) is: " + scramble);
     moveOptimizer(scramble);
     println("Your scramble is: " + scramble);
     //scramble.clear();
@@ -632,8 +633,9 @@ public class Cube {
     botCorners();
     botEdges();
     println("solved!");
+    println("Solution before optimize: " + moves);
     moveOptimizer(moves);
-    println(moves);
+    println("Solution after optimize: " + moves);
     //solving = false;
   }
 
@@ -1346,39 +1348,55 @@ public class Cube {
   }
   
   void moveOptimizer(ArrayList<String> moves){
-   //for(int i = 0; i < moves.size() - 1; i++){
-   //  if((moves.get(i+1).length() == 2 && moves.get(i+1).equals(moves.get(i) + "'"))|| //if next is prime & current is not prime
-   //      moves.get(i).length() == 2 && moves.get(i).equals(moves.get(i+1) + "'")){ //if current is prime and next is not prime
-   //    moves.remove(i+1);
-   //    moves.remove(i);
-   //  }
-   //  if(moves.get(i).equals(moves.get(i+1))){
-   //   moves.remove(i+1); 
-   //   moves.set(i, "2" + moves.get(i).substring(0,1));
-   //  }
-   // }
-   // for(int i = 0; i < moves.size() - 1; i++){
-   //   if(moves.get(i).equals(moves.get(i+1)) && moves.get(i).charAt(0) == '2'){
-   //     moves.remove(i+1);
-   //     moves.remove(i);
-   //   }
-   // }
+   for(int i = 0; i < moves.size(); i++){
+    //  println("test");
+     conRepeat(moves, i);
+    //  println("move size: " + moves.size());
+    }
+    // println("end of optimizer");
   }
   
   void conRepeat(ArrayList<String> moves, int index){
+    // println("conRepeat");
     int result = 1;
     int currentIndex = index + 1;
     while(currentIndex < moves.size()){
-     if(moves.get(currentIndex).equals(moves.get(index))){
-       result++;
-     }else{
+      // println(currentIndex);
+     if(!moves.get(currentIndex).equals(moves.get(index))){
        break;
      }
+     result++;
+     currentIndex++;
     }
-    if(result == 3){
-      moves.remove(index+2);
-      moves.remove(index+1);
-      moves.set(index, moves.get(index)+"'");
+    if(result != 1){
+     println("result is: " + result);
     }
+    // // println("finishes loop");
+    // if(result == 3){
+    //   //replaces 3 moves with prime version
+    //   moves.remove(index+2);
+    //   moves.remove(index+1);
+    //   moves.set(index, moves.get(index)+"'");
+    // }else if(result == 2){
+    //   //replaces double move with 2move
+    //   moves.remove(index+1);
+    //   moves.set(index, "2" + moves.get(index));
+    // }
+    // else if(result > 3){
+    //   //removes 4 (redundant)
+    //   // println("found 4");
+    //   moves.remove(index+3);
+    //   moves.remove(index+2);
+    //   moves.remove(index+1);
+    //   moves.remove(index);
+    //   result = result - 4;
+    //   if(result != 0){
+    //    conRepeat(moves, index);
+    //   }
+    // }
+    else{
+      println("single move");
+    }
+    // println("end of conRepeat");
   }
 }
