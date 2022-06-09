@@ -615,7 +615,7 @@ void draw() {
     rect(740, 315, 100, 20);
   } 
   //F
-  if (mouseX > 450 && mouseX < 500 && mouseY > 700 && mouseY < 750){
+  if (mouseX > 450 && mouseX < 500 && mouseY > 700 && mouseY < 750) {
     fill(0, 0, 0, 63);
     triangle(510, 240, 540, 225, 510, 210); 
     rect(410, 215, 100, 20);  
@@ -627,7 +627,7 @@ void draw() {
     rect(365, 290, 20, 100);
   } 
   //FPrime
-  if (mouseX > 450 && mouseX < 500 && mouseY > 800 && mouseY < 850){
+  if (mouseX > 450 && mouseX < 500 && mouseY > 800 && mouseY < 850) {
     fill(0, 0, 0, 63);
     triangle(440, 240, 410, 225, 440, 210); 
     rect(440, 215, 100, 20); 
@@ -637,7 +637,30 @@ void draw() {
     rect(410, 415, 100, 20);  
     triangle(560, 290, 575, 260, 590, 290); 
     rect(565, 290, 20, 100);
-    
+  }
+  //S  
+  if (mouseX > 730 && mouseX < 780 && mouseY > 700 && mouseY < 750) {
+    fill(0, 0, 0, 63);
+    triangle(510, 190, 540, 175, 510, 160); 
+    rect(410, 165, 100, 20);  
+    triangle(610, 360, 625, 390, 640, 360);
+    rect(615, 260, 20, 100);  
+    triangle(440, 490, 410, 475, 440, 460); 
+    rect(440, 465, 100, 20);
+    triangle(310, 290, 325, 260, 340, 290); 
+    rect(315, 290, 20, 100);
+  } 
+  //SPrime
+  if (mouseX > 730 && mouseX < 780 && mouseY > 800 && mouseY < 850) {
+    fill(0, 0, 0, 63);
+    triangle(440, 190, 410, 175, 440, 160); 
+    rect(440, 165, 100, 20); 
+    triangle(310, 360, 325, 390, 340, 360);
+    rect(315, 260, 20, 100);
+    triangle(510, 490, 540, 475, 510, 460); 
+    rect(410, 465, 100, 20);  
+    triangle(610, 290, 625, 260, 640, 290); 
+    rect(615, 290, 20, 100);
   }
 }
 void update() {
