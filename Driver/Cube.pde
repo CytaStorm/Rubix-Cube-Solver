@@ -1350,13 +1350,14 @@ public class Cube {
   void moveOptimizer(ArrayList<String> moves){
    for(int i = 0; i < moves.size(); i++){
     //  println("test");
-     i += conRepeat(moves, i);
+    //  i += 
+     conRepeat(moves, i);
     //  println("move size: " + moves.size());
     }
     // println("end of optimizer");
   }
   
-  int conRepeat(ArrayList<String> moves, int index){
+  void conRepeat(ArrayList<String> moves, int index){
     // println("conRepeat");
     int result = 1;
     int currentIndex = index + 1;
@@ -1368,20 +1369,24 @@ public class Cube {
      result++;
      currentIndex++;
     }
-    if(result != 1){
-     println("result is: " + result);
-    }
-    // // println("finishes loop");
-    // if(result == 3){
-    //   //replaces 3 moves with prime version
-    //   moves.remove(index+2);
-    //   moves.remove(index+1);
-    //   moves.set(index, moves.get(index)+"'");
-    // }else if(result == 2){
-    //   //replaces double move with 2move
-    //   moves.remove(index+1);
-    //   moves.set(index, "2" + moves.get(index));
+    // if(result != 1){
+    //  println("result is: " + result);
     // }
+    // println("finishes loop");
+    if(result == 3){
+      //replaces 3 moves with prime version
+      
+      moves.remove(index+2);
+      moves.remove(index+1);
+      moves.set(index, moves.get(index)+"'");
+      println("replaces 3 moves with prime version " + moves);
+    }else if(result == 2){
+      //replaces double move with 2move
+      
+      moves.remove(index+1);
+      moves.set(index, "2" + moves.get(index));
+      println("replaces double move with 2move " + moves);
+    }
     // else if(result > 3){
     //   //removes 4 (redundant)
     //   // println("found 4");
@@ -1394,10 +1399,11 @@ public class Cube {
     //    conRepeat(moves, index);
     //   }
     // }
-    else{
-      println("single move");
-    }
-    return result-1;
-    // println("end of conRepeat");
+    // else{
+    //   println("single move");
+    // }
+    println("end of conRepeat");
+    // return result-1;
+    
   }
 }
