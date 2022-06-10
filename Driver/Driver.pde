@@ -144,8 +144,7 @@ void mouseClicked() {
     } else if (mouseX > 310 && mouseX < 360 && mouseY > 800 && mouseY < 850) {
       solveCube.UPrime();
     } else if (mouseX > 380 && mouseX < 420 && mouseY > 700 && mouseY < 750) { 
-      solveCube.D(); 
-      //checkpoint
+      solveCube.D();
     } else if (mouseX > 380 && mouseX < 420 && mouseY > 800 && mouseY < 850) {
       solveCube.DPrime();
     } else if (mouseX > 450 && mouseX < 500 && mouseY > 700 && mouseY < 750) {
@@ -227,7 +226,8 @@ void draw() {
         fill(stringToColor(downSide[i][j]));
         rect(400+j*50, 400+i*50, 50, 50);
       }
-    }
+    } 
+    //okay
     //L
     if (mouseX > 170 && mouseX < 220 && mouseY > 700 && mouseY < 750) {
       fill(0, 0, 0, 63);
@@ -658,7 +658,9 @@ void draw() {
     }
     //quad(425, 200, 475, 200, 400, 250, 450, 250); 
     //quad(400,250,425,200, 475, 200, 450, 250);
-    
+
+    //checkpoint
+
     //L
     if (mouseX > 170 && mouseX < 220 && mouseY > 700 && mouseY < 750) {
       fill(0, 0, 0, 63);
@@ -667,7 +669,7 @@ void draw() {
       rect(400, 250, 50, 150);
       rect(400, 400, 50, 150);
       rect(725, 100, 50, 150);
-      quad(400,250, 475, 100, 525, 100, 450, 250);
+      quad(400, 250, 475, 100, 525, 100, 450, 250);
     } 
     //LPrime
     if (mouseX > 170 && mouseX < 220 && mouseY > 800 && mouseY < 850) {
@@ -677,9 +679,28 @@ void draw() {
       rect(400, 250, 50, 150);
       rect(400, 400, 50, 150);
       rect(725, 100, 50, 150);
-      quad(400,250, 475, 100, 525, 100, 450, 250);
-
+      quad(400, 250, 475, 100, 525, 100, 450, 250);
+    }
+    //M  
+    if (mouseX > 590 && mouseX < 640 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63);
+      triangle(460, 360, 475, 390, 490, 360);
+      rect(465, 260, 20, 100);
+      rect(450, 250, 50, 150);
+      rect(450, 400, 50, 150);
+      rect(675, 100, 50, 150);
+      quad(450, 250, 525, 100, 575, 100, 500, 250);
     } 
+    //MPrime
+    if (mouseX > 590 && mouseX < 640 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63); 
+      triangle(460, 290, 475, 260, 490, 290); 
+      rect(465, 290, 20, 100);
+      rect(450, 250, 50, 150);
+      rect(450, 400, 50, 150);
+      rect(675, 100, 50, 150);
+      quad(450, 250, 525, 100, 575, 100, 500, 250);
+    }
   }
   fill(255, 255, 255);
   //reset
@@ -826,90 +847,3 @@ void update() {
   rightSide[2][1] = solveCube.getPiece(-1, 0, -1).getCol()[0]; 
   rightSide[2][2] = solveCube.getPiece(-1, 1, -1).getCol()[0];
 }  
-//void display() {
-//  if (mode == 0) {
-//    for (int i = 0; i < upSide.length; i++) {
-//      for (int j = 0; j < upSide[0].length; j++) {
-//        fill(stringToColor(upSide[i][j]));
-//        rect(400+j*50, 100+i*50, 50, 50);
-//      }
-//    } 
-//    for (int i = 0; i < leftSide.length; i++) {
-//      for (int j = 0; j < leftSide[0].length; j++) {
-//        fill(stringToColor(leftSide[i][j]));
-//        rect(250+j*50, 250+i*50, 50, 50);
-//      }
-//    }
-//    for (int i = 0; i < frontSide.length; i++) {
-//      for (int j = 0; j < frontSide[0].length; j++) {
-//        fill(stringToColor(frontSide[i][j]));
-//        rect(400+j*50, 250+i*50, 50, 50);
-//      }
-//    }
-//    for (int i = 0; i < rightSide.length; i++) {
-//      for (int j = 0; j < rightSide[0].length; j++) {
-//        fill(stringToColor(rightSide[i][j]));
-//        rect(550+j*50, 250+i*50, 50, 50);
-//      }
-//    }
-//    for (int i = 0; i < backSide.length; i++) {
-//      for (int j = 0; j < backSide[0].length; j++) {
-//        fill(stringToColor(backSide[i][j]));
-//        rect(700+j*50, 250+i*50, 50, 50);
-//      }
-//    }
-//    for (int i = 0; i < downSide.length; i++) {
-//      for (int j = 0; j < downSide[0].length; j++) {
-//        fill(stringToColor(downSide[i][j]));
-//        rect(400+j*50, 400+i*50, 50, 50);
-//      }
-//    }
-//  }
-//  if (mode == 1) {
-//    for (int i = 0; i < leftSide.length; i++) {
-//      for (int j = 0; j < leftSide[0].length; j++) {
-//        fill(stringToColor(leftSide[i][j]));
-//        rect(250+j*50, 250+i*50, 50, 50);
-//      }
-//    } 
-//    for (int i = 0; i < frontSide.length; i++) {
-//      for (int j = 0; j < frontSide[0].length; j++) {
-//        fill(stringToColor(frontSide[i][j]));
-//        rect(400+j*50, 250+i*50, 50, 50);
-//      }
-//    }
-//    for (int i = 0; i < downSide.length; i++) {
-//      for (int j = 0; j < downSide[0].length; j++) {
-//        fill(stringToColor(downSide[i][j]));
-//        rect(400+j*50, 400+i*50, 50, 50);
-//      }
-//    } 
-//    //upside
-//    for (int i = 0; i < upSide.length; i++) {
-//      for (int j = 0; j < upSide[0].length; j++) {
-//        fill(stringToColor(upSide[i][j])); 
-//        quad(450+j*50-i*25, 150+i*50, 475+j*50-i*25, 100+i*50, 525+j*50-i*25, 100+i*50, 500+j*50-i*25, 150+i*50);
-//        //quad(400+j*50+i*25,250,425+j*50,200,475+j*50,200,450+j*50,250);
-//      }
-//    }
-//    // quad(550,300, 550, 250, 575, 200, 575, 260);
-//    ///right side
-//    for (int i = 0; i < rightSide.length; i++) {
-//      for (int j = 0; j < rightSide[0].length; j++) {
-//        fill(stringToColor(rightSide[i][j]));
-//        quad(550+j*25, 300-j*50+i*50, 550+j*25, 250-j*50+i*50, 575+j*25, 200-j*50+i*50, 575+j*25, 250-j*50+i*50);
-//        //quad(550, 300, 550, 250, 575, 200, 575, 260);
-//        //quad(575, 260, 575, 200, 600, 150, 600, 220);
-//      }
-//    }
-//    //back side
-//    for (int i = 0; i < backSide.length; i++) {
-//      for (int j = 0; j < backSide[0].length; j++) {
-//        fill(stringToColor(backSide[i][j]));
-//        rect(625+j*50, 100+i*50, 50, 50);
-//      }
-//    }
-//    //quad(425, 200, 475, 200, 400, 250, 450, 250); 
-//    //quad(400,250,425,200, 475, 200, 450, 250);
-//  }
-//} 
