@@ -622,7 +622,7 @@ public class Cube {
     println("solved!");
     // println("Solution before optimize: " + moves);
     moveOptimizer(moves);
-    println("Solution after optimize: " + moves);
+    println(moves);
   }
 
   void cross() {
@@ -1269,6 +1269,7 @@ public class Cube {
         move("Z");
       }
     }
+    println("botEdges complete");
     move("X");
     move("X");
   }
