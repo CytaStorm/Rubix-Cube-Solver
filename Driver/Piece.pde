@@ -3,7 +3,6 @@ public class Piece {
   private final int[][] CCW_ROT_MATRIX = new int[][]{{0, -1}, {1, 0}};
   private final int[][] CW_ROT_MATRIX = new int[][]{{0, 1}, {-1, 0}};
   private int[] pos = new int[3]; //x,y,z
-  private int[] desPos;
   private String[] col = new String[3]; //white, red, blue, orange, yellow, green, in x/y/z
   public Piece(int pX, int pY, int pZ, String cX, String cY, String cZ) {
     pos[0] = pX;
@@ -12,20 +11,15 @@ public class Piece {
     col[0] = cX;
     col[1] = cY;
     col[2] = cZ;
-    desPos = pos.clone();
   }
 
   public String toString() {
-    return Arrays.toString(pos) + ", Colors: " + Arrays.toString(col) + ", Desired Position " + Arrays.toString(getDesPos());
+    return Arrays.toString(pos) + ", Colors: " + Arrays.toString(col);
   }
 
   //Accessor, returns all colors of piece in an array
   public String[] getCol () {
     return col;
-  }
-  //Accessor, returns desPos
-  public int[] getDesPos() {
-    return desPos;
   }
   //Accessor returns pos of array
   public int[] getPos() {
@@ -58,6 +52,17 @@ public class Piece {
       return col[2];
     }
     return null;
+  }
+  public void setCol(String newCol, String dir){
+    if(dir.equals("x")){
+      col[0] = newCol;
+    }else if(dir.equals("y")){
+      col[1] = newCol;
+    }else if(dir.equals("z")){
+      col[2] = newCol;
+    }else{
+      println("invalid color!");
+    }
   }
   private int[] matrixMultiply(int[]matrix, int[][]matrixMultiplier) {
     int[]result = new int[2];
@@ -268,354 +273,4 @@ public class Piece {
       col[0] = tempCol;
     }
   }
-  String verticalFace() {
-    if (isEdge()) {
-      if (pos[1] == -1) {
-        return "F";
-      } else if (pos[0] == -1) {
-        return "R";
-      } else if (pos[0] == 1) {
-        return "L";
-      } else if (pos[1] == 1) {
-        return "B";
-      }
-    }
-    print("invalid face!");
-    return null;
-  }
-
-  //String getDir(int x, int y, int z, int dir) {
-  //  if (x == -1) {
-  //    if (y == -1) {
-  //      if (z == -1) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "F";
-  //        case 1: 
-  //          return "R";
-  //        case 2: 
-  //          return "D";
-  //        default: 
-  //          break;
-  //        }
-  //      } else if (z == 0) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "F";
-  //        case 1: 
-  //          return "R";
-  //        case 2: 
-  //          return null;
-  //        default: 
-  //          break;
-  //        }
-  //      } else {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "F";
-  //        case 1: 
-  //          return "R";
-  //        case 2: 
-  //          return "U";
-  //        default: 
-  //          break;
-  //        }
-  //      }
-  //    } else if (y == 0) {
-  //      if (z == -1) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return null;
-  //        case 1: 
-  //          return "R";
-  //        case 2: 
-  //          return "D";
-  //        default: 
-  //          break;
-  //        }
-  //      } else if (z == 0) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return null;
-  //        case 1: 
-  //          return "R";
-  //        case 2: 
-  //          return null;
-  //        default: 
-  //          break;
-  //        }
-  //      } else {
-  //        switch(dir) {
-  //        case 0: 
-  //          return null;
-  //        case 1: 
-  //          return "R";
-  //        case 2: 
-  //          return "U";
-  //        default: 
-  //          break;
-  //        }
-  //      }
-  //    } else {
-  //      if (z == -1) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "B";
-  //        case 1: 
-  //          return "R";
-  //        case 2: 
-  //          return "D";
-  //        default: 
-  //          break;
-  //        }
-  //      } else if (z == 0) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "B";
-  //        case 1: 
-  //          return "R";
-  //        case 2: 
-  //          return null;
-  //        default: 
-  //          break;
-  //        }
-  //      } else {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "B";
-  //        case 1: 
-  //          return "R";
-  //        case 2: 
-  //          return "U";
-  //        default: 
-  //          break;
-  //        }
-  //      }
-  //    }
-  //  } else if (x == 0) {
-  //    if (y == -1) {
-  //      if (z == -1) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "F";
-  //        case 1: 
-  //          return null;
-  //        case 2: 
-  //          return "D";
-  //        default: 
-  //          break;
-  //        }
-  //      } else if (z == 0) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "F";
-  //        case 1: 
-  //          return null;
-  //        case 2: 
-  //          return null;
-  //        default: 
-  //          break;
-  //        }
-  //      } else {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "F";
-  //        case 1: 
-  //          return null;
-  //        case 2: 
-  //          return "U";
-  //        default: 
-  //          break;
-  //        }
-  //      }
-  //    } else if (y == 0) {
-  //      if (z == -1) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return null;
-  //        case 1: 
-  //          return null;
-  //        case 2: 
-  //          return "D";
-  //        default: 
-  //          break;
-  //        }
-  //      } else if (z == 0) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return null;
-  //        case 1: 
-  //          return null;
-  //        case 2: 
-  //          return null;
-  //        default: 
-  //          break;
-  //        }
-  //      } else {
-  //        switch(dir) {
-  //        case 0: 
-  //          return null;
-  //        case 1: 
-  //          return null;
-  //        case 2: 
-  //          return "U";
-  //        default: 
-  //          break;
-  //        }
-  //      }
-  //    } else {
-  //      if (z == -1) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "B";
-  //        case 1: 
-  //          return null;
-  //        case 2: 
-  //          return "D";
-  //        default: 
-  //          break;
-  //        }
-  //      } else if (z == 0) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "B";
-  //        case 1: 
-  //          return null;
-  //        case 2: 
-  //          return null;
-  //        default: 
-  //          break;
-  //        }
-  //      } else {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "B";
-  //        case 1: 
-  //          return null;
-  //        case 2: 
-  //          return "U";
-  //        default: 
-  //          break;
-  //        }
-  //      }
-  //    }
-  //  } else {
-  //    if (y == -1) {
-  //      if (z == -1) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "F";
-  //        case 1: 
-  //          return "L";
-  //        case 2: 
-  //          return "D";
-  //        default: 
-  //          break;
-  //        }
-  //      } else if (z == 0) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "F";
-  //        case 1: 
-  //          return "L";
-  //        case 2: 
-  //          return null;
-  //        default: 
-  //          break;
-  //        }
-  //      } else {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "F";
-  //        case 1: 
-  //          return "L";
-  //        case 2: 
-  //          return "U";
-  //        default: 
-  //          break;
-  //        }
-  //      }
-  //    } else if (y == 0) {
-  //      if (z == -1) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return null;
-  //        case 1: 
-  //          return "L";
-  //        case 2: 
-  //          return "D";
-  //        default: 
-  //          break;
-  //        }
-  //      } else if (z == 0) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return null;
-  //        case 1: 
-  //          return "L";
-  //        case 2: 
-  //          return null;
-  //        default: 
-  //          break;
-  //        }
-  //      } else {
-  //        switch(dir) {
-  //        case 0: 
-  //          return null;
-  //        case 1: 
-  //          return "L";
-  //        case 2: 
-  //          return "U";
-  //        default: 
-  //          break;
-  //        }
-  //      }
-  //    } else {
-  //      if (z == -1) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "B";
-  //        case 1: 
-  //          return "L";
-  //        case 2: 
-  //          return "D";
-  //        default: 
-  //          break;
-  //        }
-  //      } else if (z == 0) {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "B";
-  //        case 1: 
-  //          return "L";
-  //        case 2: 
-  //          return null;
-  //        default: 
-  //          break;
-  //        }
-  //      } else {
-  //        switch(dir) {
-  //        case 0: 
-  //          return "B";
-  //        case 1: 
-  //          return "L";
-  //        case 2: 
-  //          return "U";
-  //        default: 
-  //          break;
-  //        }
-  //      }
-  //    }
-  //  }
-  //  println("you shouldn't be here!");
-  //  return "A";
-  //}
-
-  //int getDir(String col) {
-  //  int dir = -1;
-  //  if (hasColor(col)) {
-  //    dir = Arrays.asList(col).indexOf(col);
-  //  }
-  //  return dir;
-  //}
 }
