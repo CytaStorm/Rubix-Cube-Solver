@@ -35,6 +35,8 @@ public color stringToColor(String col) {
 
 int mode = 0;
 
+String colorMode = "white";
+
 void keyPressed() {
   if (!solving) {
     switch(key) { 
@@ -180,6 +182,21 @@ void mouseClicked() {
     } else if (mouseX > 930 && mouseX < 980 && mouseY > 800 && mouseY < 850) {
       solveCube.ZPrime();
     }
+
+    //changing colors mode
+    else if(mouseX > 0 && mouseX < 50 && mouseY > 899 && mouseY < 950){
+      colorMode = "orange";
+    }else if(mouseX > 49 && mouseX < 100 && mouseY > 899 && mouseY < 950){
+      colorMode = "white";
+    }else if(mouseX > 99 && mouseX < 150 && mouseY > 899 && mouseY < 950){
+      colorMode = "red";
+    }else if(mouseX > 149 && mouseX < 200 && mouseY > 899 && mouseY < 950){
+      colorMode = "green"; 
+    }else if(mouseX > 199 && mouseX < 250 && mouseY > 899 && mouseY < 950){
+      colorMode = "blue";
+    }else if(mouseX > 249 && mouseX < 300 && mouseY > 899 && mouseY < 950){
+      colorMode = "yellow";
+    }
     else{
       //for click to change colors
       if(mode == 0){
@@ -306,6 +323,7 @@ void draw() {
   text("mouseY: " + mouseY, 0, 100);
   text("Keyboard disabled: " + solving, 0, 150);
   text("Mode: " + mode, 0, 200);
+  text("Color mode: " + colorMode, 0, 250);
   update();
   if (mode == 0) {
     for (int i = 0; i < upSide.length; i++) {
@@ -1144,6 +1162,25 @@ void draw() {
   rect(940, 700, 50, 50);
   //Zprime
   rect(940, 800, 50, 50);
+
+  fill(stringToColor("orange"));
+  //change to orange
+  rect(0, 900, 50, 50);
+  fill(stringToColor("white"));
+  //change to white
+  rect(50, 900, 50, 50);
+  fill(stringToColor("red"));
+  //change to red 
+  rect(100, 900, 50, 50);
+  fill(stringToColor("green"));
+  //change to green
+  rect(150, 900, 50, 50);
+  fill(stringToColor("blue"));
+  //change to blue
+  rect(200, 900, 50, 50);
+  fill(stringToColor("yellow"));
+  //change to yellow 
+  rect(250, 900, 50, 50);
 
   fill(0);
   textSize(25);
