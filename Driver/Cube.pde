@@ -1,4 +1,4 @@
-import java.util.*; //<>// //<>// //<>//
+import java.util.*; //<>// //<>// //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   ArrayList<String> solutionSet = new ArrayList<String>(); 
@@ -179,7 +179,7 @@ public class Cube {
         X();
         scramble.add("X");
         break;
-     case 19:
+      case 19:
         XPrime();
         scramble.add("X'");
         break;
@@ -211,10 +211,10 @@ public class Cube {
   }
 
   void move(String move) {
-    if(!Character.isUpperCase(move.charAt(0))){
+    if (!Character.isUpperCase(move.charAt(0))) {
       // moves.add("\"" + move.toUpperCase() + "'" + "\"");
       moves.add(move.toUpperCase() + "'");
-    }else{
+    } else {
       // moves.add("\"" + move + "\"");
       moves.add(move);
     }
@@ -611,18 +611,62 @@ public class Cube {
     BPrime();
   }
   private void solve() {
-    moves.clear();
-    cross();
-    makeCorners();
-    secondLayer();
-    botCross();
-    botFace();
-    botCorners();
-    botEdges();
-    println("solved!");
-    // println("Solution before optimize: " + moves);
-    moveOptimizer(moves);
-    println(moves);
+    if (Arrays.equals(nineColors(), new int[]{9, 9, 9, 9, 9, 9})) {
+      moves.clear();
+      cross();
+      makeCorners();
+      secondLayer();
+      botCross();
+      botFace();
+      botCorners();
+      botEdges();
+      println("solved!");
+      // println("Solution before optimize: " + moves);
+      moveOptimizer(moves);
+      println(moves);
+    } else {
+      println("too many of 1 color!");
+      println("orange: " + nineColors()[0]);
+      println("white: " + nineColors()[1]);
+      println("red: " + nineColors()[2]);
+      println("green: " + nineColors()[3]);
+      println("blue: " + nineColors()[4]);
+      println("yellow: " + nineColors()[5]);
+    }
+  }
+
+  private int[] nineColors() {
+    int[] result = new int[6];
+    for (Piece i : pieces) {
+        for (int j = 0; j < 3; j++) {
+          if (i.getCol()[j] != null) {
+            String currentCol = i.getCol()[j];
+            switch(currentCol) {
+            case "orange": 
+              result[0]++;
+              break;
+            case "white": 
+              result[1]++;
+              break;
+            case "red": 
+              result[2]++;
+              break;
+            case "green": 
+              result[3]++;
+              break;
+            case "blue": 
+              result[4]++;
+              break;
+            case "yellow": 
+              result[5]++;
+              break;
+            default:
+              break;
+            }
+          }
+        }
+    }
+    return result;
   }
 
   private void cross() {
@@ -1333,10 +1377,10 @@ public class Cube {
     }
     return true;
   }
-  
-  private void moveOptimizer(ArrayList<String> moves){
-    for(int i = moves.size() - 1; i > 0; i--){
-      if(moves.get(i).charAt(0) == moves.get(i-1).charAt(0) && moves.get(i).length() != moves.get(i-1).length()){
+
+  private void moveOptimizer(ArrayList<String> moves) {
+    for (int i = moves.size() - 1; i > 0; i--) {
+      if (moves.get(i).charAt(0) == moves.get(i-1).charAt(0) && moves.get(i).length() != moves.get(i-1).length()) {
         //if the first char is the same in both indexes but their lengths are different
         //meaning their rotations are the same, but the only difference is prime/unprime
         moves.remove(i);
@@ -1349,22 +1393,22 @@ public class Cube {
     //   print("" + duplicates.peek()[0] + " " + duplicates.poll()[1]);
     //   println();
     // }
-    while(duplicates.size() != 0){
+    while (duplicates.size() != 0) {
       //loop so it will look for duplicates multiple times
-      while(duplicates.size() != 0){
+      while (duplicates.size() != 0) {
         int[] currentDupe = duplicates.getFirst();
         int dupeBegin = currentDupe[1];
         int dupeEnd = currentDupe[0];
         int dupeSize = dupeEnd - dupeBegin + 1;//how large the duplicate is
         moves.remove(dupeEnd); //end must be removed no matter what
-        if (dupeSize == 2){
+        if (dupeSize == 2) {
           //double move
           moves.set(dupeBegin, "2" + moves.get(dupeBegin));
         } else {
           moves.remove(dupeEnd - 1); //both 3 and 4 size duplicates require elements at index dupeEnd-1 to be removed
-          if (dupeSize == 3){
-          //triple move, turn into prime
-          moves.set(dupeBegin, moves.get(dupeBegin) + "'");
+          if (dupeSize == 3) {
+            //triple move, turn into prime
+            moves.set(dupeBegin, moves.get(dupeBegin) + "'");
           } else {
             //quad move, remove all
             moves.remove(dupeEnd - 2);
@@ -1376,14 +1420,14 @@ public class Cube {
       duplicates = duplicates(moves);
     }
   }
-  
-  private ArrayDeque<int[]> duplicates(ArrayList<String> moves){
+
+  private ArrayDeque<int[]> duplicates(ArrayList<String> moves) {
     // println("conRepeat");
     ArrayDeque<int[]> dupesInProgress = new ArrayDeque<int[]>();
-    for(int i = moves.size() - 1; i > 0; i--){
+    for (int i = moves.size() - 1; i > 0; i--) {
       //looks for and adds duplicates in reverse order so it can remove duplicates without affecting more of the moves.
       int[]tempArray = findDupes(moves, i);
-      if(tempArray[2] > 0){
+      if (tempArray[2] > 0) {
         dupesInProgress.offerLast(new int[] {tempArray[0], tempArray[1]});
         i = i - tempArray[2];
       }
@@ -1391,11 +1435,11 @@ public class Cube {
     return dupesInProgress;
   }
 
-  private int[] findDupes(ArrayList<String> moves, int index){
+  private int[] findDupes(ArrayList<String> moves, int index) {
     int result = 0;//how many duplicates there are, not including original
     int currentIndex = index - 1;
-    while(currentIndex > -1 && result < 3){
-      if(!moves.get(currentIndex).equals(moves.get(index))){
+    while (currentIndex > -1 && result < 3) {
+      if (!moves.get(currentIndex).equals(moves.get(index))) {
         break;
       }
       currentIndex--;
@@ -1403,5 +1447,4 @@ public class Cube {
     }
     return new int[] {index, currentIndex+1, result};
   }
-
 }
