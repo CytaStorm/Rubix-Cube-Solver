@@ -252,32 +252,32 @@ void mouseClicked() {
         }else if(mouseX > 799 && mouseX < 850 && mouseY > 299 && mouseY < 350){
           solveCube.getPiece(1,1,0).setCol(colorMode, "y");
         }
-        // else if(mouseX > 299 && mouseX < 350 && mouseY > 349 && mouseY < 400){
-        //   //third row
-        //   getPiece().setCol();
-        // }else if(mouseX > 349 && mouseX < 400 && mouseY > 349 && mouseY < 400){
-        //   getPiece().setCol();
-        // }else if(mouseX > 399 && mouseX < 450 && mouseY > 349 && mouseY < 400){
-        //   getPiece().setCol();
-        // }else if(mouseX > 449 && mouseX < 500 && mouseY > 349 && mouseY < 400){
-        //   getPiece().setCol();
-        // }else if(mouseX > 499 && mouseX < 550 && mouseY > 349 && mouseY < 400){
-        //   getPiece().setCol();
-        // }else if(mouseX > 549 && mouseX < 600 && mouseY > 349 && mouseY < 400){
-        //   getPiece().setCol();
-        // }else if(mouseX > 599 && mouseX < 650 && mouseY > 349 && mouseY < 400){
-        //   getPiece().setCol();
-        // }else if(mouseX > 649 && mouseX < 700 && mouseY > 349 && mouseY < 400){
-        //   getPiece().setCol();
-        // }else if(mouseX > 699 && mouseX < 750 && mouseY > 349&& mouseY < 400){
-        //   getPiece().setCol();
-        // }else if(mouseX > 749 && mouseX < 800 && mouseY > 349 && mouseY < 400){
-        //   getPiece().setCol();
-        // }else if(mouseX > 799 && mouseX < 850 && mouseY > 349 && mouseY < 400){
-        //   getPiece().setCol();
-        // }else if(mouseX > 799 && mouseX < 850 && mouseY > 349 && mouseY < 400){
-        //   getPiece().setCol();
-        // }
+        else if(mouseX > 249 && mouseX < 300 && mouseY > 349 && mouseY < 400){
+          //third row
+          solveCube.getPiece(1,1,-1).setCol(colorMode, "x");
+        }else if(mouseX > 299 && mouseX < 350 && mouseY > 349 && mouseY < 400){
+          solveCube.getPiece(1,0,-1).setCol(colorMode, "x");
+        }else if(mouseX > 349 && mouseX < 400 && mouseY > 349 && mouseY < 400){
+          solveCube.getPiece(1,-1,-1).setCol(colorMode, "x");
+        }else if(mouseX > 399 && mouseX < 450 && mouseY > 349 && mouseY < 400){
+          solveCube.getPiece(1,-1,-1).setCol(colorMode, "y");
+        }else if(mouseX > 449 && mouseX < 500 && mouseY > 349 && mouseY < 400){
+          solveCube.getPiece(0,-1,-1).setCol(colorMode, "y");
+        }else if(mouseX > 499 && mouseX < 550 && mouseY > 349 && mouseY < 400){
+          solveCube.getPiece(-1,-1,-1).setCol(colorMode, "y");
+        }else if(mouseX > 549 && mouseX < 600 && mouseY > 349 && mouseY < 400){
+          solveCube.getPiece(-1,-1,-1).setCol(colorMode, "x");
+        }else if(mouseX > 599 && mouseX < 650 && mouseY > 349 && mouseY < 400){
+          solveCube.getPiece(-1,0,-1).setCol(colorMode, "x");
+        }else if(mouseX > 649 && mouseX < 700 && mouseY > 349 && mouseY < 400){
+          solveCube.getPiece(-1,1,-1).setCol(colorMode, "x");
+        }else if(mouseX > 699 && mouseX < 750 && mouseY > 349&& mouseY < 400){
+          solveCube.getPiece(-1,1,-1).setCol(colorMode, "y");
+        }else if(mouseX > 749 && mouseX < 800 && mouseY > 349 && mouseY < 400){
+          solveCube.getPiece(0,1,-1).setCol(colorMode, "y");
+        }else if(mouseX > 799 && mouseX < 850 && mouseY > 349 && mouseY < 400){
+          solveCube.getPiece(1,1,-1).setCol(colorMode, "y");
+        }
         // else if(mouseX > 399 && mouseX < 450 && mouseY > 99 && mouseY < 150){
         //   //top faces
         //   getPiece().setCol();
