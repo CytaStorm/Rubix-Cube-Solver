@@ -1,4 +1,4 @@
-import java.util.*; //<>// //<>// //<>//
+import java.util.*; //<>// //<>// //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
   ArrayList<String> solutionSet = new ArrayList<String>(); 
@@ -179,7 +179,7 @@ public class Cube {
         X();
         scramble.add("X");
         break;
-     case 19:
+      case 19:
         XPrime();
         scramble.add("X'");
         break;
@@ -211,10 +211,10 @@ public class Cube {
   }
 
   void move(String move) {
-    if(!Character.isUpperCase(move.charAt(0))){
+    if (!Character.isUpperCase(move.charAt(0))) {
       // moves.add("\"" + move.toUpperCase() + "'" + "\"");
       moves.add(move.toUpperCase() + "'");
-    }else{
+    } else {
       // moves.add("\"" + move + "\"");
       moves.add(move);
     }
@@ -610,22 +610,66 @@ public class Cube {
     S();
     BPrime();
   }
-  void solve() {
-    moves.clear();
-    cross();
-    makeCorners();
-    secondLayer();
-    botCross();
-    botFace();
-    botCorners();
-    botEdges();
-    println("solved!");
-    // println("Solution before optimize: " + moves);
-    moveOptimizer(moves);
-    println(moves);
+  private void solve() {
+    if (Arrays.equals(nineColors(), new int[]{9, 9, 9, 9, 9, 9})) {
+      moves.clear();
+      cross();
+      makeCorners();
+      secondLayer();
+      botCross();
+      botFace();
+      botCorners();
+      botEdges();
+      println("solved!");
+      // println("Solution before optimize: " + moves);
+      moveOptimizer(moves);
+      println(moves);
+    } else {
+      println("too many of 1 color!");
+      println("orange: " + nineColors()[0]);
+      println("white: " + nineColors()[1]);
+      println("red: " + nineColors()[2]);
+      println("green: " + nineColors()[3]);
+      println("blue: " + nineColors()[4]);
+      println("yellow: " + nineColors()[5]);
+    }
   }
 
-  void cross() {
+  private int[] nineColors() {
+    int[] result = new int[6];
+    for (Piece i : pieces) {
+        for (int j = 0; j < 3; j++) {
+          if (i.getCol()[j] != null) {
+            String currentCol = i.getCol()[j];
+            switch(currentCol) {
+            case "orange": 
+              result[0]++;
+              break;
+            case "white": 
+              result[1]++;
+              break;
+            case "red": 
+              result[2]++;
+              break;
+            case "green": 
+              result[3]++;
+              break;
+            case "blue": 
+              result[4]++;
+              break;
+            case "yellow": 
+              result[5]++;
+              break;
+            default:
+              break;
+            }
+          }
+        }
+    }
+    return result;
+  }
+
+  private void cross() {
 
     for (int i = 0; i < 4; i++) { //solves right side piece
       // int i = 0;
@@ -744,7 +788,7 @@ public class Cube {
   }
 
   //corners
-  void makeCorners() {
+  private void makeCorners() {
     // println("before second layer: " + moves);
     // moves.clear();
     for (int i = 0; i < 4; i++) { //major rot on z axis to change which topRight we are solvin
@@ -836,7 +880,7 @@ public class Cube {
   }
 
   //move corner piece to bottom layer
-  void atBottomtoTop(Piece piece) {
+  private void atBottomtoTop(Piece piece) {
     if (piece.xPos()==1) { //if on left
       cornerLeftAlgo();
       move("Z"); //bc this solves left side, rotate entire cube
@@ -844,7 +888,7 @@ public class Cube {
       cornerRightAlgo();
     }
   }
-  void moveToBottom() {
+  private void moveToBottom() {
     move("r");
     move("d");
     move("R");
@@ -852,34 +896,34 @@ public class Cube {
   }
 
   //algos
-  void cornerLeftAlgo() {
+  private void cornerLeftAlgo() {
     move("D");
     move("L");
     move("d");
     move("l");
   }
 
-  void cornerRightAlgo() {
+  private void cornerRightAlgo() {
     move("d");
     move("r");
     move("D");
     move("R");
   }
 
-  void whiteDownAlgo() {
+  private void whiteDownAlgo() {
     move("F");
     move("d");
     move("f");
     move("D");
     move("D");
   }
-  void whiteUsAlgo() {
+  private void whiteUsAlgo() {
     move("r");
     move("D");
     move("R");
   }
 
-  void align(String dir, String col) {
+  private void align(String dir, String col) {
     if (dir.equals("L")) { //align left
       if (getCol("U").equals(col)) {
         move("Z");
@@ -918,7 +962,7 @@ public class Cube {
     }
   }
 
-  boolean isCornerAlignedRight(Piece piece) {
+  private boolean isCornerAlignedRight(Piece piece) {
     return
       piece.zCol().equals(getCol("U")) &&
       piece.xCol().equals(getCol("R")) &&
@@ -927,7 +971,7 @@ public class Cube {
 
 
   // //secondLayer
-  void secondLayer() {
+  private void secondLayer() {
     move("X");
     move("X");
     for (int i = 0; i < 4; i++) { //goes through each of the 4 edge pieces on the cube and puts them in the right spot if possible, results in only red edge pieces on top
@@ -1003,7 +1047,7 @@ public class Cube {
   }
 
   //left right algos
-  void leftAlgo() {
+  private void leftAlgo() {
     // println("use left algo");
     move("u");
     move("l");
@@ -1014,7 +1058,7 @@ public class Cube {
     move("u");
     move("f");
   }
-  void rightAlgo() {
+  private void rightAlgo() {
     // println("use right algo");
     move("U");
     move("R");
@@ -1027,7 +1071,7 @@ public class Cube {
   }
 
   //third layer
-  void botCross() {
+  private void botCross() {
     checkPosition();
     while (!botCrossChecker()) {
       singleAlgo();
@@ -1035,7 +1079,7 @@ public class Cube {
     }
     println("botcross finished!");
   }
-  boolean botCrossChecker() {
+  private boolean botCrossChecker() {
     for (int i = 0; i < pieces.length; i++) {
       Piece current = pieces[i];
       if (current.zPos() == 1 && current.isEdge() && !current.zCol().equals(getCol("U"))) {
@@ -1044,7 +1088,7 @@ public class Cube {
     }
     return true;
   }
-  void checkPosition() { 
+  private void checkPosition() { 
     //Piece face = getPiece(0, 0, 1);
     //Piece ulb = getPiece(1, 1, 1);
     Piece ul = getPiece(1, 0, 1);
@@ -1071,7 +1115,7 @@ public class Cube {
     }
   }
   //the single algorithm
-  void singleAlgo() {
+  private void singleAlgo() {
     move("F");
     move("U");
     move("R");
@@ -1081,7 +1125,7 @@ public class Cube {
   }
 
   //orient yellow corners
-  void botFace() {
+  private void botFace() {
     while (!checkBotFace()) {
       botFaceOrient();
       cornerSingleAlgo();
@@ -1089,7 +1133,7 @@ public class Cube {
 
     println("botFace finished!");
   }
-  void botFaceOrient() {
+  private void botFaceOrient() {
     //returns 1 of 4 orientations of bottom 
     int o = 0; //number of top corners with topcolor facing up
     for (Piece i : pieces) {
@@ -1132,7 +1176,7 @@ public class Cube {
     }
   }
   //checks if all faces are same on top(bot)
-  boolean checkBotFace() {
+  private boolean checkBotFace() {
     int upfaces = 0;
     for (Piece i : pieces) {
       if (i.zPos() == 1 && i.zCol().equals(getCol("U"))) {
@@ -1141,7 +1185,7 @@ public class Cube {
     }
     return upfaces == 9;
   }
-  void cornerSingleAlgo() {
+  private void cornerSingleAlgo() {
     move("R");
     move("U");
     move("r");
@@ -1153,14 +1197,14 @@ public class Cube {
   }
 
   //positioning bot corners
-  void botCorners() {
+  private void botCorners() {
     while (!checkCornerPos()) {
       botCornerPos();
       cornerPosSingleAlgo();
     }
   }
   //returns in based on position of corners
-  void botCornerPos() {
+  private void botCornerPos() {
     // println("setting up pos");
     //refer to https://assets.ctfassets.net/r3qu44etwf9a/6kAQCoLmbXXu29TTuArrk1/404118e1f9bfb6f9997157a284bbc572/Rubiks_Solution-Guide_3x3.pdf for cube positions
     //makes position 1-4
@@ -1203,7 +1247,7 @@ public class Cube {
     // println("no position");
   }
 
-  void cornerPosSingleAlgo() {
+  private void cornerPosSingleAlgo() {
     // println("using algo");
     move("r");
     move("F");
@@ -1219,7 +1263,7 @@ public class Cube {
     move("r");
   }
 
-  boolean checkCornerPos() {
+  private boolean checkCornerPos() {
     for (int i = 0; i < 4; i++) { //big Z rot
       int correctPos = 0;
       for (int j = 0; j < 4; j++) { //checks corners for each face
@@ -1237,7 +1281,7 @@ public class Cube {
     return false;
   }
 
-  void botEdges() {
+  private void botEdges() {
     for (int i = 0; i < 4; i++) {
       move("Z");
       if (faceSolved()) {
@@ -1273,7 +1317,7 @@ public class Cube {
     move("X");
     move("X");
   }
-  void botEdgeLeftAlgo() {
+  private void botEdgeLeftAlgo() {
     move("F");
     move("F");
     move("U");
@@ -1287,7 +1331,7 @@ public class Cube {
     move("F");
     move("F");
   }
-  void botEdgeRightAlgo() {
+  private void botEdgeRightAlgo() {
     move("F");
     move("F");
     move("u");
@@ -1302,7 +1346,7 @@ public class Cube {
     move("F");
   }
 
-  boolean faceSolved() {
+  private boolean faceSolved() {
     Piece fr = getPiece(-1, -1, 0);
     Piece fl = getPiece(1, -1, 0);
     Piece fu = getPiece(0, -1, 1);
@@ -1324,7 +1368,7 @@ public class Cube {
     return b_fr && b_fl && b_fu && b_fd && b_ful && b_fur && b_fdl && b_fdl && b_fdr;
   }
 
-  boolean isCubeSolved() {
+  private boolean isCubeSolved() {
     for (int i = 0; i < 4; i++) {
       if (!faceSolved()) {
         return false;
@@ -1333,10 +1377,10 @@ public class Cube {
     }
     return true;
   }
-  
-  void moveOptimizer(ArrayList<String> moves){
-    for(int i = moves.size() - 1; i > 0; i--){
-      if(moves.get(i).charAt(0) == moves.get(i-1).charAt(0) && moves.get(i).length() != moves.get(i-1).length()){
+
+  private void moveOptimizer(ArrayList<String> moves) {
+    for (int i = moves.size() - 1; i > 0; i--) {
+      if (moves.get(i).charAt(0) == moves.get(i-1).charAt(0) && moves.get(i).length() != moves.get(i-1).length()) {
         //if the first char is the same in both indexes but their lengths are different
         //meaning their rotations are the same, but the only difference is prime/unprime
         moves.remove(i);
@@ -1349,22 +1393,22 @@ public class Cube {
     //   print("" + duplicates.peek()[0] + " " + duplicates.poll()[1]);
     //   println();
     // }
-    while(duplicates.size() != 0){
+    while (duplicates.size() != 0) {
       //loop so it will look for duplicates multiple times
-      while(duplicates.size() != 0){
+      while (duplicates.size() != 0) {
         int[] currentDupe = duplicates.getFirst();
         int dupeBegin = currentDupe[1];
         int dupeEnd = currentDupe[0];
         int dupeSize = dupeEnd - dupeBegin + 1;//how large the duplicate is
         moves.remove(dupeEnd); //end must be removed no matter what
-        if (dupeSize == 2){
+        if (dupeSize == 2) {
           //double move
           moves.set(dupeBegin, "2" + moves.get(dupeBegin));
         } else {
           moves.remove(dupeEnd - 1); //both 3 and 4 size duplicates require elements at index dupeEnd-1 to be removed
-          if (dupeSize == 3){
-          //triple move, turn into prime
-          moves.set(dupeBegin, moves.get(dupeBegin) + "'");
+          if (dupeSize == 3) {
+            //triple move, turn into prime
+            moves.set(dupeBegin, moves.get(dupeBegin) + "'");
           } else {
             //quad move, remove all
             moves.remove(dupeEnd - 2);
@@ -1376,14 +1420,14 @@ public class Cube {
       duplicates = duplicates(moves);
     }
   }
-  
-  ArrayDeque<int[]> duplicates(ArrayList<String> moves){
+
+  private ArrayDeque<int[]> duplicates(ArrayList<String> moves) {
     // println("conRepeat");
     ArrayDeque<int[]> dupesInProgress = new ArrayDeque<int[]>();
-    for(int i = moves.size() - 1; i > 0; i--){
+    for (int i = moves.size() - 1; i > 0; i--) {
       //looks for and adds duplicates in reverse order so it can remove duplicates without affecting more of the moves.
       int[]tempArray = findDupes(moves, i);
-      if(tempArray[2] > 0){
+      if (tempArray[2] > 0) {
         dupesInProgress.offerLast(new int[] {tempArray[0], tempArray[1]});
         i = i - tempArray[2];
       }
@@ -1391,11 +1435,11 @@ public class Cube {
     return dupesInProgress;
   }
 
-  int[] findDupes(ArrayList<String> moves, int index){
+  private int[] findDupes(ArrayList<String> moves, int index) {
     int result = 0;//how many duplicates there are, not including original
     int currentIndex = index - 1;
-    while(currentIndex > -1 && result < 3){
-      if(!moves.get(currentIndex).equals(moves.get(index))){
+    while (currentIndex > -1 && result < 3) {
+      if (!moves.get(currentIndex).equals(moves.get(index))) {
         break;
       }
       currentIndex--;
@@ -1403,5 +1447,4 @@ public class Cube {
     }
     return new int[] {index, currentIndex+1, result};
   }
-
 }
