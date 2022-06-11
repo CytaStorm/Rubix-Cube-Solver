@@ -325,9 +325,8 @@ void draw() {
   background(128);
   text("mouseX: " + mouseX, 0, 50);
   text("mouseY: " + mouseY, 0, 100);
-  text("Keyboard disabled: " + solving, 0, 150);
-  text("Mode: " + mode, 0, 200);
-  text("Color mode: " + colorMode, 0, 250);
+  text("Mode: " + mode, 0, 150);
+  text("Color mode: " + colorMode, 0, 200);
   update();
   if (mode == 0) {
     for (int i = 0; i < upSide.length; i++) {
