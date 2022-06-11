@@ -34,6 +34,7 @@ public color stringToColor(String col) {
 }
 
 int mode = 0;
+
 void keyPressed() {
   if (!solving) {
     switch(key) { 
@@ -126,7 +127,6 @@ void keyPressed() {
 }
 
 void mouseClicked() {
-  if (!solving) {
     if (mouseX > 0 && mouseX < 150 && mouseY > 700 && mouseY < 750) {
       solveCube.reset();
     } else if (mouseX > 0 && mouseX < 150 && mouseY > 800 && mouseY < 850) {
@@ -180,7 +180,124 @@ void mouseClicked() {
     } else if (mouseX > 930 && mouseX < 980 && mouseY > 800 && mouseY < 850) {
       solveCube.ZPrime();
     }
-  }
+    else{
+      //for click to change colors
+      if(mode == 0){
+        //net mode
+        if(mouseX > 249 && mouseX < 300 && mouseY > 249 && mouseY < 300 ){
+          
+        }else if(mouseX > 299 && mouseX < 350 && mouseY > 249 && mouseY < 300 ){
+
+        }else if(mouseX > 349 && mouseX < 400 && mouseY > 249 && mouseY < 300){
+
+        }else if(mouseX > 399 && mouseX < 450 && mouseY > 249 && mouseY < 300){
+
+        }else if(mouseX > 449 && mouseX < 500 && mouseY > 249 && mouseY < 300){
+          
+        }else if(mouseX > 499 && mouseX < 550 && mouseY > 249 && mouseY < 300){
+          
+        }else if(mouseX > 549 && mouseX < 600 && mouseY > 249 && mouseY < 300){
+          
+        }else if(mouseX > 599 && mouseX < 650 && mouseY > 249 && mouseY < 300){
+
+        }else if(mouseX > 649 && mouseX < 700 && mouseY > 249 && mouseY < 300){
+          
+        }else if(mouseX > 699 && mouseX < 750 && mouseY > 249 && mouseY < 300){
+          
+        }else if(mouseX > 749 && mouseX < 800 && mouseY > 249 && mouseY < 300){
+          
+        }else if(mouseX > 799 && mouseX < 850 && mouseY > 249 && mouseY < 300){
+          
+        }else if(mouseX > 299 && mouseX < 350 && mouseY > 299 && mouseY < 350){
+          //middle row
+
+        }else if(mouseX > 349 && mouseX < 400 && mouseY > 299 && mouseY < 350){
+
+        }else if(mouseX > 399 && mouseX < 450 && mouseY > 299 && mouseY < 350){
+
+        }else if(mouseX > 449 && mouseX < 500 && mouseY > 299 && mouseY < 350){
+          
+        }else if(mouseX > 499 && mouseX < 550 && mouseY > 299 && mouseY < 350){
+          
+        }else if(mouseX > 549 && mouseX < 600 && mouseY > 299 && mouseY < 350){
+          
+        }else if(mouseX > 599 && mouseX < 650 && mouseY > 299 && mouseY < 350){
+
+        }else if(mouseX > 649 && mouseX < 700 && mouseY > 299 && mouseY < 350){
+          
+        }else if(mouseX > 699 && mouseX < 750 && mouseY > 299 && mouseY < 350){
+          
+        }else if(mouseX > 749 && mouseX < 800 && mouseY > 299 && mouseY < 350){
+          
+        }else if(mouseX > 799 && mouseX < 850 && mouseY > 299 && mouseY < 350){
+          
+        }else if(mouseX > 299 && mouseX < 350 && mouseY > 349 && mouseY < 400){
+          //third row
+
+        }else if(mouseX > 349 && mouseX < 400 && mouseY > 349 && mouseY < 400){
+
+        }else if(mouseX > 399 && mouseX < 450 && mouseY > 349 && mouseY < 400){
+
+        }else if(mouseX > 449 && mouseX < 500 && mouseY > 349 && mouseY < 400){
+          
+        }else if(mouseX > 499 && mouseX < 550 && mouseY > 349 && mouseY < 400){
+          
+        }else if(mouseX > 549 && mouseX < 600 && mouseY > 349 && mouseY < 400){
+          
+        }else if(mouseX > 599 && mouseX < 650 && mouseY > 349 && mouseY < 400){
+
+        }else if(mouseX > 649 && mouseX < 700 && mouseY > 349 && mouseY < 400){
+          
+        }else if(mouseX > 699 && mouseX < 750 && mouseY > 349&& mouseY < 400){
+          
+        }else if(mouseX > 749 && mouseX < 800 && mouseY > 349 && mouseY < 400){
+          
+        }else if(mouseX > 799 && mouseX < 850 && mouseY > 349 && mouseY < 400){
+          
+        }else if(mouseX > 799 && mouseX < 850 && mouseY > 349 && mouseY < 400){
+          
+        }else if(mouseX > 399 && mouseX < 450 && mouseY > 99 && mouseY < 150){
+          //top faces
+
+        }else if(mouseX > 449 && mouseX < 500 && mouseY > 99 && mouseY < 150){
+          
+        }else if(mouseX > 499 && mouseX < 550 && mouseY > 99 && mouseY < 150){
+          
+        }else if(mouseX > 399 && mouseX < 450 && mouseY > 149 && mouseY < 200){
+
+        }else if(mouseX > 449 && mouseX < 500 && mouseY > 149 && mouseY < 200){
+          
+        }else if(mouseX > 499 && mouseX < 550 && mouseY > 149 && mouseY < 200){
+          
+        }else if(mouseX > 399 && mouseX < 450 && mouseY > 199 && mouseY < 250){
+
+        }else if(mouseX > 449 && mouseX < 500 && mouseY > 199 && mouseY < 250){
+          
+        }else if(mouseX > 499 && mouseX < 550 && mouseY > 199 && mouseY < 250){
+          
+        }else if(mouseX > 399 && mouseX < 450 && mouseY > 399 && mouseY < 450){
+          //bot faces
+
+        }else if(mouseX > 449 && mouseX < 500 && mouseY > 399 && mouseY < 450){
+          
+        }else if(mouseX > 499 && mouseX < 550 && mouseY > 399 && mouseY < 450){
+          
+        }else if(mouseX > 399 && mouseX < 450 && mouseY > 449 && mouseY < 500){
+
+        }else if(mouseX > 449 && mouseX < 500 && mouseY > 449 && mouseY < 500){
+          
+        }else if(mouseX > 499 && mouseX < 550 && mouseY > 449 && mouseY < 500){
+          
+        }else if(mouseX > 399 && mouseX < 450 && mouseY > 499 && mouseY < 550){
+
+        }else if(mouseX > 449 && mouseX < 500 && mouseY > 499 && mouseY < 550){
+          
+        }else if(mouseX > 499 && mouseX < 550 && mouseY > 499 && mouseY < 550){
+          
+        }
+      }
+
+    }
 }
 
 void draw() {
