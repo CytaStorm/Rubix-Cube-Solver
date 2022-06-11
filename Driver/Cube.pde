@@ -353,7 +353,6 @@ public class Cube {
     case "D" : 
       return getPiece(0, 0, -1).zCol();
     default : 
-      println("you shouldn't be here! put in a valid face U/F/R/L/B/D to get its color!");
       return null;
     }
   }
