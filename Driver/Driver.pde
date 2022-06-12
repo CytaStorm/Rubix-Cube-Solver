@@ -329,42 +329,44 @@ void draw() {
   text("Color mode: " + colorMode, 0, 200);
   update();
   if (mode == 0) {
+    
     for (int i = 0; i < upSide.length; i++) {
       for (int j = 0; j < upSide[0].length; j++) {
         fill(stringToColor(upSide[i][j]));
-        rect(400+j*50, 100+i*50, 50, 50);
+        //rect(400+j*50, 100+i*50, 50, 50);
+        quad(400+j*50,300+j*10-i*50,400+j*50,250+j*10-i*50,450+j*50,260+j*10-i*50,450+j*50,310+j*10-i*50);
       }
     } 
-    for (int i = 0; i < leftSide.length; i++) {
-      for (int j = 0; j < leftSide[0].length; j++) {
-        fill(stringToColor(leftSide[i][j]));
-        rect(250+j*50, 250+i*50, 50, 50);
-      }
-    }
-    for (int i = 0; i < frontSide.length; i++) {
-      for (int j = 0; j < frontSide[0].length; j++) {
-        fill(stringToColor(frontSide[i][j]));
-        rect(400+j*50, 250+i*50, 50, 50);
-      }
-    }
-    for (int i = 0; i < rightSide.length; i++) {
-      for (int j = 0; j < rightSide[0].length; j++) {
-        fill(stringToColor(rightSide[i][j]));
-        rect(550+j*50, 250+i*50, 50, 50);
-      }
-    }
-    for (int i = 0; i < backSide.length; i++) {
-      for (int j = 0; j < backSide[0].length; j++) {
-        fill(stringToColor(backSide[i][j]));
-        rect(700+j*50, 250+i*50, 50, 50);
-      }
-    }
-    for (int i = 0; i < downSide.length; i++) {
-      for (int j = 0; j < downSide[0].length; j++) {
-        fill(stringToColor(downSide[i][j]));
-        rect(400+j*50, 400+i*50, 50, 50);
-      }
-    } 
+  //  for (int i = 0; i < leftSide.length; i++) {
+  //    for (int j = 0; j < leftSide[0].length; j++) {
+  //      fill(stringToColor(leftSide[i][j]));
+  //      rect(250+j*50, 250+i*50, 50, 50);
+  //    }
+  //  }
+  //  for (int i = 0; i < frontSide.length; i++) {
+  //    for (int j = 0; j < frontSide[0].length; j++) {
+  //      fill(stringToColor(frontSide[i][j]));
+  //      rect(400+j*50, 250+i*50, 50, 50);
+  //    }
+  //  }
+  //  for (int i = 0; i < rightSide.length; i++) {
+  //    for (int j = 0; j < rightSide[0].length; j++) {
+  //      fill(stringToColor(rightSide[i][j]));
+  //      rect(550+j*50, 250+i*50, 50, 50);
+  //    }
+  //  }
+  //  for (int i = 0; i < backSide.length; i++) {
+  //    for (int j = 0; j < backSide[0].length; j++) {
+  //      fill(stringToColor(backSide[i][j]));
+  //      rect(700+j*50, 250+i*50, 50, 50);
+  //    }
+  //  }
+  //  for (int i = 0; i < downSide.length; i++) {
+  //    for (int j = 0; j < downSide[0].length; j++) {
+  //      fill(stringToColor(downSide[i][j]));
+  //      rect(400+j*50, 400+i*50, 50, 50);
+  //    }
+    //} 
     //L
     if (mouseX > 170 && mouseX < 220 && mouseY > 700 && mouseY < 750) {
       fill(0, 0, 0, 63);
