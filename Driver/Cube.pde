@@ -98,14 +98,6 @@ public class Cube {
   public boolean printScramble(){
     return printScramble; 
   }
-
-  public void scrambleFixed() {
-    for (String i : scramble) {
-      move(i);
-      solRemoveLast();
-    }
-    scramble.clear();
-  }
   //scrambles cube using 20 moves
   public void scramble() {
     scramble.clear();
