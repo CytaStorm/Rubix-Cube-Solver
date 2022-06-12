@@ -328,53 +328,53 @@ void draw() {
     for (int i = 0; i < upSide.length; i++) {
       for (int j = 0; j < upSide[0].length; j++) {
         fill(stringToColor(upSide[i][j]));
-        // rect(400+j*50, 100+i*50, 50, 50);
+        rect(400+j*50, 100+i*50, 50, 50);
         //quad(400, 250, 435, 220, 485, 230, 450, 260); 
         //quad(450+j*50-i*25, 150+i*50, 475+j*50-i*25, 100+i*50, 525+j*50-i*25, 100+i*50, 500+j*50-i*25, 150+i*50);
-        quad(470+j*50-i*35, 190+j*10+i*30, 505+j*50-i*35, 160+j*10+i*30, 555+j*50-i*35, 170+j*10+i*30, 520+j*50-i*35, 200+j*10+i*30); 
+        //quad(470+j*50-i*35, 190+j*10+i*30, 505+j*50-i*35, 160+j*10+i*30, 555+j*50-i*35, 170+j*10+i*30, 520+j*50-i*35, 200+j*10+i*30);
       }
     } 
-      for (int i = 0; i < leftSide.length; i++) {
-        for (int j = 0; j < leftSide[0].length; j++) {
-          fill(stringToColor(leftSide[i][j]));
-          //rect(250+j*50, 250+i*50, 50, 50);
-          //quad(550+j*35,330-j*30+i*50,550+j*35,280-j*30+i*50,585+j*35,250-j*30+i*50,585+j*35,300-j*30+i*50); 
-          //quad(355,180,355,130,320,160,320,210);
-          //quad(250+j*35,270-j*30+i*50,250+j*35,220-j*30+i*50,285+j*35,190-j*30+i*50,285+j*35,240-j*30+i*50);
-          quad(355-j*35,180+j*30+i*50,355-j*35,130+j*30+i*50,320-j*35,160+j*30+i*50,320-j*35,210+j*30+i*50);
-        }
+    for (int i = 0; i < leftSide.length; i++) {
+      for (int j = 0; j < leftSide[0].length; j++) {
+        fill(stringToColor(leftSide[i][j]));
+        rect(250+j*50, 250+i*50, 50, 50);
+        //quad(550+j*35,330-j*30+i*50,550+j*35,280-j*30+i*50,585+j*35,250-j*30+i*50,585+j*35,300-j*30+i*50); 
+        //quad(355,180,355,130,320,160,320,210);
+        //quad(250+j*35,270-j*30+i*50,250+j*35,220-j*30+i*50,285+j*35,190-j*30+i*50,285+j*35,240-j*30+i*50);
+        //quad(355-j*35, 180+j*30+i*50, 355-j*35, 130+j*30+i*50, 320-j*35, 160+j*30+i*50, 320-j*35, 210+j*30+i*50);
       }
+    }
     for (int i = 0; i < frontSide.length; i++) {
       for (int j = 0; j < frontSide[0].length; j++) {
         fill(stringToColor(frontSide[i][j]));
-        quad(400+j*50, 300+j*10+i*50, 400+j*50, 250+j*10+i*50, 450+j*50, 260+j*10+i*50, 450+j*50, 310+j*10+i*50);
-        //rect(400+j*50, 250+i*50, 50, 50);
+        //quad(400+j*50, 300+j*10+i*50, 400+j*50, 250+j*10+i*50, 450+j*50, 260+j*10+i*50, 450+j*50, 310+j*10+i*50);
+        rect(400+j*50, 250+i*50, 50, 50);
       }
     }
     for (int i = 0; i < rightSide.length; i++) {
       for (int j = 0; j < rightSide[0].length; j++) {
         fill(stringToColor(rightSide[i][j]));
-        //rect(550+j*50, 250+i*50, 50, 50); 
+        rect(550+j*50, 250+i*50, 50, 50); 
         //quad(550+j*50, 230-j*10+i*50, 550+j*50, 180-j*10+i*50, 600+j*50, 170-j*10+i*50, 600+j*50, 220-j*10+i*50); 
-        quad(550+j*35,330-j*30+i*50,550+j*35,280-j*30+i*50,585+j*35,250-j*30+i*50,585+j*35,300-j*30+i*50); 
-        //270 
+        //quad(550+j*35, 330-j*30+i*50, 550+j*35, 280-j*30+i*50, 585+j*35, 250-j*30+i*50, 585+j*35, 300-j*30+i*50); 
+        //270
       }
     }
-      for (int i = 0; i < backSide.length; i++) {
-        for (int j = 0; j < backSide[0].length; j++) {
-          fill(stringToColor(backSide[i][j]));
-          //rect(700+j*50, 250+i*50, 50, 50); 
-          //quad(700+j*50, 100+j*10+i*50, 700+j*50, 50+j*10+i*50, 750+j*50, 60+j*10+i*50, 750+j*50, 110+j*10+i*50);
-          quad(850-j*50, 130-j*10+i*50, 850-j*50, 80-j*10+i*50, 800-j*50, 70-j*10+i*50, 800-j*50, 120-j*10+i*50);
-        }
+    for (int i = 0; i < backSide.length; i++) {
+      for (int j = 0; j < backSide[0].length; j++) {
+        fill(stringToColor(backSide[i][j]));
+        rect(700+j*50, 250+i*50, 50, 50); 
+        //quad(700+j*50, 100+j*10+i*50, 700+j*50, 50+j*10+i*50, 750+j*50, 60+j*10+i*50, 750+j*50, 110+j*10+i*50);
+        //quad(850-j*50, 130-j*10+i*50, 850-j*50, 80-j*10+i*50, 800-j*50, 70-j*10+i*50, 800-j*50, 120-j*10+i*50);
       }
-      for (int i = 0; i < downSide.length; i++) {
-        for (int j = 0; j < downSide[0].length; j++) {
-          fill(stringToColor(downSide[i][j]));
-          //rect(400+j*50, 400+i*50, 50, 50); 
-          //quad(470+j*50-i*35, 490+j*10+i*30, 505+j*50-i*35, 460+j*10+i*30, 555+j*50-i*35, 470+j*10+i*30, 520+j*50-i*35, 500+j*10+i*30); 
-          quad(435+j*50+i*35, 520+j*10-i*30, 400+j*50+i*35, 550+j*10-i*30, 450+j*50+i*35, 560+j*10-i*30, 485+j*50+i*35, 530+j*10-i*30);
-        }
+    }
+    for (int i = 0; i < downSide.length; i++) {
+      for (int j = 0; j < downSide[0].length; j++) {
+        fill(stringToColor(downSide[i][j]));
+        rect(400+j*50, 400+i*50, 50, 50); 
+        //quad(470+j*50-i*35, 490+j*10+i*30, 505+j*50-i*35, 460+j*10+i*30, 555+j*50-i*35, 470+j*10+i*30, 520+j*50-i*35, 500+j*10+i*30); 
+        //quad(435+j*50+i*35, 520+j*10-i*30, 400+j*50+i*35, 550+j*10-i*30, 450+j*50+i*35, 560+j*10-i*30, 485+j*50+i*35, 530+j*10-i*30);
+      }
     } 
     //L
     if (mouseX > 170 && mouseX < 220 && mouseY > 700 && mouseY < 750) {
@@ -828,7 +828,8 @@ void draw() {
       rect(400, 400, 50, 150);
       rect(725, 100, 50, 150);
       quad(400, 250, 475, 100, 525, 100, 450, 250);
-    }
+    } 
+    //lol
     //M  
     if (mouseX > 590 && mouseX < 640 && mouseY > 700 && mouseY < 750) {
       fill(0, 0, 0, 63);
@@ -1122,19 +1123,128 @@ void draw() {
       rect(400, 500, 150, 50); 
       rect(250, 250, 50, 150);
     }
-    if (mode == 2) {
-      for (int i = 0; i < frontSide.length; i++) {
-        for (int j = 0; j < frontSide[0].length; j++) {
-          fill(stringToColor(frontSide[i][j]));
-          quad(400+j*50, 300+j*10-i*50, 400+j*50, 250+j*10-i*50, 450+j*50, 260+j*10-i*50, 450+j*50, 310+j*10-i*50);
-        }
+  }
+  if (mode == 2) { 
+    for (int i = 0; i < upSide.length; i++) {
+      for (int j = 0; j < upSide[0].length; j++) {
+        fill(stringToColor(upSide[i][j]));
+        // rect(400+j*50, 100+i*50, 50, 50);
+        //quad(400, 250, 435, 220, 485, 230, 450, 260); 
+        //quad(450+j*50-i*25, 150+i*50, 475+j*50-i*25, 100+i*50, 525+j*50-i*25, 100+i*50, 500+j*50-i*25, 150+i*50);
+        quad(470+j*50-i*35, 190+j*10+i*30, 505+j*50-i*35, 160+j*10+i*30, 555+j*50-i*35, 170+j*10+i*30, 520+j*50-i*35, 200+j*10+i*30);
       }
-      //for (int i = 0; i < rightSide.length; i++) {
-      //  for (int j = 0; j < rightSide[0].length; j++) {
-      //    fill(stringToColor(rightSide[i][j]));
-      //    quad(550, 240, 550, 180, 600, 170, 600, 230);
-      //  }
-      //}
+    } 
+    for (int i = 0; i < leftSide.length; i++) {
+      for (int j = 0; j < leftSide[0].length; j++) {
+        fill(stringToColor(leftSide[i][j]));
+        //rect(250+j*50, 250+i*50, 50, 50);
+        //quad(550+j*35,330-j*30+i*50,550+j*35,280-j*30+i*50,585+j*35,250-j*30+i*50,585+j*35,300-j*30+i*50); 
+        //quad(355,180,355,130,320,160,320,210);
+        //quad(250+j*35,270-j*30+i*50,250+j*35,220-j*30+i*50,285+j*35,190-j*30+i*50,285+j*35,240-j*30+i*50);
+        quad(355-j*35, 180+j*30+i*50, 355-j*35, 130+j*30+i*50, 320-j*35, 160+j*30+i*50, 320-j*35, 210+j*30+i*50);
+      }
+    }
+    for (int i = 0; i < frontSide.length; i++) {
+      for (int j = 0; j < frontSide[0].length; j++) {
+        fill(stringToColor(frontSide[i][j]));
+        quad(400+j*50, 300+j*10+i*50, 400+j*50, 250+j*10+i*50, 450+j*50, 260+j*10+i*50, 450+j*50, 310+j*10+i*50);
+        //rect(400+j*50, 250+i*50, 50, 50);
+      }
+    }
+    for (int i = 0; i < rightSide.length; i++) {
+      for (int j = 0; j < rightSide[0].length; j++) {
+        fill(stringToColor(rightSide[i][j]));
+        //rect(550+j*50, 250+i*50, 50, 50); 
+        //quad(550+j*50, 230-j*10+i*50, 550+j*50, 180-j*10+i*50, 600+j*50, 170-j*10+i*50, 600+j*50, 220-j*10+i*50); 
+        quad(550+j*35, 330-j*30+i*50, 550+j*35, 280-j*30+i*50, 585+j*35, 250-j*30+i*50, 585+j*35, 300-j*30+i*50); 
+        //270
+      }
+    }
+    for (int i = 0; i < backSide.length; i++) {
+      for (int j = 0; j < backSide[0].length; j++) {
+        fill(stringToColor(backSide[i][j]));
+        //rect(700+j*50, 250+i*50, 50, 50); 
+        //quad(700+j*50, 100+j*10+i*50, 700+j*50, 50+j*10+i*50, 750+j*50, 60+j*10+i*50, 750+j*50, 110+j*10+i*50);
+        quad(850-j*50, 130-j*10+i*50, 850-j*50, 80-j*10+i*50, 800-j*50, 70-j*10+i*50, 800-j*50, 120-j*10+i*50);
+      }
+    }
+    for (int i = 0; i < downSide.length; i++) {
+      for (int j = 0; j < downSide[0].length; j++) {
+        fill(stringToColor(downSide[i][j]));
+        //rect(400+j*50, 400+i*50, 50, 50); 
+        //quad(470+j*50-i*35, 490+j*10+i*30, 505+j*50-i*35, 460+j*10+i*30, 555+j*50-i*35, 470+j*10+i*30, 520+j*50-i*35, 500+j*10+i*30); 
+        quad(435+j*50+i*35, 520+j*10-i*30, 400+j*50+i*35, 550+j*10-i*30, 450+j*50+i*35, 560+j*10-i*30, 485+j*50+i*35, 530+j*10-i*30);
+      }
+    }    
+    for (int i = 0; i < upSide.length; i++) {
+      for (int j = 0; j < upSide[0].length; j++) {
+        fill(stringToColor(upSide[i][j]));
+        // rect(400+j*50, 100+i*50, 50, 50);
+        //quad(400, 250, 435, 220, 485, 230, 450, 260); 
+        //quad(450+j*50-i*25, 150+i*50, 475+j*50-i*25, 100+i*50, 525+j*50-i*25, 100+i*50, 500+j*50-i*25, 150+i*50);
+        quad(470+j*50-i*35, 190+j*10+i*30, 505+j*50-i*35, 160+j*10+i*30, 555+j*50-i*35, 170+j*10+i*30, 520+j*50-i*35, 200+j*10+i*30);
+      }
+    } 
+    for (int i = 0; i < leftSide.length; i++) {
+      for (int j = 0; j < leftSide[0].length; j++) {
+        fill(stringToColor(leftSide[i][j]));
+        //rect(250+j*50, 250+i*50, 50, 50);
+        //quad(550+j*35,330-j*30+i*50,550+j*35,280-j*30+i*50,585+j*35,250-j*30+i*50,585+j*35,300-j*30+i*50); 
+        //quad(355,180,355,130,320,160,320,210);
+        //quad(250+j*35,270-j*30+i*50,250+j*35,220-j*30+i*50,285+j*35,190-j*30+i*50,285+j*35,240-j*30+i*50);
+        quad(355-j*35, 180+j*30+i*50, 355-j*35, 130+j*30+i*50, 320-j*35, 160+j*30+i*50, 320-j*35, 210+j*30+i*50);
+      }
+    }
+    for (int i = 0; i < frontSide.length; i++) {
+      for (int j = 0; j < frontSide[0].length; j++) {
+        fill(stringToColor(frontSide[i][j]));
+        quad(400+j*50, 300+j*10+i*50, 400+j*50, 250+j*10+i*50, 450+j*50, 260+j*10+i*50, 450+j*50, 310+j*10+i*50);
+        //rect(400+j*50, 250+i*50, 50, 50);
+      }
+    }
+    for (int i = 0; i < rightSide.length; i++) {
+      for (int j = 0; j < rightSide[0].length; j++) {
+        fill(stringToColor(rightSide[i][j]));
+        //rect(550+j*50, 250+i*50, 50, 50); 
+        //quad(550+j*50, 230-j*10+i*50, 550+j*50, 180-j*10+i*50, 600+j*50, 170-j*10+i*50, 600+j*50, 220-j*10+i*50); 
+        quad(550+j*35, 330-j*30+i*50, 550+j*35, 280-j*30+i*50, 585+j*35, 250-j*30+i*50, 585+j*35, 300-j*30+i*50); 
+        //270
+      }
+    }
+    for (int i = 0; i < backSide.length; i++) {
+      for (int j = 0; j < backSide[0].length; j++) {
+        fill(stringToColor(backSide[i][j]));
+        //rect(700+j*50, 250+i*50, 50, 50); 
+        //quad(700+j*50, 100+j*10+i*50, 700+j*50, 50+j*10+i*50, 750+j*50, 60+j*10+i*50, 750+j*50, 110+j*10+i*50);
+        quad(850-j*50, 130-j*10+i*50, 850-j*50, 80-j*10+i*50, 800-j*50, 70-j*10+i*50, 800-j*50, 120-j*10+i*50);
+      }
+    }
+    for (int i = 0; i < downSide.length; i++) {
+      for (int j = 0; j < downSide[0].length; j++) {
+        fill(stringToColor(downSide[i][j]));
+        //rect(400+j*50, 400+i*50, 50, 50); 
+        //quad(470+j*50-i*35, 490+j*10+i*30, 505+j*50-i*35, 460+j*10+i*30, 555+j*50-i*35, 470+j*10+i*30, 520+j*50-i*35, 500+j*10+i*30); 
+        quad(435+j*50+i*35, 520+j*10-i*30, 400+j*50+i*35, 550+j*10-i*30, 450+j*50+i*35, 560+j*10-i*30, 485+j*50+i*35, 530+j*10-i*30);
+      }
+    } 
+    //LMAO 
+    //L
+    if (mouseX > 170 && mouseX < 220 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63);
+      triangle(410, 360, 425, 390, 440, 360);
+      rect(415, 260, 20, 100);  
+      quad(400,400,400,250,450,260,450,410);
+      quad(400, 250, 475, 100, 525, 100, 450, 250);
+    } 
+    //LPrime
+    if (mouseX > 170 && mouseX < 220 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63); 
+      triangle(410, 290, 425, 260, 440, 290); 
+      rect(415, 290, 20, 100); 
+      rect(400, 250, 50, 150);
+      rect(400, 400, 50, 150);
+      rect(725, 100, 50, 150);
+      quad(400, 250, 475, 100, 525, 100, 450, 250);
     }
   }
   fill(255, 255, 255);
