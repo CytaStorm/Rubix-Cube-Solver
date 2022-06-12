@@ -13,26 +13,19 @@ A/S/D/F/G/H for L'/R'/U'/D'/F'/B' <br/>
 https://docs.google.com/document/d/1BXVDlJIRH7PimkvV02koKximVJbK5jmj-6kPyB3UdCo/edit <br />
  **Development Log** <br />
 Monday 23 May 2022 <br />
-Jeff Chen: <br />
-Began making Piece Class <br />
-Gil Zheng: <br />
-Started the Cube class and created all the rotations for the cube. <br />
+Jeff Chen: Began making Piece Class <br />
+Gil Zheng: Started the Cube class and created all the rotations for the cube. <br />
 
 Tuesday 24 May 2022 <br />
-Jeff Chen: <br />
-Finished Piece class, moved on to make Cube class work correctly with Piece class <br />
-Gil Zheng: <br />
-Started the Driver, created all the variables and started working on the display of the cube. <br />
+Jeff Chen: Finished Piece class, moved on to make Cube class work correctly with Piece class <br />
+Gil Zheng: Started the Driver, created all the variables and started working on the display of the cube. <br />
 
 Wednesday 25 May 2022 <br />
-Jeff Chen: <br />
-Began working on Solve, translating a python-based beginner's method for solving, helped in dev of Driver by fixing up mistakes and adding more movements and correcting wrong rotations <br />
-Gil Zheng: <br />
-Created methods in the drivers that allowed for user interaction, finished the update method and it's helper methods in order to keep refreshing display <br />
+Jeff Chen: Began working on Solve, translating a python-based beginner's method for solving, helped in dev of Driver by fixing up mistakes and adding more movements and correcting wrong rotations <br />
+Gil Zheng: Created methods in the drivers that allowed for user interaction, finished the update method and it's helper methods in order to keep refreshing display <br />
 
 Thursday 25 May 2022 <br />
-Jeff Chen: <br />
-Finished driver to display the Cube as well as buttons to interact with cube, including reset, scramble, and moves
+Jeff Chen: Finished driver to display the Cube as well as buttons to interact with cube, including reset, scramble, and moves
 Gil Zheng: <br />
 
 Saturday 28 May 2022 <br />
@@ -40,32 +33,27 @@ Jeff Chen: <br />
 Researched different implementations of beginner's algorithm, since the python one failed, settled on a java based on to take inspiration from <br />
 
 Sunday 29 May 2022 <br />
-Jeff Chen: <br />
-Tried out java recursive implementations, failed due to heavy use of recursion. Decided to use basic, human style method of analyzing cube instead <br /> 
+Jeff Chen: Tried out java recursive implementations, failed due to heavy use of recursion. Decided to use basic, human style method of analyzing cube instead <br /> 
 Gil Zheng: <br /> 
 Tried to implement a solution, but failed. Added MES and XYZ and added the display for it <br />
 
 Monday 30 May 2022 <br />
-Jeff Chen: <br />
-Began homemade method for solving beginner's alogorithm, finished Poppy and Cross<br /> 
+Jeff Chen: Began homemade method for solving beginner's alogorithm, finished Poppy and Cross<br /> 
 Gil Zheng: <br /> 
 Attempted a white corners solution but failed <br /> 
 
 Tuesday 31 May 2022 <br />
-Jeff Chen: <br />
-No work done at home bc of meeting, but helped gil in class with fixing Cube<br /> 
+Jeff Chen: No work done at home bc of meeting, but helped gil in class with fixing Cube<br /> 
 Gil Zheng: Started working on the semi-3d visualiser <br /> 
 <br /> 
 
 Wednesday 1 June 2022 <br />
-Jeff Chen: <br />
-Wrote up a method to solve white corners, but ended up being scrapped because I referenced rotations from (broken at the time) buttons, leading me to have wrong rotations and a broken method. Fixed up buttons for proper rotations<br /> 
+Jeff Chen: Wrote up a method to solve white corners, but ended up being scrapped because I referenced rotations from (broken at the time) buttons, leading me to have wrong rotations and a broken method. Fixed up buttons for proper rotations<br /> 
 Gil Zheng: Continued to work on the semi-3d visualizer, got the top side of the Cube to work<br /> 
 <br /> 
 
 Thursday 2 June 2022 <br />
-Jeff Chen: <br />
-Finished white corners, debugged the hell out of it<br /> 
+Jeff Chen: Finished white corners, debugged the hell out of it<br /> 
 Gil Zheng: Rewrote the top side to fix the rotations and started working on the right side<br /> 
 <br />  
 
