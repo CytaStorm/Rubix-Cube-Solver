@@ -29,10 +29,12 @@ Jeff Chen: <br />
 Began working on Solve, translating a python-based beginner's method for solving, helped in dev of Driver by fixing up mistakes and adding more movements and correcting wrong rotations <br />
 Gil Zheng: <br />
 Created methods in the drivers that allowed for user interaction, finished the update method and it's helper methods in order to keep refreshing display <br />
+
 Thursday 25 May 2022 <br />
 Jeff Chen: <br />
 Finished driver to display the Cube as well as buttons to interact with cube, including reset, scramble, and moves
 Gil Zheng: <br />
+
 Saturday 28 May 2022 <br />
 Jeff Chen: <br />
 Researched different implementations of beginner's algorithm, since the python one failed, settled on a java based on to take inspiration from <br />
@@ -48,7 +50,6 @@ Jeff Chen: <br />
 Began homemade method for solving beginner's alogorithm, finished Poppy and Cross<br /> 
 Gil Zheng: <br /> 
 Attempted a white corners solution but failed <br /> 
-
 
 Tuesday 31 May 2022 <br />
 Jeff Chen: <br />
