@@ -327,6 +327,7 @@ void draw() {
   text("mouseY: " + mouseY, 0, 100);
   text("Mode: " + mode, 0, 150);
   text("Color mode: " + colorMode, 0, 200);
+  text("Color Picker", 0, 880);
   update();
   if (mode == 0) {
     for (int i = 0; i < upSide.length; i++) {

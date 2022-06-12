@@ -49,6 +49,7 @@ public class Cube {
 
   //reset cube
   public void reset() {
+    println("reset");
     //layer 1
     pieces[0] = new Piece(-1, -1, -1, "blue", "white", "red");
     pieces[1] = new Piece(0, -1, -1, null, "white", "red");
