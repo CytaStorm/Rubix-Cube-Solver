@@ -1,7 +1,6 @@
 import java.util.*;
 Cube solveCube = new Cube(); 
 
-boolean solving = false;
 String[][] upSide = new String[3][3];
 String[][] leftSide = new String[3][3];
 String[][] frontSide = new String[3][3];
@@ -38,7 +37,6 @@ int mode = 0;
 String colorMode = "white";
 
 void keyPressed() {
-  if (!solving) {
     switch(key) { 
     case 'm': 
       if (mode == 1) {
@@ -122,9 +120,14 @@ void keyPressed() {
     case ENTER:
       solveCube.solve();
       break;
+    case '/':
+      if(solveCube.printScramble() == true){
+        solveCube.printScrambleToggle(false);
+      }else{
+        solveCube.printScrambleToggle(true);
+      }
     default: 
       break;
-    }
   }
 }
 
@@ -323,8 +326,9 @@ void mouseClicked() {
 
 void draw() {
   background(128);
-  text("mouseX: " + mouseX, 0, 50);
-  text("mouseY: " + mouseY, 0, 100);
+  // text("mouseX: " + mouseX, 0, 50);
+  // text("mouseY: " + mouseY, 0, 100);
+  text("Print scramble: " + solveCube.printScramble(), 0, 100);
   text("Mode: " + mode, 0, 150);
   text("Color mode: " + colorMode, 0, 200);
   text("Color Picker", 0, 880);

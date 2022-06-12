@@ -1,9 +1,10 @@
 import java.util.*; //<>// //<>// //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
-  ArrayList<String> solutionSet = new ArrayList<String>(); 
-  ArrayList<String> scramble = new ArrayList<String>();
-  ArrayList<String> moves = new ArrayList<String>();
+  private boolean printScramble = false;
+  private ArrayList<String> solutionSet = new ArrayList<String>(); 
+  private ArrayList<String> scramble = new ArrayList<String>();
+  private ArrayList<String> moves = new ArrayList<String>();
 
   private Piece[] pieces = new Piece[26];
   public Cube() {
@@ -88,6 +89,14 @@ public class Cube {
     pieces[23] = new Piece(-1, 1, 1, "blue", "yellow", "orange");
     pieces[24] = new Piece(0, 1, 1, null, "yellow", "orange");
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
+  }
+
+  public void printScrambleToggle(boolean bool){
+    printScramble = bool;
+  }
+
+  public boolean printScramble(){
+    return printScramble; 
   }
 
   public void scrambleFixed() {
@@ -206,8 +215,10 @@ public class Cube {
       i++;
     }
     // println("Your scramble (before optimize) is: " + scramble);
+    if(printScramble){
     moveOptimizer(scramble);
     println("Your scramble is: " + scramble);
+    }
     //scramble.clear();
   }
 
