@@ -103,3 +103,18 @@ Thursday 9 June 2022 <br/>
 Jeff Chen: Finished solution optimizer<br/>
 Gil Zheng: <br /> 
 <br /> 
+
+Friday 10 June 2022 <br/>
+Jeff Chen:<br/>
+Gil Zheng: <br /> 
+<br /> 
+
+Saturday 11 June 2022 <br/>
+Jeff Chen: Started and finished face color editor, user can now edit cube to match a real life cube, and will not run if invalid number of colors<br/>
+Gil Zheng: <br /> 
+<br /> 
+
+Sunday 12 June 2022 <br/>
+Jeff Chen: Added printScramble toggle to toggle if the scramble is printed, as well as removed unusued variables<br/>
+Gil Zheng: <br /> 
+<br /> 
