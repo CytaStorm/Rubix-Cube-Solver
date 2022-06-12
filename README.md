@@ -29,8 +29,7 @@ Jeff Chen: Finished driver to display the Cube as well as buttons to interact wi
 Gil Zheng: <br />
 
 Saturday 28 May 2022 <br />
-Jeff Chen: <br />
-Researched different implementations of beginner's algorithm, since the python one failed, settled on a java based on to take inspiration from <br />
+Jeff Chen: Researched different implementations of beginner's algorithm, since the python one failed, settled on a java based on to take inspiration from <br />
 
 Sunday 29 May 2022 <br />
 Jeff Chen: Tried out java recursive implementations, failed due to heavy use of recursion. Decided to use basic, human style method of analyzing cube instead <br /> 
@@ -63,8 +62,7 @@ Gil Zheng: Finished one of the visualizer and got the mode switching to work <br
 <br /> 
 
 Saturday 4 June 2022 <br/>
-Jeff Chen: <br/>
-Totally rewrote solve middle layer and finished writing solve using the beginner's method <br/>
+Jeff Chen: Totally rewrote solve middle layer and finished writing solve using the beginner's method <br/>
 Gil Zheng: Continued working on arrows to pop up when you hover over the buttons and made the arrows transparent<br /> 
 <br />  
 
