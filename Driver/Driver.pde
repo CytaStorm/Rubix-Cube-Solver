@@ -41,7 +41,7 @@ void keyPressed() {
   if (!solving) {
     switch(key) { 
     case 'm': 
-      if (mode == 1) {
+      if (mode == 2) {
         mode = 0;
       } else {
         mode++;
@@ -184,138 +184,134 @@ void mouseClicked() {
   }
 
   //changing colors mode
-  else if(mouseX > 0 && mouseX < 50 && mouseY > 899 && mouseY < 950){
+  else if (mouseX > 0 && mouseX < 50 && mouseY > 899 && mouseY < 950) {
     colorMode = "orange";
-  }else if(mouseX > 49 && mouseX < 100 && mouseY > 899 && mouseY < 950){
+  } else if (mouseX > 49 && mouseX < 100 && mouseY > 899 && mouseY < 950) {
     colorMode = "white";
-  }else if(mouseX > 99 && mouseX < 150 && mouseY > 899 && mouseY < 950){
+  } else if (mouseX > 99 && mouseX < 150 && mouseY > 899 && mouseY < 950) {
     colorMode = "red";
-  }else if(mouseX > 149 && mouseX < 200 && mouseY > 899 && mouseY < 950){
-    colorMode = "green"; 
-  }else if(mouseX > 199 && mouseX < 250 && mouseY > 899 && mouseY < 950){
+  } else if (mouseX > 149 && mouseX < 200 && mouseY > 899 && mouseY < 950) {
+    colorMode = "green";
+  } else if (mouseX > 199 && mouseX < 250 && mouseY > 899 && mouseY < 950) {
     colorMode = "blue";
-  }else if(mouseX > 249 && mouseX < 300 && mouseY > 899 && mouseY < 950){
+  } else if (mouseX > 249 && mouseX < 300 && mouseY > 899 && mouseY < 950) {
     colorMode = "yellow";
-  }else{
+  } else {
     //for click to change colors
-    if(mode == 0){
+    if (mode == 0) {
       //net mode
-      if(mouseX > 249 && mouseX < 300 && mouseY > 249 && mouseY < 300 ){
-        solveCube.getPiece(1,1,1).setCol(colorMode, "x");
-      }else if(mouseX > 299 && mouseX < 350 && mouseY > 249 && mouseY < 300 ){
-        solveCube.getPiece(1,0,1).setCol(colorMode, "x");
-      }else if(mouseX > 349 && mouseX < 400 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(1,-1,1).setCol(colorMode, "x");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(1,-1,1).setCol(colorMode, "y");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(0,-1,1).setCol(colorMode, "y");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(-1,-1,1).setCol(colorMode, "y");
-      }else if(mouseX > 549 && mouseX < 600 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(-1,-1,1).setCol(colorMode, "x");
-      }else if(mouseX > 599 && mouseX < 650 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(-1,0,1).setCol(colorMode, "x");
-      }else if(mouseX > 649 && mouseX < 700 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(-1,1,1).setCol(colorMode, "x");
-      }else if(mouseX > 699 && mouseX < 750 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(-1,1,1).setCol(colorMode, "y");
-      }else if(mouseX > 749 && mouseX < 800 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(0,1,1).setCol(colorMode, "y");
-      }else if(mouseX > 799 && mouseX < 850 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(1,1,1).setCol(colorMode, "y");
-      }
-      else if(mouseX > 249 && mouseX < 300 && mouseY > 299 && mouseY < 350){
+      if (mouseX > 249 && mouseX < 300 && mouseY > 249 && mouseY < 300 ) {
+        solveCube.getPiece(1, 1, 1).setCol(colorMode, "x");
+      } else if (mouseX > 299 && mouseX < 350 && mouseY > 249 && mouseY < 300 ) {
+        solveCube.getPiece(1, 0, 1).setCol(colorMode, "x");
+      } else if (mouseX > 349 && mouseX < 400 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(1, -1, 1).setCol(colorMode, "x");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(1, -1, 1).setCol(colorMode, "y");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(0, -1, 1).setCol(colorMode, "y");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(-1, -1, 1).setCol(colorMode, "y");
+      } else if (mouseX > 549 && mouseX < 600 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(-1, -1, 1).setCol(colorMode, "x");
+      } else if (mouseX > 599 && mouseX < 650 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(-1, 0, 1).setCol(colorMode, "x");
+      } else if (mouseX > 649 && mouseX < 700 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(-1, 1, 1).setCol(colorMode, "x");
+      } else if (mouseX > 699 && mouseX < 750 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(-1, 1, 1).setCol(colorMode, "y");
+      } else if (mouseX > 749 && mouseX < 800 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(0, 1, 1).setCol(colorMode, "y");
+      } else if (mouseX > 799 && mouseX < 850 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(1, 1, 1).setCol(colorMode, "y");
+      } else if (mouseX > 249 && mouseX < 300 && mouseY > 299 && mouseY < 350) {
         //middle row
-        solveCube.getPiece(1,1,0).setCol(colorMode, "x");
-      }else if(mouseX > 299 && mouseX < 350 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(1,0,0).setCol(colorMode, "x");
-      }else if(mouseX > 349 && mouseX < 400 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(1,-1,0).setCol(colorMode, "x");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(1,-1,0).setCol(colorMode, "y");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(0,-1,0).setCol(colorMode, "y");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(-1,-1,0).setCol(colorMode, "y");
-      }else if(mouseX > 549 && mouseX < 600 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(-1,-1,0).setCol(colorMode, "x");
-      }else if(mouseX > 599 && mouseX < 650 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(-1,0,0).setCol(colorMode, "x");
-      }else if(mouseX > 649 && mouseX < 700 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(-1,1,0).setCol(colorMode, "x");
-      }else if(mouseX > 699 && mouseX < 750 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(-1,1,0).setCol(colorMode, "y");
-      }else if(mouseX > 749 && mouseX < 800 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(0,1,0).setCol(colorMode, "y");
-      }else if(mouseX > 799 && mouseX < 850 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(1,1,0).setCol(colorMode, "y");
-      }
-      else if(mouseX > 249 && mouseX < 300 && mouseY > 349 && mouseY < 400){
+        solveCube.getPiece(1, 1, 0).setCol(colorMode, "x");
+      } else if (mouseX > 299 && mouseX < 350 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(1, 0, 0).setCol(colorMode, "x");
+      } else if (mouseX > 349 && mouseX < 400 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(1, -1, 0).setCol(colorMode, "x");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(1, -1, 0).setCol(colorMode, "y");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(0, -1, 0).setCol(colorMode, "y");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(-1, -1, 0).setCol(colorMode, "y");
+      } else if (mouseX > 549 && mouseX < 600 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(-1, -1, 0).setCol(colorMode, "x");
+      } else if (mouseX > 599 && mouseX < 650 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(-1, 0, 0).setCol(colorMode, "x");
+      } else if (mouseX > 649 && mouseX < 700 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(-1, 1, 0).setCol(colorMode, "x");
+      } else if (mouseX > 699 && mouseX < 750 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(-1, 1, 0).setCol(colorMode, "y");
+      } else if (mouseX > 749 && mouseX < 800 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(0, 1, 0).setCol(colorMode, "y");
+      } else if (mouseX > 799 && mouseX < 850 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(1, 1, 0).setCol(colorMode, "y");
+      } else if (mouseX > 249 && mouseX < 300 && mouseY > 349 && mouseY < 400) {
         //third row
-        solveCube.getPiece(1,1,-1).setCol(colorMode, "x");
-      }else if(mouseX > 299 && mouseX < 350 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(1,0,-1).setCol(colorMode, "x");
-      }else if(mouseX > 349 && mouseX < 400 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(1,-1,-1).setCol(colorMode, "x");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(1,-1,-1).setCol(colorMode, "y");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(0,-1,-1).setCol(colorMode, "y");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(-1,-1,-1).setCol(colorMode, "y");
-      }else if(mouseX > 549 && mouseX < 600 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(-1,-1,-1).setCol(colorMode, "x");
-      }else if(mouseX > 599 && mouseX < 650 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(-1,0,-1).setCol(colorMode, "x");
-      }else if(mouseX > 649 && mouseX < 700 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(-1,1,-1).setCol(colorMode, "x");
-      }else if(mouseX > 699 && mouseX < 750 && mouseY > 349&& mouseY < 400){
-        solveCube.getPiece(-1,1,-1).setCol(colorMode, "y");
-      }else if(mouseX > 749 && mouseX < 800 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(0,1,-1).setCol(colorMode, "y");
-      }else if(mouseX > 799 && mouseX < 850 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(1,1,-1).setCol(colorMode, "y");
-      }
-      else if(mouseX > 399 && mouseX < 450 && mouseY > 99 && mouseY < 150){
+        solveCube.getPiece(1, 1, -1).setCol(colorMode, "x");
+      } else if (mouseX > 299 && mouseX < 350 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(1, 0, -1).setCol(colorMode, "x");
+      } else if (mouseX > 349 && mouseX < 400 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(1, -1, -1).setCol(colorMode, "x");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(1, -1, -1).setCol(colorMode, "y");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(0, -1, -1).setCol(colorMode, "y");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(-1, -1, -1).setCol(colorMode, "y");
+      } else if (mouseX > 549 && mouseX < 600 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(-1, -1, -1).setCol(colorMode, "x");
+      } else if (mouseX > 599 && mouseX < 650 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(-1, 0, -1).setCol(colorMode, "x");
+      } else if (mouseX > 649 && mouseX < 700 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(-1, 1, -1).setCol(colorMode, "x");
+      } else if (mouseX > 699 && mouseX < 750 && mouseY > 349&& mouseY < 400) {
+        solveCube.getPiece(-1, 1, -1).setCol(colorMode, "y");
+      } else if (mouseX > 749 && mouseX < 800 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(0, 1, -1).setCol(colorMode, "y");
+      } else if (mouseX > 799 && mouseX < 850 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(1, 1, -1).setCol(colorMode, "y");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 99 && mouseY < 150) {
         //top faces
-        solveCube.getPiece(1,1,1).setCol(colorMode, "z");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 99 && mouseY < 150){
-        solveCube.getPiece(0,1,1).setCol(colorMode, "z");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 99 && mouseY < 150){
-        solveCube.getPiece(-1,1,1).setCol(colorMode, "z");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 149 && mouseY < 200){
-        solveCube.getPiece(1,0,1).setCol(colorMode, "z");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 149 && mouseY < 200){
-        solveCube.getPiece(0,0,1).setCol(colorMode, "z");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 149 && mouseY < 200){
-        solveCube.getPiece(-1,0,1).setCol(colorMode, "z");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 199 && mouseY < 250){
-        solveCube.getPiece(1,-1,1).setCol(colorMode, "z");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 199 && mouseY < 250){
-        solveCube.getPiece(0,-1,1).setCol(colorMode, "z");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 199 && mouseY < 250){
-        solveCube.getPiece(-1,-1,1).setCol(colorMode, "z");
-      }
-      else if(mouseX > 399 && mouseX < 450 && mouseY > 399 && mouseY < 450){
+        solveCube.getPiece(1, 1, 1).setCol(colorMode, "z");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 99 && mouseY < 150) {
+        solveCube.getPiece(0, 1, 1).setCol(colorMode, "z");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 99 && mouseY < 150) {
+        solveCube.getPiece(-1, 1, 1).setCol(colorMode, "z");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 149 && mouseY < 200) {
+        solveCube.getPiece(1, 0, 1).setCol(colorMode, "z");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 149 && mouseY < 200) {
+        solveCube.getPiece(0, 0, 1).setCol(colorMode, "z");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 149 && mouseY < 200) {
+        solveCube.getPiece(-1, 0, 1).setCol(colorMode, "z");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 199 && mouseY < 250) {
+        solveCube.getPiece(1, -1, 1).setCol(colorMode, "z");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 199 && mouseY < 250) {
+        solveCube.getPiece(0, -1, 1).setCol(colorMode, "z");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 199 && mouseY < 250) {
+        solveCube.getPiece(-1, -1, 1).setCol(colorMode, "z");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 399 && mouseY < 450) {
         //bot faces
-        solveCube.getPiece(1,-1,-1).setCol(colorMode, "z");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 399 && mouseY < 450){
-        solveCube.getPiece(0,-1,-1).setCol(colorMode, "z");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 399 && mouseY < 450){
-        solveCube.getPiece(-1,-1,-1).setCol(colorMode, "z");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 449 && mouseY < 500){
-        solveCube.getPiece(1,0,-1).setCol(colorMode, "z");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 449 && mouseY < 500){
-        solveCube.getPiece(0,0,-1).setCol(colorMode, "z");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 449 && mouseY < 500){
-        solveCube.getPiece(-1,0,-1).setCol(colorMode, "z");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 499 && mouseY < 550){
-        solveCube.getPiece(1,1,-1).setCol(colorMode, "z");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 499 && mouseY < 550){
-        solveCube.getPiece(0,1,-1).setCol(colorMode, "z");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 499 && mouseY < 550){
-        solveCube.getPiece(-1,1,-1).setCol(colorMode, "z");
+        solveCube.getPiece(1, -1, -1).setCol(colorMode, "z");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 399 && mouseY < 450) {
+        solveCube.getPiece(0, -1, -1).setCol(colorMode, "z");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 399 && mouseY < 450) {
+        solveCube.getPiece(-1, -1, -1).setCol(colorMode, "z");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 449 && mouseY < 500) {
+        solveCube.getPiece(1, 0, -1).setCol(colorMode, "z");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 449 && mouseY < 500) {
+        solveCube.getPiece(0, 0, -1).setCol(colorMode, "z");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 449 && mouseY < 500) {
+        solveCube.getPiece(-1, 0, -1).setCol(colorMode, "z");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 499 && mouseY < 550) {
+        solveCube.getPiece(1, 1, -1).setCol(colorMode, "z");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 499 && mouseY < 550) {
+        solveCube.getPiece(0, 1, -1).setCol(colorMode, "z");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 499 && mouseY < 550) {
+        solveCube.getPiece(-1, 1, -1).setCol(colorMode, "z");
       }
     }
   }
@@ -328,430 +324,431 @@ void draw() {
   text("Mode: " + mode, 0, 150);
   text("Color mode: " + colorMode, 0, 200);
   update();
-  if (mode == 0) {
-    
+  if (mode == 0){ 
     for (int i = 0; i < upSide.length; i++) {
       for (int j = 0; j < upSide[0].length; j++) {
         fill(stringToColor(upSide[i][j]));
-        //rect(400+j*50, 100+i*50, 50, 50);
-        quad(400+j*50,300+j*10-i*50,400+j*50,250+j*10-i*50,450+j*50,260+j*10-i*50,450+j*50,310+j*10-i*50);
+        // rect(400+j*50, 100+i*50, 50, 50);
+        quad(450+j*50-i*25, 150+i*50, 475+j*50-i*25, 100+i*50, 525+j*50-i*25, 100+i*50, 500+j*50-i*25, 150+i*50);
+      }
+      } 
+      //  for (int i = 0; i < leftSide.length; i++) {
+      //    for (int j = 0; j < leftSide[0].length; j++) {
+      //      fill(stringToColor(leftSide[i][j]));
+      //      rect(250+j*50, 250+i*50, 50, 50);
+      //    }
+      //  }
+      for (int i = 0; i < frontSide.length; i++) {
+        for (int j = 0; j < frontSide[0].length; j++) {
+          fill(stringToColor(frontSide[i][j]));
+          quad(400+j*50, 300+j*10+i*50, 400+j*50, 250+j*10+i*50, 450+j*50, 260+j*10+i*50, 450+j*50, 310+j*10+i*50);
+          //rect(400+j*50, 250+i*50, 50, 50);
+        }
+      }
+      //for (int i = 0; i < rightSide.length; i++) {
+      //  for (int j = 0; j < rightSide[0].length; j++) {
+      //    fill(stringToColor(rightSide[i][j]));
+      //    //rect(550+j*50, 250+i*50, 50, 50); 
+      //    quad(550+j*50, 230-j*10+i*50, 550+j*50, 180-j*10+i*50, 600+j*50, 170-j*10+i*50, 600+j*50, 220-j*10+i*50);
+      //  }
+      //}
+      //  for (int i = 0; i < backSide.length; i++) {
+      //    for (int j = 0; j < backSide[0].length; j++) {
+      //      fill(stringToColor(backSide[i][j]));
+      //      rect(700+j*50, 250+i*50, 50, 50);
+      //    }
+      //  }
+      //  for (int i = 0; i < downSide.length; i++) {
+      //    for (int j = 0; j < downSide[0].length; j++) {
+      //      fill(stringToColor(downSide[i][j]));
+      //      rect(400+j*50, 400+i*50, 50, 50);
+      //    }
+      //} 
+      //L
+      if (mouseX > 170 && mouseX < 220 && mouseY > 700 && mouseY < 750) {
+        fill(0, 0, 0, 63);
+        triangle(410, 360, 425, 390, 440, 360);
+        rect(415, 260, 20, 100);
+        triangle(410, 210, 425, 240, 440, 210);
+        rect(415, 110, 20, 100);
+        triangle(410, 510, 425, 540, 440, 510);
+        rect(415, 410, 20, 100);
+        triangle(810, 290, 825, 260, 840, 290); 
+        rect(815, 290, 20, 100);
+      } 
+      //LPrime
+      if (mouseX > 170 && mouseX < 220 && mouseY > 800 && mouseY < 850) {
+        fill(0, 0, 0, 63); 
+        triangle(810, 360, 825, 390, 840, 360);
+        rect(815, 260, 20, 100); 
+        triangle(410, 290, 425, 260, 440, 290); 
+        rect(415, 290, 20, 100);
+        triangle(410, 140, 425, 110, 440, 140); 
+        rect(415, 140, 20, 100);
+        triangle(410, 440, 425, 410, 440, 440); 
+        rect(415, 440, 20, 100);
+      } 
+      //M  
+      if (mouseX > 590 && mouseX < 640 && mouseY > 700 && mouseY < 750) {
+        fill(0, 0, 0, 63);
+        triangle(460, 360, 475, 390, 490, 360);
+        rect(465, 260, 20, 100);
+        triangle(460, 210, 475, 240, 490, 210);
+        rect(465, 110, 20, 100);
+        triangle(460, 510, 475, 540, 490, 510);
+        rect(465, 410, 20, 100);
+        triangle(760, 290, 775, 260, 790, 290); 
+        rect(765, 290, 20, 100);
+      } 
+      //MPrime
+      if (mouseX > 590 && mouseX < 640 && mouseY > 800 && mouseY < 850) {
+        fill(0, 0, 0, 63); 
+        triangle(460, 290, 475, 260, 490, 290); 
+        rect(465, 290, 20, 100);
+        triangle(460, 140, 475, 110, 490, 140); 
+        rect(465, 140, 20, 100);
+        triangle(460, 440, 475, 410, 490, 440); 
+        rect(465, 440, 20, 100);
+        triangle(760, 360, 775, 390, 790, 360);
+        rect(765, 260, 20, 100);
+      }
+      //R 
+      if (mouseX > 240 && mouseX < 290 && mouseY > 700 && mouseY < 750) {
+        fill(0, 0, 0, 63); 
+        triangle(510, 290, 525, 260, 540, 290); 
+        rect(515, 290, 20, 100);
+        triangle(510, 140, 525, 110, 540, 140); 
+        rect(515, 140, 20, 100);
+        triangle(510, 440, 525, 410, 540, 440); 
+        rect(515, 440, 20, 100);
+        triangle(710, 360, 725, 390, 740, 360);
+        rect(715, 260, 20, 100);
+      } 
+      //RPrime  
+      if (mouseX > 240 && mouseX < 290 && mouseY > 800 && mouseY < 850) { 
+        fill(0, 0, 0, 63);
+        triangle(510, 360, 525, 390, 540, 360);
+        rect(515, 260, 20, 100);
+        triangle(510, 210, 525, 240, 540, 210);
+        rect(515, 110, 20, 100);
+        triangle(510, 510, 525, 540, 540, 510);
+        rect(515, 410, 20, 100);
+        triangle(710, 290, 725, 260, 740, 290); 
+        rect(715, 290, 20, 100);
+      } 
+      //X  
+      if (mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 750) {
+        fill(0, 0, 0, 63);
+        triangle(510, 290, 525, 260, 540, 290); 
+        rect(515, 290, 20, 100);
+        triangle(510, 140, 525, 110, 540, 140); 
+        rect(515, 140, 20, 100);
+        triangle(510, 440, 525, 410, 540, 440); 
+        rect(515, 440, 20, 100);
+        triangle(710, 360, 725, 390, 740, 360);
+        rect(715, 260, 20, 100); 
+        triangle(460, 290, 475, 260, 490, 290); 
+        rect(465, 290, 20, 100);
+        triangle(460, 140, 475, 110, 490, 140); 
+        rect(465, 140, 20, 100);
+        triangle(460, 440, 475, 410, 490, 440); 
+        rect(465, 440, 20, 100);
+        triangle(760, 360, 775, 390, 790, 360);
+        rect(765, 260, 20, 100);
+        triangle(810, 360, 825, 390, 840, 360);
+        rect(815, 260, 20, 100); 
+        triangle(410, 290, 425, 260, 440, 290); 
+        rect(415, 290, 20, 100);
+        triangle(410, 140, 425, 110, 440, 140); 
+        rect(415, 140, 20, 100);
+        triangle(410, 440, 425, 410, 440, 440); 
+        rect(415, 440, 20, 100);
+      } 
+      if (mouseX > 800 && mouseX < 850 && mouseY > 800 && mouseY < 850) {
+        fill(0, 0, 0, 63);
+        triangle(510, 360, 525, 390, 540, 360);
+        rect(515, 260, 20, 100);
+        triangle(510, 210, 525, 240, 540, 210);
+        rect(515, 110, 20, 100);
+        triangle(510, 510, 525, 540, 540, 510);
+        rect(515, 410, 20, 100);
+        triangle(710, 290, 725, 260, 740, 290); 
+        rect(715, 290, 20, 100); 
+        triangle(460, 360, 475, 390, 490, 360);
+        rect(465, 260, 20, 100);
+        triangle(460, 210, 475, 240, 490, 210);
+        rect(465, 110, 20, 100);
+        triangle(460, 510, 475, 540, 490, 510);
+        rect(465, 410, 20, 100);
+        triangle(760, 290, 775, 260, 790, 290); 
+        rect(765, 290, 20, 100); 
+        triangle(410, 360, 425, 390, 440, 360);
+        rect(415, 260, 20, 100);
+        triangle(410, 210, 425, 240, 440, 210);
+        rect(415, 110, 20, 100);
+        triangle(410, 510, 425, 540, 440, 510);
+        rect(415, 410, 20, 100);
+        triangle(810, 290, 825, 260, 840, 290); 
+        rect(815, 290, 20, 100);
+      }  
+      //okay
+      //U 
+      if (mouseX > 310 && mouseX < 360 && mouseY > 700 && mouseY < 750) {
+        fill(0, 0, 0, 63);
+        triangle(440, 290, 410, 275, 440, 260); 
+        rect(440, 265, 100, 20);
+        triangle(290, 290, 260, 275, 290, 260); 
+        rect(290, 265, 100, 20);
+        triangle(590, 290, 560, 275, 590, 260); 
+        rect(590, 265, 100, 20);
+        triangle(740, 290, 710, 275, 740, 260); 
+        rect(740, 265, 100, 20);
+      } 
+      //UPrime 
+      if (mouseX > 310 && mouseX < 360 && mouseY > 800 && mouseY < 850) {
+        fill(0, 0, 0, 63);
+        triangle(510, 290, 540, 275, 510, 260); 
+        rect(410, 265, 100, 20);
+        triangle(660, 290, 690, 275, 660, 260); 
+        rect(560, 265, 100, 20);
+        triangle(360, 290, 390, 275, 360, 260); 
+        rect(260, 265, 100, 20);
+        triangle(810, 290, 840, 275, 810, 260); 
+        rect(710, 265, 100, 20);
+      } 
+      //D 
+      if (mouseX > 380 && mouseX < 420 && mouseY > 700 && mouseY < 750) {
+        fill(0, 0, 0, 63);
+        triangle(510, 390, 540, 375, 510, 360); 
+        rect(410, 365, 100, 20);
+        triangle(660, 390, 690, 375, 660, 360); 
+        rect(560, 365, 100, 20);
+        triangle(360, 390, 390, 375, 360, 360); 
+        rect(260, 365, 100, 20);
+        triangle(810, 390, 840, 375, 810, 360); 
+        rect(710, 365, 100, 20);
+      } 
+      //DPrime 
+      if (mouseX > 380 && mouseX < 420 && mouseY > 800 && mouseY < 850) {
+        fill(0, 0, 0, 63);
+        triangle(440, 390, 410, 375, 440, 360); 
+        rect(440, 365, 100, 20);
+        triangle(290, 390, 260, 375, 290, 360); 
+        rect(290, 365, 100, 20);
+        triangle(590, 390, 560, 375, 590, 360); 
+        rect(590, 365, 100, 20);
+        triangle(740, 390, 710, 375, 740, 360); 
+        rect(740, 365, 100, 20);
+      }  
+      //E 
+      if (mouseX > 660 && mouseX < 710 && mouseY > 700 && mouseY < 750) {
+        fill(0, 0, 0, 63);
+        triangle(510, 340, 540, 325, 510, 310); 
+        rect(410, 315, 100, 20);
+        triangle(660, 340, 690, 325, 660, 310); 
+        rect(560, 315, 100, 20);
+        triangle(360, 340, 390, 325, 360, 310); 
+        rect(260, 315, 100, 20);
+        triangle(810, 340, 840, 325, 810, 310); 
+        rect(710, 315, 100, 20);
+      } 
+      //EPrime 
+      if (mouseX > 660 && mouseX < 710 && mouseY > 800 && mouseY < 850) {
+        fill(0, 0, 0, 63);
+        triangle(440, 340, 410, 325, 440, 310); 
+        rect(440, 315, 100, 20);
+        triangle(290, 340, 260, 325, 290, 310); 
+        rect(290, 315, 100, 20);
+        triangle(590, 340, 560, 325, 590, 310); 
+        rect(590, 315, 100, 20);
+        triangle(740, 340, 710, 325, 740, 310); 
+        rect(740, 315, 100, 20);
+      } 
+      //Z
+      if (mouseX > 930 && mouseX < 980 && mouseY > 700 && mouseY < 750) {
+        fill(0, 0, 0, 63);
+        triangle(510, 290, 540, 275, 510, 260); 
+        rect(410, 265, 100, 20);
+        triangle(660, 290, 690, 275, 660, 260); 
+        rect(560, 265, 100, 20);
+        triangle(360, 290, 390, 275, 360, 260); 
+        rect(260, 265, 100, 20);
+        triangle(810, 290, 840, 275, 810, 260); 
+        rect(710, 265, 100, 20); 
+        triangle(510, 390, 540, 375, 510, 360); 
+        rect(410, 365, 100, 20);
+        triangle(660, 390, 690, 375, 660, 360); 
+        rect(560, 365, 100, 20);
+        triangle(360, 390, 390, 375, 360, 360); 
+        rect(260, 365, 100, 20);
+        triangle(810, 390, 840, 375, 810, 360); 
+        rect(710, 365, 100, 20); 
+        triangle(510, 340, 540, 325, 510, 310); 
+        rect(410, 315, 100, 20);
+        triangle(660, 340, 690, 325, 660, 310); 
+        rect(560, 315, 100, 20);
+        triangle(360, 340, 390, 325, 360, 310); 
+        rect(260, 315, 100, 20);
+        triangle(810, 340, 840, 325, 810, 310); 
+        rect(710, 315, 100, 20);
+      } 
+      //ZPrime 
+      if (mouseX > 930 && mouseX < 980 && mouseY > 800 && mouseY < 850) {
+        fill(0, 0, 0, 63);
+        triangle(440, 290, 410, 275, 440, 260); 
+        rect(440, 265, 100, 20);
+        triangle(290, 290, 260, 275, 290, 260); 
+        rect(290, 265, 100, 20);
+        triangle(590, 290, 560, 275, 590, 260); 
+        rect(590, 265, 100, 20);
+        triangle(740, 290, 710, 275, 740, 260); 
+        rect(740, 265, 100, 20); 
+        triangle(440, 390, 410, 375, 440, 360); 
+        rect(440, 365, 100, 20);
+        triangle(290, 390, 260, 375, 290, 360); 
+        rect(290, 365, 100, 20);
+        triangle(590, 390, 560, 375, 590, 360); 
+        rect(590, 365, 100, 20);
+        triangle(740, 390, 710, 375, 740, 360); 
+        rect(740, 365, 100, 20);
+        triangle(440, 340, 410, 325, 440, 310); 
+        rect(440, 315, 100, 20);
+        triangle(290, 340, 260, 325, 290, 310); 
+        rect(290, 315, 100, 20);
+        triangle(590, 340, 560, 325, 590, 310); 
+        rect(590, 315, 100, 20);
+        triangle(740, 340, 710, 325, 740, 310); 
+        rect(740, 315, 100, 20);
+      } 
+      //F
+      if (mouseX > 450 && mouseX < 500 && mouseY > 700 && mouseY < 750) {
+        fill(0, 0, 0, 63);
+        triangle(510, 240, 540, 225, 510, 210); 
+        rect(410, 215, 100, 20);  
+        triangle(560, 360, 575, 390, 590, 360);
+        rect(565, 260, 20, 100);  
+        triangle(440, 440, 410, 425, 440, 410); 
+        rect(440, 415, 100, 20);
+        triangle(360, 290, 375, 260, 390, 290); 
+        rect(365, 290, 20, 100);
+      } 
+      //FPrime
+      if (mouseX > 450 && mouseX < 500 && mouseY > 800 && mouseY < 850) {
+        fill(0, 0, 0, 63);
+        triangle(440, 240, 410, 225, 440, 210); 
+        rect(440, 215, 100, 20); 
+        triangle(360, 360, 375, 390, 390, 360);
+        rect(365, 260, 20, 100);
+        triangle(510, 440, 540, 425, 510, 410); 
+        rect(410, 415, 100, 20);  
+        triangle(560, 290, 575, 260, 590, 290); 
+        rect(565, 290, 20, 100);
+      }
+      //S  
+      if (mouseX > 730 && mouseX < 780 && mouseY > 700 && mouseY < 750) {
+        fill(0, 0, 0, 63);
+        triangle(510, 190, 540, 175, 510, 160); 
+        rect(410, 165, 100, 20);  
+        triangle(610, 360, 625, 390, 640, 360);
+        rect(615, 260, 20, 100);  
+        triangle(440, 490, 410, 475, 440, 460); 
+        rect(440, 465, 100, 20);
+        triangle(310, 290, 325, 260, 340, 290); 
+        rect(315, 290, 20, 100);
+      } 
+      //SPrime
+      if (mouseX > 730 && mouseX < 780 && mouseY > 800 && mouseY < 850) {
+        fill(0, 0, 0, 63);
+        triangle(440, 190, 410, 175, 440, 160); 
+        rect(440, 165, 100, 20); 
+        triangle(310, 360, 325, 390, 340, 360);
+        rect(315, 260, 20, 100);
+        triangle(510, 490, 540, 475, 510, 460); 
+        rect(410, 465, 100, 20);  
+        triangle(610, 290, 625, 260, 640, 290); 
+        rect(615, 290, 20, 100);
+      }
+      //B 
+      if (mouseX > 520 && mouseX < 570 && mouseY > 700 && mouseY < 750) {
+        fill(0, 0, 0, 63);
+        triangle(440, 140, 410, 125, 440, 110); 
+        rect(440, 115, 100, 20); 
+        triangle(260, 360, 275, 390, 290, 360);
+        rect(265, 260, 20, 100);
+        triangle(510, 540, 540, 525, 510, 510); 
+        rect(410, 515, 100, 20);  
+        triangle(660, 290, 675, 260, 690, 290); 
+        rect(665, 290, 20, 100);
+      } 
+      //BPrime
+      if (mouseX > 520 && mouseX < 570 && mouseY > 800 && mouseY < 850) {
+        fill(0, 0, 0, 63);
+        triangle(510, 140, 540, 125, 510, 110); 
+        rect(410, 115, 100, 20);  
+        triangle(660, 360, 675, 390, 690, 360);
+        rect(665, 260, 20, 100);  
+        triangle(440, 540, 410, 525, 440, 510); 
+        rect(440, 515, 100, 20);
+        triangle(260, 290, 275, 260, 290, 290); 
+        rect(265, 290, 20, 100);
+      } 
+      //Y
+      if (mouseX > 860 && mouseX < 910 && mouseY > 700 && mouseY < 750) {
+        fill(0, 0, 0, 63);
+        triangle(440, 140, 410, 125, 440, 110); 
+        rect(440, 115, 100, 20); 
+        triangle(260, 360, 275, 390, 290, 360);
+        rect(265, 260, 20, 100);
+        triangle(510, 540, 540, 525, 510, 510); 
+        rect(410, 515, 100, 20);  
+        triangle(660, 290, 675, 260, 690, 290); 
+        rect(665, 290, 20, 100); 
+        triangle(440, 240, 410, 225, 440, 210); 
+        rect(440, 215, 100, 20); 
+        triangle(360, 360, 375, 390, 390, 360);
+        rect(365, 260, 20, 100);
+        triangle(510, 440, 540, 425, 510, 410); 
+        rect(410, 415, 100, 20);  
+        triangle(560, 290, 575, 260, 590, 290); 
+        rect(565, 290, 20, 100); 
+        triangle(440, 190, 410, 175, 440, 160); 
+        rect(440, 165, 100, 20); 
+        triangle(310, 360, 325, 390, 340, 360);
+        rect(315, 260, 20, 100);
+        triangle(510, 490, 540, 475, 510, 460); 
+        rect(410, 465, 100, 20);  
+        triangle(610, 290, 625, 260, 640, 290); 
+        rect(615, 290, 20, 100);
+      }
+      //YPrime 
+      if (mouseX > 860 && mouseX < 910 && mouseY > 800 && mouseY < 850) {
+        fill(0, 0, 0, 63);
+        triangle(510, 140, 540, 125, 510, 110); 
+        rect(410, 115, 100, 20);  
+        triangle(660, 360, 675, 390, 690, 360);
+        rect(665, 260, 20, 100);  
+        triangle(440, 540, 410, 525, 440, 510); 
+        rect(440, 515, 100, 20);
+        triangle(260, 290, 275, 260, 290, 290); 
+        rect(265, 290, 20, 100); 
+        triangle(510, 240, 540, 225, 510, 210); 
+        rect(410, 215, 100, 20);  
+        triangle(560, 360, 575, 390, 590, 360);
+        rect(565, 260, 20, 100);  
+        triangle(440, 440, 410, 425, 440, 410); 
+        rect(440, 415, 100, 20);
+        triangle(360, 290, 375, 260, 390, 290); 
+        rect(365, 290, 20, 100); 
+        triangle(510, 190, 540, 175, 510, 160); 
+        rect(410, 165, 100, 20);  
+        triangle(610, 360, 625, 390, 640, 360);
+        rect(615, 260, 20, 100);  
+        triangle(440, 490, 410, 475, 440, 460); 
+        rect(440, 465, 100, 20);
+        triangle(310, 290, 325, 260, 340, 290); 
+        rect(315, 290, 20, 100);
       }
     } 
-  //  for (int i = 0; i < leftSide.length; i++) {
-  //    for (int j = 0; j < leftSide[0].length; j++) {
-  //      fill(stringToColor(leftSide[i][j]));
-  //      rect(250+j*50, 250+i*50, 50, 50);
-  //    }
-  //  }
-  //  for (int i = 0; i < frontSide.length; i++) {
-  //    for (int j = 0; j < frontSide[0].length; j++) {
-  //      fill(stringToColor(frontSide[i][j]));
-  //      rect(400+j*50, 250+i*50, 50, 50);
-  //    }
-  //  }
-  //  for (int i = 0; i < rightSide.length; i++) {
-  //    for (int j = 0; j < rightSide[0].length; j++) {
-  //      fill(stringToColor(rightSide[i][j]));
-  //      rect(550+j*50, 250+i*50, 50, 50);
-  //    }
-  //  }
-  //  for (int i = 0; i < backSide.length; i++) {
-  //    for (int j = 0; j < backSide[0].length; j++) {
-  //      fill(stringToColor(backSide[i][j]));
-  //      rect(700+j*50, 250+i*50, 50, 50);
-  //    }
-  //  }
-  //  for (int i = 0; i < downSide.length; i++) {
-  //    for (int j = 0; j < downSide[0].length; j++) {
-  //      fill(stringToColor(downSide[i][j]));
-  //      rect(400+j*50, 400+i*50, 50, 50);
-  //    }
-    //} 
-    //L
-    if (mouseX > 170 && mouseX < 220 && mouseY > 700 && mouseY < 750) {
-      fill(0, 0, 0, 63);
-      triangle(410, 360, 425, 390, 440, 360);
-      rect(415, 260, 20, 100);
-      triangle(410, 210, 425, 240, 440, 210);
-      rect(415, 110, 20, 100);
-      triangle(410, 510, 425, 540, 440, 510);
-      rect(415, 410, 20, 100);
-      triangle(810, 290, 825, 260, 840, 290); 
-      rect(815, 290, 20, 100);
-    } 
-    //LPrime
-    if (mouseX > 170 && mouseX < 220 && mouseY > 800 && mouseY < 850) {
-      fill(0, 0, 0, 63); 
-      triangle(810, 360, 825, 390, 840, 360);
-      rect(815, 260, 20, 100); 
-      triangle(410, 290, 425, 260, 440, 290); 
-      rect(415, 290, 20, 100);
-      triangle(410, 140, 425, 110, 440, 140); 
-      rect(415, 140, 20, 100);
-      triangle(410, 440, 425, 410, 440, 440); 
-      rect(415, 440, 20, 100);
-    } 
-    //M  
-    if (mouseX > 590 && mouseX < 640 && mouseY > 700 && mouseY < 750) {
-      fill(0, 0, 0, 63);
-      triangle(460, 360, 475, 390, 490, 360);
-      rect(465, 260, 20, 100);
-      triangle(460, 210, 475, 240, 490, 210);
-      rect(465, 110, 20, 100);
-      triangle(460, 510, 475, 540, 490, 510);
-      rect(465, 410, 20, 100);
-      triangle(760, 290, 775, 260, 790, 290); 
-      rect(765, 290, 20, 100);
-    } 
-    //MPrime
-    if (mouseX > 590 && mouseX < 640 && mouseY > 800 && mouseY < 850) {
-      fill(0, 0, 0, 63); 
-      triangle(460, 290, 475, 260, 490, 290); 
-      rect(465, 290, 20, 100);
-      triangle(460, 140, 475, 110, 490, 140); 
-      rect(465, 140, 20, 100);
-      triangle(460, 440, 475, 410, 490, 440); 
-      rect(465, 440, 20, 100);
-      triangle(760, 360, 775, 390, 790, 360);
-      rect(765, 260, 20, 100);
-    }
-    //R 
-    if (mouseX > 240 && mouseX < 290 && mouseY > 700 && mouseY < 750) {
-      fill(0, 0, 0, 63); 
-      triangle(510, 290, 525, 260, 540, 290); 
-      rect(515, 290, 20, 100);
-      triangle(510, 140, 525, 110, 540, 140); 
-      rect(515, 140, 20, 100);
-      triangle(510, 440, 525, 410, 540, 440); 
-      rect(515, 440, 20, 100);
-      triangle(710, 360, 725, 390, 740, 360);
-      rect(715, 260, 20, 100);
-    } 
-    //RPrime  
-    if (mouseX > 240 && mouseX < 290 && mouseY > 800 && mouseY < 850) { 
-      fill(0, 0, 0, 63);
-      triangle(510, 360, 525, 390, 540, 360);
-      rect(515, 260, 20, 100);
-      triangle(510, 210, 525, 240, 540, 210);
-      rect(515, 110, 20, 100);
-      triangle(510, 510, 525, 540, 540, 510);
-      rect(515, 410, 20, 100);
-      triangle(710, 290, 725, 260, 740, 290); 
-      rect(715, 290, 20, 100);
-    } 
-    //X  
-    if (mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 750) {
-      fill(0, 0, 0, 63);
-      triangle(510, 290, 525, 260, 540, 290); 
-      rect(515, 290, 20, 100);
-      triangle(510, 140, 525, 110, 540, 140); 
-      rect(515, 140, 20, 100);
-      triangle(510, 440, 525, 410, 540, 440); 
-      rect(515, 440, 20, 100);
-      triangle(710, 360, 725, 390, 740, 360);
-      rect(715, 260, 20, 100); 
-      triangle(460, 290, 475, 260, 490, 290); 
-      rect(465, 290, 20, 100);
-      triangle(460, 140, 475, 110, 490, 140); 
-      rect(465, 140, 20, 100);
-      triangle(460, 440, 475, 410, 490, 440); 
-      rect(465, 440, 20, 100);
-      triangle(760, 360, 775, 390, 790, 360);
-      rect(765, 260, 20, 100);
-      triangle(810, 360, 825, 390, 840, 360);
-      rect(815, 260, 20, 100); 
-      triangle(410, 290, 425, 260, 440, 290); 
-      rect(415, 290, 20, 100);
-      triangle(410, 140, 425, 110, 440, 140); 
-      rect(415, 140, 20, 100);
-      triangle(410, 440, 425, 410, 440, 440); 
-      rect(415, 440, 20, 100);
-    } 
-    if (mouseX > 800 && mouseX < 850 && mouseY > 800 && mouseY < 850) {
-      fill(0, 0, 0, 63);
-      triangle(510, 360, 525, 390, 540, 360);
-      rect(515, 260, 20, 100);
-      triangle(510, 210, 525, 240, 540, 210);
-      rect(515, 110, 20, 100);
-      triangle(510, 510, 525, 540, 540, 510);
-      rect(515, 410, 20, 100);
-      triangle(710, 290, 725, 260, 740, 290); 
-      rect(715, 290, 20, 100); 
-      triangle(460, 360, 475, 390, 490, 360);
-      rect(465, 260, 20, 100);
-      triangle(460, 210, 475, 240, 490, 210);
-      rect(465, 110, 20, 100);
-      triangle(460, 510, 475, 540, 490, 510);
-      rect(465, 410, 20, 100);
-      triangle(760, 290, 775, 260, 790, 290); 
-      rect(765, 290, 20, 100); 
-      triangle(410, 360, 425, 390, 440, 360);
-      rect(415, 260, 20, 100);
-      triangle(410, 210, 425, 240, 440, 210);
-      rect(415, 110, 20, 100);
-      triangle(410, 510, 425, 540, 440, 510);
-      rect(415, 410, 20, 100);
-      triangle(810, 290, 825, 260, 840, 290); 
-      rect(815, 290, 20, 100);
-    }  
-    //okay
-    //U 
-    if (mouseX > 310 && mouseX < 360 && mouseY > 700 && mouseY < 750) {
-      fill(0, 0, 0, 63);
-      triangle(440, 290, 410, 275, 440, 260); 
-      rect(440, 265, 100, 20);
-      triangle(290, 290, 260, 275, 290, 260); 
-      rect(290, 265, 100, 20);
-      triangle(590, 290, 560, 275, 590, 260); 
-      rect(590, 265, 100, 20);
-      triangle(740, 290, 710, 275, 740, 260); 
-      rect(740, 265, 100, 20);
-    } 
-    //UPrime 
-    if (mouseX > 310 && mouseX < 360 && mouseY > 800 && mouseY < 850) {
-      fill(0, 0, 0, 63);
-      triangle(510, 290, 540, 275, 510, 260); 
-      rect(410, 265, 100, 20);
-      triangle(660, 290, 690, 275, 660, 260); 
-      rect(560, 265, 100, 20);
-      triangle(360, 290, 390, 275, 360, 260); 
-      rect(260, 265, 100, 20);
-      triangle(810, 290, 840, 275, 810, 260); 
-      rect(710, 265, 100, 20);
-    } 
-    //D 
-    if (mouseX > 380 && mouseX < 420 && mouseY > 700 && mouseY < 750) {
-      fill(0, 0, 0, 63);
-      triangle(510, 390, 540, 375, 510, 360); 
-      rect(410, 365, 100, 20);
-      triangle(660, 390, 690, 375, 660, 360); 
-      rect(560, 365, 100, 20);
-      triangle(360, 390, 390, 375, 360, 360); 
-      rect(260, 365, 100, 20);
-      triangle(810, 390, 840, 375, 810, 360); 
-      rect(710, 365, 100, 20);
-    } 
-    //DPrime 
-    if (mouseX > 380 && mouseX < 420 && mouseY > 800 && mouseY < 850) {
-      fill(0, 0, 0, 63);
-      triangle(440, 390, 410, 375, 440, 360); 
-      rect(440, 365, 100, 20);
-      triangle(290, 390, 260, 375, 290, 360); 
-      rect(290, 365, 100, 20);
-      triangle(590, 390, 560, 375, 590, 360); 
-      rect(590, 365, 100, 20);
-      triangle(740, 390, 710, 375, 740, 360); 
-      rect(740, 365, 100, 20);
-    }  
-    //E 
-    if (mouseX > 660 && mouseX < 710 && mouseY > 700 && mouseY < 750) {
-      fill(0, 0, 0, 63);
-      triangle(510, 340, 540, 325, 510, 310); 
-      rect(410, 315, 100, 20);
-      triangle(660, 340, 690, 325, 660, 310); 
-      rect(560, 315, 100, 20);
-      triangle(360, 340, 390, 325, 360, 310); 
-      rect(260, 315, 100, 20);
-      triangle(810, 340, 840, 325, 810, 310); 
-      rect(710, 315, 100, 20);
-    } 
-    //EPrime 
-    if (mouseX > 660 && mouseX < 710 && mouseY > 800 && mouseY < 850) {
-      fill(0, 0, 0, 63);
-      triangle(440, 340, 410, 325, 440, 310); 
-      rect(440, 315, 100, 20);
-      triangle(290, 340, 260, 325, 290, 310); 
-      rect(290, 315, 100, 20);
-      triangle(590, 340, 560, 325, 590, 310); 
-      rect(590, 315, 100, 20);
-      triangle(740, 340, 710, 325, 740, 310); 
-      rect(740, 315, 100, 20);
-    } 
-    //Z
-    if (mouseX > 930 && mouseX < 980 && mouseY > 700 && mouseY < 750) {
-      fill(0, 0, 0, 63);
-      triangle(510, 290, 540, 275, 510, 260); 
-      rect(410, 265, 100, 20);
-      triangle(660, 290, 690, 275, 660, 260); 
-      rect(560, 265, 100, 20);
-      triangle(360, 290, 390, 275, 360, 260); 
-      rect(260, 265, 100, 20);
-      triangle(810, 290, 840, 275, 810, 260); 
-      rect(710, 265, 100, 20); 
-      triangle(510, 390, 540, 375, 510, 360); 
-      rect(410, 365, 100, 20);
-      triangle(660, 390, 690, 375, 660, 360); 
-      rect(560, 365, 100, 20);
-      triangle(360, 390, 390, 375, 360, 360); 
-      rect(260, 365, 100, 20);
-      triangle(810, 390, 840, 375, 810, 360); 
-      rect(710, 365, 100, 20); 
-      triangle(510, 340, 540, 325, 510, 310); 
-      rect(410, 315, 100, 20);
-      triangle(660, 340, 690, 325, 660, 310); 
-      rect(560, 315, 100, 20);
-      triangle(360, 340, 390, 325, 360, 310); 
-      rect(260, 315, 100, 20);
-      triangle(810, 340, 840, 325, 810, 310); 
-      rect(710, 315, 100, 20);
-    } 
-    //ZPrime 
-    if (mouseX > 930 && mouseX < 980 && mouseY > 800 && mouseY < 850) {
-      fill(0, 0, 0, 63);
-      triangle(440, 290, 410, 275, 440, 260); 
-      rect(440, 265, 100, 20);
-      triangle(290, 290, 260, 275, 290, 260); 
-      rect(290, 265, 100, 20);
-      triangle(590, 290, 560, 275, 590, 260); 
-      rect(590, 265, 100, 20);
-      triangle(740, 290, 710, 275, 740, 260); 
-      rect(740, 265, 100, 20); 
-      triangle(440, 390, 410, 375, 440, 360); 
-      rect(440, 365, 100, 20);
-      triangle(290, 390, 260, 375, 290, 360); 
-      rect(290, 365, 100, 20);
-      triangle(590, 390, 560, 375, 590, 360); 
-      rect(590, 365, 100, 20);
-      triangle(740, 390, 710, 375, 740, 360); 
-      rect(740, 365, 100, 20);
-      triangle(440, 340, 410, 325, 440, 310); 
-      rect(440, 315, 100, 20);
-      triangle(290, 340, 260, 325, 290, 310); 
-      rect(290, 315, 100, 20);
-      triangle(590, 340, 560, 325, 590, 310); 
-      rect(590, 315, 100, 20);
-      triangle(740, 340, 710, 325, 740, 310); 
-      rect(740, 315, 100, 20);
-    } 
-    //F
-    if (mouseX > 450 && mouseX < 500 && mouseY > 700 && mouseY < 750) {
-      fill(0, 0, 0, 63);
-      triangle(510, 240, 540, 225, 510, 210); 
-      rect(410, 215, 100, 20);  
-      triangle(560, 360, 575, 390, 590, 360);
-      rect(565, 260, 20, 100);  
-      triangle(440, 440, 410, 425, 440, 410); 
-      rect(440, 415, 100, 20);
-      triangle(360, 290, 375, 260, 390, 290); 
-      rect(365, 290, 20, 100);
-    } 
-    //FPrime
-    if (mouseX > 450 && mouseX < 500 && mouseY > 800 && mouseY < 850) {
-      fill(0, 0, 0, 63);
-      triangle(440, 240, 410, 225, 440, 210); 
-      rect(440, 215, 100, 20); 
-      triangle(360, 360, 375, 390, 390, 360);
-      rect(365, 260, 20, 100);
-      triangle(510, 440, 540, 425, 510, 410); 
-      rect(410, 415, 100, 20);  
-      triangle(560, 290, 575, 260, 590, 290); 
-      rect(565, 290, 20, 100);
-    }
-    //S  
-    if (mouseX > 730 && mouseX < 780 && mouseY > 700 && mouseY < 750) {
-      fill(0, 0, 0, 63);
-      triangle(510, 190, 540, 175, 510, 160); 
-      rect(410, 165, 100, 20);  
-      triangle(610, 360, 625, 390, 640, 360);
-      rect(615, 260, 20, 100);  
-      triangle(440, 490, 410, 475, 440, 460); 
-      rect(440, 465, 100, 20);
-      triangle(310, 290, 325, 260, 340, 290); 
-      rect(315, 290, 20, 100);
-    } 
-    //SPrime
-    if (mouseX > 730 && mouseX < 780 && mouseY > 800 && mouseY < 850) {
-      fill(0, 0, 0, 63);
-      triangle(440, 190, 410, 175, 440, 160); 
-      rect(440, 165, 100, 20); 
-      triangle(310, 360, 325, 390, 340, 360);
-      rect(315, 260, 20, 100);
-      triangle(510, 490, 540, 475, 510, 460); 
-      rect(410, 465, 100, 20);  
-      triangle(610, 290, 625, 260, 640, 290); 
-      rect(615, 290, 20, 100);
-    }
-    //B 
-    if (mouseX > 520 && mouseX < 570 && mouseY > 700 && mouseY < 750) {
-      fill(0, 0, 0, 63);
-      triangle(440, 140, 410, 125, 440, 110); 
-      rect(440, 115, 100, 20); 
-      triangle(260, 360, 275, 390, 290, 360);
-      rect(265, 260, 20, 100);
-      triangle(510, 540, 540, 525, 510, 510); 
-      rect(410, 515, 100, 20);  
-      triangle(660, 290, 675, 260, 690, 290); 
-      rect(665, 290, 20, 100);
-    } 
-    //BPrime
-    if (mouseX > 520 && mouseX < 570 && mouseY > 800 && mouseY < 850) {
-      fill(0, 0, 0, 63);
-      triangle(510, 140, 540, 125, 510, 110); 
-      rect(410, 115, 100, 20);  
-      triangle(660, 360, 675, 390, 690, 360);
-      rect(665, 260, 20, 100);  
-      triangle(440, 540, 410, 525, 440, 510); 
-      rect(440, 515, 100, 20);
-      triangle(260, 290, 275, 260, 290, 290); 
-      rect(265, 290, 20, 100);
-    } 
-    //Y
-    if (mouseX > 860 && mouseX < 910 && mouseY > 700 && mouseY < 750) {
-      fill(0, 0, 0, 63);
-      triangle(440, 140, 410, 125, 440, 110); 
-      rect(440, 115, 100, 20); 
-      triangle(260, 360, 275, 390, 290, 360);
-      rect(265, 260, 20, 100);
-      triangle(510, 540, 540, 525, 510, 510); 
-      rect(410, 515, 100, 20);  
-      triangle(660, 290, 675, 260, 690, 290); 
-      rect(665, 290, 20, 100); 
-      triangle(440, 240, 410, 225, 440, 210); 
-      rect(440, 215, 100, 20); 
-      triangle(360, 360, 375, 390, 390, 360);
-      rect(365, 260, 20, 100);
-      triangle(510, 440, 540, 425, 510, 410); 
-      rect(410, 415, 100, 20);  
-      triangle(560, 290, 575, 260, 590, 290); 
-      rect(565, 290, 20, 100); 
-      triangle(440, 190, 410, 175, 440, 160); 
-      rect(440, 165, 100, 20); 
-      triangle(310, 360, 325, 390, 340, 360);
-      rect(315, 260, 20, 100);
-      triangle(510, 490, 540, 475, 510, 460); 
-      rect(410, 465, 100, 20);  
-      triangle(610, 290, 625, 260, 640, 290); 
-      rect(615, 290, 20, 100);
-    }
-    //YPrime 
-    if (mouseX > 860 && mouseX < 910 && mouseY > 800 && mouseY < 850) {
-      fill(0, 0, 0, 63);
-      triangle(510, 140, 540, 125, 510, 110); 
-      rect(410, 115, 100, 20);  
-      triangle(660, 360, 675, 390, 690, 360);
-      rect(665, 260, 20, 100);  
-      triangle(440, 540, 410, 525, 440, 510); 
-      rect(440, 515, 100, 20);
-      triangle(260, 290, 275, 260, 290, 290); 
-      rect(265, 290, 20, 100); 
-      triangle(510, 240, 540, 225, 510, 210); 
-      rect(410, 215, 100, 20);  
-      triangle(560, 360, 575, 390, 590, 360);
-      rect(565, 260, 20, 100);  
-      triangle(440, 440, 410, 425, 440, 410); 
-      rect(440, 415, 100, 20);
-      triangle(360, 290, 375, 260, 390, 290); 
-      rect(365, 290, 20, 100); 
-      triangle(510, 190, 540, 175, 510, 160); 
-      rect(410, 165, 100, 20);  
-      triangle(610, 360, 625, 390, 640, 360);
-      rect(615, 260, 20, 100);  
-      triangle(440, 490, 410, 475, 440, 460); 
-      rect(440, 465, 100, 20);
-      triangle(310, 290, 325, 260, 340, 290); 
-      rect(315, 290, 20, 100);
-    }
-  } 
   if (mode == 1) {
     for (int i = 0; i < leftSide.length; i++) {
       for (int j = 0; j < leftSide[0].length; j++) {
@@ -1112,6 +1109,20 @@ void draw() {
       quad(600, 300, 600, 150, 625, 100, 625, 250);
       rect(400, 500, 150, 50); 
       rect(250, 250, 50, 150);
+    }
+    if (mode == 2) {
+      for (int i = 0; i < frontSide.length; i++) {
+        for (int j = 0; j < frontSide[0].length; j++) {
+          fill(stringToColor(frontSide[i][j]));
+          quad(400+j*50, 300+j*10-i*50, 400+j*50, 250+j*10-i*50, 450+j*50, 260+j*10-i*50, 450+j*50, 310+j*10-i*50);
+        }
+      }
+      //for (int i = 0; i < rightSide.length; i++) {
+      //  for (int j = 0; j < rightSide[0].length; j++) {
+      //    fill(stringToColor(rightSide[i][j]));
+      //    quad(550, 240, 550, 180, 600, 170, 600, 230);
+      //  }
+      //}
     }
   }
   fill(255, 255, 255);
