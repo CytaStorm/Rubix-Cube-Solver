@@ -360,21 +360,6 @@ public class Cube {
       return null;
     }
   }
-
-  //accessor for solutionset
-  public ArrayList<String> solutionSet() {
-    return solutionSet;
-  }
-  public void solAdd(String addition) {
-    solutionSet.add(addition);
-  }
-  public void solRemoveLast() {
-    if (solutionSet.size() > 0) {
-      solutionSet.remove(solutionSet.size()-1);
-    } else {
-      print("nothing left to remove!");
-    }
-  }
   public void L() {
     for (int i = 0; i < pieces.length; i++) {
       if (pieces[i].getPos()[0] == 1) {
