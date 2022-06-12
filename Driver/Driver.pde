@@ -339,8 +339,9 @@ void draw() {
           fill(stringToColor(leftSide[i][j]));
           //rect(250+j*50, 250+i*50, 50, 50);
           //quad(550+j*35,330-j*30+i*50,550+j*35,280-j*30+i*50,585+j*35,250-j*30+i*50,585+j*35,300-j*30+i*50); 
-          quad(355,180,355,130,320,160,320,210);
-          quad(250+j*35,270-j*30+i*50,250+j*35,220-j*30+i*50,285+j*35,190-j*30+i*50,285+j*35,240-j*30+i*50);
+          //quad(355,180,355,130,320,160,320,210);
+          //quad(250+j*35,270-j*30+i*50,250+j*35,220-j*30+i*50,285+j*35,190-j*30+i*50,285+j*35,240-j*30+i*50);
+          quad(355-j*35,180+j*30+i*50,355-j*35,130+j*30+i*50,320-j*35,160+j*30+i*50,320-j*35,210+j*30+i*50);
         }
       }
     for (int i = 0; i < frontSide.length; i++) {
@@ -359,18 +360,21 @@ void draw() {
         //270 
       }
     }
-    //  for (int i = 0; i < backSide.length; i++) {
-    //    for (int j = 0; j < backSide[0].length; j++) {
-    //      fill(stringToColor(backSide[i][j]));
-    //      rect(700+j*50, 250+i*50, 50, 50);
-    //    }
-    //  }
-    //  for (int i = 0; i < downSide.length; i++) {
-    //    for (int j = 0; j < downSide[0].length; j++) {
-    //      fill(stringToColor(downSide[i][j]));
-    //      rect(400+j*50, 400+i*50, 50, 50);
-    //    }
-    //} 
+      for (int i = 0; i < backSide.length; i++) {
+        for (int j = 0; j < backSide[0].length; j++) {
+          fill(stringToColor(backSide[i][j]));
+          //rect(700+j*50, 250+i*50, 50, 50); 
+          quad(700+j*50, 100+j*10+i*50, 700+j*50, 50+j*10+i*50, 750+j*50, 60+j*10+i*50, 750+j*50, 110+j*10+i*50);
+        }
+      }
+      for (int i = 0; i < downSide.length; i++) {
+        for (int j = 0; j < downSide[0].length; j++) {
+          fill(stringToColor(downSide[i][j]));
+          //rect(400+j*50, 400+i*50, 50, 50); 
+          //quad(470+j*50-i*35, 490+j*10+i*30, 505+j*50-i*35, 460+j*10+i*30, 555+j*50-i*35, 470+j*10+i*30, 520+j*50-i*35, 500+j*10+i*30); 
+          quad(435+j*50+i*35, 520+j*10-i*30, 400+j*50+i*35, 550+j*10-i*30, 450+j*50+i*35, 560+j*10-i*30, 485+j*50+i*35, 530+j*10-i*30);
+        }
+    } 
     //L
     if (mouseX > 170 && mouseX < 220 && mouseY > 700 && mouseY < 750) {
       fill(0, 0, 0, 63);
