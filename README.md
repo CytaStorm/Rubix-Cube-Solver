@@ -83,30 +83,30 @@ Gil Zheng: Finished the arrows for the U rotation and merged to main for Jeff to
 
 Tuesday 7 June 2022 <br/>
 Jeff Chen: Began working on solution optimizer, not much work because of math final<br/>
-Gil Zheng: <br /> 
+Gil Zheng: Continued working on the hovering arrows for the first mode <br /> 
 <br /> 
 
 Wednesday 8 June 2022 <br/>
 Jeff Chen: Continued working on solution optimizer, not much work because of math final<br/>
-Gil Zheng: <br /> 
+Gil Zheng: Did E/E' and Z/Z' arrows <br /> 
 <br /> 
 
 Thursday 9 June 2022 <br/>
 Jeff Chen: Finished solution optimizer<br/>
-Gil Zheng: <br /> 
+Gil Zheng: Finished the hovering arrows for the first mode<br /> 
 <br /> 
 
 Friday 10 June 2022 <br/>
 Jeff Chen:<br/>
-Gil Zheng: <br /> 
+Gil Zheng: Finished the hovering arrows for the 2nd mode<br /> 
 <br /> 
 
 Saturday 11 June 2022 <br/>
 Jeff Chen: Started and finished face color editor, user can now edit cube to match a real life cube, and will not run if invalid number of colors<br/>
-Gil Zheng: <br /> 
+Gil Zheng: Started working on the third mode of the cube<br /> 
 <br /> 
 
 Sunday 12 June 2022 <br/>
 Jeff Chen: Added printScramble toggle to toggle if the scramble is printed, as well as removed unusued variables<br/>
-Gil Zheng: <br /> 
+Gil Zheng: Finished adding all the arrows and highlighting for the third mode<br /> 
 <br /> 
