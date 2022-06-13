@@ -39,7 +39,7 @@ String colorMode = "white";
 void keyPressed() {
     switch(key) { 
     case 'm': 
-      if (mode == 1) {
+      if (mode == 2) {
         mode = 0;
       } else {
         mode++;
@@ -187,138 +187,134 @@ void mouseClicked() {
   }
 
   //changing colors mode
-  else if(mouseX > 0 && mouseX < 50 && mouseY > 899 && mouseY < 950){
+  else if (mouseX > 0 && mouseX < 50 && mouseY > 899 && mouseY < 950) {
     colorMode = "orange";
-  }else if(mouseX > 49 && mouseX < 100 && mouseY > 899 && mouseY < 950){
+  } else if (mouseX > 49 && mouseX < 100 && mouseY > 899 && mouseY < 950) {
     colorMode = "white";
-  }else if(mouseX > 99 && mouseX < 150 && mouseY > 899 && mouseY < 950){
+  } else if (mouseX > 99 && mouseX < 150 && mouseY > 899 && mouseY < 950) {
     colorMode = "red";
-  }else if(mouseX > 149 && mouseX < 200 && mouseY > 899 && mouseY < 950){
-    colorMode = "green"; 
-  }else if(mouseX > 199 && mouseX < 250 && mouseY > 899 && mouseY < 950){
+  } else if (mouseX > 149 && mouseX < 200 && mouseY > 899 && mouseY < 950) {
+    colorMode = "green";
+  } else if (mouseX > 199 && mouseX < 250 && mouseY > 899 && mouseY < 950) {
     colorMode = "blue";
-  }else if(mouseX > 249 && mouseX < 300 && mouseY > 899 && mouseY < 950){
+  } else if (mouseX > 249 && mouseX < 300 && mouseY > 899 && mouseY < 950) {
     colorMode = "yellow";
-  }else{
+  } else {
     //for click to change colors
-    if(mode == 0){
+    if (mode == 0) {
       //net mode
-      if(mouseX > 249 && mouseX < 300 && mouseY > 249 && mouseY < 300 ){
-        solveCube.getPiece(1,1,1).setCol(colorMode, "x");
-      }else if(mouseX > 299 && mouseX < 350 && mouseY > 249 && mouseY < 300 ){
-        solveCube.getPiece(1,0,1).setCol(colorMode, "x");
-      }else if(mouseX > 349 && mouseX < 400 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(1,-1,1).setCol(colorMode, "x");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(1,-1,1).setCol(colorMode, "y");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(0,-1,1).setCol(colorMode, "y");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(-1,-1,1).setCol(colorMode, "y");
-      }else if(mouseX > 549 && mouseX < 600 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(-1,-1,1).setCol(colorMode, "x");
-      }else if(mouseX > 599 && mouseX < 650 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(-1,0,1).setCol(colorMode, "x");
-      }else if(mouseX > 649 && mouseX < 700 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(-1,1,1).setCol(colorMode, "x");
-      }else if(mouseX > 699 && mouseX < 750 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(-1,1,1).setCol(colorMode, "y");
-      }else if(mouseX > 749 && mouseX < 800 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(0,1,1).setCol(colorMode, "y");
-      }else if(mouseX > 799 && mouseX < 850 && mouseY > 249 && mouseY < 300){
-        solveCube.getPiece(1,1,1).setCol(colorMode, "y");
-      }
-      else if(mouseX > 249 && mouseX < 300 && mouseY > 299 && mouseY < 350){
+      if (mouseX > 249 && mouseX < 300 && mouseY > 249 && mouseY < 300 ) {
+        solveCube.getPiece(1, 1, 1).setCol(colorMode, "x");
+      } else if (mouseX > 299 && mouseX < 350 && mouseY > 249 && mouseY < 300 ) {
+        solveCube.getPiece(1, 0, 1).setCol(colorMode, "x");
+      } else if (mouseX > 349 && mouseX < 400 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(1, -1, 1).setCol(colorMode, "x");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(1, -1, 1).setCol(colorMode, "y");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(0, -1, 1).setCol(colorMode, "y");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(-1, -1, 1).setCol(colorMode, "y");
+      } else if (mouseX > 549 && mouseX < 600 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(-1, -1, 1).setCol(colorMode, "x");
+      } else if (mouseX > 599 && mouseX < 650 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(-1, 0, 1).setCol(colorMode, "x");
+      } else if (mouseX > 649 && mouseX < 700 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(-1, 1, 1).setCol(colorMode, "x");
+      } else if (mouseX > 699 && mouseX < 750 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(-1, 1, 1).setCol(colorMode, "y");
+      } else if (mouseX > 749 && mouseX < 800 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(0, 1, 1).setCol(colorMode, "y");
+      } else if (mouseX > 799 && mouseX < 850 && mouseY > 249 && mouseY < 300) {
+        solveCube.getPiece(1, 1, 1).setCol(colorMode, "y");
+      } else if (mouseX > 249 && mouseX < 300 && mouseY > 299 && mouseY < 350) {
         //middle row
-        solveCube.getPiece(1,1,0).setCol(colorMode, "x");
-      }else if(mouseX > 299 && mouseX < 350 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(1,0,0).setCol(colorMode, "x");
-      }else if(mouseX > 349 && mouseX < 400 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(1,-1,0).setCol(colorMode, "x");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(1,-1,0).setCol(colorMode, "y");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(0,-1,0).setCol(colorMode, "y");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(-1,-1,0).setCol(colorMode, "y");
-      }else if(mouseX > 549 && mouseX < 600 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(-1,-1,0).setCol(colorMode, "x");
-      }else if(mouseX > 599 && mouseX < 650 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(-1,0,0).setCol(colorMode, "x");
-      }else if(mouseX > 649 && mouseX < 700 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(-1,1,0).setCol(colorMode, "x");
-      }else if(mouseX > 699 && mouseX < 750 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(-1,1,0).setCol(colorMode, "y");
-      }else if(mouseX > 749 && mouseX < 800 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(0,1,0).setCol(colorMode, "y");
-      }else if(mouseX > 799 && mouseX < 850 && mouseY > 299 && mouseY < 350){
-        solveCube.getPiece(1,1,0).setCol(colorMode, "y");
-      }
-      else if(mouseX > 249 && mouseX < 300 && mouseY > 349 && mouseY < 400){
+        solveCube.getPiece(1, 1, 0).setCol(colorMode, "x");
+      } else if (mouseX > 299 && mouseX < 350 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(1, 0, 0).setCol(colorMode, "x");
+      } else if (mouseX > 349 && mouseX < 400 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(1, -1, 0).setCol(colorMode, "x");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(1, -1, 0).setCol(colorMode, "y");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(0, -1, 0).setCol(colorMode, "y");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(-1, -1, 0).setCol(colorMode, "y");
+      } else if (mouseX > 549 && mouseX < 600 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(-1, -1, 0).setCol(colorMode, "x");
+      } else if (mouseX > 599 && mouseX < 650 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(-1, 0, 0).setCol(colorMode, "x");
+      } else if (mouseX > 649 && mouseX < 700 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(-1, 1, 0).setCol(colorMode, "x");
+      } else if (mouseX > 699 && mouseX < 750 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(-1, 1, 0).setCol(colorMode, "y");
+      } else if (mouseX > 749 && mouseX < 800 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(0, 1, 0).setCol(colorMode, "y");
+      } else if (mouseX > 799 && mouseX < 850 && mouseY > 299 && mouseY < 350) {
+        solveCube.getPiece(1, 1, 0).setCol(colorMode, "y");
+      } else if (mouseX > 249 && mouseX < 300 && mouseY > 349 && mouseY < 400) {
         //third row
-        solveCube.getPiece(1,1,-1).setCol(colorMode, "x");
-      }else if(mouseX > 299 && mouseX < 350 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(1,0,-1).setCol(colorMode, "x");
-      }else if(mouseX > 349 && mouseX < 400 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(1,-1,-1).setCol(colorMode, "x");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(1,-1,-1).setCol(colorMode, "y");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(0,-1,-1).setCol(colorMode, "y");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(-1,-1,-1).setCol(colorMode, "y");
-      }else if(mouseX > 549 && mouseX < 600 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(-1,-1,-1).setCol(colorMode, "x");
-      }else if(mouseX > 599 && mouseX < 650 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(-1,0,-1).setCol(colorMode, "x");
-      }else if(mouseX > 649 && mouseX < 700 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(-1,1,-1).setCol(colorMode, "x");
-      }else if(mouseX > 699 && mouseX < 750 && mouseY > 349&& mouseY < 400){
-        solveCube.getPiece(-1,1,-1).setCol(colorMode, "y");
-      }else if(mouseX > 749 && mouseX < 800 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(0,1,-1).setCol(colorMode, "y");
-      }else if(mouseX > 799 && mouseX < 850 && mouseY > 349 && mouseY < 400){
-        solveCube.getPiece(1,1,-1).setCol(colorMode, "y");
-      }
-      else if(mouseX > 399 && mouseX < 450 && mouseY > 99 && mouseY < 150){
+        solveCube.getPiece(1, 1, -1).setCol(colorMode, "x");
+      } else if (mouseX > 299 && mouseX < 350 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(1, 0, -1).setCol(colorMode, "x");
+      } else if (mouseX > 349 && mouseX < 400 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(1, -1, -1).setCol(colorMode, "x");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(1, -1, -1).setCol(colorMode, "y");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(0, -1, -1).setCol(colorMode, "y");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(-1, -1, -1).setCol(colorMode, "y");
+      } else if (mouseX > 549 && mouseX < 600 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(-1, -1, -1).setCol(colorMode, "x");
+      } else if (mouseX > 599 && mouseX < 650 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(-1, 0, -1).setCol(colorMode, "x");
+      } else if (mouseX > 649 && mouseX < 700 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(-1, 1, -1).setCol(colorMode, "x");
+      } else if (mouseX > 699 && mouseX < 750 && mouseY > 349&& mouseY < 400) {
+        solveCube.getPiece(-1, 1, -1).setCol(colorMode, "y");
+      } else if (mouseX > 749 && mouseX < 800 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(0, 1, -1).setCol(colorMode, "y");
+      } else if (mouseX > 799 && mouseX < 850 && mouseY > 349 && mouseY < 400) {
+        solveCube.getPiece(1, 1, -1).setCol(colorMode, "y");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 99 && mouseY < 150) {
         //top faces
-        solveCube.getPiece(1,1,1).setCol(colorMode, "z");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 99 && mouseY < 150){
-        solveCube.getPiece(0,1,1).setCol(colorMode, "z");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 99 && mouseY < 150){
-        solveCube.getPiece(-1,1,1).setCol(colorMode, "z");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 149 && mouseY < 200){
-        solveCube.getPiece(1,0,1).setCol(colorMode, "z");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 149 && mouseY < 200){
-        solveCube.getPiece(0,0,1).setCol(colorMode, "z");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 149 && mouseY < 200){
-        solveCube.getPiece(-1,0,1).setCol(colorMode, "z");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 199 && mouseY < 250){
-        solveCube.getPiece(1,-1,1).setCol(colorMode, "z");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 199 && mouseY < 250){
-        solveCube.getPiece(0,-1,1).setCol(colorMode, "z");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 199 && mouseY < 250){
-        solveCube.getPiece(-1,-1,1).setCol(colorMode, "z");
-      }
-      else if(mouseX > 399 && mouseX < 450 && mouseY > 399 && mouseY < 450){
+        solveCube.getPiece(1, 1, 1).setCol(colorMode, "z");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 99 && mouseY < 150) {
+        solveCube.getPiece(0, 1, 1).setCol(colorMode, "z");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 99 && mouseY < 150) {
+        solveCube.getPiece(-1, 1, 1).setCol(colorMode, "z");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 149 && mouseY < 200) {
+        solveCube.getPiece(1, 0, 1).setCol(colorMode, "z");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 149 && mouseY < 200) {
+        solveCube.getPiece(0, 0, 1).setCol(colorMode, "z");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 149 && mouseY < 200) {
+        solveCube.getPiece(-1, 0, 1).setCol(colorMode, "z");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 199 && mouseY < 250) {
+        solveCube.getPiece(1, -1, 1).setCol(colorMode, "z");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 199 && mouseY < 250) {
+        solveCube.getPiece(0, -1, 1).setCol(colorMode, "z");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 199 && mouseY < 250) {
+        solveCube.getPiece(-1, -1, 1).setCol(colorMode, "z");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 399 && mouseY < 450) {
         //bot faces
-        solveCube.getPiece(1,-1,-1).setCol(colorMode, "z");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 399 && mouseY < 450){
-        solveCube.getPiece(0,-1,-1).setCol(colorMode, "z");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 399 && mouseY < 450){
-        solveCube.getPiece(-1,-1,-1).setCol(colorMode, "z");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 449 && mouseY < 500){
-        solveCube.getPiece(1,0,-1).setCol(colorMode, "z");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 449 && mouseY < 500){
-        solveCube.getPiece(0,0,-1).setCol(colorMode, "z");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 449 && mouseY < 500){
-        solveCube.getPiece(-1,0,-1).setCol(colorMode, "z");
-      }else if(mouseX > 399 && mouseX < 450 && mouseY > 499 && mouseY < 550){
-        solveCube.getPiece(1,1,-1).setCol(colorMode, "z");
-      }else if(mouseX > 449 && mouseX < 500 && mouseY > 499 && mouseY < 550){
-        solveCube.getPiece(0,1,-1).setCol(colorMode, "z");
-      }else if(mouseX > 499 && mouseX < 550 && mouseY > 499 && mouseY < 550){
-        solveCube.getPiece(-1,1,-1).setCol(colorMode, "z");
+        solveCube.getPiece(1, -1, -1).setCol(colorMode, "z");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 399 && mouseY < 450) {
+        solveCube.getPiece(0, -1, -1).setCol(colorMode, "z");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 399 && mouseY < 450) {
+        solveCube.getPiece(-1, -1, -1).setCol(colorMode, "z");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 449 && mouseY < 500) {
+        solveCube.getPiece(1, 0, -1).setCol(colorMode, "z");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 449 && mouseY < 500) {
+        solveCube.getPiece(0, 0, -1).setCol(colorMode, "z");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 449 && mouseY < 500) {
+        solveCube.getPiece(-1, 0, -1).setCol(colorMode, "z");
+      } else if (mouseX > 399 && mouseX < 450 && mouseY > 499 && mouseY < 550) {
+        solveCube.getPiece(1, 1, -1).setCol(colorMode, "z");
+      } else if (mouseX > 449 && mouseX < 500 && mouseY > 499 && mouseY < 550) {
+        solveCube.getPiece(0, 1, -1).setCol(colorMode, "z");
+      } else if (mouseX > 499 && mouseX < 550 && mouseY > 499 && mouseY < 550) {
+        solveCube.getPiece(-1, 1, -1).setCol(colorMode, "z");
       }
     }
   }
@@ -333,41 +329,56 @@ void draw() {
   text("Color mode: " + colorMode, 0, 200);
   text("Color Picker", 0, 880);
   update();
-  if (mode == 0) {
+  if (mode == 0) { 
     for (int i = 0; i < upSide.length; i++) {
       for (int j = 0; j < upSide[0].length; j++) {
         fill(stringToColor(upSide[i][j]));
         rect(400+j*50, 100+i*50, 50, 50);
+        //quad(400, 250, 435, 220, 485, 230, 450, 260); 
+        //quad(450+j*50-i*25, 150+i*50, 475+j*50-i*25, 100+i*50, 525+j*50-i*25, 100+i*50, 500+j*50-i*25, 150+i*50);
+        //quad(470+j*50-i*35, 190+j*10+i*30, 505+j*50-i*35, 160+j*10+i*30, 555+j*50-i*35, 170+j*10+i*30, 520+j*50-i*35, 200+j*10+i*30);
       }
     } 
     for (int i = 0; i < leftSide.length; i++) {
       for (int j = 0; j < leftSide[0].length; j++) {
         fill(stringToColor(leftSide[i][j]));
         rect(250+j*50, 250+i*50, 50, 50);
+        //quad(550+j*35,330-j*30+i*50,550+j*35,280-j*30+i*50,585+j*35,250-j*30+i*50,585+j*35,300-j*30+i*50); 
+        //quad(355,180,355,130,320,160,320,210);
+        //quad(250+j*35,270-j*30+i*50,250+j*35,220-j*30+i*50,285+j*35,190-j*30+i*50,285+j*35,240-j*30+i*50);
+        //quad(355-j*35, 180+j*30+i*50, 355-j*35, 130+j*30+i*50, 320-j*35, 160+j*30+i*50, 320-j*35, 210+j*30+i*50);
       }
     }
     for (int i = 0; i < frontSide.length; i++) {
       for (int j = 0; j < frontSide[0].length; j++) {
         fill(stringToColor(frontSide[i][j]));
+        //quad(400+j*50, 300+j*10+i*50, 400+j*50, 250+j*10+i*50, 450+j*50, 260+j*10+i*50, 450+j*50, 310+j*10+i*50);
         rect(400+j*50, 250+i*50, 50, 50);
       }
     }
     for (int i = 0; i < rightSide.length; i++) {
       for (int j = 0; j < rightSide[0].length; j++) {
         fill(stringToColor(rightSide[i][j]));
-        rect(550+j*50, 250+i*50, 50, 50);
+        rect(550+j*50, 250+i*50, 50, 50); 
+        //quad(550+j*50, 230-j*10+i*50, 550+j*50, 180-j*10+i*50, 600+j*50, 170-j*10+i*50, 600+j*50, 220-j*10+i*50); 
+        //quad(550+j*35, 330-j*30+i*50, 550+j*35, 280-j*30+i*50, 585+j*35, 250-j*30+i*50, 585+j*35, 300-j*30+i*50); 
+        //270
       }
     }
     for (int i = 0; i < backSide.length; i++) {
       for (int j = 0; j < backSide[0].length; j++) {
         fill(stringToColor(backSide[i][j]));
-        rect(700+j*50, 250+i*50, 50, 50);
+        rect(700+j*50, 250+i*50, 50, 50); 
+        //quad(700+j*50, 100+j*10+i*50, 700+j*50, 50+j*10+i*50, 750+j*50, 60+j*10+i*50, 750+j*50, 110+j*10+i*50);
+        //quad(850-j*50, 130-j*10+i*50, 850-j*50, 80-j*10+i*50, 800-j*50, 70-j*10+i*50, 800-j*50, 120-j*10+i*50);
       }
     }
     for (int i = 0; i < downSide.length; i++) {
       for (int j = 0; j < downSide[0].length; j++) {
         fill(stringToColor(downSide[i][j]));
-        rect(400+j*50, 400+i*50, 50, 50);
+        rect(400+j*50, 400+i*50, 50, 50); 
+        //quad(470+j*50-i*35, 490+j*10+i*30, 505+j*50-i*35, 460+j*10+i*30, 555+j*50-i*35, 470+j*10+i*30, 520+j*50-i*35, 500+j*10+i*30); 
+        //quad(435+j*50+i*35, 520+j*10-i*30, 400+j*50+i*35, 550+j*10-i*30, 450+j*50+i*35, 560+j*10-i*30, 485+j*50+i*35, 530+j*10-i*30);
       }
     } 
     //L
@@ -1115,6 +1126,419 @@ void draw() {
       quad(600, 300, 600, 150, 625, 100, 625, 250);
       rect(400, 500, 150, 50); 
       rect(250, 250, 50, 150);
+    }
+  }
+  if (mode == 2) { 
+    for (int i = 0; i < upSide.length; i++) {
+      for (int j = 0; j < upSide[0].length; j++) {
+        fill(stringToColor(upSide[i][j]));
+        // rect(400+j*50, 100+i*50, 50, 50);
+        //quad(400, 250, 435, 220, 485, 230, 450, 260); 
+        //quad(450+j*50-i*25, 150+i*50, 475+j*50-i*25, 100+i*50, 525+j*50-i*25, 100+i*50, 500+j*50-i*25, 150+i*50);
+        quad(470+j*50-i*35, 190+j*10+i*30, 505+j*50-i*35, 160+j*10+i*30, 555+j*50-i*35, 170+j*10+i*30, 520+j*50-i*35, 200+j*10+i*30);
+      }
+    } 
+    for (int i = 0; i < leftSide.length; i++) {
+      for (int j = 0; j < leftSide[0].length; j++) {
+        fill(stringToColor(leftSide[i][j]));
+        //rect(250+j*50, 250+i*50, 50, 50);
+        //quad(550+j*35,330-j*30+i*50,550+j*35,280-j*30+i*50,585+j*35,250-j*30+i*50,585+j*35,300-j*30+i*50); 
+        //quad(355,180,355,130,320,160,320,210);
+        //quad(250+j*35,270-j*30+i*50,250+j*35,220-j*30+i*50,285+j*35,190-j*30+i*50,285+j*35,240-j*30+i*50);
+        quad(355-j*35, 180+j*30+i*50, 355-j*35, 130+j*30+i*50, 320-j*35, 160+j*30+i*50, 320-j*35, 210+j*30+i*50);
+      }
+    }
+    for (int i = 0; i < frontSide.length; i++) {
+      for (int j = 0; j < frontSide[0].length; j++) {
+        fill(stringToColor(frontSide[i][j]));
+        quad(400+j*50, 300+j*10+i*50, 400+j*50, 250+j*10+i*50, 450+j*50, 260+j*10+i*50, 450+j*50, 310+j*10+i*50);
+        //rect(400+j*50, 250+i*50, 50, 50);
+      }
+    }
+    for (int i = 0; i < rightSide.length; i++) {
+      for (int j = 0; j < rightSide[0].length; j++) {
+        fill(stringToColor(rightSide[i][j]));
+        //rect(550+j*50, 250+i*50, 50, 50); 
+        //quad(550+j*50, 230-j*10+i*50, 550+j*50, 180-j*10+i*50, 600+j*50, 170-j*10+i*50, 600+j*50, 220-j*10+i*50); 
+        quad(550+j*35, 330-j*30+i*50, 550+j*35, 280-j*30+i*50, 585+j*35, 250-j*30+i*50, 585+j*35, 300-j*30+i*50); 
+        //270
+      }
+    }
+    for (int i = 0; i < backSide.length; i++) {
+      for (int j = 0; j < backSide[0].length; j++) {
+        fill(stringToColor(backSide[i][j]));
+        //rect(700+j*50, 250+i*50, 50, 50); 
+        //quad(700+j*50, 100+j*10+i*50, 700+j*50, 50+j*10+i*50, 750+j*50, 60+j*10+i*50, 750+j*50, 110+j*10+i*50);
+        quad(850-j*50, 130-j*10+i*50, 850-j*50, 80-j*10+i*50, 800-j*50, 70-j*10+i*50, 800-j*50, 120-j*10+i*50);
+      }
+    }
+    for (int i = 0; i < downSide.length; i++) {
+      for (int j = 0; j < downSide[0].length; j++) {
+        fill(stringToColor(downSide[i][j]));
+        //rect(400+j*50, 400+i*50, 50, 50); 
+        //quad(470+j*50-i*35, 490+j*10+i*30, 505+j*50-i*35, 460+j*10+i*30, 555+j*50-i*35, 470+j*10+i*30, 520+j*50-i*35, 500+j*10+i*30); 
+        quad(435+j*50+i*35, 520+j*10-i*30, 400+j*50+i*35, 550+j*10-i*30, 450+j*50+i*35, 560+j*10-i*30, 485+j*50+i*35, 530+j*10-i*30);
+      }
+    }    
+    for (int i = 0; i < upSide.length; i++) {
+      for (int j = 0; j < upSide[0].length; j++) {
+        fill(stringToColor(upSide[i][j]));
+        // rect(400+j*50, 100+i*50, 50, 50);
+        //quad(400, 250, 435, 220, 485, 230, 450, 260); 
+        //quad(450+j*50-i*25, 150+i*50, 475+j*50-i*25, 100+i*50, 525+j*50-i*25, 100+i*50, 500+j*50-i*25, 150+i*50);
+        quad(470+j*50-i*35, 190+j*10+i*30, 505+j*50-i*35, 160+j*10+i*30, 555+j*50-i*35, 170+j*10+i*30, 520+j*50-i*35, 200+j*10+i*30);
+      }
+    } 
+    for (int i = 0; i < leftSide.length; i++) {
+      for (int j = 0; j < leftSide[0].length; j++) {
+        fill(stringToColor(leftSide[i][j]));
+        //rect(250+j*50, 250+i*50, 50, 50);
+        //quad(550+j*35,330-j*30+i*50,550+j*35,280-j*30+i*50,585+j*35,250-j*30+i*50,585+j*35,300-j*30+i*50); 
+        //quad(355,180,355,130,320,160,320,210);
+        //quad(250+j*35,270-j*30+i*50,250+j*35,220-j*30+i*50,285+j*35,190-j*30+i*50,285+j*35,240-j*30+i*50);
+        quad(355-j*35, 180+j*30+i*50, 355-j*35, 130+j*30+i*50, 320-j*35, 160+j*30+i*50, 320-j*35, 210+j*30+i*50);
+      }
+    }
+    for (int i = 0; i < frontSide.length; i++) {
+      for (int j = 0; j < frontSide[0].length; j++) {
+        fill(stringToColor(frontSide[i][j]));
+        quad(400+j*50, 300+j*10+i*50, 400+j*50, 250+j*10+i*50, 450+j*50, 260+j*10+i*50, 450+j*50, 310+j*10+i*50);
+        //rect(400+j*50, 250+i*50, 50, 50);
+      }
+    }
+    for (int i = 0; i < rightSide.length; i++) {
+      for (int j = 0; j < rightSide[0].length; j++) {
+        fill(stringToColor(rightSide[i][j]));
+        //rect(550+j*50, 250+i*50, 50, 50); 
+        //quad(550+j*50, 230-j*10+i*50, 550+j*50, 180-j*10+i*50, 600+j*50, 170-j*10+i*50, 600+j*50, 220-j*10+i*50); 
+        quad(550+j*35, 330-j*30+i*50, 550+j*35, 280-j*30+i*50, 585+j*35, 250-j*30+i*50, 585+j*35, 300-j*30+i*50); 
+        //270
+      }
+    }
+    for (int i = 0; i < backSide.length; i++) {
+      for (int j = 0; j < backSide[0].length; j++) {
+        fill(stringToColor(backSide[i][j]));
+        //rect(700+j*50, 250+i*50, 50, 50); 
+        //quad(700+j*50, 100+j*10+i*50, 700+j*50, 50+j*10+i*50, 750+j*50, 60+j*10+i*50, 750+j*50, 110+j*10+i*50);
+        quad(850-j*50, 130-j*10+i*50, 850-j*50, 80-j*10+i*50, 800-j*50, 70-j*10+i*50, 800-j*50, 120-j*10+i*50);
+      }
+    }
+    for (int i = 0; i < downSide.length; i++) {
+      for (int j = 0; j < downSide[0].length; j++) {
+        fill(stringToColor(downSide[i][j]));
+        //rect(400+j*50, 400+i*50, 50, 50); 
+        //quad(470+j*50-i*35, 490+j*10+i*30, 505+j*50-i*35, 460+j*10+i*30, 555+j*50-i*35, 470+j*10+i*30, 520+j*50-i*35, 500+j*10+i*30); 
+        quad(435+j*50+i*35, 520+j*10-i*30, 400+j*50+i*35, 550+j*10-i*30, 450+j*50+i*35, 560+j*10-i*30, 485+j*50+i*35, 530+j*10-i*30);
+      }
+    } 
+    //L
+    if (mouseX > 170 && mouseX < 220 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63);
+      triangle(410, 360, 425, 390, 440, 360);
+      rect(415, 260, 20, 100);  
+      quad(400, 400, 400, 250, 450, 260, 450, 410);
+      quad(400, 250, 505, 160, 555, 170, 450, 260); 
+      quad(400, 550, 505, 460, 555, 470, 450, 560); 
+      quad(700, 200, 700, 50, 750, 60, 750, 210);
+    } 
+    //LPrime
+    if (mouseX > 170 && mouseX < 220 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63); 
+      triangle(410, 290, 425, 260, 440, 290); 
+      rect(415, 290, 20, 100); 
+      quad(400, 400, 400, 250, 450, 260, 450, 410);
+      quad(400, 250, 505, 160, 555, 170, 450, 260); 
+      quad(400, 550, 505, 460, 555, 470, 450, 560); 
+      quad(700, 200, 700, 50, 750, 60, 750, 210);
+    } 
+    //M
+    if (mouseX > 590 && mouseX < 640 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63);
+      triangle(460, 370, 475, 400, 490, 370);
+      rect(465, 270, 20, 100);
+      quad(450, 410, 450, 260, 500, 270, 500, 420);
+      quad(450, 260, 555, 170, 605, 180, 500, 270); 
+      quad(450, 560, 555, 470, 605, 480, 500, 570); 
+      quad(750, 210, 750, 60, 800, 70, 800, 220);
+    } 
+    //MPrime
+    if (mouseX > 590 && mouseX < 640 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63); 
+      triangle(460, 300, 475, 270, 490, 300); 
+      rect(465, 300, 20, 100);
+      quad(450, 410, 450, 260, 500, 270, 500, 420);
+      quad(450, 260, 555, 170, 605, 180, 500, 270); 
+      quad(450, 560, 555, 470, 605, 480, 500, 570); 
+      quad(750, 210, 750, 60, 800, 70, 800, 220);
+    }
+    //R 
+    if (mouseX > 240 && mouseX < 290 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63); 
+      triangle(510, 310, 525, 280, 540, 310); 
+      rect(515, 310, 20, 100);
+      quad(500, 420, 500, 270, 550, 280, 550, 430);
+      quad(500, 270, 605, 180, 655, 190, 550, 280); 
+      quad(500, 570, 605, 480, 655, 490, 550, 580); 
+      quad(800, 220, 800, 70, 850, 80, 850, 230);
+    } 
+    //RPrime  
+    if (mouseX > 240 && mouseX < 290 && mouseY > 800 && mouseY < 850) { 
+      fill(0, 0, 0, 63);
+      triangle(510, 380, 525, 410, 540, 380);
+      rect(515, 280, 20, 100);
+      quad(500, 420, 500, 270, 550, 280, 550, 430);
+      quad(500, 270, 605, 180, 655, 190, 550, 280); 
+      quad(500, 570, 605, 480, 655, 490, 550, 580); 
+      quad(800, 220, 800, 70, 850, 80, 850, 230);
+    } 
+    //X  
+    if (mouseX > 800 && mouseX < 850 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63); 
+      triangle(410, 290, 425, 260, 440, 290); 
+      rect(415, 290, 20, 100); 
+      quad(400, 400, 400, 250, 450, 260, 450, 410);
+      quad(400, 250, 505, 160, 555, 170, 450, 260); 
+      quad(400, 550, 505, 460, 555, 470, 450, 560); 
+      quad(700, 200, 700, 50, 750, 60, 750, 210);  
+      triangle(460, 300, 475, 270, 490, 300); 
+      rect(465, 300, 20, 100);
+      quad(450, 410, 450, 260, 500, 270, 500, 420);
+      quad(450, 260, 555, 170, 605, 180, 500, 270); 
+      quad(450, 560, 555, 470, 605, 480, 500, 570); 
+      quad(750, 210, 750, 60, 800, 70, 800, 220); 
+      triangle(510, 310, 525, 280, 540, 310); 
+      rect(515, 310, 20, 100);
+      quad(500, 420, 500, 270, 550, 280, 550, 430);
+      quad(500, 270, 605, 180, 655, 190, 550, 280); 
+      quad(500, 570, 605, 480, 655, 490, 550, 580); 
+      quad(800, 220, 800, 70, 850, 80, 850, 230);
+    }  
+    //X' 
+    if (mouseX > 800 && mouseX < 850 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63);
+      triangle(410, 360, 425, 390, 440, 360);
+      rect(415, 260, 20, 100);  
+      quad(400, 400, 400, 250, 450, 260, 450, 410);
+      quad(400, 250, 505, 160, 555, 170, 450, 260); 
+      quad(400, 550, 505, 460, 555, 470, 450, 560); 
+      quad(700, 200, 700, 50, 750, 60, 750, 210); 
+      triangle(460, 370, 475, 400, 490, 370);
+      rect(465, 270, 20, 100);
+      quad(450, 410, 450, 260, 500, 270, 500, 420);
+      quad(450, 260, 555, 170, 605, 180, 500, 270); 
+      quad(450, 560, 555, 470, 605, 480, 500, 570); 
+      quad(750, 210, 750, 60, 800, 70, 800, 220);
+      triangle(510, 380, 525, 410, 540, 380);
+      rect(515, 280, 20, 100);
+      quad(500, 420, 500, 270, 550, 280, 550, 430);
+      quad(500, 270, 605, 180, 655, 190, 550, 280); 
+      quad(500, 570, 605, 480, 655, 490, 550, 580); 
+      quad(800, 220, 800, 70, 850, 80, 850, 230);
+    } 
+    //U
+    if (mouseX > 310 && mouseX < 360 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63);
+      triangle(440, 305, 410, 290, 440, 275); 
+      rect(440, 280, 100, 20);
+      quad(400, 300, 400, 250, 550, 280, 550, 330);
+      quad(550, 330, 550, 280, 655, 190, 655, 240); 
+      quad(250, 270, 250, 220, 355, 130, 355, 180); 
+      quad(700, 100, 700, 50, 850, 80, 850, 130);
+    }  
+    //UPrime 
+    if (mouseX > 310 && mouseX < 360 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63);
+      triangle(510, 305, 540, 290, 510, 275); 
+      rect(410, 280, 100, 20);
+      quad(400, 300, 400, 250, 550, 280, 550, 330);
+      quad(550, 330, 550, 280, 655, 190, 655, 240); 
+      quad(250, 270, 250, 220, 355, 130, 355, 180); 
+      quad(700, 100, 700, 50, 850, 80, 850, 130);
+    }   
+    //E 
+    if (mouseX > 660 && mouseX < 710 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63);
+      triangle(510, 355, 540, 340, 510, 325); 
+      rect(410, 330, 100, 20);
+      quad(400, 350, 400, 300, 550, 330, 550, 380);
+      quad(550, 380, 550, 330, 655, 240, 655, 290); 
+      quad(250, 320, 250, 270, 355, 180, 355, 230); 
+      quad(700, 150, 700, 100, 850, 130, 850, 180);
+    }
+    //EPrime 
+    if (mouseX > 660 && mouseX < 710 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63);
+      triangle(440, 355, 410, 340, 440, 320); 
+      rect(440, 330, 100, 20);
+      quad(400, 350, 400, 300, 550, 330, 550, 380);
+      quad(550, 380, 550, 330, 655, 240, 655, 290); 
+      quad(250, 320, 250, 270, 355, 180, 355, 230); 
+      quad(700, 150, 700, 100, 850, 130, 850, 180);
+    }  //D 
+    if (mouseX > 380 && mouseX < 420 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63);
+      triangle(510, 405, 540, 390, 510, 375); 
+      rect(410, 380, 100, 20);
+      quad(400, 400, 400, 350, 550, 380, 550, 430);
+      quad(550, 430, 550, 380, 655, 290, 655, 340); 
+      quad(250, 370, 250, 320, 355, 230, 355, 280); 
+      quad(700, 200, 700, 150, 850, 180, 850, 230);
+    } 
+    //DPrime 
+    if (mouseX > 380 && mouseX < 420 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63);
+      triangle(440, 405, 410, 390, 440, 375); 
+      rect(440, 380, 100, 20);
+      quad(400, 400, 400, 350, 550, 380, 550, 430);
+      quad(550, 430, 550, 380, 655, 290, 655, 340); 
+      quad(250, 370, 250, 320, 355, 230, 355, 280); 
+      quad(700, 200, 700, 150, 850, 180, 850, 230);
+    } 
+    //Z
+    if (mouseX > 930 && mouseX < 980 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63);
+      triangle(510, 305, 540, 290, 510, 275); 
+      rect(410, 280, 100, 20);
+      quad(400, 300, 400, 250, 550, 280, 550, 330);
+      quad(550, 330, 550, 280, 655, 190, 655, 240); 
+      quad(250, 270, 250, 220, 355, 130, 355, 180); 
+      quad(700, 100, 700, 50, 850, 80, 850, 130); 
+      triangle(510, 355, 540, 340, 510, 325); 
+      rect(410, 330, 100, 20);
+      quad(400, 350, 400, 300, 550, 330, 550, 380);
+      quad(550, 380, 550, 330, 655, 240, 655, 290); 
+      quad(250, 320, 250, 270, 355, 180, 355, 230); 
+      quad(700, 150, 700, 100, 850, 130, 850, 180); 
+      triangle(510, 405, 540, 390, 510, 375); 
+      rect(410, 380, 100, 20);
+      quad(400, 400, 400, 350, 550, 380, 550, 430);
+      quad(550, 430, 550, 380, 655, 290, 655, 340); 
+      quad(250, 370, 250, 320, 355, 230, 355, 280); 
+      quad(700, 200, 700, 150, 850, 180, 850, 230);
+    } 
+    //ZPrime 
+    if (mouseX > 930 && mouseX < 980 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63);
+      triangle(440, 305, 410, 290, 440, 275); 
+      rect(440, 280, 100, 20);
+      quad(400, 300, 400, 250, 550, 280, 550, 330);
+      quad(550, 330, 550, 280, 655, 190, 655, 240); 
+      quad(250, 270, 250, 220, 355, 130, 355, 180); 
+      quad(700, 100, 700, 50, 850, 80, 850, 130);  
+      triangle(440, 355, 410, 340, 440, 320); 
+      rect(440, 330, 100, 20);
+      quad(400, 350, 400, 300, 550, 330, 550, 380);
+      quad(550, 380, 550, 330, 655, 240, 655, 290); 
+      quad(250, 320, 250, 270, 355, 180, 355, 230); 
+      quad(700, 150, 700, 100, 850, 130, 850, 180);
+      triangle(440, 405, 410, 390, 440, 375); 
+      rect(440, 380, 100, 20);
+      quad(400, 400, 400, 350, 550, 380, 550, 430);
+      quad(550, 430, 550, 380, 655, 290, 655, 340); 
+      quad(250, 370, 250, 320, 355, 230, 355, 280); 
+      quad(700, 200, 700, 150, 850, 180, 850, 230);
+    }
+    //F
+    if (mouseX > 450 && mouseX < 500 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63);
+      triangle(495, 235, 510, 255, 465, 260); 
+      //rect(425, 245, 100, 20);  
+      quad(400, 250, 435, 220, 585, 250, 550, 280);
+      quad(550, 430, 550, 280, 585, 250, 585, 400);
+      quad(400, 550, 435, 520, 585, 550, 550, 580); 
+      quad(250, 370, 250, 220, 285, 190, 285, 340);
+    } 
+    //FPrime
+    if (mouseX > 450 && mouseX < 500 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63);
+      triangle(490, 265, 475, 242, 520, 240); 
+      quad(400, 250, 435, 220, 585, 250, 550, 280);
+      quad(550, 430, 550, 280, 585, 250, 585, 400);
+      quad(400, 550, 435, 520, 585, 550, 550, 580); 
+      quad(250, 370, 250, 220, 285, 190, 285, 340);
+    }
+    //S  
+    if (mouseX > 730 && mouseX < 780 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63);
+      triangle(530, 205, 545, 225, 500, 230);
+      //rect(445, 165, 100, 20);  
+      quad(435, 220, 470, 190, 620, 220, 585, 250);
+      quad(585, 400, 585, 250, 620, 220, 620, 370);
+      quad(435, 520, 470, 490, 620, 520, 585, 550); 
+      quad(285, 340, 285, 190, 320, 160, 320, 310);
+    } 
+    //SPrime
+    if (mouseX > 730 && mouseX < 780 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63);
+      triangle(525, 235, 515, 212, 555, 210); 
+      //rect(475, 165, 100, 20); 
+      quad(435, 220, 470, 190, 620, 220, 585, 250);
+      quad(585, 400, 585, 250, 620, 220, 620, 370);
+      quad(435, 520, 470, 490, 620, 520, 585, 550); 
+      quad(285, 340, 285, 190, 320, 160, 320, 310);
+    } 
+    //B 
+    if (mouseX > 520 && mouseX < 570 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63);
+      triangle(560, 205, 550, 182, 590, 180); 
+      //rect(495, 115, 100, 20); 
+      quad(470, 190, 505, 160, 655, 190, 620, 220);
+      quad(620, 370, 620, 220, 655, 190, 655, 340);
+      quad(470, 490, 505, 460, 655, 490, 620, 520); 
+      quad(320, 310, 320, 160, 355, 130, 355, 280);
+    } 
+    //BPrime
+    if (mouseX > 520 && mouseX < 570 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63);
+      triangle(565, 175, 580, 195, 535, 200);
+      //rect(465, 115, 100, 20);  
+      quad(470, 190, 505, 160, 655, 190, 620, 220);
+      quad(620, 370, 620, 220, 655, 190, 655, 340);
+      quad(470, 490, 505, 460, 655, 490, 620, 520); 
+      quad(320, 310, 320, 160, 355, 130, 355, 280);
+    }
+    //Y
+    if (mouseX > 860 && mouseX < 910 && mouseY > 700 && mouseY < 750) {
+      fill(0, 0, 0, 63);
+      triangle(490, 265, 475, 242, 520, 240); 
+      quad(400, 250, 435, 220, 585, 250, 550, 280);
+      quad(550, 430, 550, 280, 585, 250, 585, 400);
+      quad(400, 550, 435, 520, 585, 550, 550, 580); 
+      quad(250, 370, 250, 220, 285, 190, 285, 340); 
+      triangle(525, 235, 515, 212, 555, 210); 
+      //rect(475, 165, 100, 20); 
+      quad(435, 220, 470, 190, 620, 220, 585, 250);
+      quad(585, 400, 585, 250, 620, 220, 620, 370);
+      quad(435, 520, 470, 490, 620, 520, 585, 550); 
+      quad(285, 340, 285, 190, 320, 160, 320, 310);
+      triangle(560, 205, 550, 182, 590, 180); 
+      //rect(495, 115, 100, 20); 
+      quad(470, 190, 505, 160, 655, 190, 620, 220);
+      quad(620, 370, 620, 220, 655, 190, 655, 340);
+      quad(470, 490, 505, 460, 655, 490, 620, 520); 
+      quad(320, 310, 320, 160, 355, 130, 355, 280);
+    }
+    //YPrime 
+    if (mouseX > 860 && mouseX < 910 && mouseY > 800 && mouseY < 850) {
+      fill(0, 0, 0, 63);
+      triangle(495, 235, 510, 255, 465, 260); 
+      //rect(425, 245, 100, 20);  
+      quad(400, 250, 435, 220, 585, 250, 550, 280);
+      quad(550, 430, 550, 280, 585, 250, 585, 400);
+      quad(400, 550, 435, 520, 585, 550, 550, 580); 
+      quad(250, 370, 250, 220, 285, 190, 285, 340); 
+      triangle(530, 205, 545, 225, 500, 230);
+      //rect(445, 165, 100, 20);  
+      quad(435, 220, 470, 190, 620, 220, 585, 250);
+      quad(585, 400, 585, 250, 620, 220, 620, 370);
+      quad(435, 520, 470, 490, 620, 520, 585, 550); 
+      quad(285, 340, 285, 190, 320, 160, 320, 310); 
+      triangle(565, 175, 580, 195, 535, 200);
+      //rect(465, 115, 100, 20);  
+      quad(470, 190, 505, 160, 655, 190, 620, 220);
+      quad(620, 370, 620, 220, 655, 190, 655, 340);
+      quad(470, 490, 505, 460, 655, 490, 620, 520); 
+      quad(320, 310, 320, 160, 355, 130, 355, 280);
     }
   }
   fill(255, 255, 255);
