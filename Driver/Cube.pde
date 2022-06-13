@@ -1,9 +1,10 @@
 import java.util.*; //<>// //<>// //<>// //<>//
 public class Cube {
   //String lCol, rCol, fCol, bCol, uCol, dCol;
-  ArrayList<String> solutionSet = new ArrayList<String>(); 
-  ArrayList<String> scramble = new ArrayList<String>();
-  ArrayList<String> moves = new ArrayList<String>();
+  private boolean printScramble = false;
+  private ArrayList<String> solutionSet = new ArrayList<String>(); 
+  private ArrayList<String> scramble = new ArrayList<String>();
+  private ArrayList<String> moves = new ArrayList<String>();
 
   private Piece[] pieces = new Piece[26];
   public Cube() {
@@ -49,6 +50,7 @@ public class Cube {
 
   //reset cube
   public void reset() {
+    println("reset");
     //layer 1
     pieces[0] = new Piece(-1, -1, -1, "blue", "white", "red");
     pieces[1] = new Piece(0, -1, -1, null, "white", "red");
@@ -89,12 +91,12 @@ public class Cube {
     pieces[25] = new Piece(1, 1, 1, "green", "yellow", "orange");
   }
 
-  public void scrambleFixed() {
-    for (String i : scramble) {
-      move(i);
-      solRemoveLast();
-    }
-    scramble.clear();
+  public void printScrambleToggle(boolean bool){
+    printScramble = bool;
+  }
+
+  public boolean printScramble(){
+    return printScramble; 
   }
   //scrambles cube using 20 moves
   public void scramble() {
@@ -205,8 +207,10 @@ public class Cube {
       i++;
     }
     // println("Your scramble (before optimize) is: " + scramble);
+    if(printScramble){
     moveOptimizer(scramble);
     println("Your scramble is: " + scramble);
+    }
     //scramble.clear();
   }
 
@@ -354,21 +358,6 @@ public class Cube {
       return getPiece(0, 0, -1).zCol();
     default : 
       return null;
-    }
-  }
-
-  //accessor for solutionset
-  public ArrayList<String> solutionSet() {
-    return solutionSet;
-  }
-  public void solAdd(String addition) {
-    solutionSet.add(addition);
-  }
-  public void solRemoveLast() {
-    if (solutionSet.size() > 0) {
-      solutionSet.remove(solutionSet.size()-1);
-    } else {
-      print("nothing left to remove!");
     }
   }
   public void L() {
