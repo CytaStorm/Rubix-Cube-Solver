@@ -84,7 +84,7 @@ Gil Zheng: Finished L, L', R, R', M, M', X, and X' arrows <br />
 <br /> 
 
 Monday 6 June 2022 <br/>
-Jeff Chen: <br/>
+Jeff Chen: Added reset to original position after solving cube<br/>
 Gil Zheng: Finished the arrows for the U rotation and merged to main for Jeff to fix a bug<br /> 
 <br /> 
 
@@ -104,7 +104,7 @@ Gil Zheng: Finished the hovering arrows for the first mode<br />
 <br /> 
 
 Friday 10 June 2022 <br/>
-Jeff Chen:<br/>
+Jeff Chen: Helped Gil with arrows<br/>
 Gil Zheng: Finished the hovering arrows for the 2nd mode<br /> 
 <br /> 
 
