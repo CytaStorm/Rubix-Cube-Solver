@@ -325,7 +325,13 @@ void draw() {
   // text("mouseX: " + mouseX, 0, 50);
   // text("mouseY: " + mouseY, 0, 100);
   text("Print scramble: " + solveCube.printScramble(), 0, 100);
-  text("Mode: " + mode, 0, 150);
+  if(mode == 0){
+    text("Mode: Net", 0, 150);
+  }else if(mode == 1){
+    text("Mode: 3D", 0, 150);
+  }else{
+    text("Mode: 3D Floating Faces", 0, 150);
+  }
   text("Color mode: " + colorMode, 0, 200);
   text("Color Picker", 0, 880);
   update();
