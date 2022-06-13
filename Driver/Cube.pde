@@ -608,7 +608,7 @@ public class Cube {
       botFace();
       botCorners();
       botEdges();
-      println("solved!");
+      // println("solved!");
       // println("Solution before optimize: " + moves);
       moveOptimizer(moves);
       println(moves);
@@ -770,7 +770,7 @@ public class Cube {
       // println(targetPiece);
       move("Z");
     }
-    println("finished using cross!");
+    // println("finished using cross!");
     // println("after first layer: " + moves);
     return;
   }
@@ -863,7 +863,7 @@ public class Cube {
 
       move("Z"); //move on to solve next topRight
     }
-    println("finished making corners!");
+    // println("finished making corners!");
     // println("corner " + moves);
   }
 
@@ -1030,7 +1030,7 @@ public class Cube {
       }
       move("Z");
     }
-    println("second layer finished!");
+    // println("second layer finished!");
     // println("second layer moves: " + moves);
   }
 
@@ -1065,7 +1065,7 @@ public class Cube {
       singleAlgo();
       checkPosition();
     }
-    println("botcross finished!");
+    // println("botcross finished!");
   }
   private boolean botCrossChecker() {
     for (int i = 0; i < pieces.length; i++) {
@@ -1119,7 +1119,7 @@ public class Cube {
       cornerSingleAlgo();
     }
 
-    println("botFace finished!");
+    // println("botFace finished!");
   }
   private void botFaceOrient() {
     //returns 1 of 4 orientations of bottom 
@@ -1191,7 +1191,6 @@ public class Cube {
       cornerPosSingleAlgo();
     }
   }
-  //returns in based on position of corners
   private void botCornerPos() {
     // println("setting up pos");
     //refer to https://assets.ctfassets.net/r3qu44etwf9a/6kAQCoLmbXXu29TTuArrk1/404118e1f9bfb6f9997157a284bbc572/Rubiks_Solution-Guide_3x3.pdf for cube positions
@@ -1301,7 +1300,7 @@ public class Cube {
         move("Z");
       }
     }
-    println("botEdges complete");
+    // println("botEdges complete");
     move("X");
     move("X");
   }
