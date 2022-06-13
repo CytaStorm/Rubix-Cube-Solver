@@ -16,6 +16,11 @@ V/B/N for X'/Y'/Z'<br/>
 ENTER to solve<br/> 
 M to change modes<br/>  
 
+Buttons: <br/>
+Scramble scrambles the cube. <br/>
+Each of the move buttons performs the specified move. <br/>
+Each of the colored squares changes the color mode, which will change the color of the face you click on in mode 1. <br/>
+
 
 https://docs.google.com/document/d/1BXVDlJIRH7PimkvV02koKximVJbK5jmj-6kPyB3UdCo/edit <br />
  **Development Log** <br />
